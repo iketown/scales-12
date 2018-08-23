@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { blackKeyOffsets } from "./keyboardUtils";
 
-const blackKeyOffsets = {
-  D: "-32px",
-  E: "-13px",
-  G: "-35px",
-  A: "-24px",
-  B: "-14px"
-};
+const Svg = styled.svg`
+  &:hover path {
+    fill: #505050;
+  }
+`;
 
 const BlackKey = ({ keyName }) => {
   const BlackKeyDiv = styled.div`
@@ -18,7 +17,7 @@ const BlackKey = ({ keyName }) => {
 
   return (
     <BlackKeyDiv>
-      <svg
+      <Svg
         width="46"
         height="338"
         viewBox="0 0 46 338"
@@ -32,7 +31,7 @@ const BlackKey = ({ keyName }) => {
             fill="#000"
           />
         </g>
-      </svg>
+      </Svg>
     </BlackKeyDiv>
   );
 };

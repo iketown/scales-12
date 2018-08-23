@@ -15,12 +15,55 @@ export const paths = {
     "M35.0624073,1 L76,1 L76,341.199627 L76,491 C76,496.522847 71.5228475,501 66,501 L11,501 C5.4771525,501 1,496.522847 1,491 L1,341.199627 L35.0624073,341.199627 L35.0624073,1 Z"
 };
 
-// export const translations = {
-//   C: 0,
-//   D: -80,
-//   E: -160,
-//   F: -240,
-//   G: -320,
-//   A: -400,
-//   B: -480
-// };
+export const blackKeyOffsets = {
+  D: "-33px",
+  E: "-14px",
+  G: "-36px",
+  A: "-25px",
+  B: "-15px"
+};
+
+export const keyArray = [
+  "C1",
+  "D1",
+  "E1",
+  "F1",
+  "G1",
+  "A1",
+  "B1",
+  "C2",
+  "D2",
+  "E2",
+  "F2",
+  "G2",
+  "A2",
+  "B2"
+];
+
+export const keyObject = {
+  C1: { shape: "C" },
+  D1: { shape: "D" },
+  E1: { shape: "E" },
+  F1: { shape: "F" },
+  G1: { shape: "G" },
+  A1: { shape: "A" },
+  B1: { shape: "B" },
+  C2: { shape: "C" },
+  D2: { shape: "D" },
+  E2: { shape: "E" },
+  F2: { shape: "F" },
+  G2: { shape: "G" },
+  A2: { shape: "A" },
+  B2: { shape: "B" }
+};
+
+export const keyList = (bottomKey, topKey) => {
+  let bottomIndex = keyArray.findIndex(key => key === bottomKey);
+  let topIndex = keyArray.findIndex(key => key === topKey);
+  if (bottomIndex >= topIndex) {
+    [bottomIndex, topIndex] = [topIndex, bottomIndex];
+    console.log("Key ranges were entered backwards");
+  }
+  const list = keyArray.filter((key, i) => i >= bottomIndex && i <= topIndex);
+  return list;
+};
