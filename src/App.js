@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Keyboard from "./components/Keyboard.jsx";
+import Keyboard from "./components/keyboard/Keyboard";
 class App extends Component {
   render() {
     return (
@@ -10,10 +10,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Keyboard bottomKey="D1" topKey="E2" keysToLabel={["C2", "G1"]} />
+
+        <Keyboard
+          bottomKey="C1"
+          topKey="E2"
+          keysToLabel={["C2", "G1"]}
+          keyboardId="myId"
+        />
       </div>
     );
   }

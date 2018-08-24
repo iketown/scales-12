@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { paths, keyObject } from "../../keySVGs/keyboardUtils";
 import styled from "styled-components";
 import { addNoteToList } from "../../actions/keyboardActions";
 import BlackKey from "./BlackKey.jsx";
-import Circle from "../components/keyboard/Circle.jsx";
+import Circle from "./Circle.jsx";
+
 const WhiteKeyDiv = styled.div`
   position: relative;
   margin: 1px;
@@ -32,7 +33,7 @@ class WhiteKey extends Component {
       this.props.dispatch(addNoteToList({ noteName, keyboardId }));
     };
     return (
-      <WhiteKeyDiv>
+      <Fragment>
         <Svg
           onClick={handleClick(noteName)}
           width="77"
@@ -42,17 +43,12 @@ class WhiteKey extends Component {
         >
           <path d={paths[noteName]} stroke="#000" id="C" fill="none" />
         </Svg>
-        {!hideFlat && (
-          <BlackKey
-            noteName={`${noteName}b`}
-            keyboardId={keyboardId}
-            handleClick={handleClick(`${noteName}b`)}
-          />
-        )}
         {showNoteName && <NoteDisplay>{noteName}</NoteDisplay>}
-      </WhiteKeyDiv>
+      </Fragment>
     );
   }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  circle: "grey"
+});
 export default connect(mapStateToProps)(WhiteKey);

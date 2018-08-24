@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
-import { blackKeyOffsets } from "./keyboardUtils";
+import { blackKeyOffsets } from "../../keySVGs/keyboardUtils";
 
 const Svg = styled.svg`
   &:hover path {
@@ -8,11 +9,14 @@ const Svg = styled.svg`
   }
 `;
 
-const BlackKey = ({ keyName }) => {
+const BlackKey = ({ noteName, keyboardId, handleClick, hide }) => {
+  if (noteName === "Fb" || noteName === "Cb" || hide) {
+    return null;
+  }
   const BlackKeyDiv = styled.div`
     position: absolute;
     top: 0;
-    left: ${blackKeyOffsets[keyName]};
+    left: ${blackKeyOffsets[noteName]};
   `;
 
   return (
@@ -22,11 +26,12 @@ const BlackKey = ({ keyName }) => {
         height="338"
         viewBox="0 0 46 338"
         xmlns="http://www.w3.org/2000/svg"
+        onClick={handleClick}
       >
         <g id="Flat" fill="none" fillRule="evenodd">
           <path
             d="M0.5,0.5 L0.5,328 C0.5,333.246705 4.75329488,337.5 10,337.5 L36,337.5 C41.2467051,337.5 45.5,333.246705 45.5,328 L45.5,0.5 L0.5,0.5 Z"
-            id={keyName}
+            id={noteName}
             stroke="#000"
             fill="#000"
           />
@@ -36,11 +41,8 @@ const BlackKey = ({ keyName }) => {
   );
 };
 
-export const displayFlat = keyName => {
-  if (keyName === "F") return null;
-  if (keyName === "C") return null;
+const mapState = state => ({
+  foo: "bar"
+});
 
-  return <BlackKey keyName={keyName} />;
-  // keyboard never ends with a black key
-  // each black key 'rides' on its natural key for positioning
-};
+export default connect(mapState)(BlackKey);

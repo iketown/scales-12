@@ -12,16 +12,40 @@ export const paths = {
   A:
     "M24.047334,1 L60.3469806,1 L60.3469806,341.199627 L76,341.199627 L76,491 C76,496.522847 71.5228475,501 66,501 L11,501 C5.4771525,501 1,496.522847 1,491 L1,341.199627 L24.047334,341.199627 L24.047334,1 Z",
   B:
-    "M35.0624073,1 L76,1 L76,341.199627 L76,491 C76,496.522847 71.5228475,501 66,501 L11,501 C5.4771525,501 1,496.522847 1,491 L1,341.199627 L35.0624073,341.199627 L35.0624073,1 Z"
+    "M35.0624073,1 L76,1 L76,341.199627 L76,491 C76,496.522847 71.5228475,501 66,501 L11,501 C5.4771525,501 1,496.522847 1,491 L1,341.199627 L35.0624073,341.199627 L35.0624073,1 Z",
+  flat:
+    "M0.5,0.5 L0.5,328 C0.5,333.246705 4.75329488,337.5 10,337.5 L36,337.5 C41.2467051,337.5 45.5,333.246705 45.5,328 L45.5,0.5 L0.5,0.5 Z"
 };
 
 export const blackKeyOffsets = {
-  D: "-33px",
-  E: "-14px",
-  G: "-36px",
-  A: "-25px",
-  B: "-15px"
+  Db1: "-33px",
+  Eb1: "-14px",
+  Gb1: "-36px",
+  Ab1: "-25px",
+  Bb1: "-15px",
+  Db2: "-33px",
+  Eb2: "-14px",
+  Gb2: "-36px",
+  Ab2: "-25px",
+  Bb2: "-15px"
 };
+
+export const keyGroups = [
+  ["C1"],
+  ["D1", "Db1"],
+  ["E1", "Eb1"],
+  ["F1"],
+  ["G1", "Gb1"],
+  ["A1", "Ab1"],
+  ["B1", "Bb1"],
+  ["C2"],
+  ["D2", "Db2"],
+  ["E2", "Eb2"],
+  ["F2"],
+  ["G2", "Gb2"],
+  ["A2", "Ab2"],
+  ["B2", "Bb2"]
+];
 
 export const keyArray = [
   "C1",
@@ -64,6 +88,6 @@ export const keyList = (bottomKey, topKey) => {
     [bottomIndex, topIndex] = [topIndex, bottomIndex];
     console.log("Key ranges were entered backwards");
   }
-  const list = keyArray.filter((key, i) => i >= bottomIndex && i <= topIndex);
+  const list = keyGroups.filter((key, i) => i >= bottomIndex && i <= topIndex);
   return list;
 };
