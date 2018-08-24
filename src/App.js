@@ -15,6 +15,7 @@ class App extends Component {
           bottomKey="C1"
           topKey="E2"
           keysToLabel={["C2", "G1"]}
+          correctAnswer={["F1", "G1", "A1", "Bb1"]}
           keyboardId="myId"
         />
       </div>

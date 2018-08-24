@@ -5,12 +5,20 @@ import styled from "styled-components";
 import { addNoteToList } from "../../actions/keyboardActions";
 import BlackKey from "./BlackKey.jsx";
 import Circle from "./Circle.jsx";
+import Shape from "./Shape";
 import { Icon } from "semantic-ui-react";
 
 const Svg = styled.svg`
   &:hover path {
     fill: lightgrey;
   }
+`;
+const CircleDiv = styled.div`
+  position: absolute;
+  bottom: 4rem;
+  width: 100%;
+  text-align: center;
+  color: ${({ black }) => (black ? "white" : "black")};
 `;
 
 class Key extends Component {
@@ -21,7 +29,8 @@ class Key extends Component {
       noteName,
       hide,
       clickHandler,
-      circleType
+      circleType,
+      showShape
     } = this.props;
     const noteNameNoNumber = noteName.slice(0, -1);
     const keyIsBlack = noteShape === "flat";
@@ -38,18 +47,11 @@ class Key extends Component {
       top: 0;
       left: ${blackKeyOffsets[noteName]};
     `;
-    const CircleDiv = styled.div`
-      position: absolute;
-      bottom: 4rem;
-      width: 100%;
-      text-align: center;
-      color: ${keyIsBlack ? "white" : "black"};
-    `;
 
     const KeyJSX = (
-      <Fragment>
+      <div>
         <Svg
-          onClick={clickHandler}
+          onMouseDown={clickHandler}
           width={keyIsBlack ? "46" : "77"}
           height={keyIsBlack ? "338" : "502"}
           viewBox={keyIsBlack ? "0 0 46 338" : "0 0 77 502"}
@@ -63,11 +65,12 @@ class Key extends Component {
           />
         </Svg>
         {circleType && (
-          <CircleDiv onClick={clickHandler}>
+          <CircleDiv onClick={clickHandler} black={keyIsBlack}>
             <Circle circleType={circleType} />
           </CircleDiv>
         )}
-      </Fragment>
+        {showShape && <Shape />}
+      </div>
     );
     if (!keyIsBlack) {
       return KeyJSX;
