@@ -69,7 +69,7 @@ class Key extends Component {
             <Circle circleType={circleType} />
           </CircleDiv>
         )}
-        {showShape && <Shape />}
+        {showShape && <Shape noteName={noteName} />}
       </div>
     );
     if (!keyIsBlack) {

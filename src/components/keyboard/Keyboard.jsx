@@ -17,6 +17,7 @@ const KeyboardDiv = styled.div`
   border: 2px blue dotted;
   padding: 10px;
   width: ${({ keysWide }) => keysWide * 79 + 20}px;
+  z-index: 10;
 `;
 
 const WhiteKeyDiv = styled.div`
@@ -43,21 +44,22 @@ const playNote = noteName => {
   piano.play(note, octave + 2, 2);
 };
 
-export default class Keyboard extends Component {
+class Keyboard extends Component {
   state = {
     keyGroups: [],
-    showAnswer: true,
-    showFirstOnly: true,
     showShape: false,
-    correctAnswer: [],
     userGuess: [],
     finished: false,
     correct: false,
     playClickSound: false
   };
+
   componentDidMount() {
-    const { bottomKey, topKey, correctAnswer } = this.props;
-    this.setState({ keyGroups: keyList(bottomKey, topKey), correctAnswer });
+    const { bottomKey, topKey, showShape } = this.props;
+    this.setState({
+      keyGroups: keyList(bottomKey, topKey),
+      showShape: showShape
+    });
   }
   clickHandler = noteName => () => {
     this.setState({ playClickSound: false });
@@ -79,7 +81,8 @@ export default class Keyboard extends Component {
     });
   };
   checkGuess() {
-    const { correctAnswer, userGuess } = this.state;
+    const { userGuess } = this.state;
+    const { correctAnswer } = this.props;
     if (correctAnswer.length === userGuess.length) {
       if (
         // if there are no un-clicked correct notes (so answer is correct)
@@ -94,13 +97,14 @@ export default class Keyboard extends Component {
     }
   }
   getCircleShape = noteName => {
-    const { userGuess, correctAnswer, showAnswer, showFirstOnly } = this.state;
+    const { userGuess } = this.state;
+    const { correctAnswer, showAll, showFirst } = this.props;
     if (userGuess.includes(noteName) && correctAnswer.includes(noteName))
       return "green";
     if (userGuess.includes(noteName) && !correctAnswer.includes(noteName))
       return "red";
-    if (showAnswer && correctAnswer.includes(noteName)) return "outline";
-    if (showFirstOnly && correctAnswer[0] === noteName) return "starter";
+    if (showFirst && correctAnswer[0] === noteName) return "starter";
+    if (showAll && correctAnswer.includes(noteName)) return "outline";
     return null;
   };
   doOver = () => {
@@ -111,7 +115,8 @@ export default class Keyboard extends Component {
     });
   };
   render() {
-    const { bottomKey, keysToLabel, keyboardId } = this.props;
+    const { bottomKey, keysToLabel, keyboardId, correctAnswer } = this.props;
+    const { showShape } = this.state;
     return (
       <KeyboardDiv keysWide={this.state.keyGroups.length}>
         {this.state.keyGroups.map(key => (
@@ -122,7 +127,7 @@ export default class Keyboard extends Component {
               noteName={key[0]}
               circleType={this.getCircleShape(key[0])}
               clickHandler={this.clickHandler(key[0])}
-              showShape={key[0] === this.state.correctAnswer[0]}
+              showShape={showShape && key[0] === correctAnswer[0]}
             />
             {key.length > 1 && (
               <Key
@@ -132,7 +137,7 @@ export default class Keyboard extends Component {
                 hide={key[0] === bottomKey}
                 circleType={this.getCircleShape(key[1])}
                 clickHandler={this.clickHandler(key[1])}
-                showShape={key[1] === this.state.correctAnswer[0]}
+                showShape={showShape && key[1] === correctAnswer[0]}
               />
             )}
           </WhiteKeyDiv>
@@ -145,3 +150,5 @@ export default class Keyboard extends Component {
     );
   }
 }
+
+export default Keyboard;
