@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Card } from "semantic-ui-react";
+import posed from "react-pose";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import WhiteKey from "./WhiteKey";
@@ -13,17 +15,27 @@ const piano = Synth.createInstrument("piano");
 const KeyboardDiv = styled.div`
   display: flex;
   margin: 1rem auto;
-  transform: scale(0.5);
-  border: 2px blue dotted;
+  // border: 2px blue dotted;
   padding: 10px;
-  width: ${({ keysWide }) => keysWide * 79 + 20}px;
+  width: ${({ keysWide, scale }) => keysWide * 79 * scale + 30}px;
   z-index: 10;
+  position: relative;
 `;
 
 const WhiteKeyDiv = styled.div`
   position: relative;
   margin: 1px;
 `;
+const keyConfig = {
+  in: { x: "0vw", delayChildren: 100 },
+  out: { x: "110vw" }
+};
+const keyboardConfig = {
+  in: { staggerChildren: 20 },
+  out: { staggerChildren: 30, staggerDirection: -1 }
+};
+const AnimatedKey = posed.div(keyConfig);
+const AnimatedKeyboard = posed.div(keyboardConfig);
 const noteConverter = {
   A: "A",
   B: "B",
@@ -51,7 +63,8 @@ class Keyboard extends Component {
     userGuess: [],
     finished: false,
     correct: false,
-    playClickSound: false
+    playClickSound: false,
+    keysIn: false
   };
 
   componentDidMount() {
@@ -60,7 +73,9 @@ class Keyboard extends Component {
       keyGroups: keyList(bottomKey, topKey),
       showShape: showShape
     });
+    setTimeout(() => this.setState({ keysIn: true }), 1000);
   }
+  coponent;
   clickHandler = noteName => () => {
     this.setState({ playClickSound: false });
     this.state.userGuess.includes(noteName)
@@ -116,39 +131,59 @@ class Keyboard extends Component {
   };
   render() {
     const { bottomKey, keysToLabel, keyboardId, correctAnswer } = this.props;
-    const { showShape } = this.state;
+    const scale = this.props.scale || 1;
+    const { showShape, keysIn } = this.state;
     return (
-      <KeyboardDiv keysWide={this.state.keyGroups.length}>
-        {this.state.keyGroups.map(key => (
-          <WhiteKeyDiv key={key}>
-            <Key
-              keyboardId={keyboardId}
-              noteShape={keyObject[key[0]].shape}
-              noteName={key[0]}
-              circleType={this.getCircleShape(key[0])}
-              clickHandler={this.clickHandler(key[0])}
-              showShape={showShape && key[0] === correctAnswer[0]}
-            />
-            {key.length > 1 && (
-              <Key
-                keyboardId={keyboardId}
-                noteShape="flat"
-                noteName={key[1]}
-                hide={key[0] === bottomKey}
-                circleType={this.getCircleShape(key[1])}
-                clickHandler={this.clickHandler(key[1])}
-                showShape={showShape && key[1] === correctAnswer[0]}
+      <div>
+        <button onClick={() => this.setState({ keysIn: !this.state.keysIn })}>
+          toggle
+        </button>
+        <AnimatedKeyboard pose={keysIn ? "in" : "out"}>
+          <KeyboardDiv keysWide={this.state.keyGroups.length} scale={scale}>
+            {this.state.keyGroups.map(key => (
+              <AnimatedKey>
+                <WhiteKeyDiv key={key}>
+                  <Key
+                    toggleCircle={keysIn}
+                    scale={scale}
+                    keyboardId={keyboardId}
+                    noteShape={keyObject[key[0]].shape}
+                    noteName={key[0]}
+                    circleType={this.getCircleShape(key[0])}
+                    clickHandler={this.clickHandler(key[0])}
+                    showShape={showShape && key[0] === correctAnswer[0]}
+                    showLabel={keysToLabel.includes(key[0])}
+                  />
+                  {key.length > 1 && (
+                    <Key
+                      scale={scale}
+                      keyboardId={keyboardId}
+                      noteShape="flat"
+                      noteName={key[1]}
+                      hide={key[0] === bottomKey}
+                      circleType={this.getCircleShape(key[1])}
+                      clickHandler={this.clickHandler(key[1])}
+                      showShape={showShape && key[1] === correctAnswer[0]}
+                      showLabel={keysToLabel.includes(key[1])}
+                    />
+                  )}
+                </WhiteKeyDiv>
+              </AnimatedKey>
+            ))}
+            {this.state.finished && (
+              <FinishedOverlay
+                correct={this.state.correct}
+                doOver={this.doOver}
+                scale={scale}
               />
             )}
-          </WhiteKeyDiv>
-        ))}
-        {this.state.finished && (
-          <FinishedOverlay correct={this.state.correct} doOver={this.doOver} />
-        )}
-        {this.state.playClickSound && <Click />}
-      </KeyboardDiv>
+            {this.state.playClickSound && <Click />}
+          </KeyboardDiv>
+        </AnimatedKeyboard>
+      </div>
     );
   }
 }
 
-export default Keyboard;
+const mapStateToProps = state => ({});
+export default connect(mapStateToProps)(Keyboard);

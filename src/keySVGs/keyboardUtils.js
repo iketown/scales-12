@@ -18,16 +18,16 @@ export const paths = {
 };
 
 export const blackKeyOffsets = {
-  Db1: "-33px",
-  Eb1: "-14px",
-  Gb1: "-36px",
-  Ab1: "-25px",
-  Bb1: "-15px",
-  Db2: "-33px",
-  Eb2: "-14px",
-  Gb2: "-36px",
-  Ab2: "-25px",
-  Bb2: "-15px"
+  Db1: -33,
+  Eb1: -14,
+  Gb1: -36,
+  Ab1: -25,
+  Bb1: -15,
+  Db2: -33,
+  Eb2: -14,
+  Gb2: -36,
+  Ab2: -25,
+  Bb2: -15
 };
 
 export const keyGroups = [

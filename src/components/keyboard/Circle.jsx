@@ -8,14 +8,12 @@ const iconNames = {
   green: { color: "green", text: "circle" },
   starter: { color: "orange", text: "arrow alternate circle right outline" }
 };
-export default ({ circleType }) => {
+export default ({ circleType, scale }) => {
   return (
-    <div>
-      <Icon
-        name={iconNames[circleType].text}
-        style={{ fontSize: "3rem" }}
-        color={iconNames[circleType].color}
-      />
-    </div>
+    <Icon
+      name={iconNames[circleType].text}
+      style={{ fontSize: `${3 * scale}rem` }}
+      color={iconNames[circleType].color}
+    />
   );
 };

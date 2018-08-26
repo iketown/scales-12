@@ -1,27 +1,45 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
 import { paths, keyObject, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
 import styled from "styled-components";
-import { addNoteToList } from "../../actions/keyboardActions";
-import BlackKey from "./BlackKey.jsx";
+import posed from "react-pose";
+
 import Circle from "./Circle.jsx";
 import Shape from "./Shape";
-import { Icon } from "semantic-ui-react";
 
+const AnimatedDot = posed.div({
+  show: { y: "0rem", opacity: 1, delay: 2000 },
+  hide: { y: "3rem", opacity: 0 }
+});
 const Svg = styled.svg`
-  &:hover path {
+  :hover path {
     fill: lightgrey;
   }
 `;
 const CircleDiv = styled.div`
   position: absolute;
-  bottom: 4rem;
+  bottom: ${({ scale }) => 4 * scale}rem;
   width: 100%;
   text-align: center;
   color: ${({ black }) => (black ? "white" : "black")};
+  transition: all 0.5s;
+  :hover {
+    transform: scale(1.3);
+  }
+`;
+const LabelDiv = styled.div`
+  position: absolute;
+  bottom: -1.5rem;
+  width: 100%;
+  text-align: center;
 `;
 
 class Key extends Component {
+  state = {
+    showDot: false
+  };
+  componentDidMount() {
+    this.setState({ showDot: true });
+  }
   render() {
     const {
       keyboardId,
@@ -30,30 +48,25 @@ class Key extends Component {
       hide,
       clickHandler,
       circleType,
-      showShape
+      showShape,
+      scale,
+      showLabel,
+      toggleCircle
     } = this.props;
-    const noteNameNoNumber = noteName.slice(0, -1);
+    const { showDot } = this.state;
     const keyIsBlack = noteShape === "flat";
-    const NoteDisplay = styled.div`
-      position: absolute;
-      bottom: 1rem;
-      text-align: center;
-      width: 100%;
-      font-size: 1.5rem;
-      color: ${keyIsBlack ? "white" : "black"};
-    `;
     const BlackKeyDiv = styled.div`
       position: absolute;
       top: 0;
-      left: ${blackKeyOffsets[noteName]};
+      left: ${blackKeyOffsets[noteName] * scale}px;
     `;
 
     const KeyJSX = (
       <div>
         <Svg
           onMouseDown={clickHandler}
-          width={keyIsBlack ? "46" : "77"}
-          height={keyIsBlack ? "338" : "502"}
+          width={keyIsBlack ? 46 * scale : 77 * scale}
+          height={keyIsBlack ? 338 * scale : 502 * scale}
           viewBox={keyIsBlack ? "0 0 46 338" : "0 0 77 502"}
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -65,11 +78,22 @@ class Key extends Component {
           />
         </Svg>
         {circleType && (
-          <CircleDiv onClick={clickHandler} black={keyIsBlack}>
-            <Circle circleType={circleType} />
-          </CircleDiv>
+          <AnimatedDot pose={toggleCircle ? "show" : "hide"}>
+            <CircleDiv
+              onMouseDown={clickHandler}
+              black={keyIsBlack}
+              scale={scale}
+            >
+              <Circle circleType={circleType} scale={scale} />
+            </CircleDiv>
+          </AnimatedDot>
         )}
         {showShape && <Shape noteName={noteName} />}
+        {showLabel && (
+          <LabelDiv>
+            <h3>{noteName.slice(0, -1)}</h3>
+          </LabelDiv>
+        )}
       </div>
     );
     if (!keyIsBlack) {
