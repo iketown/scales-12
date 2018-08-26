@@ -18,13 +18,14 @@ export default () => {
         </p>
         <Keyboard
           bottomKey="C1"
-          topKey="C2"
+          topKey="E2"
           keysToLabel={["C1", "C2"]}
-          correctAnswer={["C1", "D1", "E1", "F1", "G1", "A1", "B1", "C2"]}
+          correctAnswer={["D1", "E1", "Gb1", "G1"]}
           keyboardId="myId"
           showFirst={false}
           showAll={true}
-          showShape={false}
+          showShape={true}
+          showHints={false}
           scale={0.5}
         />
       </Container>

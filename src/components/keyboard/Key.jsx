@@ -74,19 +74,17 @@ class Key extends Component {
             d={paths[noteShape]}
             stroke="#000"
             id={noteName}
-            fill={noteShape === "flat" ? "#000" : "none"}
+            fill={noteShape === "flat" ? "#000000CC" : "#FFFFFFCC"}
           />
         </Svg>
         {circleType && (
-          <AnimatedDot pose={toggleCircle ? "show" : "hide"}>
-            <CircleDiv
-              onMouseDown={clickHandler}
-              black={keyIsBlack}
-              scale={scale}
-            >
-              <Circle circleType={circleType} scale={scale} />
-            </CircleDiv>
-          </AnimatedDot>
+          <CircleDiv
+            onMouseDown={clickHandler}
+            black={keyIsBlack}
+            scale={scale}
+          >
+            <Circle circleType={circleType} scale={scale} />
+          </CircleDiv>
         )}
         {showShape && <Shape noteName={noteName} />}
         {showLabel && (
