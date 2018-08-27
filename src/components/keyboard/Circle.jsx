@@ -1,22 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import { Icon } from "semantic-ui-react";
-import styled from "styled-components";
 
 const iconNames = {
   outline: { color: "", text: "circle outline" },
-  red: { color: "red", text: "close" },
-  green: { color: "green", text: "circle" },
+  wrong: { color: "red", text: "close" },
+  correct: { color: "green", text: "circle" },
   starter: { color: "orange", text: "arrow alternate circle right outline" },
-  selectedNoHints: { color: "blue", text: "dot circle" }
+  selected: { color: "blue", text: "dot circle" }
 };
-const Circle = ({ circleType, scale }) => {
-  return (
-    <Icon
-      name={iconNames[circleType].text}
-      style={{ fontSize: `${3 * scale}rem`, zIndex: 25 }}
-      color={iconNames[circleType].color}
-    />
-  );
-};
+
+class Circle extends Component {
+  render() {
+    const { circleType, scale } = this.props;
+
+    return (
+      <div>
+        <Icon
+          name={iconNames[circleType].text}
+          style={{ fontSize: `${3 * scale}rem`, zIndex: 25 }}
+          color={iconNames[circleType].color}
+        />
+      </div>
+    );
+  }
+}
 
 export default Circle;

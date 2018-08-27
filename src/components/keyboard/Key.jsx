@@ -1,15 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { paths, keyObject, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
+import React, { Component } from "react";
+import { paths, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
 import styled from "styled-components";
 import posed from "react-pose";
 
 import Circle from "./Circle.jsx";
-import Shape from "./Shape";
 
-const AnimatedDot = posed.div({
-  show: { y: "0rem", opacity: 1, delay: 2000 },
-  hide: { y: "3rem", opacity: 0 }
-});
 const Svg = styled.svg`
   :hover path {
     fill: lightgrey;
@@ -21,6 +16,7 @@ const CircleDiv = styled.div`
   width: 100%;
   text-align: center;
   color: ${({ black }) => (black ? "white" : "black")};
+
   transition: all 0.5s;
   :hover {
     transform: scale(1.3);
@@ -32,37 +28,33 @@ const LabelDiv = styled.div`
   width: 100%;
   text-align: center;
 `;
+const animatedCircleConfig = {
+  in: { opacity: 1, scale: 1 },
+  out: { opacity: 0, scale: 0.1, delay: 1500 }
+};
+const AnimatedCircle = posed.div(animatedCircleConfig);
 
 class Key extends Component {
-  state = {
-    showDot: false
-  };
-  componentDidMount() {
-    this.setState({ showDot: true });
-  }
   render() {
     const {
-      keyboardId,
       noteShape,
       noteName,
-      hide,
       clickHandler,
       circleType,
-      showShape,
       scale,
       showLabel,
-      toggleCircle
+      showCircles
     } = this.props;
-    const { showDot } = this.state;
     const keyIsBlack = noteShape === "flat";
-    const BlackKeyDiv = styled.div`
-      position: absolute;
-      top: 0;
-      left: ${blackKeyOffsets[noteName] * scale}px;
-    `;
+
+    const blackKeyStyles = {
+      position: "absolute",
+      top: 0,
+      left: `${blackKeyOffsets[noteName] * scale}px`
+    };
 
     const KeyJSX = (
-      <div>
+      <div style={keyIsBlack ? blackKeyStyles : {}}>
         <Svg
           onMouseDown={clickHandler}
           width={keyIsBlack ? 46 * scale : 77 * scale}
@@ -78,15 +70,16 @@ class Key extends Component {
           />
         </Svg>
         {circleType && (
-          <CircleDiv
-            onMouseDown={clickHandler}
-            black={keyIsBlack}
-            scale={scale}
-          >
-            <Circle circleType={circleType} scale={scale} />
-          </CircleDiv>
+          <AnimatedCircle pose={showCircles ? "in" : "out"}>
+            <CircleDiv
+              onMouseDown={clickHandler}
+              black={keyIsBlack}
+              scale={scale}
+            >
+              <Circle circleType={circleType} scale={scale} key={noteName} />
+            </CircleDiv>
+          </AnimatedCircle>
         )}
-        {showShape && <Shape noteName={noteName} />}
         {showLabel && (
           <LabelDiv>
             <h3>{noteName.slice(0, -1)}</h3>
@@ -94,14 +87,7 @@ class Key extends Component {
         )}
       </div>
     );
-    if (!keyIsBlack) {
-      return KeyJSX;
-    } else {
-      if (noteName === "Fb" || noteName === "Cb" || hide) {
-        return null;
-      }
-      return <BlackKeyDiv>{KeyJSX}</BlackKeyDiv>;
-    }
+    return KeyJSX;
   }
 }
 export default Key;

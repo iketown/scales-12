@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon, Button } from "semantic-ui-react";
-import Ding from "./sounds/Ding.jsx";
+import Ding from "./sounds/LittleDingSound";
 import Buzzer from "./sounds/Buzzer";
 const OverlayDiv = styled.div`
   position: absolute;

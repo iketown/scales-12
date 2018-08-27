@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
-import WhiteKey from "./WhiteKey";
-import BlackKey from "./BlackKey";
 import Key from "./Key.jsx";
-import FinishedOverlay from "./FinishedOverlay";
-import Scoreboard from "../ScoreBoard.jsx";
 import Click from "./sounds/Click";
+import LittleDingSound from "./sounds/LittleDingSound";
 import { keyObject, keyList } from "../../keySVGs/keyboardUtils";
 const piano = Synth.createInstrument("piano");
 
@@ -21,20 +17,6 @@ const KeyboardDiv = styled.div`
   width: ${({ keysWide, scale }) => keysWide * 79 * scale + 30}px;
   z-index: 10;
   position: relative;
-`;
-const KeyboardFrame = styled.div`
-  border: 1px #eaeaea solid;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-around;
-  border-radius: 10px;
-  padding: 1rem;
-  background: #efefef5e;
-`;
-const Instructions = styled.div`
-  border: 1px purple dotted;
-  grid-column: 1/-1;
-  margin-bottom: 2rem;
 `;
 
 const WhiteKeyDiv = styled.div`
@@ -74,20 +56,22 @@ const playNote = noteName => {
 class Keyboard extends Component {
   state = {
     keyGroups: [],
-    showShape: false,
     userGuess: [],
-    finished: false,
+    correctCircles: [],
+    wrongCircles: [],
+    showCircles: true,
     correct: false,
+    finished: false,
     playClickSound: false,
-    keysIn: false,
-    questionNumber: 0
+    playCorrectSound: false,
+    playWrongSound: false,
+    keysIn: false
   };
 
   componentDidMount() {
-    const { bottomKey, topKey, showShape } = this.props;
+    const { bottomKey, topKey } = this.props;
     this.setState({
-      keyGroups: keyList(bottomKey, topKey),
-      showShape: showShape
+      keyGroups: keyList(bottomKey, topKey)
     });
     setTimeout(() => this.setState({ keysIn: true }), 1000);
   }
@@ -115,38 +99,59 @@ class Keyboard extends Component {
   };
   checkGuess() {
     const { userGuess } = this.state;
-    const { correctAnswer } = this.props;
+    const { correctAnswer, handleAnswer } = this.props;
+    const correctCircles = userGuess.filter(guess =>
+      correctAnswer.includes(guess)
+    );
+    const wrongCircles = userGuess.filter(
+      guess => !correctAnswer.includes(guess)
+    );
+    this.setState({ correctCircles, wrongCircles });
     if (correctAnswer.length === userGuess.length) {
       if (
         // if there are no un-clicked correct notes (so answer is correct)
         correctAnswer.filter(note => !userGuess.includes(note)).length === 0
       ) {
-        this.setState({ finished: true, correct: true });
+        this.setState({
+          correct: true,
+          showCircles: false,
+          finished: true,
+          playCorrectSound: true
+        });
+        setTimeout(() => {
+          handleAnswer(true);
+          this.resetKeyboard();
+        }, 2000);
       } else {
-        this.setState({ finished: true, correct: false });
+        this.setState({ correct: false, showCircles: false, finished: true });
+        setTimeout(() => {
+          handleAnswer(false);
+          this.resetKeyboard();
+        }, 2000);
       }
     } else {
       return;
     }
   }
+  resetKeyboard = () => {
+    this.setState({
+      userGuess: [],
+      correct: false,
+      circlesIn: true,
+      finished: false,
+      playCorrectSound: false,
+      playWrongSound: false
+    });
+  };
   getCircleShape = noteName => {
-    const { userGuess } = this.state;
-    const { correctAnswer, showAll, showFirst, showHints } = this.props;
-    if (
-      showHints &&
-      userGuess.includes(noteName) &&
-      correctAnswer.includes(noteName)
-    )
-      return "green";
-    if (
-      showHints &&
-      userGuess.includes(noteName) &&
-      !correctAnswer.includes(noteName)
-    )
-      return "red";
-    if (userGuess.includes(noteName)) return "selectedNoHints";
-    if (showFirst && correctAnswer[0] === noteName) return "starter";
+    const { userGuess, finished, correctCircles, wrongCircles } = this.state;
+    const { correctAnswer, showAll } = this.props;
+    // first check if deemed 'right' or 'wrong'.  otherwise, its just 'selected'
+    if (finished && correctCircles.includes(noteName)) return "correct";
+    if (finished && wrongCircles.includes(noteName)) return "wrong";
+    if (userGuess.includes(noteName)) return "selected";
     if (showAll && correctAnswer.includes(noteName)) return "outline";
+    if (correctAnswer[0] === noteName) return "starter";
     return null;
   };
   doOver = () => {
@@ -157,67 +162,55 @@ class Keyboard extends Component {
     });
   };
   render() {
-    const { bottomKey, keysToLabel, keyboardId, correctAnswer } = this.props;
+    const { bottomKey, keysToLabel, keyboardId } = this.props;
     const scale = this.props.scale || 1;
-    const { showShape, keysIn, questionNumber } = this.state;
+    const { keysIn, showCircles } = this.state;
     return (
       <div>
-        <button onClick={() => this.setState({ keysIn: !this.state.keysIn })}>
+        {/* <button onClick={() => this.setState({ keysIn: !this.state.keysIn })}>
           toggle
-        </button>
+        </button> */}
         <AnimatedKeyboard pose={keysIn ? "in" : "out"}>
-          <KeyboardFrame>
-            <Instructions>
-              <h1>Car Shapes</h1>
-              <p>first we'll learn how to do the car shapes</p>
-            </Instructions>
-            <Scoreboard
-              increment={this.increment}
-              questionNumber={questionNumber}
-            >
-              <h1>yo</h1>
-            </Scoreboard>
-            <KeyboardDiv>
-              {this.state.keyGroups.map(key => (
-                <AnimatedKey>
-                  <WhiteKeyDiv key={key}>
+          <KeyboardDiv>
+            {this.state.keyGroups.map(key => {
+              const sharedProps = {
+                scale,
+                keyboardId,
+                showCircles
+              };
+              return (
+                <WhiteKeyDiv key={`${key[0]} whiteKeyDiv`}>
+                  <AnimatedKey key={`${key[0]} animatedKey`}>
                     <Key
-                      toggleCircle={keysIn}
-                      scale={scale}
-                      keyboardId={keyboardId}
+                      {...sharedProps}
+                      key={`${key[0]} whiteKey`}
                       noteShape={keyObject[key[0]].shape}
                       noteName={key[0]}
                       circleType={this.getCircleShape(key[0])}
                       clickHandler={this.clickHandler(key[0])}
-                      showShape={showShape && key[0] === correctAnswer[0]}
                       showLabel={keysToLabel.includes(key[0])}
                     />
                     {key.length > 1 && (
                       <Key
-                        scale={scale}
-                        keyboardId={keyboardId}
+                        {...sharedProps}
+                        key={`${key[0]} blackKey`}
                         noteShape="flat"
                         noteName={key[1]}
                         hide={key[0] === bottomKey}
                         circleType={this.getCircleShape(key[1])}
                         clickHandler={this.clickHandler(key[1])}
-                        showShape={showShape && key[1] === correctAnswer[0]}
                         showLabel={keysToLabel.includes(key[1])}
                       />
                     )}
-                  </WhiteKeyDiv>
-                </AnimatedKey>
-              ))}
-              {this.state.finished && (
-                <FinishedOverlay
-                  correct={this.state.correct}
-                  doOver={this.doOver}
-                  scale={scale}
-                />
-              )}
-              {this.state.playClickSound && <Click />}
-            </KeyboardDiv>
-          </KeyboardFrame>
+                  </AnimatedKey>
+                </WhiteKeyDiv>
+              );
+            })}
+
+            {this.state.playClickSound && <Click />}
+            {this.state.playCorrectSound && <LittleDingSound />}
+            {this.state.playWrongSound && <Click />}
+          </KeyboardDiv>
         </AnimatedKeyboard>
       </div>
     );

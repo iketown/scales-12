@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../layout/Layout.jsx";
 import { Header, Container } from "semantic-ui-react";
-import Keyboard from "../components/keyboard/Keyboard.jsx";
+import LessonCard from "../components/LessonCard.jsx";
 
 export default () => {
   return (
@@ -16,19 +16,19 @@ export default () => {
           First, click all the white keys from the lower C on the left to the
           high C on the right (turn computer speakers on for sound)
         </p>
-        <Keyboard
-          bottomKey="C1"
-          topKey="E2"
-          keysToLabel={["C1", "C2"]}
-          correctAnswer={["D1", "E1", "Gb1", "G1"]}
-          keyboardId="myId"
-          showFirst={false}
-          showAll={true}
-          showShape={true}
-          showHints={false}
-          scale={0.5}
-        />
+        <LessonCard answers={fakeDotAnswers} graphicType="keyboard" />
       </Container>
     </Layout>
   );
 };
+
+const fakeAnswers = [
+  { name: "Car 1", correctAnswer: ["E1", "Gb1", "Ab1", "A1"] },
+  { name: "Car 2", correctAnswer: ["B1", "Db2", "Eb2", "E2"] },
+  { name: "Car 3", correctAnswer: ["E1", "Gb1", "Ab1", "A1"] }
+];
+const fakeDotAnswers = [
+  { name: "Car 1", correctAnswer: [1, 2, 2, 1] },
+  { name: "Car 2", correctAnswer: [1, 2, 2, 1] },
+  { name: "Car 3", correctAnswer: [2, 1, 1, 2] }
+];

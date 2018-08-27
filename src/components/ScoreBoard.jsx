@@ -1,26 +1,34 @@
 import React from "react";
-import { List } from "semantic-ui-react";
+import { List, Icon } from "semantic-ui-react";
 
-const fakeQuestions = [
-  { content: "first one" },
-  { content: "second one" },
-  { content: "third one" },
-  { content: "fourth one" },
-  { content: "fifth one" },
-  { content: "sixth one" }
-];
-export default ({ increment, questionNumber }) => {
+export default ({ questionNumber, style, scoreCard, names }) => {
   return (
-    <div>
+    <div style={{ ...style }}>
       <List divided relaxed>
-        {fakeQuestions.map((question, i) => (
-          <List.Item
-            icon={i === questionNumber ? "check square" : "square outline"}
-            content={question.content}
-          />
-        ))}
+        {names.map((question, i) => {
+          const isCurrent = i === questionNumber;
+          const wasCorrect = scoreCard[i];
+          const wasWrong = scoreCard[i] === false;
+          return (
+            <List.Item
+              key={i}
+              as="a"
+              style={
+                isCurrent
+                  ? { color: "black" }
+                  : wasCorrect
+                    ? { color: "green", opacity: 0.3 }
+                    : wasWrong
+                      ? { color: "red", opacity: 0.3 }
+                      : { color: "lightgrey" }
+              }
+            >
+              <Icon name={wasCorrect ? "square check" : "square outline"} />
+              {question}
+            </List.Item>
+          );
+        })}
       </List>
-      <button onClick={increment}>inc</button>
     </div>
   );
 };
