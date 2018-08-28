@@ -8,11 +8,15 @@ import Car from "../../images/carPic.svg";
 import Truck from "../../images/truckPic.svg";
 import Wagon from "../../images/wagonPic.svg";
 import Line from "../../images/linePic.svg";
-import { pop } from "../keyboard/sounds/soundFX";
+import { pop, ding, plink } from "../keyboard/sounds/soundFX";
+
 const images = {
   car: Car,
   truck: Truck,
   wagon: Wagon,
+  flipCar: Car,
+  flipTruck: Truck,
+  flipWagon: Wagon,
   line: Line
 };
 const DotGrid = styled.div`
@@ -26,6 +30,7 @@ const DotGrid = styled.div`
 `;
 const BackgroundImageDiv = styled.div`
   background-image: url(${p => images[p.image]});
+  transform: scaleY(${p => (p.image.includes("flip") ? "-1" : "")});
   position: absolute;
   z-index: -1;
   width: 100%;
@@ -50,8 +55,7 @@ const AnimatedDotGrid = posed.div(dotGridConfig);
 
 export default class Dotboard extends Component {
   state = {
-    selectedDots: {},
-    sound: false,
+    selectedDots: [],
     dotsIn: false,
     correct: false,
     finished: false,
@@ -60,21 +64,20 @@ export default class Dotboard extends Component {
   componentDidMount() {
     this.setState({ dotsIn: true });
   }
+  componentWillUnmount() {
+    this.setState({ dotsIn: false });
+  }
+  compon;
 
   handleDotclick = num => {
     pop();
-    const opposite = { 1: 5, 2: 6, 3: 7, 4: 8, 5: 1, 6: 2, 7: 3, 8: 4 };
+    const dotIndex = { 1: 0, 5: 0, 2: 1, 6: 1, 3: 2, 7: 2, 4: 3, 8: 3 };
 
-    // don't let them change the first dot
-    if (num === opposite[this.props.correctAnswer[0]]) return;
+    const newDotArray = [...this.state.selectedDots];
+    newDotArray[dotIndex[num]] = num;
     this.setState(
       {
-        selectedDots: {
-          ...this.state.selectedDots,
-          [num]: true,
-          [opposite[num]]: false
-        },
-        sound: true
+        selectedDots: newDotArray
       },
       () => this.checkAnswer()
     );
@@ -82,41 +85,48 @@ export default class Dotboard extends Component {
   checkAnswer = () => {
     const { correctAnswer } = this.props;
     const { selectedDots } = this.state;
-    const guessLength = Object.keys(selectedDots).reduce((arr, key) => {
-      if (selectedDots[key] === true) arr.push(key);
-      return arr;
-    }, []).length;
+    const guessLength = selectedDots.filter(dot => dot).length;
     const doneGuessing = guessLength >= 4;
     if (doneGuessing) {
-      const goodGuesses = Object.keys(correctAnswer).reduce((arr, key) => {
-        if (selectedDots[key] === true) arr.push(key);
-        return arr;
-      }, []);
+      const goodGuesses = correctAnswer.filter(guess =>
+        selectedDots.includes(guess)
+      );
+      console.log("good guess length", goodGuesses.length);
       const answerIsCorrect = goodGuesses.length === 4;
       if (answerIsCorrect) this.handleCorrectAnswer();
       else this.handleWrongAnswer();
     }
   };
   handleCorrectAnswer = () => {
-    this.props.handleAnswer(true);
-    this.resetDots();
+    ding();
+    this.setState({ correct: true });
+    setTimeout(() => {
+      this.resetDots();
+      this.props.handleAnswer(true);
+    }, this.props.delayMS);
   };
   handleWrongAnswer = () => {
-    this.props.handleAnswer(false);
-    this.resetDots();
+    plink();
+    setTimeout(() => {
+      this.resetDots();
+      this.props.handleAnswer(false);
+    }, this.props.delayMS);
   };
   resetDots = () => {
-    this.setState({ selectedDots: [] });
+    this.setState({ dotsIn: false });
+    setTimeout(() => {
+      this.setState({ dotsIn: true, selectedDots: [], correct: false });
+    }, 500);
   };
 
   render() {
     const { selectedDots, dotsIn, correct } = this.state;
     const { correctAnswer, image } = this.props;
     console.log("image is", image);
-    let startingDot = correctAnswer[1] ? 1 : 5;
+    let startingDot = correctAnswer[0];
 
     const getDotShape = num => {
-      if (selectedDots[num]) return "circle";
+      if (selectedDots.includes(num)) return "circle";
       if (startingDot === num) return "help circle";
       return "circle outline";
     };
@@ -124,26 +134,25 @@ export default class Dotboard extends Component {
       <AnimatedDotGrid pose={dotsIn ? "in" : "out"}>
         <DotGrid>
           <BackgroundImageDiv image={image} bgcolor="blue" />
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((num, i) => (
-            <AnimatedDot
-              pose={selectedDots[num] ? "selected" : "unselected"}
-              key={num}
-              onMouseDown={() => this.handleDotclick(num)}
-              style={{
-                textAlign: `${num === 4 || num === 8 ? "left" : "center"}`,
-                color: `${
-                  correct && selectedDots[num]
-                    ? "green"
-                    : selectedDots[num]
-                      ? "black"
-                      : "grey"
-                }`,
-                cursor: "pointer"
-              }}
-            >
-              <Icon name={getDotShape(num)} size="large" />
-            </AnimatedDot>
-          ))}
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((num, i) => {
+            const selected = selectedDots.includes(num);
+            return (
+              <AnimatedDot
+                pose={selected ? "selected" : "unselected"}
+                key={num}
+                onMouseDown={() => this.handleDotclick(num)}
+                style={{
+                  textAlign: `${num === 4 || num === 8 ? "left" : "center"}`,
+                  color: `${
+                    correct && selected ? "green" : selected ? "black" : "grey"
+                  }`,
+                  cursor: "pointer"
+                }}
+              >
+                <Icon name={getDotShape(num)} size="large" />
+              </AnimatedDot>
+            );
+          })}
         </DotGrid>
       </AnimatedDotGrid>
     );

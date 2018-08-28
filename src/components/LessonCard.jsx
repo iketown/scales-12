@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Scoreboard from "./ScoreBoard.jsx";
 import Dotboard from "./dotboard/Dotboard.jsx";
+import Keyboard from "./keyboard/Keyboard.jsx";
 import styled from "styled-components";
-import { ding } from "./keyboard/sounds/soundFX";
+import posed from "react-pose";
 const Instructions = styled.div`
   grid-column: 1/-1;
   margin-bottom: 2rem;
@@ -22,6 +23,7 @@ class LessonCard extends Component {
   state = {
     currentCorrectAnswer: [],
     currentImage: "",
+    keysToLabel: [],
     currentAnswerIndex: 0,
     scoreCard: []
   };
@@ -29,12 +31,12 @@ class LessonCard extends Component {
     const { answers } = this.props;
     this.setState({
       currentCorrectAnswer: answers[0].correctAnswer,
-      currentImage: answers[0].image
+      currentImage: answers[0].image,
+      keysToLabel: answers[0].keysToLabel
     });
   }
   f;
   handleAnswer = correctBool => {
-    ding();
     const { answers } = this.props;
     const { currentAnswerIndex, scoreCard } = this.state;
     console.log("this answer was", correctBool);
@@ -60,6 +62,7 @@ class LessonCard extends Component {
       currentAnswerIndex: nextIndex,
       currentCorrectAnswer: answers[nextIndex].correctAnswer,
       currentImage: answers[nextIndex].image,
+      keysToLabel: answers[nextIndex].keysToLabel,
       scoreCard: newScoreCard
     });
   };
@@ -71,9 +74,10 @@ class LessonCard extends Component {
       currentCorrectAnswer,
       currentImage,
       currentAnswerIndex,
-      scoreCard
+      scoreCard,
+      keysToLabel
     } = this.state;
-    const { answers, scale, image } = this.props;
+    const { answers, scale, delayMS } = this.props;
     return (
       <LessonCardFrame>
         <Instructions>
@@ -86,25 +90,31 @@ class LessonCard extends Component {
           scoreCard={scoreCard}
           style={{ gridColumn: "1", padding: "1rem" }}
         />
-        {console.log("type of", typeof currentCorrectAnswer[0])}
-        {/* <Keyboard
-          bottomKey="C1"
-          topKey="E2"
-          keysToLabel={["C1", "C2"]}
-          correctAnswer={currentCorrectAnswer}
-          keyboardId="myId"
-          showFirst={false}
-          showAll={false}
-          showHints={false}
-          scale={scale}
-          handleAnswer={this.handleAnswer}
-        /> */}
-        <Dotboard
-          scale={scale}
-          correctAnswer={currentCorrectAnswer}
-          image={currentImage}
-          handleAnswer={this.handleAnswer}
-        />
+        {answers[currentAnswerIndex].type === "keyboard" && (
+          <Keyboard
+            bottomKey="C1"
+            topKey="E2"
+            correctAnswer={currentCorrectAnswer}
+            keyboardId="myId"
+            showFirst={false}
+            showAllCircles={true}
+            showHints={false}
+            scale={scale}
+            handleAnswer={this.handleAnswer}
+            keysToLabel={answers[currentAnswerIndex].keysToLabel}
+            showCircles={answers[currentAnswerIndex].showCircles}
+            delayMS={delayMS}
+          />
+        )}
+        {answers[currentAnswerIndex].type === "dotboard" && (
+          <Dotboard
+            scale={scale}
+            correctAnswer={currentCorrectAnswer}
+            image={currentImage}
+            handleAnswer={this.handleAnswer}
+            delayMS={delayMS}
+          />
+        )}
       </LessonCardFrame>
     );
   }

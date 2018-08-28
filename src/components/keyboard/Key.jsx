@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { paths, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
+import { delayBetweenQuestions } from "../../utils/generalConfig";
 import styled from "styled-components";
 import posed from "react-pose";
 
@@ -12,7 +13,7 @@ const Svg = styled.svg`
 `;
 const CircleDiv = styled.div`
   position: absolute;
-  bottom: ${({ scale }) => 4 * scale}rem;
+  bottom: ${({ keyboardScale }) => 4 * keyboardScale}rem;
   width: 100%;
   text-align: center;
   color: ${({ black }) => (black ? "white" : "black")};
@@ -24,13 +25,13 @@ const CircleDiv = styled.div`
 `;
 const LabelDiv = styled.div`
   position: absolute;
-  bottom: -1.5rem;
   width: 100%;
   text-align: center;
+  ${p => (p.keyIsBlack ? `top: 1.5rem; color: #eaeaea;` : `bottom: -1.5rem;`)};
 `;
 const animatedCircleConfig = {
   in: { opacity: 1, scale: 1 },
-  out: { opacity: 0, scale: 0.1, delay: 1500 }
+  out: { opacity: 0, scale: 0.1, delay: delayBetweenQuestions - 500 }
 };
 const AnimatedCircle = posed.div(animatedCircleConfig);
 
@@ -41,7 +42,7 @@ class Key extends Component {
       noteName,
       clickHandler,
       circleType,
-      scale,
+      keyboardScale,
       showLabel,
       showCircles
     } = this.props;
@@ -50,15 +51,15 @@ class Key extends Component {
     const blackKeyStyles = {
       position: "absolute",
       top: 0,
-      left: `${blackKeyOffsets[noteName] * scale}px`
+      left: `${blackKeyOffsets[noteName] * keyboardScale}px`
     };
 
     const KeyJSX = (
       <div style={keyIsBlack ? blackKeyStyles : {}}>
         <Svg
           onMouseDown={clickHandler}
-          width={keyIsBlack ? 46 * scale : 77 * scale}
-          height={keyIsBlack ? 338 * scale : 502 * scale}
+          width={keyIsBlack ? 46 * keyboardScale : 77 * keyboardScale}
+          height={keyIsBlack ? 338 * keyboardScale : 502 * keyboardScale}
           viewBox={keyIsBlack ? "0 0 46 338" : "0 0 77 502"}
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -74,14 +75,18 @@ class Key extends Component {
             <CircleDiv
               onMouseDown={clickHandler}
               black={keyIsBlack}
-              scale={scale}
+              keyboardScale={keyboardScale}
             >
-              <Circle circleType={circleType} scale={scale} key={noteName} />
+              <Circle
+                circleType={circleType}
+                keyboardScale={keyboardScale}
+                key={noteName}
+              />
             </CircleDiv>
           </AnimatedCircle>
         )}
         {showLabel && (
-          <LabelDiv>
+          <LabelDiv keyIsBlack={keyIsBlack}>
             <h3>{noteName.slice(0, -1)}</h3>
           </LabelDiv>
         )}

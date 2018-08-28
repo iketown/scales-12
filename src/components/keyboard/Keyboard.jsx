@@ -4,8 +4,13 @@ import posed from "react-pose";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
-import Click from "./sounds/Click";
+import { pop, ding, plink } from "./sounds/soundFX";
 import { keyObject, keyList } from "../../keySVGs/keyboardUtils";
+import {
+  keyboardScale,
+  delayBetweenQuestions
+} from "../../utils/generalConfig";
+
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -13,7 +18,8 @@ const KeyboardDiv = styled.div`
   // margin: 1rem auto;
   // border: 2px blue dotted;
   padding: 10px;
-  width: ${({ keysWide, scale }) => keysWide * 79 * scale + 30}px;
+  width: ${({ keysWide, keyboardScale }) =>
+    keysWide * 79 * keyboardScale + 30}px;
   z-index: 10;
   position: relative;
 `;
@@ -72,7 +78,7 @@ class Keyboard extends Component {
     this.setState({
       keyGroups: keyList(bottomKey, topKey)
     });
-    setTimeout(() => this.setState({ keysIn: true }), 1000);
+    setTimeout(() => this.setState({ keysIn: true }), 10);
   }
   increment = () => {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
@@ -92,13 +98,12 @@ class Keyboard extends Component {
   };
   removeNoteFromGuess = noteName => {
     this.setState({
-      userGuess: this.state.userGuess.filter(note => note !== noteName),
-      playClickSound: true
+      userGuess: this.state.userGuess.filter(note => note !== noteName)
     });
   };
   checkGuess() {
     const { userGuess } = this.state;
-    const { correctAnswer, handleAnswer } = this.props;
+    const { correctAnswer } = this.props;
     const correctCircles = userGuess.filter(guess =>
       correctAnswer.includes(guess)
     );
@@ -111,27 +116,36 @@ class Keyboard extends Component {
         // if there are no un-clicked correct notes (so answer is correct)
         correctAnswer.filter(note => !userGuess.includes(note)).length === 0
       ) {
-        this.setState({
-          correct: true,
-          showCircles: false,
-          finished: true,
-          playCorrectSound: true
-        });
-        setTimeout(() => {
-          handleAnswer(true);
-          this.resetKeyboard();
-        }, 2000);
+        this.handleCorrectAnswer();
       } else {
-        this.setState({ correct: false, showCircles: false, finished: true });
-        setTimeout(() => {
-          handleAnswer(false);
-          this.resetKeyboard();
-        }, 2000);
+        this.handleWrongAnswer();
       }
     } else {
       return;
     }
   }
+  handleCorrectAnswer = () => {
+    const { delayMS, handleAnswer } = this.props;
+    ding();
+    this.setState({
+      correct: true,
+      showCircles: false,
+      finished: true
+    });
+    setTimeout(() => {
+      handleAnswer(true);
+      this.resetKeyboard();
+    }, delayBetweenQuestions);
+  };
+  handleWrongAnswer = () => {
+    const { delayMS, handleAnswer } = this.props;
+    plink();
+    this.setState({ correct: false, showCircles: false, finished: true });
+    setTimeout(() => {
+      handleAnswer(false);
+      this.resetKeyboard();
+    }, delayBetweenQuestions);
+  };
   resetKeyboard = () => {
     this.setState({
       userGuess: [],
@@ -144,12 +158,12 @@ class Keyboard extends Component {
   };
   getCircleShape = noteName => {
     const { userGuess, finished, correctCircles, wrongCircles } = this.state;
-    const { correctAnswer, showAll } = this.props;
+    const { correctAnswer, showAllCircles } = this.props;
     // first check if deemed 'right' or 'wrong'.  otherwise, its just 'selected'
     if (finished && correctCircles.includes(noteName)) return "correct";
     if (finished && wrongCircles.includes(noteName)) return "wrong";
     if (userGuess.includes(noteName)) return "selected";
-    if (showAll && correctAnswer.includes(noteName)) return "outline";
+    if (showAllCircles && correctAnswer.includes(noteName)) return "outline";
     if (correctAnswer[0] === noteName) return "starter";
     return null;
   };
@@ -162,7 +176,6 @@ class Keyboard extends Component {
   };
   render() {
     const { bottomKey, keysToLabel, keyboardId } = this.props;
-    const scale = this.props.scale || 1;
     const { keysIn, showCircles } = this.state;
     return (
       <div>
@@ -173,7 +186,7 @@ class Keyboard extends Component {
           <KeyboardDiv>
             {this.state.keyGroups.map(key => {
               const sharedProps = {
-                scale,
+                keyboardScale,
                 keyboardId,
                 showCircles
               };
@@ -187,28 +200,24 @@ class Keyboard extends Component {
                       noteName={key[0]}
                       circleType={this.getCircleShape(key[0])}
                       clickHandler={this.clickHandler(key[0])}
-                      showLabel={keysToLabel.includes(key[0])}
+                      showLabel={keysToLabel && keysToLabel.includes(key[0])}
                     />
                     {key.length > 1 && (
                       <Key
                         {...sharedProps}
-                        key={`${key[0]} blackKey`}
                         noteShape="flat"
+                        key={`${key[0]} blackKey`}
                         noteName={key[1]}
                         hide={key[0] === bottomKey}
                         circleType={this.getCircleShape(key[1])}
                         clickHandler={this.clickHandler(key[1])}
-                        showLabel={keysToLabel.includes(key[1])}
+                        showLabel={keysToLabel && keysToLabel.includes(key[1])}
                       />
                     )}
                   </AnimatedKey>
                 </WhiteKeyDiv>
               );
             })}
-
-            {this.state.playClickSound && <Click />}
-            {this.state.playCorrectSound && <LittleDingSound />}
-            {this.state.playWrongSound && <Click />}
           </KeyboardDiv>
         </AnimatedKeyboard>
       </div>

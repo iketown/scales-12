@@ -2,6 +2,9 @@ import React from "react";
 import Layout from "../layout/Layout.jsx";
 import { Header, Container } from "semantic-ui-react";
 import LessonCard from "../components/LessonCard.jsx";
+import { dotShapes } from "../components/dotboard/dotShapes";
+import { keyboardShapes } from "../components/keyboard/keyboardShapes";
+import { keyboardScale } from "../utils/generalConfig";
 
 export default () => {
   return (
@@ -16,46 +19,38 @@ export default () => {
           First, click all the white keys from the lower C on the left to the
           high C on the right (turn computer speakers on for sound)
         </p>
-        <LessonCard answers={fakeDotAnswers} graphicType="keyboard" />
+        <LessonCard answers={fakeMixedAnswers} delayMS={1000} scale={0.6} />
       </Container>
     </Layout>
   );
 };
 
-const fakeAnswers = [
-  { name: "Car 1", correctAnswer: ["E1", "Gb1", "Ab1", "A1"] },
-  { name: "Car 2", correctAnswer: ["B1", "Db2", "Eb2", "E2"] },
-  { name: "Car 3", correctAnswer: ["E1", "Gb1", "Ab1", "A1"] }
-];
-const fakeDotAnswers = [
+const fakeMixedAnswers = [
   {
-    name: "Car 1",
-    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
-    image: "wagon"
+    name: "Car keyboard",
+    correctAnswer: keyboardShapes.E,
+    type: "keyboard",
+    showCircles: true,
+    keysToLabel: ["E1", "Bb1"]
   },
   {
-    name: "Car 2",
-    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
-    image: "car"
+    name: "Car dots",
+    correctAnswer: dotShapes.car,
+    image: "car",
+    shapeName: "Car",
+    type: "dotboard"
   },
   {
-    name: "Car 3",
-    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
-    image: "truck"
+    name: "Flip Car dots",
+    correctAnswer: dotShapes.flipCar,
+    image: "flipCar",
+    shapeName: "Car",
+    type: "dotboard"
   },
   {
-    name: "Car 4",
-    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
-    image: "car"
-  },
-  {
-    name: "Car 5",
-    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
-    image: "wagon"
-  },
-  {
-    name: "Car 6",
-    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
-    image: "truck"
+    name: "Flip Car keyboard",
+    correctAnswer: keyboardShapes.Bb,
+    type: "keyboard",
+    showCircles: true
   }
 ];
