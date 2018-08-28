@@ -28,7 +28,34 @@ const fakeAnswers = [
   { name: "Car 3", correctAnswer: ["E1", "Gb1", "Ab1", "A1"] }
 ];
 const fakeDotAnswers = [
-  { name: "Car 1", correctAnswer: [1, 2, 2, 1] },
-  { name: "Car 2", correctAnswer: [1, 2, 2, 1] },
-  { name: "Car 3", correctAnswer: [2, 1, 1, 2] }
+  {
+    name: "Car 1",
+    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
+    image: "wagon"
+  },
+  {
+    name: "Car 2",
+    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
+    image: "car"
+  },
+  {
+    name: "Car 3",
+    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
+    image: "truck"
+  },
+  {
+    name: "Car 4",
+    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
+    image: "car"
+  },
+  {
+    name: "Car 5",
+    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
+    image: "wagon"
+  },
+  {
+    name: "Car 6",
+    correctAnswer: { 4: true, 5: true, 6: true, 7: true },
+    image: "truck"
+  }
 ];

@@ -1,0 +1,53 @@
+/* .dot {
+  color: blue;
+}
+
+.dot.a,
+.dot.b,
+.dot.c {
+  text-align: center;
+}
+
+.a.bottom {
+  grid-column: 1;
+  grid-row: 2;
+  color: red;
+}
+.a.top {
+  grid-column: 1;
+  grid-row: 1;
+  color: red;
+}
+.b.bottom {
+  grid-column: 2;
+  grid-row: 2;
+  color: purple;
+}
+.b.top {
+  grid-column: 2;
+  grid-row: 1;
+  color: purple;
+}
+.c.bottom {
+  grid-column: 3;
+  grid-row: 2;
+  color: orange;
+}
+.c.top {
+  grid-column: 3;
+  grid-row: 1;
+  color: orange;
+}
+.d {
+  text-align: left;
+}
+.d.bottom {
+  grid-column: 4;
+  grid-row: 2;
+  color: green;
+}
+.d.top {
+  grid-column: 4;
+  grid-row: 1;
+  color: green;
+} */

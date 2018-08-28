@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
 import Click from "./sounds/Click";
-import LittleDingSound from "./sounds/LittleDingSound";
 import { keyObject, keyList } from "../../keySVGs/keyboardUtils";
 const piano = Synth.createInstrument("piano");
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Scoreboard from "./ScoreBoard.jsx";
 import Dotboard from "./dotboard/Dotboard.jsx";
 import styled from "styled-components";
+import { ding } from "./keyboard/sounds/soundFX";
 const Instructions = styled.div`
   grid-column: 1/-1;
   margin-bottom: 2rem;
@@ -20,14 +21,20 @@ const LessonCardFrame = styled.div`
 class LessonCard extends Component {
   state = {
     currentCorrectAnswer: [],
+    currentImage: "",
     currentAnswerIndex: 0,
     scoreCard: []
   };
   componentDidMount() {
     const { answers } = this.props;
-    this.setState({ currentCorrectAnswer: answers[0].correctAnswer });
+    this.setState({
+      currentCorrectAnswer: answers[0].correctAnswer,
+      currentImage: answers[0].image
+    });
   }
+  f;
   handleAnswer = correctBool => {
+    ding();
     const { answers } = this.props;
     const { currentAnswerIndex, scoreCard } = this.state;
     console.log("this answer was", correctBool);
@@ -52,6 +59,7 @@ class LessonCard extends Component {
     this.setState({
       currentAnswerIndex: nextIndex,
       currentCorrectAnswer: answers[nextIndex].correctAnswer,
+      currentImage: answers[nextIndex].image,
       scoreCard: newScoreCard
     });
   };
@@ -59,8 +67,13 @@ class LessonCard extends Component {
     console.log("youre done!s");
   }
   render() {
-    const { currentCorrectAnswer, currentAnswerIndex, scoreCard } = this.state;
-    const { answers, scale } = this.props;
+    const {
+      currentCorrectAnswer,
+      currentImage,
+      currentAnswerIndex,
+      scoreCard
+    } = this.state;
+    const { answers, scale, image } = this.props;
     return (
       <LessonCardFrame>
         <Instructions>
@@ -86,7 +99,12 @@ class LessonCard extends Component {
           scale={scale}
           handleAnswer={this.handleAnswer}
         /> */}
-        <Dotboard scale={scale} correctAnswer={currentCorrectAnswer} />
+        <Dotboard
+          scale={scale}
+          correctAnswer={currentCorrectAnswer}
+          image={currentImage}
+          handleAnswer={this.handleAnswer}
+        />
       </LessonCardFrame>
     );
   }
