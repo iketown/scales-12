@@ -9,6 +9,8 @@ import Truck from "../../images/truckPic.svg";
 import Wagon from "../../images/wagonPic.svg";
 import Line from "../../images/linePic.svg";
 import { pop, ding, plink } from "../keyboard/sounds/soundFX";
+import { delayBetweenQuestions } from "../../utils/generalConfig";
+import { iconNames } from "../../keySVGs/keyboardUtils";
 
 const images = {
   car: Car,
@@ -21,7 +23,7 @@ const images = {
 };
 const DotGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 7rem) 1rem;
   grid-gap: 5px;
   height: 10rem;
   align-items: center;
@@ -32,13 +34,18 @@ const BackgroundImageDiv = styled.div`
   background-image: url(${p => images[p.image]});
   transform: scaleY(${p => (p.image.includes("flip") ? "-1" : "")});
   position: absolute;
-  z-index: -1;
   width: 100%;
   height: 100%;
   background-size: contain;
   opacity: 0.2;
   background-repeat: no-repeat;
   background-position: center;
+`;
+const StyledIcon = styled(Icon)`
+  transition: 0.3s all;
+  :hover {
+    transform: scale(1.3);
+  }
 `;
 const dotConfig = {
   in: { opacity: 1, y: "0rem" },
@@ -50,9 +57,13 @@ const dotGridConfig = {
   in: { staggerChildren: 40 },
   out: {}
 };
+const iconConfig = {
+  selected: { scale: 1.3 },
+  unselected: { scale: 1 }
+};
 const AnimatedDot = posed.div(dotConfig);
 const AnimatedDotGrid = posed.div(dotGridConfig);
-
+const AnimatedIcon = posed.div(iconConfig);
 export default class Dotboard extends Component {
   state = {
     selectedDots: [],
@@ -103,20 +114,20 @@ export default class Dotboard extends Component {
     setTimeout(() => {
       this.resetDots();
       this.props.handleAnswer(true);
-    }, this.props.delayMS);
+    }, delayBetweenQuestions);
   };
   handleWrongAnswer = () => {
     plink();
     setTimeout(() => {
       this.resetDots();
       this.props.handleAnswer(false);
-    }, this.props.delayMS);
+    }, delayBetweenQuestions);
   };
   resetDots = () => {
     this.setState({ dotsIn: false });
     setTimeout(() => {
       this.setState({ dotsIn: true, selectedDots: [], correct: false });
-    }, 500);
+    }, 100);
   };
 
   render() {
@@ -126,9 +137,9 @@ export default class Dotboard extends Component {
     let startingDot = correctAnswer[0];
 
     const getDotShape = num => {
-      if (selectedDots.includes(num)) return "circle";
-      if (startingDot === num) return "help circle";
-      return "circle outline";
+      if (selectedDots.includes(num)) return "selected";
+      if (startingDot === num) return "starter";
+      return "outline";
     };
     return (
       <AnimatedDotGrid pose={dotsIn ? "in" : "out"}>
@@ -138,18 +149,23 @@ export default class Dotboard extends Component {
             const selected = selectedDots.includes(num);
             return (
               <AnimatedDot
-                pose={selected ? "selected" : "unselected"}
                 key={num}
                 onMouseDown={() => this.handleDotclick(num)}
                 style={{
-                  textAlign: `${num === 4 || num === 8 ? "left" : "center"}`,
+                  textAlign: "center",
                   color: `${
                     correct && selected ? "green" : selected ? "black" : "grey"
                   }`,
                   cursor: "pointer"
                 }}
               >
-                <Icon name={getDotShape(num)} size="large" />
+                <AnimatedIcon pose={selected ? "selected" : "unselected"}>
+                  <StyledIcon
+                    name={iconNames[getDotShape(num)].text}
+                    size="large"
+                    color={iconNames[getDotShape(num)].color}
+                  />
+                </AnimatedIcon>
               </AnimatedDot>
             );
           })}

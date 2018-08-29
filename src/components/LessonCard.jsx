@@ -3,21 +3,64 @@ import Scoreboard from "./ScoreBoard.jsx";
 import Dotboard from "./dotboard/Dotboard.jsx";
 import Keyboard from "./keyboard/Keyboard.jsx";
 import styled from "styled-components";
-import posed from "react-pose";
+import posed, { PoseGroup } from "react-pose";
+import "./LessonCard.css";
+
 const Instructions = styled.div`
   grid-column: 1/-1;
   margin-bottom: 2rem;
   padding: 1rem;
+  & img {
+    float: right;
+    width: 200px;
+  }
 `;
 const LessonCardFrame = styled.div`
   display: grid;
+  position: relative;
   border: 1px #eaeaea solid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   justify-content: space-around;
   border-radius: 10px;
   padding: 1rem;
   background: #efefef5e;
 `;
+const Cta = styled.h4`
+  background: white;
+  border: 1px #d6d6d6 solid;
+  border-radius: 1rem;
+  padding: 3px;
+  text-align: center;
+`;
+const AnimatedCTA = posed.div({
+  enter: { opacity: 1, x: "0rem" },
+  exit: { opacity: 0, x: "5rem" }
+});
+const BoardDiv = styled.div`
+  background: white;
+  border: 1px #d6d6d6 solid;
+  border-radius: 1rem;
+  padding: 10px;
+  box-shadow: 1px 1px 2px 0px #8a8a8a30;
+`;
+const TitleDiv = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  > div {
+    background: white;
+    left: -50%;
+    position: relative;
+    /* background: #f2fff3; */
+    border: 0.5px #bbb solid;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 1rem;
+    top: -1.5rem;
+    box-shadow: 2px 2px 5px 0px #bfbfbf;
+  }
+`;
+const LessonDiv = styled.div``;
 
 class LessonCard extends Component {
   state = {
@@ -57,64 +100,91 @@ class LessonCard extends Component {
     }
     console.log("next index is", nextIndex);
     console.log("answers", answers);
-
-    this.setState({
-      currentAnswerIndex: nextIndex,
-      currentCorrectAnswer: answers[nextIndex].correctAnswer,
-      currentImage: answers[nextIndex].image,
-      keysToLabel: answers[nextIndex].keysToLabel,
-      scoreCard: newScoreCard
-    });
+    this.setState(
+      {
+        scoreCard: newScoreCard
+      },
+      () => this.goToQuestion(nextIndex)
+    );
   };
   handleFinishCard() {
     console.log("youre done!s");
   }
+  goToQuestion = num => {
+    const { answers } = this.props;
+    if (num >= answers.length || num < 0) return;
+    this.setState({
+      currentAnswerIndex: num,
+      currentCorrectAnswer: answers[num].correctAnswer,
+      currentImage: answers[num].image
+    });
+  };
   render() {
     const {
       currentCorrectAnswer,
       currentImage,
       currentAnswerIndex,
-      scoreCard,
-      keysToLabel
+      scoreCard
     } = this.state;
-    const { answers, scale, delayMS } = this.props;
+    const { answers, scale, chapterTitle } = this.props;
+    const {
+      type,
+      lesson,
+      keysToLabel,
+      showCircles,
+      showShapeBackground,
+      cta,
+      starters
+    } = answers[currentAnswerIndex];
     return (
       <LessonCardFrame>
         <Instructions>
-          <h1>Car Shapes</h1>
-          <p>first we'll learn how to do the car shapes</p>
+          <TitleDiv>
+            <div>
+              <h2>{chapterTitle}</h2>
+            </div>
+          </TitleDiv>
+          <LessonDiv>{lesson}</LessonDiv>
         </Instructions>
         <Scoreboard
           names={answers.map(answer => answer.name)}
           questionNumber={currentAnswerIndex}
           scoreCard={scoreCard}
           style={{ gridColumn: "1", padding: "1rem" }}
+          goToQuestion={this.goToQuestion}
         />
-        {answers[currentAnswerIndex].type === "keyboard" && (
-          <Keyboard
-            bottomKey="C1"
-            topKey="E2"
-            correctAnswer={currentCorrectAnswer}
-            keyboardId="myId"
-            showFirst={false}
-            showAllCircles={true}
-            showHints={false}
-            scale={scale}
-            handleAnswer={this.handleAnswer}
-            keysToLabel={answers[currentAnswerIndex].keysToLabel}
-            showCircles={answers[currentAnswerIndex].showCircles}
-            delayMS={delayMS}
-          />
-        )}
-        {answers[currentAnswerIndex].type === "dotboard" && (
-          <Dotboard
-            scale={scale}
-            correctAnswer={currentCorrectAnswer}
-            image={currentImage}
-            handleAnswer={this.handleAnswer}
-            delayMS={delayMS}
-          />
-        )}
+        <div>
+          <Cta>{cta}</Cta>
+          <BoardDiv>
+            {type === "keyboard" && (
+              <Keyboard
+                bottomKey="C1"
+                topKey="E2"
+                correctAnswer={currentCorrectAnswer}
+                keyboardId="myId"
+                showFirst={false}
+                showAllCircles={showCircles}
+                showHints={false}
+                starters={starters}
+                scale={scale}
+                handleAnswer={this.handleAnswer}
+                keysToLabel={keysToLabel}
+                questionNumber={currentAnswerIndex}
+                showShapeBackground={showShapeBackground}
+              />
+            )}
+            {type === "dotboard" && (
+              <Dotboard
+                scale={scale}
+                correctAnswer={currentCorrectAnswer}
+                image={currentImage}
+                handleAnswer={this.handleAnswer}
+                questionNumber={currentAnswerIndex}
+                showShapeBackground={showShapeBackground}
+              />
+            )}
+          </BoardDiv>
+        </div>
       </LessonCardFrame>
     );
   }

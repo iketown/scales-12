@@ -4,8 +4,8 @@ import posed from "react-pose";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
-import { pop, ding, plink } from "./sounds/soundFX";
-import { keyObject, keyList } from "../../keySVGs/keyboardUtils";
+import { pop, ding, plink, keyClick } from "./sounds/soundFX";
+import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
 import {
   keyboardScale,
   delayBetweenQuestions
@@ -29,8 +29,8 @@ const WhiteKeyDiv = styled.div`
   margin: 1px;
 `;
 const keyConfig = {
-  in: { x: "0vw", delayChildren: 100 },
-  out: { x: "110vw" }
+  in: { x: "0vw", opacity: 1, delayChildren: 50 },
+  out: { x: "50vw", opacity: 0 }
 };
 const keyboardConfig = {
   in: { staggerChildren: 20 },
@@ -38,20 +38,7 @@ const keyboardConfig = {
 };
 const AnimatedKey = posed.div(keyConfig);
 const AnimatedKeyboard = posed.div(keyboardConfig);
-const noteConverter = {
-  A: "A",
-  B: "B",
-  C: "C",
-  D: "D",
-  E: "E",
-  F: "F",
-  G: "G",
-  Db: "C#",
-  Eb: "D#",
-  Gb: "F#",
-  Ab: "G#",
-  Bb: "A#"
-};
+
 const playNote = noteName => {
   let octave = Number(noteName.split("").pop());
   let note = noteConverter[noteName.slice(0, -1)];
@@ -97,6 +84,7 @@ class Keyboard extends Component {
     );
   };
   removeNoteFromGuess = noteName => {
+    keyClick();
     this.setState({
       userGuess: this.state.userGuess.filter(note => note !== noteName)
     });
@@ -125,7 +113,7 @@ class Keyboard extends Component {
     }
   }
   handleCorrectAnswer = () => {
-    const { delayMS, handleAnswer } = this.props;
+    const { handleAnswer } = this.props;
     ding();
     this.setState({
       correct: true,
@@ -138,7 +126,7 @@ class Keyboard extends Component {
     }, delayBetweenQuestions);
   };
   handleWrongAnswer = () => {
-    const { delayMS, handleAnswer } = this.props;
+    const { handleAnswer } = this.props;
     plink();
     this.setState({ correct: false, showCircles: false, finished: true });
     setTimeout(() => {
@@ -158,13 +146,14 @@ class Keyboard extends Component {
   };
   getCircleShape = noteName => {
     const { userGuess, finished, correctCircles, wrongCircles } = this.state;
-    const { correctAnswer, showAllCircles } = this.props;
+    const { correctAnswer, showAllCircles, starters } = this.props;
     // first check if deemed 'right' or 'wrong'.  otherwise, its just 'selected'
     if (finished && correctCircles.includes(noteName)) return "correct";
     if (finished && wrongCircles.includes(noteName)) return "wrong";
     if (userGuess.includes(noteName)) return "selected";
-    if (showAllCircles && correctAnswer.includes(noteName)) return "outline";
     if (correctAnswer[0] === noteName) return "starter";
+    if (starters && starters.includes(noteName)) return "starter";
+    if (showAllCircles && correctAnswer.includes(noteName)) return "outline";
     return null;
   };
   doOver = () => {
@@ -175,7 +164,12 @@ class Keyboard extends Component {
     });
   };
   render() {
-    const { bottomKey, keysToLabel, keyboardId } = this.props;
+    const {
+      bottomKey,
+      keysToLabel,
+      keyboardId,
+      showShapeBackground
+    } = this.props;
     const { keysIn, showCircles } = this.state;
     return (
       <div>
@@ -186,7 +180,6 @@ class Keyboard extends Component {
           <KeyboardDiv>
             {this.state.keyGroups.map(key => {
               const sharedProps = {
-                keyboardScale,
                 keyboardId,
                 showCircles
               };
@@ -201,6 +194,7 @@ class Keyboard extends Component {
                       circleType={this.getCircleShape(key[0])}
                       clickHandler={this.clickHandler(key[0])}
                       showLabel={keysToLabel && keysToLabel.includes(key[0])}
+                      showShapeBackground={showShapeBackground}
                     />
                     {key.length > 1 && (
                       <Key
@@ -212,6 +206,7 @@ class Keyboard extends Component {
                         circleType={this.getCircleShape(key[1])}
                         clickHandler={this.clickHandler(key[1])}
                         showLabel={keysToLabel && keysToLabel.includes(key[1])}
+                        showShapeBackground={showShapeBackground}
                       />
                     )}
                   </AnimatedKey>

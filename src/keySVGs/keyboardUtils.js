@@ -91,3 +91,26 @@ export const keyList = (bottomKey, topKey) => {
   const list = keyGroups.filter((key, i) => i >= bottomIndex && i <= topIndex);
   return list;
 };
+
+export const noteConverter = {
+  A: "A",
+  B: "B",
+  C: "C",
+  D: "D",
+  E: "E",
+  F: "F",
+  G: "G",
+  Db: "C#",
+  Eb: "D#",
+  Gb: "F#",
+  Ab: "G#",
+  Bb: "A#"
+};
+
+export const iconNames = {
+  outline: { color: "", text: "circle outline" },
+  wrong: { color: "red", text: "close" },
+  correct: { color: "green", text: "circle" },
+  starter: { color: "pink", text: "arrow alternate circle right " },
+  selected: { color: "blue", text: "dot circle" }
+};

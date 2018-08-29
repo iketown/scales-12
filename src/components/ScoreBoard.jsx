@@ -1,7 +1,7 @@
 import React from "react";
 import { List, Icon } from "semantic-ui-react";
 
-export default ({ questionNumber, style, scoreCard, names }) => {
+export default ({ questionNumber, style, scoreCard, names, goToQuestion }) => {
   return (
     <div style={{ ...style }}>
       <List divided relaxed>
@@ -13,6 +13,7 @@ export default ({ questionNumber, style, scoreCard, names }) => {
             <List.Item
               key={i}
               as="a"
+              onClick={() => goToQuestion(i)}
               style={
                 isCurrent
                   ? { color: "black" }

@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { Icon } from "semantic-ui-react";
-
-const iconNames = {
-  outline: { color: "", text: "circle outline" },
-  wrong: { color: "red", text: "close" },
-  correct: { color: "green", text: "circle" },
-  starter: { color: "orange", text: "arrow alternate circle right outline" },
-  selected: { color: "blue", text: "dot circle" }
-};
+import { iconNames } from "../../keySVGs/keyboardUtils";
 
 class Circle extends Component {
   render() {

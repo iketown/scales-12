@@ -1,11 +1,35 @@
 import React, { Component } from "react";
 import { paths, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
-import { delayBetweenQuestions } from "../../utils/generalConfig";
-import styled from "styled-components";
+import {
+  delayBetweenQuestions,
+  keyboardScale
+} from "../../utils/generalConfig";
+import styled, { keyframes } from "styled-components";
 import posed from "react-pose";
 
 import Circle from "./Circle.jsx";
+import ShapeBackground from "./ShapeBackground";
+const jiggle = keyframes`
+0% {
+  transform: scale(1) rotate(0deg);
+}
+33% {
+  transform: scale(1.005) rotate(.1deg);
+}
+66% {
+  transform: scale(.995) rotate(-.1deg);
+}
 
+100% {
+  transform: scale(1) rotate(0deg);
+}
+`;
+const Keydiv = styled.div`
+  display: relative;
+  :hover {
+    animation: ${jiggle} 0.4s infinite;
+  }
+`;
 const Svg = styled.svg`
   :hover path {
     fill: lightgrey;
@@ -42,9 +66,9 @@ class Key extends Component {
       noteName,
       clickHandler,
       circleType,
-      keyboardScale,
       showLabel,
-      showCircles
+      showCircles,
+      showShapeBackground
     } = this.props;
     const keyIsBlack = noteShape === "flat";
 
@@ -55,7 +79,7 @@ class Key extends Component {
     };
 
     const KeyJSX = (
-      <div style={keyIsBlack ? blackKeyStyles : {}}>
+      <Keydiv style={keyIsBlack ? blackKeyStyles : {}}>
         <Svg
           onMouseDown={clickHandler}
           width={keyIsBlack ? 46 * keyboardScale : 77 * keyboardScale}
@@ -90,7 +114,14 @@ class Key extends Component {
             <h3>{noteName.slice(0, -1)}</h3>
           </LabelDiv>
         )}
-      </div>
+        {showShapeBackground &&
+          showShapeBackground.includes(noteName) && (
+            <ShapeBackground
+              noteName={noteName}
+              keyboardScale={keyboardScale}
+            />
+          )}
+      </Keydiv>
     );
     return KeyJSX;
   }
