@@ -7,7 +7,9 @@ import {
   Button,
   Icon
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ScaleCard } from "../components/uiElements/customDisplays";
 import Layout from "../layout/Layout.jsx";
 import wrongNotes from "../images/wrongNotes.svg";
 import whiteNotes from "../images/whiteNotes.svg";
@@ -72,7 +74,7 @@ export default () => {
           pianists do at some point)
         </p>
         <p>But there's a BETTER WAY</p>
-        <Button primary icon labelPosition="right">
+        <Button as={Link} to="/page2" primary icon labelPosition="right">
           Next <Icon name="arrow circle right" />
         </Button>
         <br />
@@ -83,16 +85,3 @@ export default () => {
     </Layout>
   );
 };
-
-const ScaleCard = ({ src, title, height }) => (
-  <Card>
-    <Image
-      src={src}
-      alt={title}
-      style={{ height: height || "10rem", padding: "1rem" }}
-    />
-    <Card.Content>
-      <Card.Description>{title}</Card.Description>
-    </Card.Content>
-  </Card>
-);
