@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import carPic from "../../images/carPic.svg";
-import truckPic from "../../images/truckPic.svg";
-import wagonPic from "../../images/wagonPic.svg";
-import linePic from "../../images/linePic.svg";
+import { carPic, truckPic, wagonPic, linePic } from "../../images/";
+
 import { keyboardScale } from "../../utils/generalConfig";
 
 const ShapeDiv = styled.div`

@@ -2,16 +2,10 @@ import React, { Component } from "react";
 import Layout from "../layout/Layout.jsx";
 import { Link } from "react-router-dom";
 import { Header, Card, Image, Button, Icon } from "semantic-ui-react";
-import { ScaleCard } from "../components/uiElements/customDisplays";
 import styled from "styled-components";
 import posed from "react-pose";
-import Line from "../images/Line.svg";
-import Car from "../images/Car.svg";
-import Truck from "../images/Truck.svg";
-import Wagon from "../images/Wagon.svg";
-import lineSpacing from "../images/lineSpacing.svg";
-import carSpacing from "../images/carSpacing.svg";
-import keyKeyNoKey from "../images/keyKeyNoKey.svg";
+
+import { Line, Car, Truck, Wagon } from "../images";
 
 const CardFader = posed.div({
   active: { opacity: 1, y: "0%" },
@@ -52,6 +46,10 @@ export default class Page2 extends Component {
           <p>
             First, we need to learn the
             <strong> four basic shapes</strong>
+          </p>
+          <p>
+            Each shape is simply a row of four dots, with each dot being either{" "}
+            <strong>UP</strong> or <strong>DOWN</strong>.
           </p>
           <CardsGrid>
             {cardsArr.map((card, i) => (
