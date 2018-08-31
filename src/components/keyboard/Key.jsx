@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { paths, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
-import {
-  delayBetweenQuestions,
-  keyboardScale
-} from "../../utils/generalConfig";
+import { delayBetweenQuestions } from "../../utils/generalConfig";
 import styled, { keyframes } from "styled-components";
 import posed from "react-pose";
 
@@ -51,7 +48,8 @@ const LabelDiv = styled.div`
   position: absolute;
   width: 100%;
   text-align: center;
-  ${p => (p.keyIsBlack ? `top: 1.5rem; color: #eaeaea;` : `bottom: -1.5rem;`)};
+  font-size: 13px;
+  ${p => (p.keyIsBlack ? `top: -1.3rem; color: #333;` : `bottom: -1.0rem;`)};
 `;
 const animatedCircleConfig = {
   in: { opacity: 1, scale: 1 },
@@ -68,7 +66,8 @@ class Key extends Component {
       circleType,
       showLabel,
       showCircles,
-      showShapeBackground
+      showShapeBackground,
+      keyboardScale
     } = this.props;
     const keyIsBlack = noteShape === "flat";
 
@@ -110,8 +109,8 @@ class Key extends Component {
           </AnimatedCircle>
         )}
         {showLabel && (
-          <LabelDiv keyIsBlack={keyIsBlack}>
-            <h3>{noteName.slice(0, -1)}</h3>
+          <LabelDiv keyIsBlack={keyIsBlack} keyboardScale={keyboardScale}>
+            <span>{noteName.slice(0, -1)}</span>
           </LabelDiv>
         )}
         {showShapeBackground &&

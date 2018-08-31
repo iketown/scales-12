@@ -4,8 +4,23 @@ import { Link } from "react-router-dom";
 import { Header, Card, Image, Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import posed from "react-pose";
-
-import { Line, Car, Truck, Wagon } from "../images";
+import {
+  fullScales,
+  edgeKeys,
+  scaleShapes
+} from "../components/keyboard/keyboardShapes";
+import {
+  Line,
+  Car,
+  Truck,
+  Wagon,
+  lineDots,
+  carDots,
+  truckDots,
+  wagonDots,
+  mindBlown
+} from "../images";
+import KeyboardDisplayOnly from "../components/keyboard/KeyboardDisplayOnly";
 
 const CardFader = posed.div({
   active: { opacity: 1, y: "0%" },
@@ -22,16 +37,34 @@ const ButtonSlider = posed.div({
   out: { x: "5rem", opacity: 0, disabled: true },
   in: { x: "0rem", opacity: 1, disabled: false, delay: 500 }
 });
+const ScaleGridItem = styled.div`
+  padding: 5px;
+  margin: 5px;
+  width: 160px;
+`;
+const ScaleGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 170px));
+`;
+const ShapeButtonDiv = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: space-between;
+`;
 
 export default class Page2 extends Component {
   state = {
-    currentCardIndex: 0
+    currentCardIndex: 0,
+    shapeSelected: "truck"
   };
   componentDidMount() {
     window.scrollTo(0, 0);
   }
   setCardIndex = num => {
     this.setState({ currentCardIndex: num });
+  };
+  setShapeSelected = shapeSelected => {
+    this.setState({ shapeSelected });
   };
 
   render() {
@@ -43,6 +76,44 @@ export default class Page2 extends Component {
           <Header.Subheader>to learn Major scales</Header.Subheader>
         </Header>
         <div>
+          <p>So there are 12 Major Scales to learn. here they are:</p>
+          <ScaleGrid>
+            {Object.keys(fullScales).map(s => {
+              return (
+                <ScaleGridItem>
+                  <KeyboardDisplayOnly
+                    bottomKey={edgeKeys[s].bottom}
+                    topKey={edgeKeys[s].top}
+                    keysToLabel={[fullScales[s][0], fullScales[s][7]]}
+                    notesToShow={fullScales[s]}
+                    keyboardScale={0.2}
+                    scaleShapes={scaleShapes[s]}
+                    shapeToShow={this.state.shapeSelected}
+                  />
+                </ScaleGridItem>
+              );
+            })}
+          </ScaleGrid>
+          <p>
+            but one night I was thinking about it, and realized that all those
+            shapes can be broken down into FOUR shapes.
+          </p>
+          <p>check it out: </p>
+          <ShapeButtonDiv>
+            {[
+              { img: lineDots, text: "line", gridArea: "1 / 1 / 1 / 2" },
+              { img: carDots, text: "car", gridArea: "1 / 2 / 1 / 3" },
+              { img: truckDots, text: "truck", gridArea: "1 / 3 / 1 / 4" },
+              { img: wagonDots, text: "wagon", gridArea: "1 / 4 / 1 / 5" }
+            ].map(shape => (
+              <div style={{ gridArea: shape.gridArea }}>
+                <Button onClick={() => this.setShapeSelected(shape.text)}>
+                  <img src={shape.img} alt="" width={"100px"} />
+                </Button>
+              </div>
+            ))}
+          </ShapeButtonDiv>
+          <img src={mindBlown} alt="" />
           <p>
             First, we need to learn the
             <strong> four basic shapes</strong>

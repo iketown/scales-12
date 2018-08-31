@@ -50,7 +50,7 @@ export default () => {
           The secret is that they know the 'shape' of the right notes. The notes
           make a pattern. That pattern is called...
         </p>
-        <h3>the Major Scale</h3>
+        <h3>The Major Scale</h3>
         <p>Sometimes, the Major Scale pattern is simply all white keys.</p>
         <ScaleCard src={whiteNotes} title="all white keys" />
         <p>
@@ -58,20 +58,24 @@ export default () => {
           'shape' of the <strong>C Major Scale</strong>.
         </p>
         <ScaleCard src={CmajorScale} title={"C major"} />
+        <p>Easy!</p>
         <p>
-          Each (starting) key has its own Major Scale <em>shape</em>. Here are
-          four of the twelve Major Scales.
+          ...but "C" is just one of the 12 keys, so what about the other 11
+          Major Scales?
+        </p>
+        <p>
+          Each (starting) key has its own Major Scale <em>shape</em>. Here are a
+          few examples.
         </p>
         <Card.Group centered>
           <ScaleCard src={AmajorScale} title={"A Major"} />
           <ScaleCard src={DbMajorScale} title={"Db Major"} />
-          <ScaleCard src={CmajorScale} title={"C major"} />
           <ScaleCard src={BbMajorScale} title={"Bb Major"} />
         </Card.Group>
         <p>
-          With a few days of concentrated practice, its totally possible to
-          memorize the shape of all 12 Major Scales... (this is what most
-          pianists do at some point)
+          With a few days of practice, its totally possible to memorize the
+          shape of all 12 Major Scales... (this is what most pianists do at some
+          point)
         </p>
         <p>But there's a BETTER WAY</p>
         <Button as={Link} to="/page2" primary icon labelPosition="right">

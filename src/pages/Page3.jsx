@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Header } from "semantic-ui-react";
+import React, { Component, Fragment } from "react";
+import { Header, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import {
   Line,
@@ -12,7 +12,10 @@ import {
   lineDots
 } from "../images";
 import CardQuizPage from "./CardQuizPage.jsx";
-import { completeChapter } from "../actions/userScoreActions";
+import {
+  completeChapterQuiz,
+  startChapterQuiz
+} from "../actions/userScoreActions";
 
 const testQuestions = [
   {
@@ -54,27 +57,44 @@ const cardsArr = [
     header: "Wagon"
   }
 ];
+const lessonText = {
+  intro: {
+    head: <h1>Shapes Quiz</h1>,
+    body: (
+      <div>
+        <p>
+          and now, a quick pop quiz to make sure everyone was paying attention.
+        </p>
+        <p>
+          don't worry. <strong>It's easy!</strong>
+        </p>
+      </div>
+    )
+  },
+  outtro: {
+    head: <h1>Shapes Quiz</h1>,
+    body: <p>see? that wasn't so bad. onward!</p>
+  },
+  linkToNextLesson: "/page4"
+};
 
 export class Page3 extends Component {
   handleCompletedQuiz = () => {
-    console.log("ok that one is done");
-    this.props.dispatch(completeChapter("shapes1"));
+    this.props.dispatch(completeChapterQuiz("shapes1"));
   };
+  handleStartedQuiz = () => {
+    this.props.dispatch(startChapterQuiz("shapes1"));
+  };
+
   render() {
     return (
       <CardQuizPage
         testQuestions={testQuestions}
         cardsArr={cardsArr}
         handleCompletedQuiz={this.handleCompletedQuiz}
-      >
-        <Header as="h2">
-          <Header.Content>Quick Quiz</Header.Content>
-        </Header>
-        <p>
-          And now its time for a<strong> QUICK QUIZ</strong>
-        </p>
-        <p>I'll name a shape, and you click on it. ready ?</p>
-      </CardQuizPage>
+        handleStartedQuiz={this.handleStartedQuiz}
+        lessonText={lessonText}
+      />
     );
   }
 }

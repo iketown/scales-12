@@ -10,6 +10,7 @@ import carDots from "./carDots.svg";
 import truckDots from "./truckDots.svg";
 import wagonDots from "./wagonDots.svg";
 import lineDots from "./lineDots.svg";
+import mindBlown from "./mindBlown.gif";
 
 export {
   Line,
@@ -23,5 +24,6 @@ export {
   carDots,
   truckDots,
   wagonDots,
-  lineDots
+  lineDots,
+  mindBlown
 };
