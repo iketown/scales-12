@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
-import keyboardReducer from "./reducers/keyboardReducer";
+import { userScoreReducer } from "./reducers/userScoreReducer";
 
 const logger = createLogger({
   collapsed: true,
@@ -10,7 +10,7 @@ const logger = createLogger({
 });
 
 export const rootReducer = combineReducers({
-  keys: keyboardReducer
+  userScore: userScoreReducer
 });
 
 const store = createStore(

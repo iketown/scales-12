@@ -1,13 +1,6 @@
 import React, { Component } from "react";
-import Layout from "../layout/Layout.jsx";
-import { Link } from "react-router-dom";
-import { Header, Card, Image, Button, Icon } from "semantic-ui-react";
-import styled from "styled-components";
-import posed, { PoseGroup } from "react-pose";
-import { ding, plink } from "../components/keyboard/sounds/soundFX";
-import { shuffleArray } from "../utils/generalUtils";
-import { delayBetweenQuestions } from "../utils/generalConfig";
-import { ShapeCard } from "../components/uiElements/index";
+import { Header } from "semantic-ui-react";
+import { connect } from "react-redux";
 import {
   Line,
   Car,
@@ -19,6 +12,7 @@ import {
   lineDots
 } from "../images";
 import CardQuizPage from "./CardQuizPage.jsx";
+import { completeChapter } from "../actions/userScoreActions";
 
 const testQuestions = [
   {
@@ -32,22 +26,6 @@ const testQuestions = [
   {
     clue: "Truck",
     answer: "truck"
-  },
-  {
-    clue: "Truck",
-    answer: "truck"
-  },
-  {
-    clue: "Truck",
-    answer: "truck"
-  },
-  {
-    clue: "Wagon",
-    answer: "wagon"
-  },
-  {
-    clue: "Car",
-    answer: "car"
   }
 ];
 const cardsArr = [
@@ -77,9 +55,10 @@ const cardsArr = [
   }
 ];
 
-export default class Page3 extends Component {
+export class Page3 extends Component {
   handleCompletedQuiz = () => {
     console.log("ok that one is done");
+    this.props.dispatch(completeChapter("shapes1"));
   };
   render() {
     return (
@@ -99,3 +78,5 @@ export default class Page3 extends Component {
     );
   }
 }
+
+export default connect()(Page3);

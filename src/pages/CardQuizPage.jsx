@@ -59,19 +59,34 @@ const QuestionCardDiv = styled.div`
 const CheckboxDiv = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
   padding-bottom: 5px;
+  height: 2rem;
+  & .fade {
+    opacity: 0.5;
+  }
 `;
 
-const QuestionCard = ({ clue, questionIndex, testQuestions }) => {
+const QuestionCard = ({
+  clue,
+  questionIndex,
+  testQuestions,
+  correctCheckboxIndex
+}) => {
   return (
     <QuestionCardDiv>
       <CheckboxDiv>
         {testQuestions.map((q, i) => {
-          if (i < questionIndex) {
-            return <Icon name="square check" color="green" />;
+          if (i === correctCheckboxIndex)
+            return (
+              <div style={{ transform: "scale(1.5)" }}>
+                <Icon name="square check" color="green" />
+              </div>
+            );
+          else if (i < questionIndex) {
+            return <Icon name="square check" color="green" className="fade" />;
           } else {
-            return <Icon name="square outline" color="grey" />;
+            return <Icon name="square outline" color="grey" className="fade" />;
           }
         })}
       </CheckboxDiv>
@@ -96,6 +111,7 @@ export default class Page3 extends Component {
     questionIndex: 0,
     showImageOf: "",
     currentCorrectAnswer: "",
+    correctCheckboxIndex: null,
     shapeCards: [],
     wronglyClickedCards: []
   };
@@ -119,7 +135,10 @@ export default class Page3 extends Component {
   }
   handleCorrectAnswer(shape) {
     ding();
-    this.setState({ showImageOf: shape });
+    this.setState({
+      showImageOf: shape,
+      correctCheckboxIndex: this.state.questionIndex
+    });
     setTimeout(this.advanceQuestion, delayBetweenQuestions);
   }
   handleWrongAnswer(shape) {
@@ -143,18 +162,25 @@ export default class Page3 extends Component {
   };
   advanceQuestion = () => {
     const { questionIndex } = this.state;
-    const { testQuestions, handleCompleteQuiz } = this.props;
-    if (questionIndex + 1 === testQuestions.length) return handleCompleteQuiz();
+    const { testQuestions, handleCompletedQuiz } = this.props;
+    if (questionIndex + 1 === testQuestions.length)
+      return handleCompletedQuiz();
     this.doubleShuffle();
     this.setState({
       questionIndex: questionIndex + 1,
       currentCorrectAnswer: testQuestions[questionIndex + 1].answer,
+      correctCheckboxIndex: null,
       showImageOf: "",
       wronglyClickedCards: []
     });
   };
   render() {
-    const { questionIndex, currentQuestion, wronglyClickedCards } = this.state;
+    const {
+      questionIndex,
+      currentQuestion,
+      wronglyClickedCards,
+      correctCheckboxIndex
+    } = this.state;
     const { children, testQuestions } = this.props;
     return (
       <Layout>
@@ -166,6 +192,7 @@ export default class Page3 extends Component {
             questionIndex={questionIndex}
             testQuestions={testQuestions}
             wronglyClickedCards={wronglyClickedCards}
+            correctCheckboxIndex={correctCheckboxIndex}
           />
           <PoseGroup>
             {this.state.shapeCards.map((card, i) => {
