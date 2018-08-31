@@ -34,6 +34,14 @@ const testQuestions = [
     answer: "truck"
   },
   {
+    clue: "Truck",
+    answer: "truck"
+  },
+  {
+    clue: "Truck",
+    answer: "truck"
+  },
+  {
     clue: "Wagon",
     answer: "wagon"
   },
@@ -47,45 +55,39 @@ const cardsArr = [
     fullPic: Line,
     hintPic: lineDots,
     name: "line",
-    header: "Line",
-    description: "down • down •  down down"
+    header: "Line"
   },
   {
     fullPic: Car,
     hintPic: carDots,
     name: "car",
-    header: "Car",
-    description: "down • UP • UP down"
+    header: "Car"
   },
   {
     fullPic: Truck,
     hintPic: truckDots,
     name: "truck",
-    header: "Truck",
-    description: "down • down • UP down"
+    header: "Truck"
   },
   {
     fullPic: Wagon,
     hintPic: wagonDots,
     name: "wagon",
-    header: "Wagon",
-    description: "down • down • down UP"
+    header: "Wagon"
   }
 ];
 
 export default class Page3 extends Component {
-  state = {
-    questionIndex: 0,
-    showImageOf: "",
-    currentCorrectAnswer: "",
-    shapeCards: [],
-    wronglyClickedCards: []
+  handleCompletedQuiz = () => {
+    console.log("ok that one is done");
   };
-
   render() {
-    const { questionIndex, currentQuestion } = this.state;
     return (
-      <CardQuizPage testQuestions={testQuestions} cardsArr={cardsArr}>
+      <CardQuizPage
+        testQuestions={testQuestions}
+        cardsArr={cardsArr}
+        handleCompletedQuiz={this.handleCompletedQuiz}
+      >
         <Header as="h2">
           <Header.Content>Quick Quiz</Header.Content>
         </Header>

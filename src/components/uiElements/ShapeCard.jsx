@@ -41,15 +41,7 @@ const ShapeCard = props => {
               showImage={showImage}
               onClick={onClick}
             />
-            <Card.Header>
-              {showImage ? (
-                <span>
-                  {header} <Icon name="check circle" />
-                </span>
-              ) : (
-                " "
-              )}
-            </Card.Header>
+            <Card.Header>{showImage ? <span>{header}</span> : " "}</Card.Header>
             {wrong && <CardOverlay shape="x" />}
             {correct && <CardOverlay shape="check" />}
           </Card.Content>

@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout.jsx";
 import { Link } from "react-router-dom";
-import { Header, Card, Image, Button, Icon } from "semantic-ui-react";
+import {
+  Header,
+  Card,
+  Image,
+  Button,
+  Icon,
+  GridColumn
+} from "semantic-ui-react";
 import styled from "styled-components";
 import posed, { PoseGroup } from "react-pose";
 import { ding, plink } from "../components/keyboard/sounds/soundFX";
@@ -25,6 +32,8 @@ const CardsGrid = styled.ul`
   grid-template-columns: repeat(2, minmax(300px, max-content));
   justify-content: center;
   grid-gap: 1.5rem;
+  background: #f9f9f9;
+  padding: 1rem;
   @media screen and (max-width: 700px) {
     grid-template-columns: repeat(1, minmax(300px, max-content));
   }
@@ -38,17 +47,35 @@ const QuestionSlider = posed.div({
   exit: { opacity: 0, x: "-5rem" }
 });
 
+const QuestionCardDiv = styled.div`
+  text-align: center;
+  padding: 1rem;
+  grid-column: 1 / -1;
+  background: whitesmoke;
+  box-shadow: 1px 1px 4px #cacaca99;
+  margin: 0 1rem;
+  border-radius: 5px;
+`;
+const CheckboxDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+`;
+
 const QuestionCard = ({ clue, questionIndex, testQuestions }) => {
   return (
-    <div
-      style={{
-        textAlign: "center",
-        border: "1px green solid",
-        padding: "2rem",
-        margin: "1rem"
-      }}
-    >
-      <h3>click on the </h3>
+    <QuestionCardDiv>
+      <CheckboxDiv>
+        {testQuestions.map((q, i) => {
+          if (i < questionIndex) {
+            return <Icon name="square check" color="green" />;
+          } else {
+            return <Icon name="square outline" color="grey" />;
+          }
+        })}
+      </CheckboxDiv>
+      <p>CLICK ON THE</p>
       <PoseGroup preEnterPose="before">
         {testQuestions.map((q, i) => {
           if (questionIndex === i) {
@@ -60,7 +87,7 @@ const QuestionCard = ({ clue, questionIndex, testQuestions }) => {
           }
         })}
       </PoseGroup>
-    </div>
+    </QuestionCardDiv>
   );
 };
 
@@ -116,9 +143,8 @@ export default class Page3 extends Component {
   };
   advanceQuestion = () => {
     const { questionIndex } = this.state;
-    const { testQuestions } = this.props;
-    if (questionIndex + 1 === testQuestions.length)
-      return console.log("all done");
+    const { testQuestions, handleCompleteQuiz } = this.props;
+    if (questionIndex + 1 === testQuestions.length) return handleCompleteQuiz();
     this.doubleShuffle();
     this.setState({
       questionIndex: questionIndex + 1,
@@ -128,18 +154,19 @@ export default class Page3 extends Component {
     });
   };
   render() {
-    const { questionIndex, currentQuestion } = this.state;
+    const { questionIndex, currentQuestion, wronglyClickedCards } = this.state;
     const { children, testQuestions } = this.props;
     return (
       <Layout>
         {children}
-        <QuestionCard
-          clue={testQuestions[questionIndex].clue}
-          questionIndex={questionIndex}
-          testQuestions={testQuestions}
-        />
 
         <CardsGrid>
+          <QuestionCard
+            clue={testQuestions[questionIndex].clue}
+            questionIndex={questionIndex}
+            testQuestions={testQuestions}
+            wronglyClickedCards={wronglyClickedCards}
+          />
           <PoseGroup>
             {this.state.shapeCards.map((card, i) => {
               const { showImageOf, wronglyClickedCards } = this.state;
