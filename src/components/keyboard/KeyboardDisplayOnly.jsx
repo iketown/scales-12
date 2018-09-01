@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import posed from "react-pose";
 import Key from "./Key.jsx";
+import DumbKey from "./DumbKey";
 import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
+import { scale } from "style-value-types";
 
 const KeyboardDiv = styled.div`
   display: flex;
@@ -29,16 +32,7 @@ const keyboardConfig = {
 class Keyboard extends Component {
   state = {
     keyGroups: [],
-    userGuess: [],
-    correctCircles: [],
-    wrongCircles: [],
-    showCircles: true,
-    correct: false,
-    finished: false,
-    playClickSound: false,
-    playCorrectSound: false,
-    playWrongSound: false,
-    keysIn: false
+    selected: false
   };
 
   componentDidMount() {
@@ -48,15 +42,15 @@ class Keyboard extends Component {
     });
   }
 
-  getCircleShape = (noteName, number) => {
+  getCircleShape = noteName => {
     const { scaleShapes, notesToShow, shapeToShow } = this.props;
     const colorBottom = scaleShapes.bottom === shapeToShow;
     const colorTop = scaleShapes.top === shapeToShow;
     const firstFour = notesToShow.filter((n, i) => i < 4);
     const lastFour = notesToShow.filter((n, i) => i >= 4);
-    if (colorBottom && firstFour.includes(noteName)) return "pink";
-    if (colorTop && lastFour.includes(noteName)) return "pink";
-    if (notesToShow.includes(noteName)) return "grey";
+    if (colorBottom && firstFour.includes(noteName)) return "yellow";
+    if (colorTop && lastFour.includes(noteName)) return "yellow";
+    if (notesToShow.includes(noteName)) return "outline";
     return null;
   };
 
@@ -67,9 +61,11 @@ class Keyboard extends Component {
       keyboardId,
       showShapeBackground,
       keyboardScale,
-      scaleShapes
+      scaleShapes,
+      showCircles,
+      fadeInactive,
+      notesToShow
     } = this.props;
-    const { keysIn, showCircles } = this.state;
     return (
       <KeyboardDiv>
         {this.state.keyGroups.map(key => {
@@ -82,7 +78,7 @@ class Keyboard extends Component {
               key={`${key[0]} whiteKeyDiv`}
               keyboardScale={keyboardScale}
             >
-              <Key
+              <DumbKey
                 {...sharedProps}
                 key={`${key[0]} whiteKey`}
                 noteShape={keyObject[key[0]].shape}
@@ -91,9 +87,11 @@ class Keyboard extends Component {
                 showLabel={keysToLabel && keysToLabel.includes(key[0])}
                 showShapeBackground={showShapeBackground}
                 keyboardScale={keyboardScale}
+                fade={fadeInactive}
+                numberOfScale={notesToShow.findIndex(n => n === key[0]) + 1}
               />
               {key.length > 1 && (
-                <Key
+                <DumbKey
                   {...sharedProps}
                   noteShape="flat"
                   key={`${key[0]} blackKey`}
@@ -103,6 +101,8 @@ class Keyboard extends Component {
                   showLabel={keysToLabel && keysToLabel.includes(key[1])}
                   showShapeBackground={showShapeBackground}
                   keyboardScale={keyboardScale}
+                  numberOfScale={notesToShow.findIndex(n => n === key[1]) + 1}
+                  fade={fadeInactive}
                 />
               )}
             </WhiteKeyDiv>

@@ -40,11 +40,11 @@ const ButtonSlider = posed.div({
 const ScaleGridItem = styled.div`
   padding: 5px;
   margin: 5px;
-  width: 160px;
 `;
 const ScaleGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 170px));
+  grid-template-columns: repeat(auto-fill, 169px);
+  grid-gap: 1rem;
 `;
 const ShapeButtonDiv = styled.div`
   display: grid;
@@ -80,7 +80,7 @@ export default class Page2 extends Component {
           <ScaleGrid>
             {Object.keys(fullScales).map(s => {
               return (
-                <ScaleGridItem>
+                <ScaleGridItem key={s}>
                   <KeyboardDisplayOnly
                     bottomKey={edgeKeys[s].bottom}
                     topKey={edgeKeys[s].top}
@@ -89,14 +89,17 @@ export default class Page2 extends Component {
                     keyboardScale={0.2}
                     scaleShapes={scaleShapes[s]}
                     shapeToShow={this.state.shapeSelected}
+                    showCircles={true}
+                    fadeInactive={true}
                   />
                 </ScaleGridItem>
               );
             })}
           </ScaleGrid>
           <p>
-            but one night I was thinking about it, and realized that all those
-            shapes can be broken down into FOUR shapes.
+            So <strong>12 scales</strong> x <strong>8 notes</strong> per
+            scale... that's a lot of information. Let's look at that as simple
+            dot patterns.
           </p>
           <p>check it out: </p>
           <ShapeButtonDiv>
@@ -106,7 +109,7 @@ export default class Page2 extends Component {
               { img: truckDots, text: "truck", gridArea: "1 / 3 / 1 / 4" },
               { img: wagonDots, text: "wagon", gridArea: "1 / 4 / 1 / 5" }
             ].map(shape => (
-              <div style={{ gridArea: shape.gridArea }}>
+              <div style={{ gridArea: shape.gridArea }} key={shape.text}>
                 <Button onClick={() => this.setShapeSelected(shape.text)}>
                   <img src={shape.img} alt="" width={"100px"} />
                 </Button>
@@ -126,6 +129,7 @@ export default class Page2 extends Component {
             {cardsArr.map((card, i) => (
               <ShapeCard
                 {...card}
+                key={i}
                 setCardIndex={this.setCardIndex}
                 i={i}
                 active={currentCardIndex === i}

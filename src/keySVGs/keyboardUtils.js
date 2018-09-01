@@ -111,7 +111,7 @@ export const iconNames = {
   outline: { color: "", text: "circle outline" },
   wrong: { color: "red", text: "close" },
   correct: { color: "green", text: "circle" },
-  starter: { color: "pink", text: "arrow alternate circle right " },
+  starter: { color: "pink", text: "arrow alternate circle right" },
   selected: { color: "blue", text: "dot circle" },
   yellow: { color: "orange", text: "dot circle" },
   red: { color: "red", text: "dot circle" },
@@ -119,4 +119,8 @@ export const iconNames = {
   green: { color: "green", text: "dot circle" },
   purple: { color: "purple", text: "dot circle" },
   pink: { color: "pink", text: "dot circle" }
+};
+
+export const numberCircles = {
+  8: "⒏"
 };
