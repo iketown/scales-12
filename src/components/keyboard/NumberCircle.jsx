@@ -1,6 +1,6 @@
 import React from "react";
 
-const NumberCircle = ({ number = 8, keyboardScale, numberOfScale }) => {
+const NumberCircle = ({ number = 8, keyboardScale, numberOfScale, theme }) => {
   return (
     <div style={{ transform: `scale(${keyboardScale * 5})` }}>
       {numberObj[numberOfScale]}

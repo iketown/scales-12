@@ -30,16 +30,16 @@ export const fullScales = {
 
 export const edgeKeys = {
   C: { bottom: "C1", top: "C2" },
-  Db: { bottom: "C1", top: "D2" },
+  Db: { bottom: "D1", top: "D2" },
   D: { bottom: "D1", top: "D2" },
-  Eb: { bottom: "D1", top: "E2" },
+  Eb: { bottom: "E1", top: "E2" },
   E: { bottom: "E1", top: "E2" },
   F: { bottom: "F1", top: "F2" },
-  Gb: { bottom: "F1", top: "G2" },
+  Gb: { bottom: "G1", top: "G2" },
   G: { bottom: "G1", top: "G2" },
-  Ab: { bottom: "G1", top: "A2" },
+  Ab: { bottom: "A1", top: "A2" },
   A: { bottom: "A1", top: "A2" },
-  Bb: { bottom: "A1", top: "B2" },
+  Bb: { bottom: "B1", top: "B2" },
   B: { bottom: "B1", top: "B2" }
 };
 export const scaleShapes = {

@@ -5,9 +5,9 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="lineDots" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="34.5" cy="115.5" r="12.5"></circle>
-        <circle id="Oval-Copy" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="119.5" cy="115.5" r="12.5"></circle>
-        <circle id="Oval-Copy-2" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="204.5" cy="115.5" r="12.5"></circle>
-        <circle id="Oval-Copy-3" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="261.5" cy="115.5" r="12.5"></circle>
+        <circle id="Oval" stroke="#000000" stroke-width="5" fill="#D79922" cx="34.5" cy="115.5" r="12.5"></circle>
+        <circle id="Oval-Copy" stroke="#000000" stroke-width="5" fill="#D79922" cx="119.5" cy="115.5" r="12.5"></circle>
+        <circle id="Oval-Copy-2" stroke="#000000" stroke-width="5" fill="#D79922" cx="204.5" cy="115.5" r="12.5"></circle>
+        <circle id="Oval-Copy-3" stroke="#000000" stroke-width="5" fill="#D79922" cx="261.5" cy="115.5" r="12.5"></circle>
     </g>
 </svg>

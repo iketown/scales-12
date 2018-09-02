@@ -21,8 +21,8 @@ const CircleDiv = styled.div`
   bottom: ${({ keyboardScale }) => 4 * keyboardScale}rem;
   width: 100%;
   text-align: center;
-  // color: ${({ black }) => (black ? "white" : "black")};
-color: blue;
+
+  color: ${p => p.theme[p.circleType]};
   transition: all 0.5s;
   :hover {
     transform: scale(1.3);
@@ -43,10 +43,9 @@ class DumbKey extends Component {
       noteName,
       circleType,
       showLabel,
-      showCircles,
       showShapeBackground,
       keyboardScale,
-      fade,
+      fadeKeys,
       numberOfScale
     } = this.props;
     const keyIsBlack = noteShape === "flat";
@@ -70,11 +69,15 @@ class DumbKey extends Component {
             stroke="#000"
             id={noteName}
             fill={keyIsBlack ? "#000000CC" : "#FFFFFFCC"}
-            style={fade ? { opacity: 0.2 } : { background: "blue" }}
+            style={fadeKeys ? { opacity: 0 } : { opacity: 0.4 }}
           />
         </Svg>
         {circleType && (
-          <CircleDiv black={keyIsBlack} keyboardScale={keyboardScale}>
+          <CircleDiv
+            black={keyIsBlack}
+            keyboardScale={keyboardScale}
+            circleType={circleType}
+          >
             <NumberCircle
               circleType={circleType}
               keyboardScale={keyboardScale}

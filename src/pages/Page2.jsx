@@ -9,6 +9,7 @@ import {
   edgeKeys,
   scaleShapes
 } from "../components/keyboard/keyboardShapes";
+import { FadeMe, PageTurner } from "../components/uiElements/customDisplays";
 import {
   Line,
   Car,
@@ -37,25 +38,34 @@ const ButtonSlider = posed.div({
   out: { x: "5rem", opacity: 0, disabled: true },
   in: { x: "0rem", opacity: 1, disabled: false, delay: 500 }
 });
-const ScaleGridItem = styled.div`
+const AnimatedScale = posed.div({
+  in: { x: "0rem", opacity: 1 },
+  out: { x: "5rem", opacity: 0 }
+});
+const ScaleGridItem = styled(AnimatedScale)`
   padding: 5px;
   margin: 5px;
 `;
-const ScaleGrid = styled.div`
+
+const AnimatedGrid = posed.div({ in: { staggerChildren: 70 }, out: {} });
+const ScaleGrid = styled(AnimatedGrid)`
   display: grid;
   grid-template-columns: repeat(auto-fill, 169px);
-  grid-gap: 1rem;
+  // grid-gap: 1rem;
 `;
 const ShapeButtonDiv = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-items: space-between;
 `;
 
 export default class Page2 extends Component {
   state = {
     currentCardIndex: 0,
-    shapeSelected: "truck"
+    shapeSelected: "all",
+    fadeKeys: false,
+    showKeyboards: false,
+    pageTurnerIndex: 0
   };
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -66,55 +76,123 @@ export default class Page2 extends Component {
   setShapeSelected = shapeSelected => {
     this.setState({ shapeSelected });
   };
-
+  toggleFadeKeys = () => {
+    this.setState({ fadeKeys: !this.state.fadeKeys });
+  };
+  handlePageTurnerAdvance = () => {
+    this.setState({ pageTurnerIndex: this.state.pageTurnerIndex + 1 });
+  };
   render() {
-    const { currentCardIndex } = this.state;
+    const { currentCardIndex, fadeKeys, showKeyboards } = this.state;
+    const frame1 = (
+      <div>
+        <p>
+          So as we discussed, there are 12 Major Scales. Each scale has 8 notes.
+        </p>
+        <p>
+          Lets just imagine the keyboard as a series of <strong>up</strong>{" "}
+          (black) and <strong>down</strong> (white) notes.
+        </p>
+        <p>
+          So each Major Scale is simply a unique pattern of <strong>UPs</strong>{" "}
+          and
+          <strong>DOWNs</strong>.
+        </p>
+        <p>Look at this one, called B-Flat Major.</p>
+        <KeyboardDisplayOnly
+          bottomKey={"F1"}
+          topKey={"B2"}
+          keysToLabel={""}
+          notesToShow={fullScales["Bb"]}
+          keyboardScale={0.4}
+          scaleShapes={{ bottom: "car", top: "wagon" }}
+          shapeToShow={this.state.shapeSelected}
+          showCircles={true}
+          fadeKeys={fadeKeys}
+          displayText={"Bb major Scale"}
+        />
+        <p>
+          We could describe that as{" "}
+          <strong>UP • down • down • UP • down • down • down • UP</strong>
+        </p>
+      </div>
+    );
     return (
       <Layout>
         <Header as="h2">
           <Header.Content>A Better Way</Header.Content>
           <Header.Subheader>to learn Major scales</Header.Subheader>
         </Header>
+        <PageTurner
+          showIndex={this.state.pageTurnerIndex}
+          advance={this.handlePageTurnerAdvance}
+        >
+          <div>page 1</div>
+          {frame1}
+        </PageTurner>
         <div>
-          <p>So there are 12 Major Scales to learn. here they are:</p>
-          <ScaleGrid>
+          <p>
+            All the Major Scales have their own shape like that; Their own
+            series of ups and downs.
+          </p>
+          <FadeMe pose={this.state.showKeyboards ? "out" : "in"}>
+            <Button
+              onClick={() => this.setState({ showKeyboards: true })}
+              primary={!this.state.showKeyboards}
+            >
+              Show All 12 Scales
+            </Button>
+          </FadeMe>
+          <ScaleGrid pose={showKeyboards ? "in" : "out"}>
             {Object.keys(fullScales).map(s => {
               return (
                 <ScaleGridItem key={s}>
                   <KeyboardDisplayOnly
                     bottomKey={edgeKeys[s].bottom}
                     topKey={edgeKeys[s].top}
-                    keysToLabel={[fullScales[s][0], fullScales[s][7]]}
+                    keysToLabel={""}
                     notesToShow={fullScales[s]}
                     keyboardScale={0.2}
                     scaleShapes={scaleShapes[s]}
                     shapeToShow={this.state.shapeSelected}
                     showCircles={true}
-                    fadeInactive={true}
+                    fadeKeys={fadeKeys}
+                    displayText={fullScales[s][0].slice(0, -1)}
+                    displayTitleCircle
                   />
                 </ScaleGridItem>
               );
             })}
           </ScaleGrid>
           <p>
-            So <strong>12 scales</strong> x <strong>8 notes</strong> per
-            scale... that's a lot of information. Let's look at that as simple
-            dot patterns.
+            You <em>could</em> print those out, and with a few days of practice,
+            memorize all 12.
           </p>
-          <p>check it out: </p>
+          <p>
+            ... but there is an easier way. First, let's{" "}
+            <Button onClick={this.toggleFadeKeys}>isolate the shapes</Button>
+          </p>
+          <p>
+            So <strong>12 scales</strong> x <strong>8 notes each</strong> ={" "}
+            <strong>96 pieces of information</strong>. hmm. Too hard.
+          </p>
+
           <ShapeButtonDiv>
             {[
-              { img: lineDots, text: "line", gridArea: "1 / 1 / 1 / 2" },
-              { img: carDots, text: "car", gridArea: "1 / 2 / 1 / 3" },
-              { img: truckDots, text: "truck", gridArea: "1 / 3 / 1 / 4" },
-              { img: wagonDots, text: "wagon", gridArea: "1 / 4 / 1 / 5" }
+              { img: lineDots, text: "line" },
+              { img: carDots, text: "car" },
+              { img: truckDots, text: "truck" },
+              { img: wagonDots, text: "wagon" }
             ].map(shape => (
-              <div style={{ gridArea: shape.gridArea }} key={shape.text}>
+              <div key={shape.text}>
                 <Button onClick={() => this.setShapeSelected(shape.text)}>
                   <img src={shape.img} alt="" width={"100px"} />
                 </Button>
               </div>
             ))}
+            <Button onClick={() => this.setState({ shapeSelected: "all" })}>
+              Show All
+            </Button>
           </ShapeButtonDiv>
           <img src={mindBlown} alt="" />
           <p>
