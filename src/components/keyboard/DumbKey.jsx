@@ -68,8 +68,8 @@ class DumbKey extends Component {
             d={paths[noteShape]}
             stroke="#000"
             id={noteName}
-            fill={keyIsBlack ? "#000000CC" : "#FFFFFFCC"}
-            style={fadeKeys ? { opacity: 0 } : { opacity: 0.4 }}
+            fill={keyIsBlack ? "#EEEEEECC" : "#FFFFFFCC"}
+            style={fadeKeys ? { opacity: 0 } : { opacity: 1 }}
           />
         </Svg>
         {circleType && (

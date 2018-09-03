@@ -120,7 +120,3 @@ export const iconNames = {
   purple: { color: "purple", text: "dot circle" },
   pink: { color: "pink", text: "dot circle" }
 };
-
-export const numberCircles = {
-  8: "⒏"
-};
