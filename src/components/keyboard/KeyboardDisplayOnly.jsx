@@ -37,10 +37,9 @@ class Keyboard extends Component {
   }
   addSpacer() {}
   getCircleShape = noteName => {
-    const { scaleShapes, notesToShow, shapeToShow } = this.props;
-    const colorBottom =
-      scaleShapes.bottom === shapeToShow || shapeToShow === "all";
-    const colorTop = scaleShapes.top === shapeToShow || shapeToShow === "all";
+    const { scaleShapes, notesToShow, shapeToShow, colorAll } = this.props;
+    const colorBottom = scaleShapes.bottom === shapeToShow || colorAll;
+    const colorTop = scaleShapes.top === shapeToShow || colorAll;
     const firstFour = notesToShow.filter((n, i) => i < 4);
     const lastFour = notesToShow.filter((n, i) => i >= 4);
     if (colorBottom && firstFour.includes(noteName)) return shapeToShow;

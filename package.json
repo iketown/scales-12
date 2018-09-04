@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "nuka-carousel": "^4.3.7",
     "popmotion-pose": "^3.0.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-pose": "^3.0.2",
     "react-redux": "^5.0.7",
+    "react-responsive-carousel": "^3.1.41",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",

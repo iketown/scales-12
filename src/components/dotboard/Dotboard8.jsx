@@ -82,7 +82,14 @@ const colors = {
   faded: "#cccccc3d"
 };
 
-const Dotboard8 = ({ bottomShape, topShape, split, shapeToColor, root }) => {
+const Dotboard8 = ({
+  bottomShape,
+  topShape,
+  split,
+  shapesSelected,
+  root,
+  colorAll
+}) => {
   return (
     <Box>
       {[bottomShape, topShape].map((shape, index) => (
@@ -93,9 +100,10 @@ const Dotboard8 = ({ bottomShape, topShape, split, shapeToColor, root }) => {
               <GridItem
                 area={`${letter}${i + 1}`}
                 color={
-                  shape.toLowerCase().includes(shapeToColor)
+                  shapesSelected.includes(shape) ||
+                  shapesSelected.includes(shape.slice(4).toLowerCase())
                     ? colors[shape]
-                    : shapeToColor === "all"
+                    : colorAll
                       ? "#000"
                       : colors.faded
                 }
