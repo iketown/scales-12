@@ -31,7 +31,7 @@ export default () => {
       <Container>
         <p>So you wanna learn your scales? excellent.</p>{" "}
         <p>
-          Learning major scales on the piano will exponentially boost your
+          Learning major scales on the piano will exponentially boost your piano
           ability and understanding. You'll be surprised at how much easier and
           more fun the piano is once you <em>learn your scales</em>.
         </p>

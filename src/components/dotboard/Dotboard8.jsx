@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import posed from "react-pose";
+import posed, { PoseGroup } from "react-pose";
 import NumberCircle from "../keyboard/NumberCircle.jsx";
 
 const Box = styled.div`
@@ -8,18 +8,15 @@ const Box = styled.div`
   justify-content: center;
   box-shadow: 1px 1px 4px #b1b1b161;
   border-radius: 5px;
-  margin-bottom: 10px;
+  // margin: 10px;
   position: relative;
   padding: 3px 7px;
   background: white;
 `;
-const DotboardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(${p => (p.split ? "8" : "9")}, 1.5rem);
-  grid-template-rows: repeat(2, 1.5rem);
-  grid-template-areas: "u1 u2 u3 u4 u5 u6 u7 u8" "d1 d2 d3 d4 d5 d6 d7 d8";
-  justify-items: center;
-`;
+const GridHalfPose = posed.div({
+  in: { opacity: 1 },
+  out: { opacity: 0, width: "0px" }
+});
 const DotboardGridHalf = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1.5rem);
@@ -28,7 +25,10 @@ const DotboardGridHalf = styled.div`
   justify-items: center;
   align-items: center;
   margin-left: ${p => (p.split ? "1.5rem" : "0")};
+  border: ${p => (p.box ? "1px grey dotted" : "none")};
   transition: 0.5s all;
+
+  }
 `;
 const ScaleName = styled.div`
   text-align: center;
@@ -51,11 +51,7 @@ const ScaleName = styled.div`
   z-index: 10;
   box-shadow: 1px 1px 4px #9e9e9e;
 `;
-const Scooter = posed.div({
-  before: {},
-  enter: {},
-  exit: {}
-});
+
 const GridItem = styled.div`
   grid-area: ${p => p.area};
   color: ${p => p.color};
@@ -88,46 +84,39 @@ const Dotboard8 = ({
   split,
   shapesSelected,
   root,
-  colorAll
+  colorAll,
+  hide2ndShape
 }) => {
   return (
     <Box>
       {[bottomShape, topShape].map((shape, index) => (
-        <DotboardGridHalf split={index === 1 ? split : ""}>
-          {shapesObj[shape].map((letter, i) => {
-            const offset = index === 0 ? 1 : 5;
-            return (
-              <GridItem
-                area={`${letter}${i + 1}`}
-                color={
-                  shapesSelected.includes(shape) ||
-                  shapesSelected.includes(shape.slice(4).toLowerCase())
-                    ? colors[shape]
-                    : colorAll
-                      ? "#000"
-                      : colors.faded
-                }
-              >
-                <NumberCircle numberOfScale={i + offset} />
-              </GridItem>
-            );
-          })}
-        </DotboardGridHalf>
+        <GridHalfPose
+          key={index}
+          pose={hide2ndShape && index === 1 ? "out" : "in"}
+        >
+          <DotboardGridHalf split={index === 1 ? split : ""} box={split}>
+            {shapesObj[shape].map((letter, i) => {
+              const offset = index === 0 ? 1 : 5;
+              return (
+                <GridItem
+                  area={`${letter}${i + 1}`}
+                  color={
+                    shapesSelected.includes(shape) ||
+                    shapesSelected.includes(shape.slice(4).toLowerCase())
+                      ? colors[shape]
+                      : colorAll
+                        ? "#000"
+                        : colors.faded
+                  }
+                >
+                  <NumberCircle numberOfScale={i + offset} />
+                </GridItem>
+              );
+            })}
+          </DotboardGridHalf>
+        </GridHalfPose>
       ))}
-      {/* {shapesObj[topShape].map((letter, i) => (
-          <GridItem
-            area={`${letter}${i + 5}`}
-            color={
-              shapeToColor === topShape
-                ? colors[topShape]
-                : shapeToColor === "all"
-                  ? "#000"
-                  : colors.faded
-            }
-          >
-            <NumberCircle numberOfScale={i + 5} />
-          </GridItem>
-        ))} */}
+
       <ScaleName>{root}</ScaleName>
     </Box>
   );

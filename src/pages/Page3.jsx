@@ -1,102 +1,75 @@
-import React, { Component, Fragment } from "react";
-import { Header, Button } from "semantic-ui-react";
-import { connect } from "react-redux";
-import {
-  Line,
-  Car,
-  Truck,
-  Wagon,
-  carDots,
-  truckDots,
-  wagonDots,
-  lineDots
-} from "../images";
-import CardQuizPage from "./CardQuizPage.jsx";
-import {
-  completeChapterQuiz,
-  startChapterQuiz
-} from "../actions/userScoreActions";
+import React, { Component } from "react";
 
-const testQuestions = [
-  {
-    clue: "Line",
-    answer: "line"
-  },
-  {
-    clue: "Car",
-    answer: "car"
-  },
-  {
-    clue: "Truck",
-    answer: "truck"
-  }
-];
-const cardsArr = [
-  {
-    fullPic: Line,
-    hintPic: lineDots,
-    name: "line",
-    header: "Line"
-  },
-  {
-    fullPic: Car,
-    hintPic: carDots,
-    name: "car",
-    header: "Car"
-  },
-  {
-    fullPic: Truck,
-    hintPic: truckDots,
-    name: "truck",
-    header: "Truck"
-  },
-  {
-    fullPic: Wagon,
-    hintPic: wagonDots,
-    name: "wagon",
-    header: "Wagon"
-  }
-];
-const lessonText = {
-  intro: {
-    head: <h1>Shapes Quiz</h1>,
-    body: (
-      <div>
-        <p>
-          and now, a quick pop quiz to make sure everyone was paying attention.
-        </p>
-        <p>
-          don't worry. <strong>It's easy!</strong>
-        </p>
-      </div>
-    )
-  },
-  outtro: {
-    head: <h1>Shapes Quiz</h1>,
-    body: <p>see? that wasn't so bad. onward!</p>
-  },
-  linkToNextLesson: "/page4"
-};
-
-export class Page3 extends Component {
-  handleCompletedQuiz = () => {
-    this.props.dispatch(completeChapterQuiz("shapes1"));
+import Layout from "../layout/Layout.jsx";
+import { DotCardsGrid } from "./Page2.jsx";
+import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
+import { Button } from "semantic-ui-react";
+import { NextButton } from "../components/uiElements/index";
+import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
+export default class Page3 extends Component {
+  state = {
+    hide2ndShape: false
   };
-  handleStartedQuiz = () => {
-    this.props.dispatch(startChapterQuiz("shapes1"));
-  };
-
   render() {
     return (
-      <CardQuizPage
-        testQuestions={testQuestions}
-        cardsArr={cardsArr}
-        handleCompletedQuiz={this.handleCompletedQuiz}
-        handleStartedQuiz={this.handleStartedQuiz}
-        lessonText={lessonText}
-      />
+      <Layout>
+        <p>
+          We've already cut the complexity down by a lot, by simply memorizing
+          <strong> two shapes </strong>
+          for each scale, instead of
+          <strong> eight notes</strong>.
+        </p>
+        <p>
+          <em>but it gets easier than that.</em>
+        </p>
+        <p>
+          Look again at this chart. see how the{" "}
+          <strong>2nd shape of the 'C' scale</strong> matches the
+          <strong> first shape of the 'G' scale</strong>?
+        </p>
+        <p>
+          ...and the 2nd shape of the 'G' scale matches the 1st shape of the 'D'
+          scale?
+        </p>
+        <p>
+          ...and the 2nd shape of the 'D' scale matches the 1st shape of the 'A'
+          scale ? . . . and on and on and on.
+        </p>
+
+        <DotCardsGrid>
+          {Object.entries(scaleShapes2).map(scaleShape => (
+            <Dotboard8
+              bottomShape={scaleShape[1].bottom}
+              topShape={scaleShape[1].top}
+              shapesSelected={["car", "truck", "wagon", "line"]}
+              root={scaleShape[0]}
+              split={true}
+              colorAll={true}
+              hide2ndShape={this.state.hide2ndShape}
+            />
+          ))}
+        </DotCardsGrid>
+        <p>
+          we'll talk about how these scales connect later, but when we start
+          playing them, you'll find you don't even have to learn the 2nd shape.
+        </p>
+        <p>
+          you really only have to learn the{" "}
+          <Button
+            primary={!this.state.hide2ndShape}
+            disabled={this.state.hide2ndShape}
+            onClick={() => this.setState({ hide2ndShape: true })}
+          >
+            FIRST SHAPE
+          </Button>
+        </p>
+        <p>
+          ...and it gets even easier than that, but lets not get ahead of
+          ourselves.
+        </p>
+        <p>let's introduce the shapes.</p>
+        <NextButton active={this.state.hide2ndShape} to="/Page4" />
+      </Layout>
     );
   }
 }
-
-export default connect()(Page3);

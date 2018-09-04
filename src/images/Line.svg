@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="305px" height="150px" viewBox="0 0 305 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="305px" height="64px" viewBox="0 0 305 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
     <title>Line</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Line" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M28.5,115.5 L259.5,115.5" id="Path" stroke="#000000" stroke-width="5" fill="#F8E71C" opacity="0.3"></path>
-        <circle id="Oval" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="34.5" cy="115.5" r="12.5"></circle>
-        <circle id="Oval-Copy" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="119.5" cy="115.5" r="12.5"></circle>
-        <circle id="Oval-Copy-2" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="214.5" cy="115.5" r="12.5"></circle>
-        <circle id="Oval-Copy-3" stroke="#000000" stroke-width="5" fill="#F8E71C" cx="261.5" cy="115.5" r="12.5"></circle>
+        <path d="M39.5,27.5 L251.5,27.5" id="Path" stroke="#000000" stroke-width="3" fill="#F8E71C" opacity="0.3"></path>
+        <text id="❶" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="18" y="36">❶</tspan>
+        </text>
+        <text id="❷" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="108" y="36">❷</tspan>
+        </text>
+        <text id="❸" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="197" y="36">❸</tspan>
+        </text>
+        <text id="❹" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="247" y="36">❹</tspan>
+        </text>
     </g>
 </svg>

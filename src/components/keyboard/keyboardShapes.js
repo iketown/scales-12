@@ -59,15 +59,15 @@ export const scaleShapes = {
 
 export const scaleShapes2 = {
   C: { bottom: "line", top: "line" },
-  Db: { bottom: "flipTruck", top: "flipTruck" },
-  D: { bottom: "truck", top: "truck" },
-  Eb: { bottom: "flipCar", top: "flipCar" },
-  E: { bottom: "car", top: "car" },
-  F: { bottom: "wagon", top: "line" },
-  Gb: { bottom: "flipWagon", top: "flipTruck" },
   G: { bottom: "line", top: "truck" },
-  Ab: { bottom: "flipTruck", top: "flipCar" },
+  D: { bottom: "truck", top: "truck" },
   A: { bottom: "truck", top: "car" },
+  E: { bottom: "car", top: "car" },
+  B: { bottom: "car", top: "flipWagon" },
+  Gb: { bottom: "flipWagon", top: "flipTruck" },
+  Db: { bottom: "flipTruck", top: "flipTruck" },
+  Ab: { bottom: "flipTruck", top: "flipCar" },
+  Eb: { bottom: "flipCar", top: "flipCar" },
   Bb: { bottom: "flipCar", top: "wagon" },
-  B: { bottom: "car", top: "flipWagon" }
+  F: { bottom: "wagon", top: "line" }
 };

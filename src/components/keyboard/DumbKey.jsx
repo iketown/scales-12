@@ -22,7 +22,7 @@ const CircleDiv = styled.div`
   width: 100%;
   text-align: center;
 
-  color: ${p => p.theme[p.circleType]};
+  color: black;
   transition: all 0.5s;
   :hover {
     transform: scale(1.3);

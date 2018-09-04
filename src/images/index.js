@@ -12,7 +12,8 @@ import wagonDots from "./wagonDots.svg";
 import lineDots from "./lineDots.svg";
 import mindBlown from "./mindBlown.gif";
 import paper from "./paper.jpg";
-
+import teacher from "./teacherAtBoard.png";
+import lineSpacing from "./lineSpacing.svg";
 export {
   Line,
   Car,
@@ -27,5 +28,7 @@ export {
   wagonDots,
   lineDots,
   mindBlown,
-  paper
+  paper,
+  teacher,
+  lineSpacing
 };

@@ -8,7 +8,7 @@ import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
 import { scale } from "style-value-types";
 
 const KeyboardDiv = styled.div`
-  display: flex;
+  display: inline-flex;
   padding: 3px;
   width: ${({ keysWide, keyboardScale }) =>
     keysWide * 79 * keyboardScale + 30}px;
@@ -17,6 +17,7 @@ const KeyboardDiv = styled.div`
 `;
 const KeyboardBox = styled.div`
   // padding: 5px;
+  text-align: center;
 `;
 const WhiteKeyDiv = styled.div`
   position: relative;
@@ -35,15 +36,9 @@ class Keyboard extends Component {
       keyGroups: keyList(bottomKey, topKey)
     });
   }
-  addSpacer() {}
   getCircleShape = noteName => {
     const { scaleShapes, notesToShow, shapeToShow, colorAll } = this.props;
-    const colorBottom = scaleShapes.bottom === shapeToShow || colorAll;
-    const colorTop = scaleShapes.top === shapeToShow || colorAll;
-    const firstFour = notesToShow.filter((n, i) => i < 4);
-    const lastFour = notesToShow.filter((n, i) => i >= 4);
-    if (colorBottom && firstFour.includes(noteName)) return shapeToShow;
-    if (colorTop && lastFour.includes(noteName)) return shapeToShow;
+
     if (notesToShow.includes(noteName)) return "greyFade";
     return null;
   };
@@ -55,12 +50,12 @@ class Keyboard extends Component {
       keyboardId,
       showShapeBackground,
       keyboardScale,
-      scaleShapes,
       showCircles,
       fadeKeys,
       notesToShow,
       displayText,
-      displayTitleCircle
+      displayTitleCircle,
+      colorAll
     } = this.props;
 
     const theme = {
@@ -107,7 +102,8 @@ class Keyboard extends Component {
             {this.state.keyGroups.map(key => {
               const sharedProps = {
                 keyboardId,
-                showCircles
+                showCircles,
+                colorAll
               };
               return (
                 <WhiteKeyDiv
