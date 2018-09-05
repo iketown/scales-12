@@ -5,7 +5,7 @@ import styled from "styled-components";
 import posed, { PoseGroup } from "react-pose";
 import Layout from "../layout/Layout.jsx";
 import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
-import { carDots, truckDots, lineDots, wagonDots, teacher } from "../images";
+import { CarDots, TruckDots, LineDots, WagonDots, teacher } from "../images";
 import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
 
 const CardFader = posed.div({
@@ -180,8 +180,8 @@ const ShapeCard = ({
 );
 
 const shapesArr = [
-  { name: "line", image: lineDots },
-  { name: "car", image: carDots },
-  { name: "truck", image: truckDots },
-  { name: "wagon", image: wagonDots }
+  { name: "line", image: LineDots },
+  { name: "car", image: CarDots },
+  { name: "truck", image: TruckDots },
+  { name: "wagon", image: WagonDots }
 ];

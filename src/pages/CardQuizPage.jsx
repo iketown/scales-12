@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Layout from "../layout/Layout.jsx";
+import Layout from "../layout/Layout";
 import { Link } from "react-router-dom";
 import {
   Header,
@@ -14,7 +14,7 @@ import posed, { PoseGroup } from "react-pose";
 import { ding, plink } from "../components/keyboard/sounds/soundFX";
 import { shuffleArray } from "../utils/generalUtils";
 import { delayBetweenQuestions } from "../utils/generalConfig";
-import { ShapeCard } from "../components/uiElements/index";
+import { ShapeCard, NextButton } from "../components/uiElements";
 import {
   Line,
   Car,
@@ -116,7 +116,7 @@ const QuestionCard = ({
   );
 };
 
-export default class CardQuizPage extends Component {
+export default class CardQuiz1 extends Component {
   state = {
     questionIndex: 0,
     showImageOf: "",
@@ -129,9 +129,13 @@ export default class CardQuizPage extends Component {
   componentDidMount() {
     const { testQuestions, cardsArr } = this.props;
     window.scrollTo(0, 0);
+    const firstFourCards = ["fliptruck", "wagon", "flipcar", "line"];
+    const nextFour = cardsArr.filter(card =>
+      firstFourCards.includes(card.name)
+    );
     this.setState({
-      shapeCards: cardsArr,
-      currentCorrectAnswer: testQuestions[0].answer,
+      shapeCards: nextFour,
+      currentCorrectAnswer: testQuestions[0].clue.toLowerCase(),
       lessonIntroOuttro: "intro"
     });
   }
@@ -172,18 +176,37 @@ export default class CardQuizPage extends Component {
       interval * 2
     );
   };
+  pickFourCards = () => {
+    const { cardsArr, testQuestions } = this.props;
+    const { questionIndex } = this.state;
+    const correctAnswer = cardsArr.find(
+      card => card.name === testQuestions[questionIndex + 1].clue.toLowerCase()
+    );
+    const wrongAnswers = cardsArr.filter(
+      card => card.name !== correctAnswer.name
+    );
+    const otherThree = shuffleArray(wrongAnswers).filter((card, i) => i < 3);
+    const fourCards = shuffleArray([correctAnswer, ...otherThree]);
+    return fourCards;
+  };
   advanceQuestion = () => {
     const { questionIndex } = this.state;
     const { testQuestions, handleCompletedQuiz } = this.props;
     if (questionIndex + 1 === testQuestions.length) return this.endQuiz();
-    this.doubleShuffle();
-    this.setState({
-      questionIndex: questionIndex + 1,
-      currentCorrectAnswer: testQuestions[questionIndex + 1].answer,
-      correctCheckboxIndex: null,
-      showImageOf: "",
-      wronglyClickedCards: []
-    });
+    const newFour = this.pickFourCards();
+    this.setState(
+      {
+        questionIndex: questionIndex + 1,
+        currentCorrectAnswer: testQuestions[
+          questionIndex + 1
+        ].clue.toLowerCase(),
+        correctCheckboxIndex: null,
+        showImageOf: "",
+        wronglyClickedCards: [],
+        shapeCards: newFour
+      },
+      this.doubleShuffle
+    );
   };
   startQuiz = () => {
     this.props.handleStartedQuiz();
@@ -194,9 +217,7 @@ export default class CardQuizPage extends Component {
     handleCompletedQuiz();
     this.setState({ lessonIntroOuttro: "outtro" });
   };
-  whoIsThis() {
-    console.log("i am card quiz page");
-  }
+
   render() {
     const {
       questionIndex,
@@ -227,9 +248,7 @@ export default class CardQuizPage extends Component {
             ) : lessonIntroOuttro === "outtro" ? (
               <TextSection>
                 {lessonText.outtro.body}
-                <Button as={Link} to={lessonText.linkToNextLesson}>
-                  NEXT
-                </Button>
+                <NextButton to={lessonText.linkToNextLesson} active />
               </TextSection>
             ) : (
               this.state.shapeCards.map((card, i) => {

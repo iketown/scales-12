@@ -6,10 +6,10 @@ import {
   Car,
   Truck,
   Wagon,
-  carDots,
-  truckDots,
-  wagonDots,
-  lineDots
+  CarDots,
+  TruckDots,
+  WagonDots,
+  LineDots
 } from "../images";
 import CardQuizPage from "./CardQuizPage";
 import {
@@ -29,30 +29,46 @@ const testQuestions = [
   {
     clue: "Truck",
     answer: "truck"
+  },
+  {
+    clue: "Wagon",
+    answer: "wagon"
+  },
+  {
+    clue: "Truck",
+    answer: "truck"
+  },
+  {
+    clue: "Wagon",
+    answer: "wagon"
+  },
+  {
+    clue: "Car",
+    answer: "car"
   }
 ];
 const cardsArr = [
   {
     fullPic: Line,
-    hintPic: lineDots,
+    hintPic: LineDots,
     name: "line",
     header: "Line"
   },
   {
     fullPic: Car,
-    hintPic: carDots,
+    hintPic: CarDots,
     name: "car",
     header: "Car"
   },
   {
     fullPic: Truck,
-    hintPic: truckDots,
+    hintPic: TruckDots,
     name: "truck",
     header: "Truck"
   },
   {
     fullPic: Wagon,
-    hintPic: wagonDots,
+    hintPic: WagonDots,
     name: "wagon",
     header: "Wagon"
   }
@@ -75,10 +91,10 @@ const lessonText = {
     head: <h1>Shapes Quiz</h1>,
     body: <p>see? that wasn't so bad. onward!</p>
   },
-  linkToNextLesson: "/page4"
+  linkToNextLesson: "/page5"
 };
 
-export class Page3 extends Component {
+export class ShapesQuiz1 extends Component {
   handleCompletedQuiz = () => {
     this.props.dispatch(completeChapterQuiz("shapes1"));
   };
@@ -99,4 +115,4 @@ export class Page3 extends Component {
   }
 }
 
-export default connect()(Page3);
+export default connect()(ShapesQuiz1);

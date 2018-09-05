@@ -4,19 +4,55 @@ import { Header, Image, Card, Grid } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
 import { NextButton } from "../components/uiElements/";
-import { Line, Car, Wagon, Truck } from "../images/";
-export default class Page4 extends Component {
+import {
+  Line,
+  Car,
+  Wagon,
+  Truck,
+  FlipTruck,
+  FlipWagon,
+  FlipCar
+} from "../images/";
+import animation from "../images/animation.gif";
+export default class Page5 extends Component {
   render() {
     return (
       <Layout>
         <Header as="h2">
-          <Header.Content>The Shapes</Header.Content>
+          <Header.Content>The FLIPPED Shapes</Header.Content>
         </Header>
         <p>
-          These four shapes are the basic building blocks of the entire 12scales
-          system. Carefully memorize all four.
+          Now that we're familiar with the four shapes, we're going to learn
+          their 'flipped' counterparts.
         </p>
-        <p>This will be on the test. 😉</p>
+        <p>
+          a.k.a. <strong>FlipCar</strong>, <strong>FlipTruck</strong> and{" "}
+          <strong>FlipWagon</strong>.
+        </p>
+        <p>
+          This will feel pretty obvious once we start using these on the
+          keyboard. If the shape <em>starts on a white key</em>, then you would
+          use the <em>regular</em> (non-flipped) shape, which means the UP keys
+          would be <strong>black</strong> keys.
+        </p>
+        <p>
+          So a Car shape (<strong>down UP UP down</strong>) would go{" "}
+          <strong>white BLACK BLACK white</strong>.
+        </p>
+        <p>
+          However, when a shape starts on a black key, there are no keys 'UP'
+          from there, so the shape <em>FLIPS</em>.
+        </p>
+        <p>
+          So a 'Flip Car' goes <strong>black WHITE WHITE black</strong>.
+        </p>
+        <p>
+          Instead of keeping track of UPs and DOWNs, it may help to just notice
+          where the dots change. The Car has 'changed' <strong>#2</strong> and{" "}
+          <strong>#3</strong> dots. The truck has only <strong>#3</strong>. The
+          wagon has only <strong>#4</strong>.
+        </p>
+        <img src={animation} alt="" />
         <div>
           <Grid stackable columns={2}>
             <Grid.Row>
@@ -33,7 +69,7 @@ export default class Page4 extends Component {
           ))} */}
         </div>
 
-        <NextButton active={true} to="/shapesquiz1" center />
+        <NextButton active={true} to="/ShapesQuiz2" center />
       </Layout>
     );
   }
@@ -44,20 +80,25 @@ const shapesArr = [
     name: "line",
     src: Line,
     header: "Line",
-    description: "yep. its just a straight line. You can do this."
+    description: "there are no flipped lines.  lines are just white keys.  😬"
   },
-  { name: "car", src: Car, header: "Car", description: "down • UP • UP down" },
+  {
+    name: "car",
+    src: FlipCar,
+    header: "FlipCar",
+    description: "UP • down • down UP"
+  },
   {
     name: "truck",
-    src: Truck,
-    header: "Truck",
-    description: "down • down • UP down"
+    src: FlipTruck,
+    header: "FlipTruck",
+    description: "UP • UP • down UP"
   },
   {
     name: "wagon",
-    src: Wagon,
-    header: "Wagon",
-    description: "down • down • down • UP"
+    src: FlipWagon,
+    header: "FlipWagon",
+    description: "UP • UP • UP • down"
   }
 ];
 const ShapeCard = ({
