@@ -9,6 +9,7 @@ import Page3 from "./pages/Page3.jsx";
 import Page4 from "./pages/Page4.jsx";
 import Page5 from "./pages/Page5.jsx";
 import Page6 from "./pages/Page6";
+import Page7 from "./pages/Page7";
 import AnimatedGrid from "./components/AnimatedGrid";
 import IntroPage from "./pages/IntroPage.jsx";
 import SimpleSlider from "./pages/slickTest.jsx";
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path="/page4" component={Page4} />
           <Route path="/page5" component={Page5} />
           <Route path="/page6" component={Page6} />
+          <Route path="/page7" component={Page7} />
           <Route path="/shapesQuiz1" component={ShapesQuiz1} />
           <Route path="/shapesQuiz2" component={ShapesQuiz2} />
           <Route path="/gridTest" component={AnimatedGrid} />
