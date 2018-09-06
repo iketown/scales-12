@@ -43,7 +43,7 @@ export default class Page3 extends Component {
               topShape={scaleShape[1].top}
               shapesSelected={["car", "truck", "wagon", "line"]}
               root={scaleShape[0]}
-              split={true}
+              split={!this.state.hide2ndShape && true}
               colorAll={true}
               hide2ndShape={this.state.hide2ndShape}
             />

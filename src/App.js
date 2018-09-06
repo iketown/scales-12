@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./components/uiElements/ScrollToTop.jsx";
 import "./App.css";
 import IntroPage from "./pages/IntroPage.jsx";
 import Page1 from "./pages/Page1.jsx";
@@ -16,19 +17,21 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route path="/" exact component={IntroPage} />
-          <Route path="/intro" exact component={IntroPage} />
-          <Route path="/page1" component={Page1} />
-          <Route path="/page2" component={Page2} />
-          <Route path="/page3" component={Page3} />
-          <Route path="/page4" component={Page4} />
-          <Route path="/page5" component={Page5} />
-          <Route path="/page6" component={Page6} />
-          <Route path="/page7" component={Page7} />
-          <Route path="/shapesQuiz1" component={ShapesQuiz1} />
-          <Route path="/shapesQuiz2" component={ShapesQuiz2} />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route path="/" exact component={IntroPage} />
+            <Route path="/intro" exact component={IntroPage} />
+            <Route path="/page1" component={Page1} />
+            <Route path="/page2" component={Page2} />
+            <Route path="/page3" component={Page3} />
+            <Route path="/page4" component={Page4} />
+            <Route path="/page5" component={Page5} />
+            <Route path="/page6" component={Page6} />
+            <Route path="/page7" component={Page7} />
+            <Route path="/shapesQuiz1" component={ShapesQuiz1} />
+            <Route path="/shapesQuiz2" component={ShapesQuiz2} />
+          </Switch>
+        </ScrollToTop>
       </Router>
     );
   }

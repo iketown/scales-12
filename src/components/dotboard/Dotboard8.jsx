@@ -17,7 +17,7 @@ const GridHalfPose = posed.div({
   in: { opacity: 1 },
   out: { opacity: 0, width: "0px" }
 });
-const DotboardGridHalf = styled.div`
+const DotboardGridHalf = styled(GridHalfPose)`
   display: grid;
   grid-template-columns: repeat(4, 1.5rem);
   grid-template-rows: repeat(2, 1.5rem);
@@ -90,31 +90,31 @@ const Dotboard8 = ({
   return (
     <Box>
       {[bottomShape, topShape].map((shape, index) => (
-        <GridHalfPose
+        <DotboardGridHalf
+          split={index === 1 ? split : ""}
+          box={split}
           key={index}
           pose={hide2ndShape && index === 1 ? "out" : "in"}
         >
-          <DotboardGridHalf split={index === 1 ? split : ""} box={split}>
-            {shapesObj[shape].map((letter, i) => {
-              const offset = index === 0 ? 1 : 5;
-              return (
-                <GridItem
-                  area={`${letter}${i + 1}`}
-                  color={
-                    shapesSelected.includes(shape) ||
-                    shapesSelected.includes(shape.slice(4).toLowerCase())
-                      ? colors[shape]
-                      : colorAll
-                        ? "#000"
-                        : colors.faded
-                  }
-                >
-                  <NumberCircle numberOfScale={i + offset} />
-                </GridItem>
-              );
-            })}
-          </DotboardGridHalf>
-        </GridHalfPose>
+          {shapesObj[shape].map((letter, i) => {
+            const offset = index === 0 ? 1 : 5;
+            return (
+              <GridItem
+                area={`${letter}${i + 1}`}
+                color={
+                  shapesSelected.includes(shape) ||
+                  shapesSelected.includes(shape.slice(4).toLowerCase())
+                    ? colors[shape]
+                    : colorAll
+                      ? "#000"
+                      : colors.faded
+                }
+              >
+                <NumberCircle numberOfScale={i + offset} />
+              </GridItem>
+            );
+          })}
+        </DotboardGridHalf>
       ))}
 
       <ScaleName>{root}</ScaleName>
