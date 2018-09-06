@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="305px" height="150px" viewBox="0 0 305 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>LineDots</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LineDots" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold">
+        <text id="❶" fill="#000000">
+            <tspan x="18" y="122">❶</tspan>
+        </text>
+        <text id="❷" fill="#000000">
+            <tspan x="108" y="122">❷</tspan>
+        </text>
+        <text id="❸" fill="#000000">
+            <tspan x="197" y="122">❸</tspan>
+        </text>
+        <text id="❹" fill="#000000">
+            <tspan x="247" y="122">❹</tspan>
+        </text>
+    </g>
+</svg>

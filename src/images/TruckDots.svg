@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="305px" height="150px" viewBox="0 0 305 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>TruckDots</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="TruckDots" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(20.000000, 99.000000)">
+            <circle id="Oval" fill="#4A90E2" cx="12" cy="14" r="10"></circle>
+            <text id="❶" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+                <tspan x="0" y="24">❶</tspan>
+            </text>
+        </g>
+        <g id="Group-2" transform="translate(107.000000, 98.000000)">
+            <circle id="Oval-Copy" fill="#4A90E2" cx="12" cy="15" r="10"></circle>
+            <text id="❷" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+                <tspan x="0" y="24">❷</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(198.000000, 17.000000)">
+            <circle id="Oval-Copy-2" fill="#4A90E2" cx="14" cy="16" r="10"></circle>
+            <text id="❸" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+                <tspan x="0" y="24">❸</tspan>
+            </text>
+        </g>
+        <g id="Group-4" transform="translate(247.000000, 98.000000)">
+            <circle id="Oval-Copy-3" fill="#4A90E2" cx="12" cy="15" r="10"></circle>
+            <text id="❹" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+                <tspan x="0" y="24">❹</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
