@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { Header, Button } from "semantic-ui-react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   Line,

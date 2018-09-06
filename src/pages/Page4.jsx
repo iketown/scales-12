@@ -16,7 +16,12 @@ export default class Page4 extends Component {
           These four shapes are the basic building blocks of the entire 12scales
           system. Carefully memorize all four.
         </p>
-        <p>This will be on the test. 😉</p>
+        <p>
+          This will be on the test.{" "}
+          <span role="img" aria-label="wink emoji">
+            😉
+          </span>
+        </p>
         <div>
           <Grid stackable columns={2}>
             <Grid.Row>

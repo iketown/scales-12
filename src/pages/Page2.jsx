@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Header, Card, Image, Button, Icon, Popup } from "semantic-ui-react";
+import { Header, Button, Icon, Popup } from "semantic-ui-react";
 import styled from "styled-components";
-import posed, { PoseGroup } from "react-pose";
 import Layout from "../layout/Layout.jsx";
 import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
-import { CarDots, TruckDots, LineDots, WagonDots, teacher } from "../images";
+import { CarDots, TruckDots, LineDots, WagonDots } from "../images";
 import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
-
-const CardFader = posed.div({
-  active: { opacity: 1, y: "0%" },
-  disabled: { opacity: 0.05, y: "10%" },
-  done: { opacity: 0.7, y: "3%" }
-});
 
 export const DotCardsGrid = styled.div`
   display: grid;
@@ -147,37 +140,6 @@ export default class Page2 extends Component {
     );
   }
 }
-
-const ShapeCard = ({
-  src,
-  header,
-  description,
-  setCardIndex,
-  i,
-  disabled,
-  active
-}) => (
-  <CardFader pose={active ? "active" : disabled ? "disabled" : "done"}>
-    <Card>
-      <Card.Content>
-        <Image src={src} />
-        <Card.Header>{header}</Card.Header>
-        <Card.Description>{description}</Card.Description>
-
-        <Button
-          floated="right"
-          disabled={!active}
-          basic={!active}
-          primary={active}
-          size="small"
-          compact
-          onClick={() => setCardIndex(i + 1)}
-          content="OK"
-        />
-      </Card.Content>
-    </Card>
-  </CardFader>
-);
 
 const shapesArr = [
   { name: "line", image: LineDots },

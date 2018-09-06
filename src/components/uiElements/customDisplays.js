@@ -1,7 +1,5 @@
-import React, { Component } from "react";
-import { Card, Image, Button } from "semantic-ui-react";
-import posed, { PoseGroup } from "react-pose";
-import styled from "styled-components";
+import React from "react";
+import { Card, Image } from "semantic-ui-react";
 export const ScaleCard = ({ src, title, height }) => (
   <Card>
     <Image

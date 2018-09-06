@@ -2,7 +2,7 @@ import React from "react";
 import posed from "react-pose";
 import styled from "styled-components";
 import { HoverFloat, CardOverlay } from "./index";
-import { Card, Icon } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 const CardFader = posed.div({
   correct: { opacity: 1, transform: "scale(1.1)" },

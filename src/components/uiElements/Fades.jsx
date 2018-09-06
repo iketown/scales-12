@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import posed, { PoseGroup } from "react-pose";
-import styled from "styled-components";
+import React from "react";
+import posed from "react-pose";
 
 const Fader = posed.div({
   in: { opacity: 1, delay: 400 },

@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "semantic-ui-react";
 import styled from "styled-components";
 
 const OverlayDiv = styled.div`

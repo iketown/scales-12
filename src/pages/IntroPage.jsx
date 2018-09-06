@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  Header,
-  Container,
-  Image,
-  Card,
-  Button,
-  Icon
-} from "semantic-ui-react";
+import { Header, Container, Card, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { ScaleCard } from "../components/uiElements/customDisplays";
 import Layout from "../layout/Layout.jsx";
 import wrongNotes from "../images/wrongNotes.svg";
@@ -18,12 +10,6 @@ import AmajorScale from "../images/AmajorScale.svg";
 import DbMajorScale from "../images/DbMajorScale.svg";
 import BbMajorScale from "../images/BbmajorScale.svg";
 
-const ScaleImagesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  }
-`;
 export default () => {
   return (
     <Layout>

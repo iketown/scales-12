@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { paths, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
-import { delayBetweenQuestions } from "../../utils/generalConfig";
-import styled, { keyframes } from "styled-components";
-import posed from "react-pose";
+import styled from "styled-components";
 
-import Circle from "./Circle.jsx";
 import NumberCircle from "./NumberCircle.jsx";
 import ShapeBackground from "./ShapeBackground";
 

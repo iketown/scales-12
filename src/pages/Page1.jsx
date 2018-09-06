@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Header, Card, Image, Button, Icon } from "semantic-ui-react";
-import styled from "styled-components";
+import { Header, Button, Icon } from "semantic-ui-react";
 import Layout from "../layout/Layout.jsx";
 import { fullScales } from "../components/keyboard/keyboardShapes";
-import { carDots, truckDots, lineDots, wagonDots, teacher } from "../images";
 import KeyboardDisplayOnly from "../components/keyboard/KeyboardDisplayOnly";
 
 export default class Page2 extends Component {

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled, { ThemeProvider } from "styled-components";
-import posed from "react-pose";
-import Key from "./Key.jsx";
 import DumbKey from "./DumbKey";
-import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
-import { scale } from "style-value-types";
+import { keyObject, keyList } from "../../keySVGs/keyboardUtils";
 
 const KeyboardDiv = styled.div`
   display: inline-flex;
@@ -37,7 +34,7 @@ class Keyboard extends Component {
     });
   }
   getCircleShape = noteName => {
-    const { scaleShapes, notesToShow, shapeToShow, colorAll } = this.props;
+    const { notesToShow } = this.props;
 
     if (notesToShow.includes(noteName)) return "greyFade";
     return null;

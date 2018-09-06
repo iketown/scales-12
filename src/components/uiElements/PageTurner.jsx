@@ -20,7 +20,7 @@ export default class PageTurner extends Component {
       <PoseGroup preEnterPose="before">
         {children.length &&
           children.map((child, i) => {
-            if (i === showIndex)
+            if (i === showIndex) {
               return (
                 <Page key={`pose ${i}`}>
                   <div>
@@ -34,6 +34,7 @@ export default class PageTurner extends Component {
                   </div>
                 </Page>
               );
+            } else return null;
           })}
       </PoseGroup>
     );

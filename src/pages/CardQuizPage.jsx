@@ -1,30 +1,22 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
-import { Link } from "react-router-dom";
-import {
-  Header,
-  Card,
-  Image,
-  Button,
-  Icon,
-  GridColumn
-} from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import posed, { PoseGroup } from "react-pose";
 import { ding, plink } from "../components/keyboard/sounds/soundFX";
 import { shuffleArray } from "../utils/generalUtils";
 import { delayBetweenQuestions } from "../utils/generalConfig";
 import { ShapeCard, NextButton } from "../components/uiElements";
-import {
-  Line,
-  Car,
-  Truck,
-  Wagon,
-  carDots,
-  truckDots,
-  wagonDots,
-  lineDots
-} from "../images";
+// import {
+//   Line,
+//   Car,
+//   Truck,
+//   Wagon,
+//   carDots,
+//   truckDots,
+//   wagonDots,
+//   lineDots
+// } from "../images";
 
 const CardsGrid = styled.ul`
   list-style: none;
@@ -108,6 +100,8 @@ const QuestionCard = ({
                   <h1>{clue}</h1>
                 </QuestionSlider>
               );
+            } else {
+              return null;
             }
           })}
         </PoseGroup>
@@ -191,7 +185,7 @@ export default class CardQuiz1 extends Component {
   };
   advanceQuestion = () => {
     const { questionIndex } = this.state;
-    const { testQuestions, handleCompletedQuiz } = this.props;
+    const { testQuestions } = this.props;
     if (questionIndex + 1 === testQuestions.length) return this.endQuiz();
     const newFour = this.pickFourCards();
     this.setState(
