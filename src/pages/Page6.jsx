@@ -36,7 +36,7 @@ export default class Page6 extends Component {
           have no space between them.
         </p>
         <p>
-          <strong>every</strong> shape has that same left-to-right spacing, when
+          <strong>Every</strong> shape has that same left-to-right spacing, when
           you look at the top:
           <BoxDiv>
             {dots[1]}
@@ -80,7 +80,8 @@ export default class Page6 extends Component {
         <Image src={flipCarSpacing} alt="" width="300px" />
         <p>
           This will become second nature to you in no time, but while you're
-          getting started, just keep that pattern in mind:
+          getting started, if you find yourself wondering which white key you're
+          supposed to use, remember:
         </p>
         <p>
           <strong>KEY</strong> space <strong>KEY</strong> space{" "}

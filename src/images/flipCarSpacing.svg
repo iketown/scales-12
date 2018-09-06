@@ -22,7 +22,7 @@
                 <path d="M247.886282,0.5 L247.886282,194.552326 C247.886282,199.799031 252.139576,204.052326 257.386282,204.052326 L277.740072,204.052326 C282.986777,204.052326 287.240072,199.799031 287.240072,194.552326 L287.240072,0.5 L247.886282,0.5 Z" id="Gb" fill="#000000"></path>
             </g>
         </g>
-        <rect id="Rectangle-2" stroke="#7ED321" stroke-width="2" fill-opacity="0.7" fill="#FFFFFF" fill-rule="nonzero" x="50" y="44" width="269" height="57" rx="8"></rect>
+        <rect id="Rectangle-2" stroke="#7ED321" stroke-width="2" fill-opacity="0.3" fill="#FFFFFF" fill-rule="nonzero" x="50" y="44" width="269" height="57" rx="8"></rect>
         <text id="❶-copy" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
             <tspan x="64" y="79">❶</tspan>
         </text>
@@ -30,7 +30,7 @@
             <tspan x="146" y="79">❷</tspan>
         </text>
         <text id="❸-copy" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
-            <tspan x="234" y="79">❸</tspan>
+            <tspan x="231" y="79">❸</tspan>
         </text>
         <g id="Group-3" transform="translate(181.500000, 201.000000) scale(1, -1) translate(-181.500000, -201.000000) translate(60.000000, 143.000000)" fill="#000000" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold">
             <text id="❶" transform="translate(13.500000, 101.500000) scale(1, -1) translate(-13.500000, -101.500000) ">
@@ -39,21 +39,21 @@
             <text id="❷" transform="translate(109.500000, 14.500000) scale(1, -1) translate(-109.500000, -14.500000) ">
                 <tspan x="96" y="24">❷</tspan>
             </text>
-            <text id="❸" transform="translate(198.500000, 14.500000) scale(1, -1) translate(-198.500000, -14.500000) ">
-                <tspan x="185" y="24">❸</tspan>
+            <text id="❸" transform="translate(183.500000, 14.500000) scale(1, -1) translate(-183.500000, -14.500000) ">
+                <tspan x="170" y="24">❸</tspan>
             </text>
             <text id="❹" transform="translate(229.500000, 101.500000) scale(1, -1) translate(-229.500000, -101.500000) ">
                 <tspan x="216" y="111">❹</tspan>
             </text>
         </g>
         <text id="❹-copy" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
-            <tspan x="278" y="79">❹</tspan>
+            <tspan x="274" y="79">❹</tspan>
         </text>
         <text id="⊗" font-family="AppleSymbols, Apple Symbols" font-size="46" font-weight="normal" fill="#D0021B">
-            <tspan x="103.137207" y="85">⊗</tspan>
+            <tspan x="102.137207" y="85">⊗</tspan>
         </text>
         <text id="⊗-copy" font-family="AppleSymbols, Apple Symbols" font-size="46" font-weight="normal" fill="#D0021B">
-            <tspan x="186.137207" y="85">⊗</tspan>
+            <tspan x="183.137207" y="85">⊗</tspan>
         </text>
         <g id="Group" transform="translate(180.000000, 216.000000) scale(1, -1) translate(-180.000000, -216.000000) translate(56.000000, 156.000000)" opacity="0.3">
             <g id="CAR">
