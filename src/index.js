@@ -5,7 +5,6 @@ import store from "./store";
 
 import "./index.css";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
 
 let render = () => {
   ReactDOM.render(
@@ -22,5 +21,3 @@ if (module.hot) {
   });
 }
 render();
-
-registerServiceWorker();
