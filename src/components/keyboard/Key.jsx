@@ -80,7 +80,7 @@ class Key extends Component {
     const KeyJSX = (
       <Keydiv style={keyIsBlack ? blackKeyStyles : {}}>
         <Svg
-          onMouseDown={clickHandler}
+          onClick={clickHandler}
           width={keyIsBlack ? 46 * keyboardScale : 77 * keyboardScale}
           height={keyIsBlack ? 338 * keyboardScale : 502 * keyboardScale}
           viewBox={keyIsBlack ? "0 0 46 338" : "0 0 77 502"}
@@ -96,7 +96,7 @@ class Key extends Component {
         {circleType && (
           <AnimatedCircle pose={showCircles ? "in" : "out"}>
             <CircleDiv
-              onMouseDown={clickHandler}
+              onClick={clickHandler}
               black={keyIsBlack}
               keyboardScale={keyboardScale}
             >

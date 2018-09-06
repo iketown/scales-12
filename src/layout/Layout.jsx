@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Dimensions from "react-dimensions";
 import { Container, Dropdown, Image, Menu } from "semantic-ui-react";
 class Layout extends Component {
   state = {};

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./components/uiElements/ScrollToTop.jsx";
+import Dimensions from "react-dimensions";
+
 import "./App.css";
 import IntroPage from "./pages/IntroPage.jsx";
 import Page1 from "./pages/Page1.jsx";

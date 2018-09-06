@@ -21,14 +21,14 @@ import { ShapeCard, NextButton } from "../components/uiElements";
 const CardsGrid = styled.ul`
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(300px, max-content));
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   grid-gap: 1.5rem;
   background: #f9f9f9;
   padding: 1rem;
-  @media screen and (max-width: 700px) {
-    grid-template-columns: repeat(1, minmax(300px, max-content));
-  }
+  // @media screen and (max-width: 700px) {
+  //   grid-template-columns: repeat(1, minmax(300px, max-content));
+  // }
 `;
 
 const Item = posed.li({});
@@ -122,13 +122,14 @@ export default class CardQuiz1 extends Component {
   };
   componentDidMount() {
     const { testQuestions, cardsArr } = this.props;
-    window.scrollTo(0, 0);
+
     const firstFourCards = ["fliptruck", "wagon", "flipcar", "line"];
     const nextFour = cardsArr.filter(card =>
       firstFourCards.includes(card.name)
     );
+    const newCardsArr = cardsArr.length === 4 ? cardsArr : nextFour;
     this.setState({
-      shapeCards: nextFour,
+      shapeCards: newCardsArr,
       currentCorrectAnswer: testQuestions[0].clue.toLowerCase(),
       lessonIntroOuttro: "intro"
     });

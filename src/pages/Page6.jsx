@@ -21,19 +21,20 @@ export default class Page6 extends Component {
           ...but first, a quick note about spacing. This will save you from a
           few wrong notes in the future.
         </p>
-
-        <Image src={keyboardSpacing} alt="" width="300px" />
         <p>
           Sometimes it helps to look up at the top of the keys, where all the
           black and white keys are present, and have the same width, so you can
-          easily see which keys you're skipping.
+          easily see which keys you're using / skipping. See the green box at
+          the top of the keys?
         </p>
+
+        <Image src={keyboardSpacing} alt="" width="300px" />
         <p>
           Even though the {dots[1]} {dots[2]} {dots[3]} {dots[4]} keys seem
           evenly spaced on the bottom, if you look at the top, you can see there
           is a black key separating {dots[1]} & {dots[2]}, and another key
           separating {dots[2]} & {dots[3]}, while keys {dots[3]} & {dots[4]}{" "}
-          have no space between them.
+          have nothing between them.
         </p>
         <p>
           <strong>Every</strong> shape has that same left-to-right spacing, when
@@ -48,16 +49,18 @@ export default class Page6 extends Component {
           </BoxDiv>
         </p>
         <p>
-          "<strong>KEY</strong> space <strong>KEY</strong> space{" "}
-          <strong>KEY</strong> <strong>KEY</strong>"
+          go ahead, say it out loud. "<strong>ONE</strong> skip{" "}
+          <strong>TWO</strong> skip <strong>THREE</strong> <strong>FOUR</strong>
+          "
         </p>
         <p>
           This becomes important in some cases where it may not be clear which
           white key to use.
         </p>
         <p>
-          In this image, notice how there are two white keys where the {dots[4]}{" "}
-          could go and it would still (sort of) look like a 'Car' shape.
+          In this image, notice how there are two options for white keys where
+          the {dots[4]} could go and it would still (sort of) look like a 'Car'
+          shape.
         </p>
         <Image src={carSpacing} alt="" width="300px" />
         <p>
@@ -84,8 +87,8 @@ export default class Page6 extends Component {
           supposed to use, remember:
         </p>
         <p>
-          <strong>KEY</strong> space <strong>KEY</strong> space{" "}
-          <strong>KEY</strong> <strong>KEY</strong>
+          "<strong>ONE</strong> skip <strong>TWO</strong> skip{" "}
+          <strong>THREE</strong> <strong>FOUR</strong>"
         </p>
         <p>
           Dont worry if this seems like its getting complicated. After a little

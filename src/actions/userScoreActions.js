@@ -9,3 +9,9 @@ export const startChapterQuiz = chapterId => ({
   type: START_CHAPTER_QUIZ,
   chapterId
 });
+
+export const COMPLETE_KEYBOARD_CHALLENGE = "COMPLETE_KEYBOARD_CHALLENGE";
+export const completeKeyboardChallenge = keyboardId => ({
+  type: COMPLETE_KEYBOARD_CHALLENGE,
+  keyboardId
+});

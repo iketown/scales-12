@@ -128,7 +128,6 @@ class LessonCard extends Component {
     } = this.state;
     const { answers, scale, chapterTitle } = this.props;
     const {
-      type,
       lesson,
       keysToLabel,
       showCircles,
@@ -156,33 +155,21 @@ class LessonCard extends Component {
         <div>
           <Cta>{cta}</Cta>
           <BoardDiv>
-            {type === "keyboard" && (
-              <Keyboard
-                bottomKey="C1"
-                topKey="E2"
-                correctAnswer={currentCorrectAnswer}
-                keyboardId="myId"
-                showFirst={false}
-                showAllCircles={showCircles}
-                showHints={false}
-                starters={starters}
-                scale={scale}
-                handleAnswer={this.handleAnswer}
-                keysToLabel={keysToLabel}
-                questionNumber={currentAnswerIndex}
-                showShapeBackground={showShapeBackground}
-              />
-            )}
-            {type === "dotboard" && (
-              <Dotboard
-                scale={scale}
-                correctAnswer={currentCorrectAnswer}
-                image={currentImage}
-                handleAnswer={this.handleAnswer}
-                questionNumber={currentAnswerIndex}
-                showShapeBackground={showShapeBackground}
-              />
-            )}
+            <Keyboard
+              bottomKey="C1"
+              topKey="E2"
+              correctAnswer={currentCorrectAnswer}
+              keyboardId="myId"
+              showFirst={false}
+              showAllCircles={showCircles}
+              showHints={false}
+              starters={starters}
+              scale={scale}
+              handleAnswer={this.handleAnswer}
+              keysToLabel={keysToLabel}
+              questionNumber={currentAnswerIndex}
+              showShapeBackground={showShapeBackground}
+            />
           </BoardDiv>
         </div>
       </LessonCardFrame>

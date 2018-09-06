@@ -13,13 +13,13 @@ const OverlayDiv = styled.div`
   justify-content: center;
   align-items: center;
   & h1.x {
-        opacity: .5;
-        font-size: 8rem;
+        opacity: .3;
+        font-size: 6rem;
         color: red;
     }
     & h1.check {
-        opacity: .5;
-        font-size: 8rem;
+        opacity: .3;
+        font-size: 6rem;
         color: green;
     }
   }

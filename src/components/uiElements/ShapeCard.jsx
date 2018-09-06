@@ -2,7 +2,7 @@ import React from "react";
 import posed from "react-pose";
 import styled from "styled-components";
 import { HoverFloat, CardOverlay } from "./index";
-import { Card } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 
 const CardFader = posed.div({
   correct: { opacity: 1, transform: "scale(1.1)" },
@@ -33,14 +33,15 @@ const ShapeCard = props => {
         pose={correct ? "correct" : wrong ? "wrong" : "regular"}
         style={{ position: "relative" }}
       >
-        <Card>
+        <Card fluid>
           <Card.Content>
-            <ImageDiv
+            <Image src={correct ? fullPic : hintPic} onClick={onClick} fluid />
+            {/* <ImageDiv
               fullPic={fullPic}
               hintPic={hintPic}
               showImage={showImage}
               onClick={onClick}
-            />
+            /> */}
             <Card.Header>{showImage ? <span>{header}</span> : " "}</Card.Header>
             {wrong && <CardOverlay shape="x" />}
             {correct && <CardOverlay shape="check" />}
