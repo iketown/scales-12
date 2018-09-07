@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 import { Icon, Button } from "semantic-ui-react";
-
+import NextButton from "../uiElements/NextButton.jsx";
 const OverlayDiv = styled.div`
   position: absolute;
   top: 0;
@@ -24,16 +24,18 @@ class FinishedOverlay extends Component {
     this.setState({ showMe: true });
   }
   render() {
-    const { correct, doOver } = this.props;
+    const { correct, doOver, continueLink, continueText } = this.props;
     return (
       <OverlayDiv>
         <Icon
           onDoubleClick={doOver}
           name={correct ? "check circle" : "frown outline"}
-          size="massive"
+          size="huge"
           color={correct ? "green" : "red"}
           style={{ cursor: "pointer" }}
         />
+        <p>{continueText}</p>
+        <NextButton active to={continueLink} center />
 
         {!correct && (
           <Button onClick={doOver} style={{ margin: "2rem" }} primary>

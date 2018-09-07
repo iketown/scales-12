@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import posed from "react-pose";
+import posed, { PoseGroup } from "react-pose";
 import Dimensions from "react-dimensions";
 import { Button, Message } from "semantic-ui-react";
 import styled from "styled-components";
@@ -15,7 +15,7 @@ import { delay } from "popmotion";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
-  display: flex;
+  display: inline-flex;
   // margin: 1rem auto;
   // border: 2px blue dotted;
   padding: 10px;
@@ -25,24 +25,40 @@ const KeyboardDiv = styled.div`
   position: relative;
 `;
 
-const WhiteKeyDiv = styled.div`
+const staggerDuration = 50;
+const keyConfig = {
+  before: {
+    y: "-5vh",
+    opacity: 0,
+    transition: { type: "spring", stiffness: 200 }
+  },
+  enter: {
+    y: "0vh",
+    opacity: 1,
+    transition: { type: "spring", stiffness: 200 },
+    delay: ({ i }) => i * staggerDuration
+  },
+  exit: {
+    y: "5vh",
+    opacity: 0,
+    transition: { type: "spring", stiffness: 200 }
+  }
+};
+const AnimatedKey = posed.div(keyConfig);
+const WhiteKeyDiv = styled(AnimatedKey)`
   position: relative;
   margin: ${p => p.keyboardScale * 1 || 1}px;
 `;
-const keyConfig = {
-  in: { x: "0vw", opacity: 1, delayChildren: 50 },
-  out: { x: "50vw", opacity: 0 }
-};
-const keyboardConfig = {
-  in: { staggerChildren: 20 },
-  out: { staggerChildren: 30, staggerDirection: -1 }
-};
-const AnimatedKey = posed.div(keyConfig);
-const AnimatedKeyboard = posed.div(keyboardConfig);
-const StyledKeyboard = styled(AnimatedKeyboard)`
-  display: inline-flex;
-  position: relative;
-`;
+
+// const keyboardConfig = {
+//   enter: { staggerChildren: 20 },
+//   exit: { staggerChildren: 30, staggerDirection: -1 }
+// };
+// const AnimatedKeyboard = posed.div(keyboardConfig);
+// const StyledKeyboard = styled(AnimatedKeyboard)`
+//   display: inline-flex;
+//   position: relative;
+// `;
 
 const playNote = noteName => {
   let octave = Number(noteName.split("").pop());
@@ -124,6 +140,11 @@ class Keyboard extends Component {
     });
     setTimeout(this.goToNextQuestion, 1000);
   };
+  handleWrongAnswer = () => {
+    plink();
+    this.setState({ correct: false, showCircles: false, finished: true });
+    setTimeout(this.resetKeyboard, delayBetweenQuestions);
+  };
   goToNextQuestion = () => {
     const { answers } = this.props;
     const nextIndex = this.state.questionIndex + 1;
@@ -140,11 +161,6 @@ class Keyboard extends Component {
       );
     }
   };
-  handleWrongAnswer = () => {
-    plink();
-    this.setState({ correct: false, showCircles: false, finished: true });
-    setTimeout(this.resetKeyboard, delayBetweenQuestions);
-  };
   finishThisTest = () => {
     const { keyboardId } = this.props;
     this.props.dispatch(completeKeyboardChallenge(keyboardId));
@@ -157,7 +173,8 @@ class Keyboard extends Component {
       showCircles: true,
       correctCircles: [],
       wrongCircles: [],
-      keyGroups: keyList(answers[index].bottomKey, answers[index].topKey)
+      keyGroups: keyList(answers[index].bottomKey, answers[index].topKey),
+      finished: false
     });
   };
   getCircleShape = noteName => {
@@ -192,19 +209,22 @@ class Keyboard extends Component {
       keysToLabel,
       keyboardId,
       showShapeBackground,
-      instructions,
-      messageInstructions
+      messageInstructions,
+      continueLink,
+      continueText
     } = this.props;
     let { keyboardScale } = this.props;
     const { keysIn, showCircles } = this.state;
-    const doneWithThisTest = this.props.keyboardChallenges[keyboardId]
-      .completed;
+    const thisTest = this.props.keyboardChallenges[keyboardId];
+    const doneWithThisTest =
+      thisTest && this.props.keyboardChallenges[keyboardId].completed;
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
         <Message {...messageInstructions} />
-        <StyledKeyboard pose={keysIn ? "in" : "out"}>
-          <KeyboardDiv>
-            {this.state.keyGroups.map(key => {
+        {/* <StyledKeyboard pose={keysIn ? "enter" : "exit"}> */}
+        <KeyboardDiv>
+          <PoseGroup preEnterPose="before">
+            {this.state.keyGroups.map((key, i) => {
               const sharedProps = {
                 keyboardId,
                 showCircles
@@ -213,40 +233,46 @@ class Keyboard extends Component {
                 <WhiteKeyDiv
                   keyboardScale={keyboardScale}
                   key={`${key[0]} whiteKeyDiv`}
+                  i={i}
                 >
-                  <AnimatedKey key={`${key[0]} animatedKey`}>
+                  <Key
+                    {...sharedProps}
+                    key={`${key[0]} whiteKey`}
+                    noteShape={keyObject[key[0]].shape}
+                    noteName={key[0]}
+                    circleType={this.getCircleShape(key[0])}
+                    clickHandler={this.clickHandler(key[0])}
+                    showLabel={keysToLabel && keysToLabel.includes(key[0])}
+                    showShapeBackground={showShapeBackground}
+                    keyboardScale={keyboardScale}
+                  />
+                  {key.length > 1 && (
                     <Key
                       {...sharedProps}
-                      key={`${key[0]} whiteKey`}
-                      noteShape={keyObject[key[0]].shape}
-                      noteName={key[0]}
-                      circleType={this.getCircleShape(key[0])}
-                      clickHandler={this.clickHandler(key[0])}
-                      showLabel={keysToLabel && keysToLabel.includes(key[0])}
+                      noteShape="flat"
+                      key={`${key[0]} blackKey`}
+                      noteName={key[1]}
+                      hide={key[0] === bottomKey}
+                      circleType={this.getCircleShape(key[1])}
+                      clickHandler={this.clickHandler(key[1])}
+                      showLabel={keysToLabel && keysToLabel.includes(key[1])}
                       showShapeBackground={showShapeBackground}
                       keyboardScale={keyboardScale}
                     />
-                    {key.length > 1 && (
-                      <Key
-                        {...sharedProps}
-                        noteShape="flat"
-                        key={`${key[0]} blackKey`}
-                        noteName={key[1]}
-                        hide={key[0] === bottomKey}
-                        circleType={this.getCircleShape(key[1])}
-                        clickHandler={this.clickHandler(key[1])}
-                        showLabel={keysToLabel && keysToLabel.includes(key[1])}
-                        showShapeBackground={showShapeBackground}
-                        keyboardScale={keyboardScale}
-                      />
-                    )}
-                  </AnimatedKey>
+                  )}
                 </WhiteKeyDiv>
               );
             })}
-          </KeyboardDiv>
-          {doneWithThisTest && <FinishedOverlay correct />}
-        </StyledKeyboard>
+          </PoseGroup>
+          {doneWithThisTest && (
+            <FinishedOverlay
+              correct
+              continueLink={continueLink}
+              continueText={continueText}
+            />
+          )}
+        </KeyboardDiv>
+        {/* </StyledKeyboard> */}
       </div>
     );
   }

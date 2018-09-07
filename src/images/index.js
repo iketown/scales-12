@@ -24,6 +24,8 @@ import keyboardSpacing from "./keyboardSpacing.svg";
 import carSpacing from "./carSpacing.svg";
 import flipCarSpacing from "./flipCarSpacing.svg";
 import carShapeAnimation from "./carShapeAnimation.gif";
+import carsOnKeyboard from "./carsOnKeyboard.svg";
+import splitKeyboardAnimation from "./splitKeyboardAnimation.gif";
 export {
   Line,
   Car,
@@ -50,5 +52,7 @@ export {
   keyboardSpacing,
   carSpacing,
   flipCarSpacing,
-  carShapeAnimation
+  carShapeAnimation,
+  carsOnKeyboard,
+  splitKeyboardAnimation
 };
