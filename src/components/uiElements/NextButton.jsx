@@ -16,17 +16,19 @@ export default ({ active, to, text, center }) => {
           : {}
       }
     >
-      <Button
-        as={Link}
-        to={active ? to : "/"}
-        icon
-        labelPosition="right"
-        primary={active}
-        disabled={!active}
-      >
-        <Icon name="arrow right" />
-        {text || "Next"}
-      </Button>
+      {to && (
+        <Button
+          as={Link}
+          to={active ? to : "/"}
+          icon
+          labelPosition="right"
+          primary={active}
+          disabled={!active}
+        >
+          <Icon name="arrow right" />
+          {text || "Next"}
+        </Button>
+      )}
     </div>
   );
 };

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="506px" height="300px" viewBox="0 0 506 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>DbMajorScale</title>
+    <title>EMajorConventional</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="DbMajorScale" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="EMajorConventional" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Group" transform="translate(-346.000000, 0.000000)">
             <g id="Oct-1" opacity="0" fill="#FFFFFF" stroke="#000000">
                 <path d="M322.749723,-2.84217094e-14 L348.50214,-2.84217094e-14 L348.50214,203.473828 L348.50214,289.050633 C348.50214,294.57348 344.024987,299.050633 338.50214,299.050633 L311.322247,299.050633 C305.7994,299.050633 301.322247,294.57348 301.322247,289.050633 L301.322247,203.473828 L322.749723,203.473828 L322.749723,-2.84217094e-14 Z" id="B"></path>
@@ -32,28 +32,84 @@
             </g>
         </g>
         <text id="❶" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="34" y="154">❶</tspan>
+            <tspan x="113" y="254">❶</tspan>
         </text>
         <text id="❷" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="96" y="154">❷</tspan>
+            <tspan x="182" y="154">❷</tspan>
+        </text>
+        <text id="❷-copy" opacity="0.161160714" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="166" y="254">❷</tspan>
         </text>
         <text id="❸" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="165" y="254">❸</tspan>
+            <tspan x="239" y="154">❸</tspan>
+        </text>
+        <text id="❸-copy" opacity="0.161160714" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="216" y="254">❸</tspan>
         </text>
         <text id="❹" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="183" y="154">❹</tspan>
+            <tspan x="266" y="255">❹</tspan>
         </text>
         <text id="❺" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="239" y="154">❺</tspan>
+            <tspan x="312" y="254">❺</tspan>
         </text>
         <text id="❻" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="297" y="154">❻</tspan>
+            <tspan x="386" y="154">❻</tspan>
+        </text>
+        <text id="❻-copy" opacity="0.161160714" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="367" y="254">❻</tspan>
         </text>
         <text id="❼" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="368" y="254">❼</tspan>
+            <tspan x="450" y="154">❼</tspan>
+        </text>
+        <text id="❼-copy" opacity="0.161160714" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="418" y="254">❼</tspan>
         </text>
         <text id="❽" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="386" y="154">❽</tspan>
+            <tspan x="463" y="255">❽</tspan>
         </text>
+        <text id="E" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" fill="#D0021B">
+            <tspan x="113" y="290">E</tspan>
+        </text>
+        <text id="F♯" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-5.1" fill="#D0021B">
+            <tspan x="159" y="292">F</tspan>
+            <tspan x="167.472" y="292" font-family="HiraginoSans-W3, Hiragino Sans" font-size="26" font-weight="300" letter-spacing="-0.2">♯</tspan>
+        </text>
+        <text id="G♯" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-5.1" fill="#D0021B">
+            <tspan x="210" y="292">G</tspan>
+            <tspan x="222.432" y="292" font-family="HiraginoSans-W3, Hiragino Sans" font-size="26" font-weight="300" letter-spacing="-0.2">♯</tspan>
+        </text>
+        <text id="A" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-3.39999986" fill="#D0021B">
+            <tspan x="266" y="292">A</tspan>
+        </text>
+        <text id="B" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-3.39999986" fill="#D0021B">
+            <tspan x="319" y="292">B</tspan>
+        </text>
+        <text id="E" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-3.39999986" fill="#D0021B">
+            <tspan x="471" y="292">E</tspan>
+        </text>
+        <text id="C♯" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-5.1" fill="#D0021B">
+            <tspan x="362" y="292">C</tspan>
+            <tspan x="372.932" y="292" font-family="HiraginoSans-W3, Hiragino Sans" font-size="26" font-weight="300" letter-spacing="-0.2">♯</tspan>
+        </text>
+        <text id="D♯" font-family="Lato-Regular, Lato" font-size="24" font-weight="normal" letter-spacing="-5.1" fill="#D0021B">
+            <tspan x="411" y="292">D</tspan>
+            <tspan x="424.152" y="292" font-family="HiraginoSans-W3, Hiragino Sans" font-size="26" font-weight="300" letter-spacing="-0.2">♯</tspan>
+        </text>
+        <text id="✗" font-family="ZapfDingbatsITC, Zapf Dingbats" font-size="36" font-weight="normal" fill="#D0021B">
+            <tspan x="166" y="259">✗</tspan>
+        </text>
+        <text id="✗-copy" font-family="ZapfDingbatsITC, Zapf Dingbats" font-size="36" font-weight="normal" fill="#D0021B">
+            <tspan x="216" y="259">✗</tspan>
+        </text>
+        <text id="✗-copy-2" font-family="ZapfDingbatsITC, Zapf Dingbats" font-size="36" font-weight="normal" fill="#D0021B">
+            <tspan x="367" y="259">✗</tspan>
+        </text>
+        <text id="✗-copy-3" font-family="ZapfDingbatsITC, Zapf Dingbats" font-size="36" font-weight="normal" fill="#D0021B">
+            <tspan x="418" y="259">✗</tspan>
+        </text>
+        <path id="Line-5-Copy" d="M197,168 L178.889662,187.799385 L201.973305,194.367902 L197,168 Z M181.423637,230.047376 L192.913986,189.667006 L193.461363,187.743369 L189.614089,186.648616 L189.066712,188.572253 L177.576363,228.952624 L177.028987,230.876261 L180.876261,231.971013 L181.423637,230.047376 Z" fill="#D0021B" fill-rule="nonzero"></path>
+        <path id="Line-5-Copy-2" d="M247,168 L228.889662,187.799385 L251.973305,194.367902 L247,168 Z M231.423637,230.047376 L242.913986,189.667006 L243.461363,187.743369 L239.614089,186.648616 L239.066712,188.572253 L227.576363,228.952624 L227.028987,230.876261 L230.876261,231.971013 L231.423637,230.047376 Z" fill="#D0021B" fill-rule="nonzero"></path>
+        <path id="Line-5-Copy-3" d="M398,168 L379.889662,187.799385 L402.973305,194.367902 L398,168 Z M382.423637,230.047376 L393.913986,189.667006 L394.461363,187.743369 L390.614089,186.648616 L390.066712,188.572253 L378.576363,228.952624 L378.028987,230.876261 L381.876261,231.971013 L382.423637,230.047376 Z" fill="#D0021B" fill-rule="nonzero"></path>
+        <path id="Line-5-Copy-4" d="M449,168 L430.889662,187.799385 L453.973305,194.367902 L449,168 Z M433.423637,230.047376 L444.913986,189.667006 L445.461363,187.743369 L441.614089,186.648616 L441.066712,188.572253 L429.576363,228.952624 L429.028987,230.876261 L432.876261,231.971013 L433.423637,230.047376 Z" fill="#D0021B" fill-rule="nonzero"></path>
     </g>
 </svg>

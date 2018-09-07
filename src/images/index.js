@@ -1,3 +1,4 @@
+import CMajorScale from "./CmajorScale.svg";
 import Line from "./Line.svg";
 import Car from "./Car.svg";
 import Truck from "./Truck.svg";
@@ -16,9 +17,6 @@ import CarDots from "./CarDots.svg";
 import TruckDots from "./TruckDots.svg";
 import WagonDots from "./WagonDots.svg";
 import LineDots from "./LineDots.svg";
-import mindBlown from "./mindBlown.gif";
-import paper from "./paper.jpg";
-import teacher from "./teacherAtBoard.png";
 import lineSpacing from "./lineSpacing.svg";
 import keyboardSpacing from "./keyboardSpacing.svg";
 import carSpacing from "./carSpacing.svg";
@@ -26,7 +24,10 @@ import flipCarSpacing from "./flipCarSpacing.svg";
 import carShapeAnimation from "./carShapeAnimation.gif";
 import carsOnKeyboard from "./carsOnKeyboard.svg";
 import splitKeyboardAnimation from "./splitKeyboardAnimation.gif";
+import EMajorConventional from "./EMajorConventional.svg";
+import EMajor12Scales from "./EMajor12Scales.svg";
 export {
+  CMajorScale,
   Line,
   Car,
   Truck,
@@ -45,14 +46,13 @@ export {
   FlipCarDots,
   FlipTruckDots,
   FlipWagonDots,
-  mindBlown,
-  paper,
-  teacher,
   lineSpacing,
   keyboardSpacing,
   carSpacing,
   flipCarSpacing,
   carShapeAnimation,
   carsOnKeyboard,
-  splitKeyboardAnimation
+  splitKeyboardAnimation,
+  EMajorConventional,
+  EMajor12Scales
 };

@@ -24,7 +24,13 @@ class FinishedOverlay extends Component {
     this.setState({ showMe: true });
   }
   render() {
-    const { correct, doOver, continueLink, continueText } = this.props;
+    const {
+      correct,
+      doOver,
+      continueLink,
+      continueText,
+      callbackWhenFinished
+    } = this.props;
     return (
       <OverlayDiv>
         <Icon
@@ -35,7 +41,12 @@ class FinishedOverlay extends Component {
           style={{ cursor: "pointer" }}
         />
         <p>{continueText}</p>
-        <NextButton active to={continueLink} center />
+        <NextButton
+          active
+          to={continueLink}
+          callbackWhenFinished={callbackWhenFinished}
+          center
+        />
 
         {!correct && (
           <Button onClick={doOver} style={{ margin: "2rem" }} primary>

@@ -43,7 +43,8 @@ class DumbKey extends Component {
       showShapeBackground,
       keyboardScale,
       fadeKeys,
-      numberOfScale
+      numberOfScale,
+      labelType
     } = this.props;
     const keyIsBlack = noteShape === "flat";
 
@@ -65,7 +66,7 @@ class DumbKey extends Component {
             d={paths[noteShape]}
             stroke="#000"
             id={noteName}
-            fill={keyIsBlack ? "#EEEEEECC" : "#FFFFFFCC"}
+            fill={keyIsBlack ? "#484848" : "#FFF"}
             style={fadeKeys ? { opacity: 0 } : { opacity: 1 }}
           />
         </Svg>
@@ -80,6 +81,8 @@ class DumbKey extends Component {
               keyboardScale={keyboardScale}
               key={noteName}
               numberOfScale={numberOfScale}
+              labelType={labelType}
+              noteName={noteName}
             />
           </CircleDiv>
         )}

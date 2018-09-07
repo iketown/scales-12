@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="468px" height="300px" viewBox="0 0 468 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="408px" height="300px" viewBox="0 0 408 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
     <title>CmajorScale</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="CmajorScale" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(-292.000000, 0.000000)">
-            <g id="Oct1-Copy">
-                <path d="M322.749723,-2.84217094e-14 L348.50214,-2.84217094e-14 L348.50214,203.473828 L348.50214,289.050633 C348.50214,294.57348 344.024987,299.050633 338.50214,299.050633 L311.322247,299.050633 C305.7994,299.050633 301.322247,294.57348 301.322247,289.050633 L301.322247,203.473828 L322.749723,203.473828 L322.749723,-2.84217094e-14 Z" id="B" stroke="#000000" fill="#FFFFFF"></path>
-                <path d="M265.495305,-2.84217094e-14 L288.330151,-2.84217094e-14 L288.330151,203.473828 L298.176921,203.473828 L298.176921,289.050633 C298.176921,294.57348 293.699769,299.050633 288.176921,299.050633 L260.997028,299.050633 C255.474181,299.050633 250.997028,294.57348 250.997028,289.050633 L250.997028,203.473828 L265.495305,203.473828 L265.495305,-2.84217094e-14 Z" id="A" stroke="#000000" fill="#FFFFFF" opacity="0"></path>
-                <path d="M291.257203,0 L320.194204,0 L320.194204,197.158228 C320.194204,199.919652 317.955628,202.158228 315.194204,202.158228 L296.257203,202.158228 C293.49578,202.158228 291.257203,199.919652 291.257203,197.158228 L291.257203,0 Z" id="Bb" fill-opacity="0.05" fill="#000000" opacity="0"></path>
-            </g>
+        <g id="Group" transform="translate(-347.000000, 0.000000)">
             <g id="Oct2-Copy" transform="translate(350.000000, 0.000000)">
                 <path d="M0,0 L26.0285525,0 L26.0285525,203.439377 L47.2472924,203.439377 L47.2472924,289 C47.2472924,294.522847 42.7701399,299 37.2472924,299 L10,299 C4.4771525,299 2.45271059e-15,294.522847 1.77635684e-15,289 L0,0 Z" id="C" stroke="#000000" fill="#FFFFFF"></path>
                 <path d="M60.2331831,-2.84217094e-14 L88.8740133,-2.84217094e-14 L88.8740133,203.439377 L97.6444043,203.439377 L97.6444043,289 C97.6444043,294.522847 93.1672518,299 87.6444043,299 L60.3971119,299 C54.8742644,299 50.3971119,294.522847 50.3971119,289 L50.3971119,203.439377 L60.2331831,203.439377 L60.2331831,-2.84217094e-14 Z" id="D" stroke="#000000" fill="#FFFFFF"></path>
@@ -31,29 +26,29 @@
                 <path d="M28.3483755,0 L57.3267148,0 L57.3267148,192.124 C57.3267148,197.646847 52.8495623,202.124 47.3267148,202.124 L38.3483755,202.124 C32.825528,202.124 28.3483755,197.646847 28.3483755,192.124 L28.3483755,0 Z" id="Db" fill-opacity="0.05" fill="#000000" opacity="0"></path>
             </g>
         </g>
-        <g id="dot" transform="translate(171.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(222.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(422.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(273.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(121.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(73.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(374.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
-        <g id="dot" transform="translate(322.000000, 250.000000)" fill="#F8E71C" stroke="#000000" stroke-width="5">
-            <circle id="Oval" cx="10" cy="10" r="10"></circle>
-        </g>
+        <text id="❶" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="12" y="259">❶</tspan>
+        </text>
+        <text id="❷" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="65" y="259">❷</tspan>
+        </text>
+        <text id="❸" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="114" y="259">❸</tspan>
+        </text>
+        <text id="❹" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="165" y="259">❹</tspan>
+        </text>
+        <text id="❺" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="214" y="259">❺</tspan>
+        </text>
+        <text id="❻" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="264" y="259">❻</tspan>
+        </text>
+        <text id="❼" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="314" y="259">❼</tspan>
+        </text>
+        <text id="❽" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
+            <tspan x="366" y="259">❽</tspan>
+        </text>
     </g>
 </svg>

@@ -52,7 +52,8 @@ class Keyboard extends Component {
       notesToShow,
       displayText,
       displayTitleCircle,
-      colorAll
+      colorAll,
+      labelType
     } = this.props;
 
     const theme = {
@@ -118,6 +119,7 @@ class Keyboard extends Component {
                     keyboardScale={keyboardScale}
                     fadeKeys={fadeKeys}
                     numberOfScale={notesToShow.findIndex(n => n === key[0]) + 1}
+                    labelType={labelType}
                   />
                   {key.length > 1 && (
                     <DumbKey
@@ -133,6 +135,7 @@ class Keyboard extends Component {
                       numberOfScale={
                         notesToShow.findIndex(n => n === key[1]) + 1
                       }
+                      labelType={labelType}
                       fadeKeys={fadeKeys}
                     />
                   )}

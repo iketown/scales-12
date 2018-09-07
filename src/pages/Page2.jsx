@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Header, Button, Icon, Popup } from "semantic-ui-react";
+import { Header, Button, Icon, Popup, Card, Image } from "semantic-ui-react";
 import styled from "styled-components";
-import Layout from "../layout/Layout.jsx";
-import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
-import { CarDots, TruckDots, LineDots, WagonDots } from "../images";
-import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
 
+import Layout from "../layout/Layout.jsx";
+import { CircleButton } from "../components/uiElements/index";
+import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
+import {
+  CarDots,
+  TruckDots,
+  LineDots,
+  WagonDots,
+  EMajor12Scales,
+  EMajorConventional,
+  Car,
+  Truck,
+  Wagon,
+  Line
+} from "../images";
+import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
+import KeyboardDisplayOnly from "../components/keyboard/KeyboardDisplayOnly.jsx";
 export const DotCardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -18,11 +31,7 @@ export const DotCardsGrid = styled.div`
   box-shadow: 1px 1px 4px #b7b7b7;
   margin: 1.5rem;
 `;
-const ButtonRow = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
+
 export default class Page2 extends Component {
   state = {
     split: false,
@@ -39,28 +48,9 @@ export default class Page2 extends Component {
   decrement = () => {
     this.setState({ slideIndex: this.state.slideIndex - 1 });
   };
-  setShapeSelected = shapeSelected => {
-    this.setState({ shapeSelected });
-  };
-  toggleShapeSelected = shape => {
-    const { shapesSelected } = this.state;
-    let newShapesSelected;
-    if (shapesSelected.includes(shape)) {
-      // remove it
-      newShapesSelected = [...shapesSelected.filter(s => s !== shape)];
-    } else {
-      // add it
-      newShapesSelected = [...shapesSelected, shape];
-    }
-    this.setState({ shapesSelected: newShapesSelected });
-  };
-  toggleSplit = () => {
-    this.setState({ split: !this.state.split });
-  };
 
   render() {
     const { split } = this.state;
-    const shapeButtonsClicked = this.state.shapesSelected.length === 4;
     return (
       <Layout>
         <Header as="h2">
@@ -69,81 +59,57 @@ export default class Page2 extends Component {
         </Header>
 
         <p>
-          If we look at each scale as a series of <strong>UP</strong> notes and
-          <strong> DOWN </strong>
-          notes, then the job of memorizing all of them gets a little easier.
+          The major difference between the conventional method and the 12scales
+          method can be illustrated like this:
+        </p>
+        <p>Here are two different approaches to learning the E-major scale.</p>
+        <Card.Group>
+          <Card color="red">
+            <Image src={EMajorConventional} />
+            <Card.Content>
+              <Card.Header>E Major Scale</Card.Header>
+              <Card.Meta>Conventional Method</Card.Meta>
+              <Card.Description>
+                E Major Scale has four sharps (#s). Sharps get assigned in this
+                order: <strong>F#, C#, G#, D#, A#, E#, B#</strong>. The first
+                four are <strong>F#, C#, G# </strong>
+                and <strong>D#</strong>, so when we get to any of those keys, we
+                substitute the 'sharped' version in for the natural key. (
+                <strong>F </strong>
+                becomes <strong>F#</strong>, etc)
+              </Card.Description>
+            </Card.Content>
+          </Card>
+          <Card color="green">
+            <Image src={EMajor12Scales} />
+            <Card.Content>
+              <Card.Header>E Major Scale</Card.Header>
+              <Card.Meta>12Scales Method</Card.Meta>
+              <Card.Description>Car, Car.</Card.Description>
+            </Card.Content>
+          </Card>
+        </Card.Group>
+        <p>
+          <br />
+          Both methods will get you playing an E major scale, but which one is
+          easier to remember?
+        </p>
+
+        <Header>
+          <Header.Content as="h2">12Scales method</Header.Content>
+        </Header>
+        <p>
+          As you saw in the example above, the 12Scales method divides each
+          scale into two halves. The first four notes make a shape, and the last
+          four notes make a second shape. (E Major becomes "Car, Car")
         </p>
         <p>
-          To simplify even further, we'll first{" "}
-          <Button
-            onClick={() => {
-              this.toggleSplit();
-            }}
-            primary={!this.state.split}
-            basic={this.state.split}
-            disabled={this.state.split}
-          >
-            split
-          </Button>{" "}
-          each scale in half.
+          So in this class we'll first learn the shapes, then we'll learn which
+          scales use which shapes. You'll be playing all 12 scales with ease in
+          no time.
         </p>
-
-        <p>Now we have 24 small 'shapes' of four dots each.</p>
-        <p>It is still a lot of information, but we're getting closer.</p>
-
-        <DotCardsGrid>
-          {Object.entries(scaleShapes2).map(scaleShape => (
-            <Dotboard8
-              bottomShape={scaleShape[1].bottom}
-              topShape={scaleShape[1].top}
-              shapesSelected={this.state.shapesSelected}
-              root={scaleShape[0]}
-              split={split}
-              colorAll={!this.state.shapesSelected.length}
-            />
-          ))}
-        </DotCardsGrid>
-        <p>
-          The good news is that each of those 24 shapes is one of these four
-          possibilities (sometimes upside-down):
-        </p>
-
-        <ButtonRow>
-          {shapesArr.map((shape, i) => (
-            <Button
-              onClick={() => this.toggleShapeSelected(shape.name)}
-              active={this.state.shapesSelected.includes(shape.name)}
-            >
-              <div>{`shape ${i + 1}`}</div>
-              <img src={shape.image} alt={`${shape.name} shape`} width={60} />
-            </Button>
-          ))}
-          <Popup
-            on={shapeButtonsClicked ? "" : "hover"}
-            trigger={
-              <Button
-                as={Link}
-                to={shapeButtonsClicked ? `/page3` : "/page2"}
-                icon
-                labelPosition="right"
-                primary={shapeButtonsClicked}
-              >
-                <Icon name="arrow right" />
-                Next
-              </Button>
-            }
-            content={"Click all four shape buttons to continue"}
-            disabled
-          />
-        </ButtonRow>
+        {/* page should end here */}
       </Layout>
     );
   }
 }
-
-const shapesArr = [
-  { name: "line", image: LineDots },
-  { name: "car", image: CarDots },
-  { name: "truck", image: TruckDots },
-  { name: "wagon", image: WagonDots }
-];

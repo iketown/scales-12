@@ -8,10 +8,14 @@ import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
 import { pop, ding, plink, keyClick } from "./sounds/soundFX";
 import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
-import { delayBetweenQuestions } from "../../utils/generalConfig";
+import {
+  delayBetweenQuestions,
+  showCheaterButton
+} from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
 import { delay } from "popmotion";
+import { callbackify } from "util";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -162,7 +166,8 @@ class Keyboard extends Component {
     }
   };
   finishThisTest = () => {
-    const { keyboardId } = this.props;
+    const { keyboardId, callbackWhenFinished } = this.props;
+    if (callbackWhenFinished) callbackWhenFinished();
     this.props.dispatch(completeKeyboardChallenge(keyboardId));
   };
   resetKeyboard = () => {
@@ -221,7 +226,6 @@ class Keyboard extends Component {
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
         <Message {...messageInstructions} />
-        {/* <StyledKeyboard pose={keysIn ? "enter" : "exit"}> */}
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {
@@ -270,6 +274,14 @@ class Keyboard extends Component {
               continueLink={continueLink}
               continueText={continueText}
             />
+          )}
+          {showCheaterButton && (
+            <Button
+              style={{ position: "absolute", top: 0, right: 0, zIndex: 100 }}
+              onClick={this.handleCorrectAnswer}
+            >
+              cheat
+            </Button>
           )}
         </KeyboardDiv>
         {/* </StyledKeyboard> */}
