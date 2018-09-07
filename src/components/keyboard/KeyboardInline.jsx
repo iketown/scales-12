@@ -35,7 +35,7 @@ const keyConfig = {
   enter: {
     y: "0vh",
     opacity: 1,
-    transition: { type: "spring", stiffness: 200 },
+    transition: { type: "spring", stiffness: 200, mass: 1.5 },
     delay: ({ i }) => i * staggerDuration
   },
   exit: {
