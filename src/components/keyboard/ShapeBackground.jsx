@@ -22,10 +22,10 @@ const FlippedShapeDiv = styled.div`
 `;
 
 const StyledImg = styled.img`
-  width: ${keyboardScale * 290}px;
+  width: ${keyboardScale * 250}px;
 `;
 const FlipStyledImg = styled.img`
-  width: ${keyboardScale * 275}px;
+  width: ${keyboardScale * 255}px;
 `;
 
 const shapeMap = {

@@ -1,24 +1,43 @@
-import React, { Component } from "react";
+import React, { Component, createContext } from "react";
 import { Link } from "react-router-dom";
+import { Button, Popup, Icon, Header, Image, Item } from "semantic-ui-react";
 import styled from "styled-components";
 import Layout from "../layout/Layout.jsx";
-import { DotCardsGrid } from "./Page2.jsx";
+import { CheckIcon } from "../components/uiElements/index";
+import { DotCardsGrid } from "./ABetterWay";
 import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
-import { Button, Popup, Icon, Header } from "semantic-ui-react";
 import { NextButton } from "../components/uiElements/index";
 import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
-import { Line, Car, Truck, Wagon } from "../images/index";
-
+import { Line, Car, Truck, Wagon, KeystoDots } from "../images/index";
+import { LessonContext } from "../layout/Layout.jsx";
 export default class Page3 extends Component {
   state = {
     hide2ndShape: false,
     split: false,
     shapesSelected: [],
-    colorAll: true
+    colorAll: true,
+    sectionsCircled: []
   };
   setShapeSelected = shapeSelected => {
     this.setState({ shapeSelected });
   };
+
+  toggleSectionsCircled = (section1, section2) => {
+    const adding = !this.state.sectionsCircled.includes(section1);
+    const { sectionsCircled } = this.state;
+    let newSectionsCircles;
+    if (adding) {
+      // add sections
+      newSectionsCircles = [...sectionsCircled, section1, section2];
+    } else {
+      // remove sections
+      newSectionsCircles = sectionsCircled.filter(
+        sect => sect !== section1 && sect !== section2
+      );
+    }
+    this.setState({ sectionsCircled: [...newSectionsCircles] });
+  };
+
   toggleShapeSelected = shape => {
     const { shapesSelected } = this.state;
     let newShapesSelected;
@@ -44,23 +63,52 @@ export default class Page3 extends Component {
           <Header.Content>All The Shapes</Header.Content>
           <Header.Subheader>and where they go</Header.Subheader>
         </Header>
-        <p>Below, you can see all 12 scales in their raw form.</p>
-        <p>
-          The first thing we do is{" "}
-          <Button
-            onClick={() => {
-              this.toggleSplit();
-            }}
-            primary={!this.state.split}
-            basic={this.state.split}
-          >
-            split
-          </Button>{" "}
-          each scale in half.
-        </p>
 
-        <p>Now we have 24 small 'shapes' of four dots each.</p>
-        <p>It is still a lot of information.</p>
+        <Item>
+          <Item.Image size="medium" src={KeystoDots} />
+          <Item.Header as="h4">
+            Here is how we'll break down all 12 scales:
+          </Item.Header>
+          <Item.Description>
+            <p>
+              <CheckIcon />
+              Each Major Scale is a series of <strong>eight keys</strong>, with
+              its own unique pattern of <strong>BLACK</strong> and{" "}
+              <strong>WHITE</strong> keys.
+            </p>
+            <p>
+              <CheckIcon />
+              We'll visualize each scale as a series of{" "}
+              <strong>eight dots</strong>, with its own unique pattern of{" "}
+              <strong>UP</strong> and <strong>DOWN</strong> dots.
+            </p>
+
+            <p>
+              <CheckIcon />
+              Each dot represents a note in the scale.
+            </p>
+            <p>
+              <CheckIcon />
+              <strong>UP</strong> dots are <strong>black</strong> keys, and
+              <strong> DOWN</strong> dots are <strong>white</strong> keys.
+            </p>
+            <p>
+              <CheckIcon />
+              We'll{" "}
+              <Button
+                onClick={() => {
+                  this.toggleSplit();
+                }}
+                primary={!this.state.split}
+                basic={this.state.split}
+              >
+                split
+              </Button>{" "}
+              each scale in half, so two shapes make up each scale.
+            </p>
+          </Item.Description>
+        </Item>
+        <p />
 
         <DotCardsGrid>
           {Object.entries(scaleShapes2).map(scaleShape => (
@@ -74,8 +122,14 @@ export default class Page3 extends Component {
             />
           ))}
         </DotCardsGrid>
+
         <p>
-          The good news is there are really only FOUR shapes to learn: The{" "}
+          The amazing part of the 12scales system is after you split everything
+          up like this, there are only
+          <strong> FOUR</strong> shapes to learn:{" "}
+        </p>
+        <p>
+          The{" "}
           <a
             style={{ cursor: "pointer" }}
             onClick={() => this.toggleShapeSelected("line")}
@@ -105,7 +159,7 @@ export default class Page3 extends Component {
           </a>
           .
         </p>
-
+        <p>click on each to see where they fit in the above graph:</p>
         <ButtonRow>
           {shapesArr.map((shape, i) => (
             <Button
@@ -126,26 +180,16 @@ export default class Page3 extends Component {
               />
             </Button>
           ))}
-          <Popup
-            on={shapeButtonsClicked ? "" : "hover"}
-            trigger={
-              <Button
-                as={Link}
-                to={shapeButtonsClicked ? `/page3` : "/page2"}
-                icon
-                labelPosition="right"
-                primary={shapeButtonsClicked}
-              >
-                <Icon name="arrow right" />
-                Next
-              </Button>
-            }
-            content={"Click all four shape buttons to continue"}
-            disabled
-          />
         </ButtonRow>
+        <hr />
+        <Header as="h2">
+          <Header.Content>It gets easier</Header.Content>
+          <Header.Subheader>the farther you go</Header.Subheader>
+        </Header>
         <p>
-          We've already cut the complexity down by a lot, by simply memorizing
+          <br />
+          We've already cut the complexity down by a lot, by only needing to
+          learn
           <strong> two shapes </strong>
           for each scale, instead of
           <strong> eight notes</strong>.
@@ -154,13 +198,35 @@ export default class Page3 extends Component {
           <em>but it gets easier than that.</em>
         </p>
         <p>
-          Look again at this chart. see how the{" "}
+          Look again at our scale chart below. see how the{" "}
           <strong>2nd shape of the 'C' scale</strong> matches the
           <strong> first shape of the 'G' scale</strong>?
+          <Button
+            size="mini"
+            compact
+            onClick={() => this.toggleSectionsCircled("Ctop", "Gbottom")}
+            basic
+            primary
+          >
+            {!this.state.sectionsCircled.includes("Ctop")
+              ? "show me"
+              : "got it"}
+          </Button>
         </p>
         <p>
           ...and the 2nd shape of the 'G' scale matches the 1st shape of the 'D'
           scale?
+          <Button
+            size="mini"
+            compact
+            onClick={() => this.toggleSectionsCircled("Gtop", "Dbottom")}
+            basic
+            primary
+          >
+            {!this.state.sectionsCircled.includes("Gtop")
+              ? "show me"
+              : "got it"}
+          </Button>
         </p>
         <p>
           ...and the 2nd shape of the 'D' scale matches the 1st shape of the 'A'
@@ -168,7 +234,7 @@ export default class Page3 extends Component {
         </p>
 
         <DotCardsGrid>
-          {Object.entries(scaleShapes2).map(scaleShape => (
+          {Object.entries(scaleShapes2).map((scaleShape, i) => (
             <Dotboard8
               bottomShape={scaleShape[1].bottom}
               topShape={scaleShape[1].top}
@@ -176,6 +242,12 @@ export default class Page3 extends Component {
               root={scaleShape[0]}
               split={!this.state.hide2ndShape && true}
               colorAll={true}
+              circleTop={this.state.sectionsCircled.includes(
+                `${scaleShape[0]}top`
+              )}
+              circleBottom={this.state.sectionsCircled.includes(
+                `${scaleShape[0]}bottom`
+              )}
               hide2ndShape={this.state.hide2ndShape}
             />
           ))}
@@ -188,18 +260,17 @@ export default class Page3 extends Component {
           you really only have to learn the{" "}
           <Button
             primary={!this.state.hide2ndShape}
-            disabled={this.state.hide2ndShape}
             onClick={() => this.setState({ hide2ndShape: true })}
           >
             FIRST SHAPE
           </Button>
         </p>
         <p>
-          ...and it gets even easier than that, but lets not get ahead of
-          ourselves.
+          ...and it gets even easier than that, but before we get ahead of
+          ourselves, let's dig into those four shapes.
         </p>
-        <p>let's introduce the shapes.</p>
-        <NextButton active={this.state.hide2ndShape} to="/Page4" />
+        <NextButton active to="/Page4" />
+        <MyConsumerStuff props={this.props} />
       </Layout>
     );
   }
@@ -213,7 +284,23 @@ const shapesArr = [
 ];
 
 const ButtonRow = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-around;
   align-items: center;
 `;
+
+const MyConsumerStuff = ({ props }) => (
+  <LessonContext.Consumer>
+    {val => {
+      const myUrl = props.match.path;
+      const indexes = val.getPreviousAndNextLessons(myUrl);
+      return (
+        <div>
+          <p>my url is {myUrl}</p>
+          <p>my lesson index is {indexes.myIndex}</p>
+        </div>
+      );
+    }}
+  </LessonContext.Consumer>
+);

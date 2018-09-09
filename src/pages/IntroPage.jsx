@@ -6,13 +6,12 @@ import Layout from "../layout/Layout.jsx";
 
 import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
 
-import whiteNotes from "../images/whiteNotes.svg";
 import AmajorScale from "../images/AmajorScale.svg";
 import DbMajorScale from "../images/DbMajorScale.svg";
 import BbMajorScale from "../images/BbmajorScale.svg";
 import { fullScales } from "../components/keyboard/keyboardShapes";
 import { CMajorScale } from "../images";
-import { CheckIcon, StarterIcon } from "../components/uiElements/index";
+import { StarterIcon } from "../components/uiElements/index";
 
 export default class IntroPage extends Component {
   state = {
@@ -115,22 +114,34 @@ export default class IntroPage extends Component {
             <ScaleCard src={BbMajorScale} title={"Bb Major"} />
           </Card.Group>
           <p>
-            With a few days of practice, it's totally possible to memorize the
-            shape of all 12 Major Scales. It's a lot of information, but no more
+            Each scale follows an exact pattern of <strong>half-steps</strong>{" "}
+            (goes straight to the next key) and <strong>whole-steps</strong>{" "}
+            (skips over a key). That pattern makes each scale{" "}
+            <strong>sound</strong> correct, but they still all <em>look</em>{" "}
+            completely different.
+          </p>
+          <p>
+            With a few days of practice, it's possible to memorize the shape of
+            all 12 Major Scales. It's a lot of information, but no more
             difficult than, say, learning your multiplication tables.
           </p>
           <p>
-            But what most people don't realize is there are hidden patterns{" "}
-            <em>within the patterns</em>.
+            What most people don't realize is{" "}
+            <strong>there are patterns in the way the scales look</strong>, too.
+            It takes a little decoding (you've come to the right place), but
+            once you see the patterns, the task of learning these 12 Major
+            Scales becomes far easier.
           </p>
           <p>Stay tuned. </p>
-          <Button as={Link} to="/page2" primary icon labelPosition="right">
+          <Button
+            as={Link}
+            to="/a-better-way"
+            primary
+            icon
+            labelPosition="right"
+          >
             Next <Icon name="arrow circle right" />
           </Button>
-          <br />
-          <br />
-          <br />
-          <br />
         </Container>
       </Layout>
     );

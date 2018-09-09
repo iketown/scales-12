@@ -1,9 +1,10 @@
 import React from "react";
 import Layout from "../layout/Layout.jsx";
-import { Header } from "semantic-ui-react";
+import { Header, Image } from "semantic-ui-react";
 
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements/index";
+import { carsOnKeyboard, splitKeyboardAnimation } from "../images/index";
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 const Page7 = () => {
   return (
@@ -15,7 +16,7 @@ const Page7 = () => {
       <p>
         Now we'll start putting <strong>CARS</strong> on the keyboard.
       </p>
-      {/* <p>
+      <p>
         There are FOUR keys that make car shapes, so let's look at those quickly
         before we start.
       </p>
@@ -34,12 +35,12 @@ const Page7 = () => {
         <strong>FlipCars</strong>, but since ALL black keys are 'flip-whatevers'
         we'll just call them cars.{" "}
       </p>
-      <Image src={carsOnKeyboard} size="medium" /> */}
+      <Image src={carsOnKeyboard} size="medium" />
       <p />
       <KeyboardInline
         keyboardId="kb002CarShapes"
-        keyboardScale={0.5}
         showAllCircles={false}
+        keyboardScale={0.54}
         messageInstructions={{
           icon: "question circle",
           header: "Car Shapes",
@@ -49,7 +50,6 @@ const Page7 = () => {
             </p>
           )
         }}
-        whenToShowShape={"afterCorrect"}
         answers={carAnswers}
         continueLink="/page8"
         continueText="Well done!  Next we'll check out the TRUCKS."

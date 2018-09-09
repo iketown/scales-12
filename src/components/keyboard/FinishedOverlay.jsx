@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import posed from "react-pose";
 import { Icon, Button } from "semantic-ui-react";
 import NextButton from "../uiElements/NextButton.jsx";
 const OverlayDiv = styled.div`

@@ -34,6 +34,7 @@ const Page7 = () => {
             </p>
           )
         }}
+        whenToShowShape={"afterCorrect"}
         answers={lineAnswers}
         continueLink="/page8"
         continueText="Nice!  next we'll check out the CARS."

@@ -6,7 +6,7 @@ import { Button, Message } from "semantic-ui-react";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
-import { pop, ding, plink, keyClick } from "./sounds/soundFX";
+import { ding, plink, keyClick } from "./sounds/soundFX";
 import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
 import {
   delayBetweenQuestions,
@@ -14,8 +14,6 @@ import {
 } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
-import { delay } from "popmotion";
-import { callbackify } from "util";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -81,15 +79,18 @@ class Keyboard extends Component {
     showCircles: true,
     correct: false,
     finished: false,
-    keysIn: false
+    keysIn: false,
+    root1: "",
+    showShapeBackground: false
   };
 
   componentDidMount() {
-    const { bottomKey, topKey, answers } = this.props;
+    const { answers } = this.props;
     this.setState({
       keyGroups: keyList(answers[0].bottomKey, answers[0].topKey),
+      starters: answers[0].starters,
       correctAnswer: answers[0].correctAnswer,
-      starters: answers[0].starters
+      root1: answers[0].correctAnswer[0]
     });
     setTimeout(() => this.setState({ keysIn: true }), 0);
   }
@@ -139,8 +140,11 @@ class Keyboard extends Component {
   }
   handleCorrectAnswer = () => {
     ding();
+    const { whenToShowShape } = this.props;
+
     this.setState({
-      showCircles: false
+      showCircles: false,
+      showShapeBackground: whenToShowShape === "afterCorrect"
     });
     setTimeout(this.goToNextQuestion, 1000);
   };
@@ -159,7 +163,9 @@ class Keyboard extends Component {
         {
           questionIndex: nextIndex,
           correctAnswer: answers[nextIndex].correctAnswer,
-          starters: answers[nextIndex].starters
+          starters: answers[nextIndex].starters,
+          root1: answers[nextIndex].correctAnswer[0],
+          showShapeBackground: false
         },
         this.resetKeyboard
       );
@@ -213,13 +219,12 @@ class Keyboard extends Component {
       bottomKey,
       keysToLabel,
       keyboardId,
-      showShapeBackground,
       messageInstructions,
       continueLink,
       continueText
     } = this.props;
     let { keyboardScale } = this.props;
-    const { keysIn, showCircles } = this.state;
+    const { showCircles, root1, showShapeBackground } = this.state;
     const thisTest = this.props.keyboardChallenges[keyboardId];
     const doneWithThisTest =
       thisTest && this.props.keyboardChallenges[keyboardId].completed;
@@ -247,7 +252,9 @@ class Keyboard extends Component {
                     circleType={this.getCircleShape(key[0])}
                     clickHandler={this.clickHandler(key[0])}
                     showLabel={keysToLabel && keysToLabel.includes(key[0])}
-                    showShapeBackground={showShapeBackground}
+                    showShapeBackground={
+                      showShapeBackground && key[0] === root1
+                    }
                     keyboardScale={keyboardScale}
                   />
                   {key.length > 1 && (
@@ -260,7 +267,9 @@ class Keyboard extends Component {
                       circleType={this.getCircleShape(key[1])}
                       clickHandler={this.clickHandler(key[1])}
                       showLabel={keysToLabel && keysToLabel.includes(key[1])}
-                      showShapeBackground={showShapeBackground}
+                      showShapeBackground={
+                        showShapeBackground && key[1] === root1
+                      }
                       keyboardScale={keyboardScale}
                     />
                   )}

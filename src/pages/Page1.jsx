@@ -5,7 +5,7 @@ import Layout from "../layout/Layout.jsx";
 import { fullScales } from "../components/keyboard/keyboardShapes";
 import KeyboardDisplayOnly from "../components/keyboard/KeyboardDisplayOnly";
 
-export default class Page2 extends Component {
+export default class Page1 extends Component {
   render() {
     return (
       <Layout>
@@ -54,7 +54,7 @@ export default class Page2 extends Component {
         <Button
           primary
           as={Link}
-          to="/page2"
+          to="/a-better-way"
           icon
           labelPosition="right"
           onClick={this.increment}

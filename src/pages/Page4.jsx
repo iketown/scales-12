@@ -62,7 +62,13 @@ const shapesArr = [
     name: "wagon",
     src: Wagon,
     header: "Wagon",
-    description: "down • down • down • UP"
+    description: (
+      <div>
+        <p>
+          same as the LINE, except <strong>dot #4</strong> is raised.
+        </p>
+      </div>
+    )
   }
 ];
 const ShapeCard = ({

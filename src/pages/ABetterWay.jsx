@@ -1,25 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Header, Button, Icon, Popup, Card, Image } from "semantic-ui-react";
+import { Header, Image, Card } from "semantic-ui-react";
 import styled from "styled-components";
 
-import Layout from "../layout/Layout.jsx";
-import { CircleButton } from "../components/uiElements/index";
-import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
-import {
-  CarDots,
-  TruckDots,
-  LineDots,
-  WagonDots,
-  EMajor12Scales,
-  EMajorConventional,
-  Car,
-  Truck,
-  Wagon,
-  Line
-} from "../images";
-import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
-import KeyboardDisplayOnly from "../components/keyboard/KeyboardDisplayOnly.jsx";
+import Layout from "../layout/Layout";
+import { lessonsArr } from "../utils/chapterIndex";
+import { NextButton } from "../components/uiElements";
+import { EMajor12Scales, EMajorConventional } from "../images";
 export const DotCardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -32,7 +18,7 @@ export const DotCardsGrid = styled.div`
   margin: 1.5rem;
 `;
 
-export default class Page2 extends Component {
+export default class ABetterWay extends Component {
   state = {
     split: false,
     shapesSelected: [],
@@ -41,6 +27,7 @@ export default class Page2 extends Component {
   };
   componentDidMount() {
     window.scrollTo(0, 0);
+    console.log("lessonsARr", lessonsArr);
   }
   increment = () => {
     this.setState({ slideIndex: this.state.slideIndex + 1 });
@@ -50,7 +37,6 @@ export default class Page2 extends Component {
   };
 
   render() {
-    const { split } = this.state;
     return (
       <Layout>
         <Header as="h2">
@@ -70,10 +56,11 @@ export default class Page2 extends Component {
               <Card.Header>E Major Scale</Card.Header>
               <Card.Meta>Conventional Method</Card.Meta>
               <Card.Description>
-                E Major Scale has four sharps (#s). Sharps get assigned in this
-                order: <strong>F#, C#, G#, D#, A#, E#, B#</strong>. The first
-                four are <strong>F#, C#, G# </strong>
-                and <strong>D#</strong>, so when we get to any of those keys, we
+                Sharps (#s) get assigned in this order:{" "}
+                <strong>F#, C#, G#, D#, A#, E#, B#</strong>. E Major Scale has
+                four sharps, so we use the first four:
+                <strong> F#, C#, G# </strong>
+                and <strong>D#</strong>. When we get to any of those keys, we
                 substitute the 'sharped' version in for the natural key. (
                 <strong>F </strong>
                 becomes <strong>F#</strong>, etc)
@@ -108,7 +95,7 @@ export default class Page2 extends Component {
           scales use which shapes. You'll be playing all 12 scales with ease in
           no time.
         </p>
-        {/* page should end here */}
+        <NextButton center active to="/page3" />
       </Layout>
     );
   }

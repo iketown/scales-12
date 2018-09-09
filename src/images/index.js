@@ -26,6 +26,7 @@ import carsOnKeyboard from "./carsOnKeyboard.svg";
 import splitKeyboardAnimation from "./splitKeyboardAnimation.gif";
 import EMajorConventional from "./EMajorConventional.svg";
 import EMajor12Scales from "./EMajor12Scales.svg";
+import KeystoDots from "./KeysToDots.gif";
 export {
   CMajorScale,
   Line,
@@ -54,5 +55,6 @@ export {
   carsOnKeyboard,
   splitKeyboardAnimation,
   EMajorConventional,
-  EMajor12Scales
+  EMajor12Scales,
+  KeystoDots
 };

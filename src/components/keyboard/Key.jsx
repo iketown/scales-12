@@ -113,13 +113,9 @@ class Key extends Component {
             <span>{noteName.slice(0, -1)}</span>
           </LabelDiv>
         )}
-        {showShapeBackground &&
-          showShapeBackground.includes(noteName) && (
-            <ShapeBackground
-              noteName={noteName}
-              keyboardScale={keyboardScale}
-            />
-          )}
+        {showShapeBackground && (
+          <ShapeBackground noteName={noteName} keyboardScale={keyboardScale} />
+        )}
       </Keydiv>
     );
     return KeyJSX;

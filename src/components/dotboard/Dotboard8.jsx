@@ -19,6 +19,7 @@ const GridHalfPose = posed.div({
 });
 const DotboardGridHalf = styled(GridHalfPose)`
   display: grid;
+  position: relative;
   grid-template-columns: repeat(4, 1.5rem);
   grid-template-rows: repeat(2, 1.5rem);
   grid-template-areas: "u1 u2 u3 u4" "d1 d2 d3 d4";
@@ -51,7 +52,17 @@ const ScaleName = styled.div`
   z-index: 10;
   box-shadow: 1px 1px 4px #9e9e9e;
 `;
-
+const CircleDiv = styled.div`
+  border: 2px #9c27b0 dotted;
+  position: absolute;
+  left: -10%;
+  top: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 26px;
+  transform: rotate(4deg);
+  box-shadow: 1px 1px 1px 2px #00000017;
+`;
 const GridItem = styled.div`
   grid-area: ${p => p.area};
   color: ${p => p.color};
@@ -85,37 +96,44 @@ const Dotboard8 = ({
   shapesSelected,
   root,
   colorAll,
-  hide2ndShape
+  hide2ndShape,
+  circleTop,
+  circleBottom
 }) => {
   return (
     <Box>
-      {[bottomShape, topShape].map((shape, index) => (
-        <DotboardGridHalf
-          split={index === 1 ? split : ""}
-          box={split}
-          key={index}
-          pose={hide2ndShape && index === 1 ? "out" : "in"}
-        >
-          {shapesObj[shape].map((letter, i) => {
-            const offset = index === 0 ? 1 : 5;
-            return (
-              <GridItem
-                area={`${letter}${i + 1}`}
-                color={
-                  shapesSelected.includes(shape) ||
-                  shapesSelected.includes(shape.slice(4).toLowerCase())
-                    ? colors[shape]
-                    : colorAll
-                      ? "#000"
-                      : colors.faded
-                }
-              >
-                <NumberCircle numberOfScale={i + offset} />
-              </GridItem>
-            );
-          })}
-        </DotboardGridHalf>
-      ))}
+      {[bottomShape, topShape].map((shape, index) => {
+        const myGridHalfId = `${root}${index === 1 ? "top" : "bottom"}`;
+        return (
+          <DotboardGridHalf
+            split={index === 1 ? split : ""}
+            box={split}
+            key={index}
+            pose={hide2ndShape && index === 1 ? "out" : "in"}
+          >
+            {shapesObj[shape].map((letter, i) => {
+              const offset = index === 0 ? 1 : 5;
+              return (
+                <GridItem
+                  area={`${letter}${i + 1}`}
+                  color={
+                    shapesSelected.includes(shape) ||
+                    shapesSelected.includes(shape.slice(4).toLowerCase())
+                      ? colors[shape]
+                      : colorAll
+                        ? "#000"
+                        : colors.faded
+                  }
+                >
+                  <NumberCircle numberOfScale={i + offset} />
+                </GridItem>
+              );
+            })}
+            {circleTop && index === 1 && <CircleDiv />}
+            {circleBottom && index === 0 && <CircleDiv />}
+          </DotboardGridHalf>
+        );
+      })}
 
       <ScaleName>{root}</ScaleName>
     </Box>
