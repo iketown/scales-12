@@ -15,6 +15,8 @@ import {
   completeChapterQuiz,
   startChapterQuiz
 } from "../actions/userScoreActions";
+import Layout from "../layout/Layout";
+import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 
 const testQuestions = [
   {
@@ -89,27 +91,34 @@ const lessonText = {
   outtro: {
     head: <h1>Shapes Quiz</h1>,
     body: <p>see? that wasn't so bad. onward!</p>
-  },
-  linkToNextLesson: "/page5"
+  }
 };
 
 export class ShapesQuiz1 extends Component {
+  state = {
+    quizCompleted: false
+  };
   handleCompletedQuiz = () => {
     this.props.dispatch(completeChapterQuiz("shapes1"));
+    this.setState({ quizCompleted: true });
   };
   handleStartedQuiz = () => {
     this.props.dispatch(startChapterQuiz("shapes1"));
   };
 
   render() {
+    const { quizCompleted } = this.state;
     return (
-      <CardQuizPage
-        testQuestions={testQuestions}
-        cardsArr={cardsArr}
-        handleCompletedQuiz={this.handleCompletedQuiz}
-        handleStartedQuiz={this.handleStartedQuiz}
-        lessonText={lessonText}
-      />
+      <Layout myUrl={this.props.match.path} hideNav={!quizCompleted}>
+        <h1>sup</h1>
+        <CardQuizPage
+          testQuestions={testQuestions}
+          cardsArr={cardsArr}
+          handleCompletedQuiz={this.handleCompletedQuiz}
+          handleStartedQuiz={this.handleStartedQuiz}
+          lessonText={lessonText}
+        />
+      </Layout>
     );
   }
 }

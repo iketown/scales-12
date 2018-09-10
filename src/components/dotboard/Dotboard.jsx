@@ -102,7 +102,6 @@ export default class Dotboard extends Component {
       const goodGuesses = correctAnswer.filter(guess =>
         selectedDots.includes(guess)
       );
-      console.log("good guess length", goodGuesses.length);
       const answerIsCorrect = goodGuesses.length === 4;
       if (answerIsCorrect) this.handleCorrectAnswer();
       else this.handleWrongAnswer();

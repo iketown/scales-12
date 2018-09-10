@@ -8,7 +8,7 @@ import { carsOnKeyboard, splitKeyboardAnimation } from "../images/index";
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 const Page7 = () => {
   return (
-    <Layout>
+    <Layout myUrl={this.props.match.path}>
       <Header as="h2">
         <Header.Content>On The Piano</Header.Content>
       </Header>

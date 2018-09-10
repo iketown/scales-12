@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Layout from "../layout/Layout";
 import { lessonsArr } from "../utils/chapterIndex";
-import { NextButton } from "../components/uiElements";
+// import { NextButton } from "../components/uiElements";
 import { EMajor12Scales, EMajorConventional } from "../images";
 export const DotCardsGrid = styled.div`
   display: grid;
@@ -38,7 +38,7 @@ export default class ABetterWay extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>A Better Way</Header.Content>
           <Header.Subheader>to learn Major scales</Header.Subheader>
@@ -95,7 +95,7 @@ export default class ABetterWay extends Component {
           scales use which shapes. You'll be playing all 12 scales with ease in
           no time.
         </p>
-        <NextButton center active to="/page3" />
+        {/* <NextButton center active to="/page3" /> */}
       </Layout>
     );
   }

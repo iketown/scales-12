@@ -2,6 +2,30 @@ import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 import NumberCircle from "../keyboard/NumberCircle.jsx";
+import { Icon } from "semantic-ui-react";
+import Synth from "../keyboard/sounds/audiosynth";
+
+const piano = Synth.createInstrument("piano");
+
+const playNote = noteName => {
+  let octave = Number(noteName.split("").pop());
+  let note = noteConverter[noteName.slice(0, -1)];
+  piano.play(note, octave + 2, 2);
+};
+export const noteConverter = {
+  A: "A",
+  B: "B",
+  C: "C",
+  D: "D",
+  E: "E",
+  F: "F",
+  G: "G",
+  Db: "C#",
+  Eb: "D#",
+  Gb: "F#",
+  Ab: "G#",
+  Bb: "A#"
+};
 
 const Box = styled.div`
   display: flex;
@@ -12,6 +36,11 @@ const Box = styled.div`
   position: relative;
   padding: 3px 7px;
   background: white;
+  &:hover {
+    // border: 1px red solid;
+    box-shadow: 2px 2px 2px #888888;
+    cursor: pointer;
+  }
 `;
 const GridHalfPose = posed.div({
   in: { opacity: 1 },
@@ -37,6 +66,27 @@ const ScaleName = styled.div`
   position: absolute;
   top: -9px;
   left: -13px;
+  border-radius: 50%;
+  background: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 10px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-10deg);
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 1px 1px 4px #9e9e9e;
+`;
+const ListenButton = styled.div`
+  text-align: center;
+  color: rgb(43, 43, 43);
+  position: absolute;
+  top: -9px;
+  right: -13px;
   border-radius: 50%;
   background: white;
   width: 1.5rem;

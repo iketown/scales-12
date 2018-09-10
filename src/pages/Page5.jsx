@@ -3,13 +3,13 @@ import Layout from "../layout/Layout";
 import { Header, Image, Card, Grid } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
-import { NextButton } from "../components/uiElements/";
+// import { NextButton } from "../components/uiElements/";
 import { Line, FlipTruck, FlipWagon, FlipCar } from "../images/";
 import animation from "../images/animation.gif";
 export default class Page5 extends Component {
   render() {
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>The FLIPPED Shapes</Header.Content>
         </Header>
@@ -61,7 +61,7 @@ export default class Page5 extends Component {
           ))} */}
         </div>
 
-        <NextButton active={true} to="/ShapesQuiz2" center />
+        {/* <NextButton active={true} to="/ShapesQuiz2" center /> */}
       </Layout>
     );
   }

@@ -222,49 +222,47 @@ export default class CardQuiz1 extends Component {
     } = this.state;
     const { testQuestions, lessonText } = this.props;
     return (
-      <Layout>
-        <CardsGrid>
-          <QuestionCard
-            clue={testQuestions[questionIndex].clue}
-            questionIndex={questionIndex}
-            testQuestions={testQuestions}
-            wronglyClickedCards={wronglyClickedCards}
-            correctCheckboxIndex={correctCheckboxIndex}
-            lessonIntroOuttro={lessonIntroOuttro}
-            lessonText={lessonText}
-          />
-          <PoseGroup>
-            {lessonIntroOuttro === "intro" ? (
-              <TextSection>
-                {lessonText.intro.body}
-                <br />
-                <Button onClick={this.startQuiz}>GO!</Button>
-              </TextSection>
-            ) : lessonIntroOuttro === "outtro" ? (
-              <TextSection>
-                {lessonText.outtro.body}
-                <NextButton to={lessonText.linkToNextLesson} active />
-              </TextSection>
-            ) : (
-              this.state.shapeCards.map((card, i) => {
-                const { showImageOf, wronglyClickedCards } = this.state;
-                return (
-                  <Item data-key={card.name} key={card.name}>
-                    <ShapeCard
-                      {...card}
-                      i={i}
-                      showImage={showImageOf === card.name}
-                      onClick={() => this.handleClickShape(card.name)}
-                      correct={card.name === showImageOf}
-                      wrong={wronglyClickedCards.includes(card.name)}
-                    />
-                  </Item>
-                );
-              })
-            )}
-          </PoseGroup>
-        </CardsGrid>
-      </Layout>
+      <CardsGrid>
+        <QuestionCard
+          clue={testQuestions[questionIndex].clue}
+          questionIndex={questionIndex}
+          testQuestions={testQuestions}
+          wronglyClickedCards={wronglyClickedCards}
+          correctCheckboxIndex={correctCheckboxIndex}
+          lessonIntroOuttro={lessonIntroOuttro}
+          lessonText={lessonText}
+        />
+        <PoseGroup>
+          {lessonIntroOuttro === "intro" ? (
+            <TextSection>
+              {lessonText.intro.body}
+              <br />
+              <Button onClick={this.startQuiz}>GO!</Button>
+            </TextSection>
+          ) : lessonIntroOuttro === "outtro" ? (
+            <TextSection>
+              {lessonText.outtro.body}
+              {/* <NextButton to={lessonText.linkToNextLesson} active /> */}
+            </TextSection>
+          ) : (
+            this.state.shapeCards.map((card, i) => {
+              const { showImageOf, wronglyClickedCards } = this.state;
+              return (
+                <Item data-key={card.name} key={card.name}>
+                  <ShapeCard
+                    {...card}
+                    i={i}
+                    showImage={showImageOf === card.name}
+                    onClick={() => this.handleClickShape(card.name)}
+                    correct={card.name === showImageOf}
+                    wrong={wronglyClickedCards.includes(card.name)}
+                  />
+                </Item>
+              );
+            })
+          )}
+        </PoseGroup>
+      </CardsGrid>
     );
   }
 }

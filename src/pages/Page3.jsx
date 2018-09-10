@@ -6,7 +6,7 @@ import Layout from "../layout/Layout.jsx";
 import { CheckIcon } from "../components/uiElements/index";
 import { DotCardsGrid } from "./ABetterWay";
 import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
-import { NextButton } from "../components/uiElements/index";
+// import { NextButton } from "../components/uiElements/index";
 import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
 import { Line, Car, Truck, Wagon, KeystoDots } from "../images/index";
 import { LessonContext } from "../layout/Layout.jsx";
@@ -58,7 +58,7 @@ export default class Page3 extends Component {
     const shapeButtonsClicked = this.state.shapesSelected.length === 4;
 
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>All The Shapes</Header.Content>
           <Header.Subheader>and where they go</Header.Subheader>
@@ -269,8 +269,7 @@ export default class Page3 extends Component {
           ...and it gets even easier than that, but before we get ahead of
           ourselves, let's dig into those four shapes.
         </p>
-        <NextButton active to="/Page4" />
-        <MyConsumerStuff props={this.props} />
+        {/* <NextButton active to="/Page4" /> */}
       </Layout>
     );
   }
@@ -289,18 +288,3 @@ const ButtonRow = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
-
-const MyConsumerStuff = ({ props }) => (
-  <LessonContext.Consumer>
-    {val => {
-      const myUrl = props.match.path;
-      const indexes = val.getPreviousAndNextLessons(myUrl);
-      return (
-        <div>
-          <p>my url is {myUrl}</p>
-          <p>my lesson index is {indexes.myIndex}</p>
-        </div>
-      );
-    }}
-  </LessonContext.Consumer>
-);

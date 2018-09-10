@@ -8,7 +8,7 @@ import KeyboardDisplayOnly from "../components/keyboard/KeyboardDisplayOnly";
 export default class Page1 extends Component {
   render() {
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>A Better Way</Header.Content>
           <Header.Subheader>to learn Major scales</Header.Subheader>

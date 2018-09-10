@@ -8,11 +8,11 @@ import {
   flipCarSpacing,
   carShapeAnimation
 } from "../images/";
-import { NextButton } from "../components/uiElements";
+// import { NextButton } from "../components/uiElements";
 export default class Page6 extends Component {
   render() {
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>Spacing</Header.Content>
         </Header>
@@ -96,7 +96,7 @@ export default class Page6 extends Component {
           right notes.
         </p>
         <Image src={carShapeAnimation} alt="" width="300px" />
-        <NextButton active to="/page7" center />
+        {/* <NextButton active to="/page7" center /> */}
       </Layout>
     );
   }

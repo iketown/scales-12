@@ -6,7 +6,7 @@ import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements/index";
 const Page7 = () => {
   return (
-    <Layout>
+    <Layout myUrl={this.props.match.path}>
       <Header as="h2">
         <Header.Content>On The Piano</Header.Content>
       </Header>

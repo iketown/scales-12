@@ -1,17 +1,23 @@
-import React, { Component, createContext } from "react";
+import React, { Component, createContext, Consumer, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Container, Dropdown, Image, Menu } from "semantic-ui-react";
+import {
+  Container,
+  Dropdown,
+  Image,
+  Menu,
+  Button,
+  Icon
+} from "semantic-ui-react";
+import styled from "styled-components";
 import { chapters, getPreviousAndNextLessons } from "../utils/chapterIndex";
-
-export const LessonContext = createContext();
 
 class Layout extends Component {
   state = {};
 
   render() {
-    const { children } = this.props;
+    const { children, myUrl, hideNav } = this.props;
     return (
-      <LessonContext.Provider value={{ chapters, getPreviousAndNextLessons }}>
+      <Fragment>
         <Menu fixed="top" inverted>
           <Container>
             <Menu.Item as={Link} to="/" header>
@@ -59,29 +65,50 @@ class Layout extends Component {
           </Container>
         </Menu>
         <Container style={{ marginTop: "4rem" }}>
-          {children} <br />
+          {children}
+          <br />
+          {!hideNav && <BottomNavButtons myUrl={myUrl} />}
           <br />
           <br />
-          <br />
-          {/* <LessonContext.Consumer>
-            {val => {
-              const myUrl = this.props.match.path;
-              const indexes = val.getPreviousAndNextLessons(myUrl);
-              return (
-                <div>
-                  <p>my url is {myUrl}</p>
-                  <p>my lesson index is {indexes.myIndex}</p>
-                </div>
-              );
-            }}
-          </LessonContext.Consumer> */}
         </Container>
-      </LessonContext.Provider>
+      </Fragment>
     );
   }
 }
 
 export default Layout;
+
+const NavDiv = styled.div`
+  // border: 1px red solid;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+`;
+const BottomNavButtons = ({ myUrl }) => {
+  const indexes = getPreviousAndNextLessons(myUrl);
+  return (
+    <NavDiv>
+      {indexes.prevLesson && (
+        <Button as={Link} to={indexes.prevLesson.url} icon labelPosition="left">
+          <Icon name="arrow left" />
+          {indexes.prevLesson.title}
+        </Button>
+      )}
+      {indexes.nextLesson && (
+        <Button
+          as={Link}
+          to={indexes.nextLesson.url}
+          icon
+          labelPosition="right"
+          primary
+        >
+          <Icon name="arrow right" />
+          {indexes.nextLesson.title}
+        </Button>
+      )}
+    </NavDiv>
+  );
+};
 
 const MenuItem = ({ to, text }) => {
   return (

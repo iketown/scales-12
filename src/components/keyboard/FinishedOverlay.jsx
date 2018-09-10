@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Icon, Button } from "semantic-ui-react";
-import NextButton from "../uiElements/NextButton.jsx";
+// import NextButton from "../uiElements/NextButton.jsx";
 const OverlayDiv = styled.div`
   position: absolute;
   top: 0;
@@ -40,12 +40,12 @@ class FinishedOverlay extends Component {
           style={{ cursor: "pointer" }}
         />
         <p>{continueText}</p>
-        <NextButton
+        {/* <NextButton
           active
           to={continueLink}
           callbackWhenFinished={callbackWhenFinished}
           center
-        />
+        /> */}
 
         {!correct && (
           <Button onClick={doOver} style={{ margin: "2rem" }} primary>

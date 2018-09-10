@@ -19,7 +19,7 @@ export default class IntroPage extends Component {
   };
   render() {
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h1">
           <Header.Content>Major Scales</Header.Content>
         </Header>

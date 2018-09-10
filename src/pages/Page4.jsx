@@ -3,12 +3,12 @@ import Layout from "../layout/Layout";
 import { Header, Image, Card, Grid } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
-import { NextButton } from "../components/uiElements/";
+// import { NextButton } from "../components/uiElements/";
 import { Line, Car, Wagon, Truck } from "../images/";
 export default class Page4 extends Component {
   render() {
     return (
-      <Layout>
+      <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>The Shapes</Header.Content>
         </Header>
@@ -38,7 +38,7 @@ export default class Page4 extends Component {
           ))} */}
         </div>
 
-        <NextButton active={true} to="/shapesquiz1" center />
+        {/* <NextButton active={true} to="/shapesquiz1" center /> */}
       </Layout>
     );
   }
