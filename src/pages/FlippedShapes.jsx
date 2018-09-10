@@ -4,7 +4,7 @@ import { Header, Image, Card, Grid } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
 // import { NextButton } from "../components/uiElements/";
-import { Line, FlipTruck, FlipWagon, FlipCar } from "../images/";
+import { Line, FlipTruck, FlipWagon, FlipCar } from "../images";
 import animation from "../images/animation.gif";
 export default class Page5 extends Component {
   render() {

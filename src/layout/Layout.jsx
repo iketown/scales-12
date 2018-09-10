@@ -1,5 +1,6 @@
 import React, { Component, createContext, Consumer, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Container,
   Dropdown,
@@ -10,12 +11,58 @@ import {
 } from "semantic-ui-react";
 import styled from "styled-components";
 import { chapters, getPreviousAndNextLessons } from "../utils/chapterIndex";
+import { finishPage } from "../actions/userScoreActions";
 
 class Layout extends Component {
   state = {};
+  componentDidMount() {
+    const { finishedPages } = this.props;
+    const finished = finishedPages.find(page => page.chapter === "Shapes");
+
+    console.log("finished Pages", finishedPages);
+    console.log("finishedbool?", finished);
+  }
+  handleNextClicked = () => {
+    const { myUrl } = this.props;
+    const { chapter } = getPreviousAndNextLessons(myUrl).thisLesson;
+    this.props.dispatch(finishPage({ pageUrl: myUrl, chapter }));
+  };
+  handlePrevClicked = () => {};
+
+  BottomNavButtons = ({ myUrl }) => {
+    const indexes = getPreviousAndNextLessons(myUrl);
+    return (
+      <NavDiv>
+        {indexes.prevLesson && (
+          <Button
+            as={Link}
+            to={indexes.prevLesson.url}
+            icon
+            labelPosition="left"
+          >
+            <Icon name="arrow left" />
+            {indexes.prevLesson.title}
+          </Button>
+        )}
+        {indexes.nextLesson && (
+          <Button
+            as={Link}
+            to={indexes.nextLesson.url}
+            icon
+            labelPosition="right"
+            primary
+            onClick={this.handleNextClicked}
+          >
+            <Icon name="arrow right" />
+            {indexes.nextLesson.title}
+          </Button>
+        )}
+      </NavDiv>
+    );
+  };
 
   render() {
-    const { children, myUrl, hideNav } = this.props;
+    const { children, myUrl, hideNav, finishedPages } = this.props;
     return (
       <Fragment>
         <Menu fixed="top" inverted>
@@ -32,34 +79,20 @@ class Layout extends Component {
             <Menu.Item as={Link} to="/">
               Home
             </Menu.Item>
-            <Dropdown item simple text="Chapters" />
-            <Dropdown item simple text="xx">
+            <Dropdown item simple text="Chapters">
               <Dropdown.Menu>
-                <ChapterTitle
-                  to="/"
-                  displayText="Chapter 1"
-                  finished
-                  lessons={["lesson1", "lesson2", "lesson3"]}
-                />
-                <ChapterTitle
-                  to="/"
-                  displayText="Chapter with long name"
-                  finished
-                />
-                <ChapterTitle to="/" displayText="Chapter 1" />
-                <ChapterTitle to="/" displayText="Chapter 1" disabled />
-
-                <Dropdown.Divider />
-                <Dropdown.Header>Header Item</Dropdown.Header>
-                <Dropdown.Item>
-                  <i className="dropdown icon" />
-                  <span className="text">Submenu</span>
-                  <Dropdown.Menu>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Item disabled>List Item</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown.Item>
-                <Dropdown.Item>List Item</Dropdown.Item>
+                {Object.keys(chapters).map(key => {
+                  const lessons = chapters[key];
+                  return (
+                    <ChapterTitle
+                      to={lessons[0] ? lessons[0].url : "/"}
+                      displayText={key}
+                      disabled={false}
+                      lessons={lessons}
+                      finishedPages={finishedPages}
+                    />
+                  );
+                })}
               </Dropdown.Menu>
             </Dropdown>
           </Container>
@@ -67,7 +100,7 @@ class Layout extends Component {
         <Container style={{ marginTop: "4rem" }}>
           {children}
           <br />
-          {!hideNav && <BottomNavButtons myUrl={myUrl} />}
+          {!hideNav && <this.BottomNavButtons myUrl={myUrl} />}
           <br />
           <br />
         </Container>
@@ -76,39 +109,12 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
-
 const NavDiv = styled.div`
   // border: 1px red solid;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
 `;
-const BottomNavButtons = ({ myUrl }) => {
-  const indexes = getPreviousAndNextLessons(myUrl);
-  return (
-    <NavDiv>
-      {indexes.prevLesson && (
-        <Button as={Link} to={indexes.prevLesson.url} icon labelPosition="left">
-          <Icon name="arrow left" />
-          {indexes.prevLesson.title}
-        </Button>
-      )}
-      {indexes.nextLesson && (
-        <Button
-          as={Link}
-          to={indexes.nextLesson.url}
-          icon
-          labelPosition="right"
-          primary
-        >
-          <Icon name="arrow right" />
-          {indexes.nextLesson.title}
-        </Button>
-      )}
-    </NavDiv>
-  );
-};
 
 const MenuItem = ({ to, text }) => {
   return (
@@ -119,20 +125,38 @@ const MenuItem = ({ to, text }) => {
 };
 
 const ChapterTitle = props => {
-  const { to, displayText, disabled, lessons } = props;
+  const { to, displayText, disabled, lessons, finishedPages } = props;
+  const finishedLessonLength = finishedPages.filter(
+    page => page.chapter === displayText
+  ).length;
+  const finishedChapter = finishedLessonLength === lessons.length;
   return (
     <Dropdown.Item as={Link} to={to} disabled={disabled}>
-      {/* <Icon name={finished ? "check circle outline" : "circle outline"} /> */}
       <i className="dropdown icon" />
-
-      <span>{displayText}</span>
+      <span style={finishedChapter ? { color: "#dadada" } : {}}>
+        {displayText}
+      </span>
       {lessons && (
         <Dropdown.Menu>
           {lessons.map(lesson => {
-            return <Dropdown.Item>{lesson}</Dropdown.Item>;
+            const finished = finishedPages.find(
+              page => page.pageUrl === lesson.url
+            );
+            return (
+              <Dropdown.Item as={Link} to={lesson.url}>
+                <span style={finished ? { color: "#dadada" } : {}}>
+                  {lesson.title}
+                </span>
+              </Dropdown.Item>
+            );
           })}
         </Dropdown.Menu>
       )}
     </Dropdown.Item>
   );
 };
+
+const mapStateToProps = state => ({
+  finishedPages: state.userScore.finishedPages
+});
+export default connect(mapStateToProps)(Layout);

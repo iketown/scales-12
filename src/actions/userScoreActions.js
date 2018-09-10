@@ -15,3 +15,10 @@ export const completeKeyboardChallenge = keyboardId => ({
   type: COMPLETE_KEYBOARD_CHALLENGE,
   keyboardId
 });
+
+export const FINISH_PAGE = "FINISH_PAGE";
+export const finishPage = ({ pageUrl, chapter }) => ({
+  type: FINISH_PAGE,
+  pageUrl,
+  chapter
+});

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="305px" height="150px" viewBox="0 0 305 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
     <title>Line</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Line" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M39.5,113.5 L251.5,113.5" id="Path" stroke="#000000" stroke-width="3" fill="#F8E71C" opacity="0.3"></path>
+        <path d="M39.5,123.5 L251.5,123.5" id="Path" stroke="#000000" stroke-width="3" fill="#F8E71C" opacity="0.3"></path>
         <text id="❶" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
-            <tspan x="18" y="122">❶</tspan>
+            <tspan x="18" y="132">❶</tspan>
         </text>
         <text id="❷" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
-            <tspan x="108" y="122">❷</tspan>
+            <tspan x="108" y="132">❷</tspan>
         </text>
         <text id="❸" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
-            <tspan x="197" y="122">❸</tspan>
+            <tspan x="197" y="132">❸</tspan>
         </text>
         <text id="❹" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
-            <tspan x="247" y="122">❹</tspan>
+            <tspan x="247" y="132">❹</tspan>
         </text>
     </g>
 </svg>

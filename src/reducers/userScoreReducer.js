@@ -1,4 +1,7 @@
-import { COMPLETE_KEYBOARD_CHALLENGE } from "../actions/userScoreActions";
+import {
+  COMPLETE_KEYBOARD_CHALLENGE,
+  FINISH_PAGE
+} from "../actions/userScoreActions";
 
 const initialState = {
   userId: "12345",
@@ -9,7 +12,8 @@ const initialState = {
   },
   keyboardChallenges: {
     kb001: { completed: false }
-  }
+  },
+  finishedPages: [{ url: "", timestamp: "" }]
 };
 
 export const userScoreReducer = (state = initialState, action) => {
@@ -25,6 +29,30 @@ export const userScoreReducer = (state = initialState, action) => {
           ...keyboardChallenges,
           [keyboardId]: { ...thisKeyboardChallenge, completed: true }
         }
+      };
+    case FINISH_PAGE:
+      const { pageUrl, chapter } = action;
+      const timestamp = Date();
+      const oldFinishedPage = state.finishedPages.find(
+        page => page.pageUrl === pageUrl
+      );
+      let newFinishedPage;
+      if (oldFinishedPage) {
+        // just add the new timestamp to 'timestamps' array
+        newFinishedPage = {
+          ...oldFinishedPage,
+          timestamps: [...oldFinishedPage.timestamps, timestamp]
+        };
+      } else {
+        // create a new finished page
+        newFinishedPage = { pageUrl, timestamps: [timestamp], chapter };
+      }
+      return {
+        ...state,
+        finishedPages: [
+          ...state.finishedPages.filter(p => p.pageUrl !== pageUrl),
+          newFinishedPage
+        ]
       };
     case "COMPLETE_CHAPTER_QUIZ":
       return {

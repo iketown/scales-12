@@ -1,9 +1,9 @@
 import React from "react";
-import Layout from "../layout/Layout.jsx";
+import Layout from "../layout/Layout";
 import { Header } from "semantic-ui-react";
 
 import KeyboardInline from "../components/keyboard/KeyboardInline";
-import { StarterIcon } from "../components/uiElements/index";
+import { StarterIcon } from "../components/uiElements";
 const Page7 = () => {
   return (
     <Layout myUrl={this.props.match.path}>

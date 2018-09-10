@@ -2,14 +2,14 @@ import React, { Component, createContext } from "react";
 import { Link } from "react-router-dom";
 import { Button, Popup, Icon, Header, Image, Item } from "semantic-ui-react";
 import styled from "styled-components";
-import Layout from "../layout/Layout.jsx";
-import { CheckIcon } from "../components/uiElements/index";
+import Layout from "../layout/Layout";
+import { CheckIcon } from "../components/uiElements";
 import { DotCardsGrid } from "./ABetterWay";
 import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
 // import { NextButton } from "../components/uiElements/index";
-import Dotboard8 from "../components/dotboard/Dotboard8.jsx";
-import { Line, Car, Truck, Wagon, KeystoDots } from "../images/index";
-import { LessonContext } from "../layout/Layout.jsx";
+import Dotboard8 from "../components/dotboard/Dotboard8";
+import { Line, Car, Truck, Wagon, KeystoDots } from "../images";
+import { LessonContext } from "../layout/Layout";
 export default class Page3 extends Component {
   state = {
     hide2ndShape: false,
@@ -126,10 +126,16 @@ export default class Page3 extends Component {
         <p>
           The amazing part of the 12scales system is after you split everything
           up like this, there are only
-          <strong> FOUR</strong> shapes to learn:{" "}
+          <strong> FOUR</strong> shapes to learn.{" "}
         </p>
         <p>
-          The{" "}
+          We'll give each shape a name. Similar to a constellation of stars (
+          <em>i.e. The Big Dipper</em>
+          ), giving each shape a name will make them easier to recognize and
+          remember.
+        </p>
+        <p>
+          Our shapes will be called The{" "}
           <a
             style={{ cursor: "pointer" }}
             onClick={() => this.toggleShapeSelected("line")}
@@ -188,19 +194,22 @@ export default class Page3 extends Component {
         </Header>
         <p>
           <br />
-          We've already cut the complexity down by a lot, by only needing to
-          learn
-          <strong> two shapes </strong>
-          for each scale, instead of
-          <strong> eight notes</strong>.
+          We've already cut the complexity down by a lot. Instead of remembering
+          <strong> eight individual notes</strong>, we'll just need to remember
+          which two shapes (of the four possibilities) make up each scale.
+        </p>
+        <p>
+          Instead of <strong>Bb, C, D, Eb, F, G, A, Bb</strong>, we'll think '
+          <strong>CAR - WAGON</strong>'
         </p>
         <p>
           <em>but it gets easier than that.</em>
         </p>
         <p>
           Look again at our scale chart below. see how the{" "}
-          <strong>2nd shape of the 'C' scale</strong> matches the
-          <strong> first shape of the 'G' scale</strong>?
+          <strong>2nd shape of the C scale</strong> (a 'LINE') is the same as
+          the
+          <strong> first shape of the G scale</strong>?{" "}
           <Button
             size="mini"
             compact
@@ -214,8 +223,8 @@ export default class Page3 extends Component {
           </Button>
         </p>
         <p>
-          ...and the 2nd shape of the 'G' scale matches the 1st shape of the 'D'
-          scale?
+          ...and the 2nd shape of the 'G' scale (a 'TRUCK') matches the 1st
+          shape of the 'D' scale?{" "}
           <Button
             size="mini"
             compact
@@ -254,12 +263,14 @@ export default class Page3 extends Component {
         </DotCardsGrid>
         <p>
           we'll talk about how these scales connect later, but when we start
-          playing them, you'll find you don't even have to learn the 2nd shape.
+          playing them, you'll find you don't even have to remember the 2nd
+          shape.
         </p>
         <p>
-          you really only have to learn the{" "}
+          you really only have to remember the{" "}
           <Button
             primary={!this.state.hide2ndShape}
+            basic={this.state.hide2ndShape}
             onClick={() => this.setState({ hide2ndShape: true })}
           >
             FIRST SHAPE

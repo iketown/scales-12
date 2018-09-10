@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="305px" height="227px" viewBox="0 0 305 227" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>LineOnKeyboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LineOnKeyboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Oct1-Copy" opacity="0.25" transform="translate(7.000000, -187.000000)" stroke="#000000">
+            <path d="M0,0 L38.0121279,0 L38.0121279,300.056071 L69,300.056071 L69,431 C69,436.522847 64.5228475,441 59,441 L10,441 C4.4771525,441 6.76353751e-16,436.522847 0,431 L0,0 Z" id="C" fill="#FFFFFF"></path>
+            <path d="M88.3646096,-2.84217094e-14 L130.191711,-2.84217094e-14 L130.191711,300.056071 L143,300.056071 L143,431 C143,436.522847 138.522847,441 133,441 L84,441 C78.4771525,441 74,436.522847 74,431 L74,300.056071 L88.3646096,300.056071 L88.3646096,-2.84217094e-14 Z" id="D" fill="#FFFFFF"></path>
+            <path d="M179.337415,-2.84217094e-14 L217,-2.84217094e-14 L217,300.056071 L217,431 C217,436.522847 212.522847,441 207,441 L158,441 C152.477153,441 148,436.522847 148,431 L148,300.056071 L179.337415,300.056071 L179.337415,-2.84217094e-14 Z" id="E" fill="#FFFFFF"></path>
+            <path d="M257.765868,0 L222,0 L222,300.056071 L222,431 C222,436.522847 226.477153,441 232,441 L281,441 C286.522847,441 291,436.522847 291,431 L291,300.056071 L257.765868,300.056071 L257.765868,0 Z" id="F" fill="#FFFFFF"></path>
+            <path d="M306.671055,-2.84217094e-14 L341.822145,-2.84217094e-14 L341.822145,300.056071 L365,300.056071 L365,431 C365,436.522847 360.522847,441 355,441 L306,441 C300.477153,441 296,436.522847 296,431 L296,300.056071 L306.671055,300.056071 L306.671055,-2.84217094e-14 Z" id="G" fill="#FFFFFF"></path>
+            <path d="M42.5,0.5 L42.5,293 C42.5,295.485281 44.5147186,297.5 47,297.5 L79,297.5 C81.4852814,297.5 83.5,295.485281 83.5,293 L83.5,0.5 L42.5,0.5 Z" id="Db" fill="#000000"></path>
+            <path d="M134.5,0.5 L134.5,293 C134.5,295.485281 136.514719,297.5 139,297.5 L171,297.5 C173.485281,297.5 175.5,295.485281 175.5,293 L175.5,0.5 L134.5,0.5 Z" id="Eb" fill="#000000"></path>
+            <path d="M261.5,0.5 L261.5,293 C261.5,295.485281 263.514719,297.5 266,297.5 L298,297.5 C300.485281,297.5 302.5,295.485281 302.5,293 L302.5,0.5 L261.5,0.5 Z" id="Gb" fill="#000000"></path>
+        </g>
+        <path d="M39.5,172.5 L251.5,172.5" id="Path" stroke="#000000" stroke-width="3" fill="#F8E71C" opacity="0.3"></path>
+        <text id="❶" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="18" y="181">❶</tspan>
+        </text>
+        <text id="❷" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="103" y="181">❷</tspan>
+        </text>
+        <text id="❸" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="178" y="181">❸</tspan>
+        </text>
+        <text id="❹" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="250" y="181">❹</tspan>
+        </text>
+    </g>
+</svg>

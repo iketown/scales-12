@@ -133,15 +133,6 @@ export default class IntroPage extends Component {
             Scales becomes far easier.
           </p>
           <p>Stay tuned. </p>
-          <Button
-            as={Link}
-            to="/a-better-way"
-            primary
-            icon
-            labelPosition="right"
-          >
-            Next <Icon name="arrow circle right" />
-          </Button>
         </Container>
       </Layout>
     );

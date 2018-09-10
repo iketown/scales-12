@@ -4,7 +4,16 @@ import { Header, Image, Card, Grid } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
 // import { NextButton } from "../components/uiElements/";
-import { Line, Car, Wagon, Truck } from "../images/";
+import {
+  Line,
+  Car,
+  Wagon,
+  Truck,
+  LineKeyboardAni,
+  CarKeyboardAni,
+  TruckKeyboardAni,
+  WagonKeyboardAni
+} from "../images";
 export default class Page4 extends Component {
   render() {
     return (
@@ -14,14 +23,9 @@ export default class Page4 extends Component {
         </Header>
         <p>
           These four shapes are the basic building blocks of the entire 12scales
-          system. Carefully memorize all four.
+          system. Each shape is a code for a series of black and white keys.
         </p>
-        <p>
-          This will be on the test.{" "}
-          <span role="img" aria-label="wink emoji">
-            😉
-          </span>
-        </p>
+        <p>Once you have these four memorized, continue to the quiz. :)</p>
         <div>
           <Grid stackable columns={2}>
             <Grid.Row>
@@ -47,32 +51,50 @@ export default class Page4 extends Component {
 const shapesArr = [
   {
     name: "line",
-    src: Line,
+    src: LineKeyboardAni,
     header: "Line",
     description: "yep. its just a straight line. You can do this."
   },
-  { name: "car", src: Car, header: "Car", description: "down • UP • UP down" },
-  {
-    name: "truck",
-    src: Truck,
-    header: "Truck",
-    description: "down • down • UP down"
-  },
   {
     name: "wagon",
-    src: Wagon,
+    src: WagonKeyboardAni,
     header: "Wagon",
     description: (
       <div>
         <p>
-          same as the LINE, except <strong>dot #4</strong> is raised.
+          same as the LINE, except <strong>dot #4</strong> is raised. Think of
+          <strong> dot #4</strong> as the 'handle' to pull the wagon.
         </p>
       </div>
+    )
+  },
+  {
+    name: "car",
+    src: CarKeyboardAni,
+    header: "Car",
+    description: (
+      <p>
+        Both the CAR and the TRUCK (motorized vehicles) have the 'front and back
+        tires' down on the ground. The CAR has <strong>#2</strong> and{" "}
+        <strong>#3</strong> raised, so people can sit in the back seat.
+      </p>
+    )
+  },
+  {
+    name: "truck",
+    src: TruckKeyboardAni,
+    header: "Truck",
+    description: (
+      <p>
+        Both the CAR and the TRUCK (motorized vehicles) have the 'front and back
+        tires' on the ground. The TRUCK has only <strong>#3</strong> raised
+      </p>
     )
   }
 ];
 const ShapeCard = ({
   src,
+  src2,
   header,
   description,
   setCardIndex,

@@ -27,6 +27,14 @@ import splitKeyboardAnimation from "./splitKeyboardAnimation.gif";
 import EMajorConventional from "./EMajorConventional.svg";
 import EMajor12Scales from "./EMajor12Scales.svg";
 import KeystoDots from "./KeysToDots.gif";
+import TruckOnKeyboard from "./TruckOnKeyboard.svg";
+import CarOnKeyboard from "./CarOnKeyboard.svg";
+import LineOnKeyboard from "./LineOnKeyboard.svg";
+import WagonOnKeyboard from "./WagonOnKeyboard.svg";
+import LineKeyboardAni from "./LineKeyboardAni.gif";
+import CarKeyboardAni from "./CarKeyboardAni.gif";
+import TruckKeyboardAni from "./TruckKeyboardAni.gif";
+import WagonKeyboardAni from "./WagonKeyboardAni.gif";
 export {
   CMajorScale,
   Line,
@@ -47,6 +55,14 @@ export {
   FlipCarDots,
   FlipTruckDots,
   FlipWagonDots,
+  TruckOnKeyboard,
+  CarOnKeyboard,
+  LineOnKeyboard,
+  WagonOnKeyboard,
+  LineKeyboardAni,
+  CarKeyboardAni,
+  TruckKeyboardAni,
+  WagonKeyboardAni,
   lineSpacing,
   keyboardSpacing,
   carSpacing,

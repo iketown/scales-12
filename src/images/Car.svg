@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="305px" height="150px" viewBox="0 0 305 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
     <title>Car</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
@@ -15,27 +15,23 @@
             <path d="M220.004414,114 C207.317702,114 197,103.905009 197,91.5014393 C197,79.0921128 207.317702,69 220.004414,69 C232.685241,69 243,79.0921128 243,91.5014393 C243,103.905009 232.685241,114 220.004414,114 Z M220.004414,79.6102476 C213.297614,79.6102476 207.841533,84.9441566 207.841533,91.5014393 C207.841533,98.0558434 213.297614,103.386874 220.004414,103.386874 C226.705329,103.386874 232.158467,98.0558434 232.158467,91.5014393 C232.158467,84.9441566 226.705329,79.6102476 220.004414,79.6102476 Z" id="Fill-424" fill="#414141"></path>
             <path d="M17.362069,40 L21,42.7284376 L13.5775862,60.9826398 L9,61 C9.22701149,52.788647 12.387931,45.1530725 17.362069,40" id="Fill-425" fill="#414141"></path>
         </g>
-        <g id="Group-4" transform="translate(16.000000, 103.000000)">
-            <circle id="Oval-Copy-3" fill="#B8E986" cx="13.5" cy="15.5" r="12.5"></circle>
-            <text id="❶" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+        <g id="Group-4" transform="translate(16.000000, 113.000000)" fill="#000000" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold">
+            <text id="❶">
                 <tspan x="0" y="24">❶</tspan>
             </text>
         </g>
-        <g id="Group" transform="translate(108.000000, 19.000000)">
-            <circle id="Oval-Copy" fill="#B8E986" cx="13.5" cy="16.5" r="12.5"></circle>
-            <text id="❷" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+        <g id="Group" transform="translate(108.000000, 9.000000)" fill="#000000" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold">
+            <text id="❷">
                 <tspan x="0" y="24">❷</tspan>
             </text>
         </g>
-        <g id="Group-2" transform="translate(195.000000, 19.000000)">
-            <circle id="Oval-Copy-2" fill="#B8E986" cx="13.5" cy="16.5" r="12.5"></circle>
-            <text id="❸" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+        <g id="Group-2" transform="translate(195.000000, 9.000000)" fill="#000000" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold">
+            <text id="❸">
                 <tspan x="0" y="24">❸</tspan>
             </text>
         </g>
-        <g id="Group-3" transform="translate(248.000000, 99.000000)">
-            <circle id="Oval-Copy-3" fill="#B8E986" cx="13.5" cy="16.5" r="12.5"></circle>
-            <text id="❹" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold" fill="#000000">
+        <g id="Group-3" transform="translate(248.000000, 109.000000)" fill="#000000" font-family="Lato-Bold, Lato" font-size="24" font-weight="bold">
+            <text id="❹">
                 <tspan x="0" y="24">❹</tspan>
             </text>
         </g>

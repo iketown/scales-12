@@ -4,6 +4,7 @@ import posed from "react-pose";
 import NumberCircle from "../keyboard/NumberCircle.jsx";
 import { Icon } from "semantic-ui-react";
 import Synth from "../keyboard/sounds/audiosynth";
+import { fullScales } from "../keyboard/keyboardShapes";
 
 const piano = Synth.createInstrument("piano");
 
@@ -150,6 +151,8 @@ const Dotboard8 = ({
   circleTop,
   circleBottom
 }) => {
+  const myScale = fullScales[root];
+
   return (
     <Box>
       {[bottomShape, topShape].map((shape, index) => {

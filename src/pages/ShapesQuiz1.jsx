@@ -110,7 +110,6 @@ export class ShapesQuiz1 extends Component {
     const { quizCompleted } = this.state;
     return (
       <Layout myUrl={this.props.match.path} hideNav={!quizCompleted}>
-        <h1>sup</h1>
         <CardQuizPage
           testQuestions={testQuestions}
           cardsArr={cardsArr}

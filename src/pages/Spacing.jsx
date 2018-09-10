@@ -7,7 +7,7 @@ import {
   carSpacing,
   flipCarSpacing,
   carShapeAnimation
-} from "../images/";
+} from "../images";
 // import { NextButton } from "../components/uiElements";
 export default class Page6 extends Component {
   render() {
