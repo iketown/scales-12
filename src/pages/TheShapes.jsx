@@ -1,6 +1,5 @@
-import React, { Component, createContext } from "react";
-import { Link } from "react-router-dom";
-import { Button, Popup, Icon, Header, Image, Item } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Button, Header, Item } from "semantic-ui-react";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
 import { CheckIcon } from "../components/uiElements";
@@ -9,7 +8,6 @@ import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
 // import { NextButton } from "../components/uiElements/index";
 import Dotboard8 from "../components/dotboard/Dotboard8";
 import { Line, Car, Truck, Wagon, KeystoDots } from "../images";
-import { LessonContext } from "../layout/Layout";
 export default class Page3 extends Component {
   state = {
     hide2ndShape: false,
@@ -55,7 +53,6 @@ export default class Page3 extends Component {
   };
   render() {
     const { split } = this.state;
-    const shapeButtonsClicked = this.state.shapesSelected.length === 4;
 
     return (
       <Layout myUrl={this.props.match.path}>

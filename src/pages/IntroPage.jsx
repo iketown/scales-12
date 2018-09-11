@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Header, Container, Card, Button, Icon, Item } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Header, Container, Card, Item } from "semantic-ui-react";
 import { ScaleCard } from "../components/uiElements/customDisplays";
 import Layout from "../layout/Layout.jsx";
 

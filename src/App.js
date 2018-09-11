@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./components/uiElements/ScrollToTop.jsx";
-
+import FireTest from "./components/firebaseTester.jsx";
 import "./App.css";
 // import IntroPage from "./pages/IntroPage.jsx";
 // import Page1 from "./pages/Page1.jsx";
@@ -17,12 +17,7 @@ import "./App.css";
 import { lessonsArr } from "./utils/chapterIndex";
 
 class App extends Component {
-  state = {
-    lessonsArr: []
-  };
-  componentDidMount() {
-    console.log("lessons arr", lessonsArr);
-  }
+  componentDidMount() {}
   render() {
     return (
       <Router>
@@ -36,6 +31,7 @@ class App extends Component {
                 component={lesson.component}
               />
             ))}
+            <Route path="/firetest" component={FireTest} />
           </Switch>
           {/* <Route path="/" exact component={IntroPage} />
             <Route path="/intro" exact component={IntroPage} />

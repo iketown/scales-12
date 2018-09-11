@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import Layout from "../layout/Layout";
 import { Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import posed, { PoseGroup } from "react-pose";
 import { ding, plink } from "../components/keyboard/sounds/soundFX";
 import { shuffleArray } from "../utils/generalUtils";
 import { delayBetweenQuestions } from "../utils/generalConfig";
-import { ShapeCard, NextButton } from "../components/uiElements";
+import { ShapeCard } from "../components/uiElements";
 // import {
 //   Line,
 //   Car,

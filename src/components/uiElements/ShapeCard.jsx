@@ -1,6 +1,5 @@
 import React from "react";
 import posed from "react-pose";
-import styled from "styled-components";
 import { HoverFloat, CardOverlay } from "./index";
 import { Card, Image } from "semantic-ui-react";
 
@@ -9,13 +8,6 @@ const CardFader = posed.div({
   regular: { opacity: 0.8, transform: "scale(1)" },
   wrong: { opacity: 0.5, transform: "scale(0.8)" }
 });
-
-const ImageDiv = styled.div`
-  background-image: url(${p => (p.showImage ? p.fullPic : p.hintPic)});
-  height: 10rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-`;
 
 const ShapeCard = props => {
   const {

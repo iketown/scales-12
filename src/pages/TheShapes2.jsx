@@ -5,10 +5,6 @@ import posed from "react-pose";
 import styled from "styled-components";
 // import { NextButton } from "../components/uiElements/";
 import {
-  Line,
-  Car,
-  Wagon,
-  Truck,
   LineKeyboardAni,
   CarKeyboardAni,
   TruckKeyboardAni,

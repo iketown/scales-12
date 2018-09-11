@@ -16,7 +16,6 @@ import {
   startChapterQuiz
 } from "../actions/userScoreActions";
 import Layout from "../layout/Layout";
-import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 
 const testQuestions = [
   {

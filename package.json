@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.4.2",
     "markdown-to-jsx": "^6.7.2",
     "nuka-carousel": "^4.3.7",
     "popmotion-pose": "^3.0.1",
@@ -11,6 +12,7 @@
     "react-dom": "^16.4.2",
     "react-pose": "^3.0.2",
     "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.1.8",
     "react-responsive-carousel": "^3.1.41",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -19,6 +21,7 @@
     "react-typography": "^0.16.13",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
+    "redux-firestore": "^0.5.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.82.3",

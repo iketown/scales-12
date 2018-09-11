@@ -23,13 +23,7 @@ class FinishedOverlay extends Component {
     this.setState({ showMe: true });
   }
   render() {
-    const {
-      correct,
-      doOver,
-      continueLink,
-      continueText,
-      callbackWhenFinished
-    } = this.props;
+    const { correct, doOver, continueText } = this.props;
     return (
       <OverlayDiv>
         <Icon

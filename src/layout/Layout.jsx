@@ -1,6 +1,7 @@
-import React, { Component, createContext, Consumer, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { firebaseConnect } from "react-redux-firebase";
 import {
   Container,
   Dropdown,
@@ -23,9 +24,12 @@ class Layout extends Component {
     console.log("finishedbool?", finished);
   }
   handleNextClicked = () => {
-    const { myUrl } = this.props;
+    const { myUrl, firebase } = this.props;
     const { chapter } = getPreviousAndNextLessons(myUrl).thisLesson;
-    this.props.dispatch(finishPage({ pageUrl: myUrl, chapter }));
+    const finishedPageObject = { pageUrl: myUrl, chapter };
+    this.props.dispatch(finishPage(finishedPageObject));
+    console.log("firebase", firebase);
+    // firebase.push("finishedPages", finishedPageObject);
   };
   handlePrevClicked = () => {};
 
@@ -159,4 +163,4 @@ const ChapterTitle = props => {
 const mapStateToProps = state => ({
   finishedPages: state.userScore.finishedPages
 });
-export default connect(mapStateToProps)(Layout);
+export default firebaseConnect()(connect(mapStateToProps)(Layout));

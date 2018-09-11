@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 import NumberCircle from "../keyboard/NumberCircle.jsx";
-import { Icon } from "semantic-ui-react";
 import Synth from "../keyboard/sounds/audiosynth";
 import { fullScales } from "../keyboard/keyboardShapes";
 
@@ -156,7 +155,6 @@ const Dotboard8 = ({
   return (
     <Box>
       {[bottomShape, topShape].map((shape, index) => {
-        const myGridHalfId = `${root}${index === 1 ? "top" : "bottom"}`;
         return (
           <DotboardGridHalf
             split={index === 1 ? split : ""}
