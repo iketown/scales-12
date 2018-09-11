@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { firebaseConnect } from "react-redux-firebase";
+import firebase from "firebase/app";
 import {
   Container,
   Dropdown,
@@ -11,6 +11,7 @@ import {
   Icon
 } from "semantic-ui-react";
 import styled from "styled-components";
+
 import { chapters, getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
 
@@ -18,10 +19,7 @@ class Layout extends Component {
   state = {};
   componentDidMount() {
     const { finishedPages } = this.props;
-    const finished = finishedPages.find(page => page.chapter === "Shapes");
-
-    console.log("finished Pages", finishedPages);
-    console.log("finishedbool?", finished);
+    console.log("am i signed in?", firebase.auth().currentUser);
   }
   handleNextClicked = () => {
     const { myUrl, firebase } = this.props;
@@ -89,6 +87,7 @@ class Layout extends Component {
                   const lessons = chapters[key];
                   return (
                     <ChapterTitle
+                      key={key}
                       to={lessons[0] ? lessons[0].url : "/"}
                       displayText={key}
                       disabled={false}
@@ -147,7 +146,7 @@ const ChapterTitle = props => {
               page => page.pageUrl === lesson.url
             );
             return (
-              <Dropdown.Item as={Link} to={lesson.url}>
+              <Dropdown.Item key={lesson.url} as={Link} to={lesson.url}>
                 <span style={finished ? { color: "#dadada" } : {}}>
                   {lesson.title}
                 </span>
@@ -163,4 +162,4 @@ const ChapterTitle = props => {
 const mapStateToProps = state => ({
   finishedPages: state.userScore.finishedPages
 });
-export default firebaseConnect()(connect(mapStateToProps)(Layout));
+export default connect(mapStateToProps)(Layout);

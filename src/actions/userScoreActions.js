@@ -1,3 +1,5 @@
+import db from "../firebase";
+
 export const COMPLETE_CHAPTER_QUIZ = "COMPLETE_CHAPTER_QUIZ";
 export const completeChapterQuiz = chapterId => ({
   type: COMPLETE_CHAPTER_QUIZ,
@@ -22,3 +24,12 @@ export const finishPage = ({ pageUrl, chapter }) => ({
   pageUrl,
   chapter
 });
+
+export const firebaseThunk = userId => dispatch => {
+  console.log("trying to get user with id:", userId);
+  db.collection("users")
+    .doc(userId)
+    .onSnapshot(doc => {
+      console.log("current data", doc.data());
+    });
+};

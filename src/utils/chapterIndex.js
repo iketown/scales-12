@@ -55,6 +55,5 @@ export const getPreviousAndNextLessons = url => {
   const nextLesson = lessonsArr[myIndex + 1];
   const prevLesson = lessonsArr[myIndex - 1];
   const returnMe = { myIndex, thisLesson, nextLesson, prevLesson };
-  console.log("return me", returnMe);
   return returnMe;
 };
