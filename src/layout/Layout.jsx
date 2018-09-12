@@ -16,11 +16,25 @@ import { chapters, getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
 
 class Layout extends Component {
-  state = {};
+  state = {
+    isSignedIn: false,
+    user: {}
+  };
   componentDidMount() {
     const { finishedPages } = this.props;
-    console.log("am i signed in?", firebase.auth().currentUser);
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      const { uid, displayName, photoURL, email } = user;
+      this.setState({
+        isSignedIn: true,
+        user: { uid, displayName, photoURL, email }
+      });
+    });
   }
+  componentWillUnmount() {}
+  signOut = () => {
+    firebase.auth().signOut();
+    this.setState({ isSignedIn: false, user: {} });
+  };
   handleNextClicked = () => {
     const { myUrl, firebase } = this.props;
     const { chapter } = getPreviousAndNextLessons(myUrl).thisLesson;
@@ -98,6 +112,18 @@ class Layout extends Component {
                 })}
               </Dropdown.Menu>
             </Dropdown>
+            <Menu.Menu position="right">
+              {this.state.isSignedIn ? (
+                <Fragment>
+                  <Menu.Item>{this.state.user.displayName}</Menu.Item>
+                  <Menu.Item onClick={this.signOut}>Sign Out</Menu.Item>
+                </Fragment>
+              ) : (
+                <Menu.Item as={Link} to="/auth">
+                  Sign In
+                </Menu.Item>
+              )}
+            </Menu.Menu>
           </Container>
         </Menu>
         <Container style={{ marginTop: "4rem" }}>

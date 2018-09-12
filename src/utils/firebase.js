@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import "firebase/firestore";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAAeERyKaIH58i3HokvmIEFQNT6DTroQ40",
@@ -11,14 +12,14 @@ export const firebaseConfig = {
 
 export const uiConfig = {
   signInFlow: "popup",
-  signInSuccessUrl: "/signed-in-URL",
+  signInSuccessUrl: "/my-latest-page",
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID
   ],
   callbacks: {
-    signInSuccessWithAuthResult: () => false
+    signInSuccessWithAuthResult: () => true
   },
   tosUrl: "/tos",
   privacyPolicyUrl: "/privacy-policy"
@@ -26,9 +27,6 @@ export const uiConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-db.settings({
-  timestampsInSnapshots: true
-});
+export const db = firebase.firestore();
 
-export default db;
+export default firebase;

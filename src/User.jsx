@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import db from "./firebase";
+import db from "./utils/firebase";
 import { connect } from "react-redux";
 import { firebaseThunk } from "./actions/userScoreActions";
 import { Button } from "semantic-ui-react";

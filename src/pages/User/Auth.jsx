@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Layout from "../../layout/Layout.jsx";
 import { Image, Button } from "semantic-ui-react";
 import firebase from "firebase/app";
-import { uiConfig } from "../../firebase";
+import { uiConfig } from "../../utils/firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
 
 export default class SignInScreen extends Component {
@@ -21,7 +21,9 @@ export default class SignInScreen extends Component {
   componentDidMount() {
     this.unregisterAuthObserver = firebase
       .auth()
-      .onAuthStateChanged(user => this.setState({ isSignedIn: !!user }));
+      .onAuthStateChanged(user =>
+        this.setState({ isSignedIn: !!user, userObj: user })
+      );
   }
   componentWillUnmount() {
     this.unregisterAuthObserver();
@@ -41,6 +43,7 @@ export default class SignInScreen extends Component {
     return (
       <Layout>
         <p>your name is {firebase.auth().currentUser.displayName}</p>
+        <p>your uid is {firebase.auth().currentUser.uid}</p>
         <Image src={firebase.auth().currentUser.photoURL} size="small" />
         <Button onClick={this.handleSignOut}>Sign OUT</Button>
       </Layout>

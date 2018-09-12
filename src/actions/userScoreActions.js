@@ -1,4 +1,4 @@
-import db from "../firebase";
+import { db } from "../utils/firebase";
 
 export const COMPLETE_CHAPTER_QUIZ = "COMPLETE_CHAPTER_QUIZ";
 export const completeChapterQuiz = chapterId => ({
@@ -29,7 +29,6 @@ export const firebaseThunk = userId => dispatch => {
   console.log("trying to get user with id:", userId);
   db.collection("users")
     .doc(userId)
-    .onSnapshot(doc => {
-      console.log("current data", doc.data());
-    });
+    .get()
+    .then(user => console.log("user data", user.data()));
 };
