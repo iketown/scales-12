@@ -5,7 +5,6 @@ import { reduxFirestore, getFirestore } from "redux-firestore";
 import thunk from "redux-thunk";
 import { rootReducer } from "./reducers/rootReducer";
 import firebase from "./utils/firebase";
-import { firebaseConfig } from "./utils/firebase";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
@@ -13,7 +12,8 @@ import "firebase/firestore";
 const rrfConfig = {
   userProfile: "users",
   attachAuthIsReady: true,
-  useFirestoreForProfile: true
+  useFirestoreForProfile: true,
+  updateProfileOnLogin: false
 }; // optional redux-firestore config opts
 
 export const configureStore = preloadedState => {

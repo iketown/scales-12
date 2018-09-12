@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import db from "./utils/firebase";
 import { connect } from "react-redux";
 import { firebaseThunk } from "./actions/userScoreActions";
 import { Button } from "semantic-ui-react";
@@ -14,25 +13,7 @@ class User extends Component {
       [e.target.name]: e.target.value
     });
   };
-  addUser = e => {
-    e.preventDefault();
 
-    const { email, firstName, lastName } = this.state;
-    const userRef = db
-      .collection("users")
-      .add({
-        email,
-        firstName,
-        lastName
-      })
-      .then(docRef => console.log("doc written with id:", docRef.id))
-      .catch(error => console.error("error adding document:", error));
-    this.setState({
-      email: "",
-      firstName: "",
-      lastName: ""
-    });
-  };
   callFirebase = () => {
     this.props.dispatch(firebaseThunk("67THspUE2j5IfQQ8htVl"));
   };

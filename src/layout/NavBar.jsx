@@ -1,20 +1,20 @@
 import React, { Component, Fragment } from "react";
 
-import { chapters, getPreviousAndNextLessons } from "../utils/chapterIndex";
+import { chapters } from "../utils/chapterIndex";
 import { Container, Dropdown, Image, Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { firestoreConnect, withFirestore } from "react-redux-firebase";
+import { withFirestore } from "react-redux-firebase";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 
 const ChapterTitle = props => {
-  const { to, displayText, disabled, lessons, finishedPages } = props;
+  const { displayText, disabled, lessons, finishedPages } = props;
   const finishedLessonLength = finishedPages.filter(
     page => page.chapter === displayText
   ).length;
   const finishedChapter = finishedLessonLength === lessons.length;
   return (
-    <Dropdown.Item as={Link} to={to} disabled={disabled}>
+    <Dropdown.Item disabled={disabled}>
       <i className="dropdown icon" />
       <span style={finishedChapter ? { color: "#dadada" } : {}}>
         {displayText}
@@ -46,6 +46,9 @@ class NavBar extends Component {
   };
   handleSignIn = () => {
     this.props.openModal("LoginModal");
+  };
+  handleRegister = () => {
+    this.props.openModal("RegisterModal");
   };
   handleSignOut = () => {
     this.props.firebase.logout();
@@ -89,11 +92,24 @@ class NavBar extends Component {
           <Menu.Menu position="right">
             {authenticated ? (
               <Fragment>
-                <Menu.Item>{auth.email}</Menu.Item>
+                <Menu.Item>
+                  {/* <Image
+                    src={auth.photoURL}
+                    size="mini"
+                    circular
+                    spaced="right"
+                  /> */}
+                  {auth.displayName || auth.email}
+                </Menu.Item>
                 <Menu.Item onClick={this.handleSignOut}>Sign Out</Menu.Item>
               </Fragment>
             ) : (
-              <Menu.Item onClick={this.handleSignIn}>Sign In</Menu.Item>
+              <Fragment>
+                <Menu.Item onClick={this.handleSignIn}>Sign In</Menu.Item>
+                <Menu.Item onClick={this.handleRegister}>
+                  Register
+                </Menu.Item>{" "}
+              </Fragment>
             )}
           </Menu.Menu>
         </Container>

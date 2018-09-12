@@ -1,19 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { firestoreConnect, withFirebase } from "react-redux-firebase";
+import { withFirebase } from "react-redux-firebase";
 import firebase from "firebase/app";
-import {
-  Container,
-  Dropdown,
-  Image,
-  Menu,
-  Button,
-  Icon
-} from "semantic-ui-react";
+import { Container, Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 
-import { chapters, getPreviousAndNextLessons } from "../utils/chapterIndex";
+import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import NavBar from "./NavBar";
@@ -23,7 +16,6 @@ class Layout extends Component {
     user: {}
   };
   componentDidMount() {
-    const { finishedPages } = this.props;
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       if (user) {
         const { uid, displayName, photoURL, email } = user;
@@ -77,7 +69,7 @@ class Layout extends Component {
   };
 
   render() {
-    const { children, myUrl, hideNav, finishedPages } = this.props;
+    const { children, myUrl, hideNav } = this.props;
     return (
       <Fragment>
         <NavBar />
@@ -101,9 +93,7 @@ const NavDiv = styled.div`
   padding: 1rem;
 `;
 
-const mapStateToProps = state => ({
-  finishedPages: state.userScore.finishedPages
-});
+const mapStateToProps = state => ({});
 const actions = { openModal };
 
 export default withFirebase(

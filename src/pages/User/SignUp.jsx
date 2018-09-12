@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Layout from "../../layout/Layout.jsx";
 import { Form } from "semantic-ui-react";
-import firebaseui from "firebaseui";
 
 export default class SignUp extends Component {
   render() {

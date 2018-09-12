@@ -7,7 +7,8 @@ export const firebaseConfig = {
   databaseURL: "https://scales-4bb3e.firebaseio.com",
   projectId: "scales-4bb3e",
   storageBucket: "scales-4bb3e.appspot.com",
-  messagingSenderId: "534107413294"
+  messagingSenderId: "534107413294",
+  timestampsInSnapshots: true
 };
 
 export const uiConfig = {
@@ -28,5 +29,7 @@ export const uiConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
+const firebaseSettings = { timestampsInSnapshots: true };
+db.settings(firebaseSettings);
 
 export default firebase;

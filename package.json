@@ -29,6 +29,7 @@
     "redux-form": "^7.4.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "revalidate": "^1.2.0",
     "semantic-ui-react": "^0.82.3",
     "styled-components": "^3.4.4",
     "typography": "^0.16.17",

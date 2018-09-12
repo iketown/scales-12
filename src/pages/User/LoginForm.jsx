@@ -3,12 +3,12 @@ import { Form, Segment, Button, Label, Divider } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import TextInput from "../../components/uiElements/TextInput.jsx";
-import { signInUser } from "../../actions/authActions.jsx";
-// import SocialLogin from "../SocialLogin/SocialLogin";
+import { signInUser, socialLogin } from "../../actions/authActions.jsx";
+import SocialLogin from "./SocialLogin.jsx";
 
 const actions = {
-  signInUser
-  //   socialLogin
+  signInUser,
+  socialLogin
 };
 
 const LoginForm = ({ signInUser, handleSubmit, error, socialLogin }) => {
@@ -36,7 +36,7 @@ const LoginForm = ({ signInUser, handleSubmit, error, socialLogin }) => {
           Login
         </Button>
         <Divider horizontal>Or</Divider>
-        {/* <SocialLogin socialLogin={socialLogin}/> */}
+        <SocialLogin socialLogin={socialLogin} />
       </Segment>
     </Form>
   );
