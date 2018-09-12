@@ -1,24 +1,14 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
-import {
-  reactReduxFirebase,
-  getFirebase,
-  firebaseReducer
-} from "react-redux-firebase";
-import {
-  reduxFirestore,
-  getFirestore,
-  firestoreReducer
-} from "redux-firestore";
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import { reduxFirestore, getFirestore } from "redux-firestore";
 import thunk from "redux-thunk";
-
+import { rootReducer } from "./reducers/rootReducer";
 import firebase from "./utils/firebase";
 import { firebaseConfig } from "./utils/firebase";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
-import { createLogger } from "redux-logger";
-import { userScoreReducer } from "./reducers/userScoreReducer";
 
 const rrfConfig = {
   userProfile: "users",
@@ -46,28 +36,3 @@ export const configureStore = preloadedState => {
   }
   return store;
 };
-
-// // add redux firestore store enhancer
-// const createStoreWithFirebase = compose(
-//   reduxFirestore(firebase, rfConfig) // rfConfig is optional
-// )(createStore);
-
-export const rootReducer = combineReducers({
-  userScore: userScoreReducer,
-  firestore: firestoreReducer,
-  firebase: firebaseReducer
-});
-
-// const initalState = {};
-
-// const logger = createLogger({
-//   collapsed: true,
-//   diff: true
-// });
-
-// const store = createStoreWithFirebase(
-//   rootReducer,
-//   composeWithDevTools(applyMiddleware(thunk, logger))
-// );
-
-// export default store;
