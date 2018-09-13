@@ -10,6 +10,7 @@ import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import NavBar2 from "./NavBar2";
+import SignUpInterrupt from "../components/uiElements/modals/SignUpInterrupt.jsx";
 class Layout extends Component {
   state = {
     isSignedIn: false,
@@ -68,12 +69,14 @@ class Layout extends Component {
   };
 
   render() {
-    const { children, myUrl, hideNav } = this.props;
+    const { children, myUrl, hideNav, auth } = this.props;
+    const signedIn = auth.isLoaded && !auth.isEmpty && !auth.isAnonymous;
+
     return (
       <Fragment>
         <NavBar2 />
-
         <Container style={{ marginTop: "4rem" }}>
+          <SignUpInterrupt />
           {children}
           <br />
           {!hideNav && <this.BottomNavButtons myUrl={myUrl} />}
@@ -92,7 +95,9 @@ const NavDiv = styled.div`
   padding: 1rem;
 `;
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  auth: state.firebase.auth
+});
 const actions = { openModal };
 
 export default withFirebase(

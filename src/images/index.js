@@ -35,6 +35,7 @@ import LineKeyboardAni from "./LineKeyboardAni.gif";
 import CarKeyboardAni from "./CarKeyboardAni.gif";
 import TruckKeyboardAni from "./TruckKeyboardAni.gif";
 import WagonKeyboardAni from "./WagonKeyboardAni.gif";
+import CarFlipAnimation from "./CarFlipAnimation.gif";
 export {
   CMajorScale,
   Line,
@@ -72,5 +73,6 @@ export {
   splitKeyboardAnimation,
   EMajorConventional,
   EMajor12Scales,
-  KeystoDots
+  KeystoDots,
+  CarFlipAnimation
 };

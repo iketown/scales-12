@@ -4,8 +4,13 @@ import { Header, Image, Card, Grid } from "semantic-ui-react";
 import posed from "react-pose";
 import styled from "styled-components";
 // import { NextButton } from "../components/uiElements/";
-import { Line, FlipTruck, FlipWagon, FlipCar } from "../images";
-import animation from "../images/animation.gif";
+import {
+  Line,
+  FlipTruck,
+  FlipWagon,
+  FlipCar,
+  CarFlipAnimation
+} from "../images";
 export default class Page5 extends Component {
   render() {
     return (
@@ -18,33 +23,21 @@ export default class Page5 extends Component {
           their 'flipped' counterparts.
         </p>
         <p>
-          a.k.a. <strong>FlipCar</strong>, <strong>FlipTruck</strong> and{" "}
-          <strong>FlipWagon</strong>.
+          a.k.a. <strong>Flip-Car</strong>, <strong>Flip-Truck</strong> and{" "}
+          <strong>Flip-Wagon</strong>.
         </p>
         <p>
           This will feel pretty obvious once we start using these on the
-          keyboard. If the shape <em>starts on a white key</em>, then you would
-          use the <em>regular</em> (non-flipped) shape, which means the UP keys
-          would be <strong>black</strong> keys.
+          keyboard. If the shape <strong>starts</strong> on a{" "}
+          <strong>white key</strong>, then you would use the <em>regular</em>{" "}
+          (non-flipped) shape.
         </p>
         <p>
-          So a Car shape (<strong>down UP UP down</strong>) would go{" "}
-          <strong>white BLACK BLACK white</strong>.
+          When a shape starts on a <strong>black key</strong>, you use the
+          flipped shape.
         </p>
-        <p>
-          However, when a shape starts on a black key, there are no keys 'UP'
-          from there, so the shape <em>FLIPS</em>.
-        </p>
-        <p>
-          So a 'Flip Car' goes <strong>black WHITE WHITE black</strong>.
-        </p>
-        <p>
-          Instead of keeping track of UPs and DOWNs, it may help to just notice
-          where the dots change. The Car has 'changed' <strong>#2</strong> and{" "}
-          <strong>#3</strong> dots. The truck has only <strong>#3</strong>. The
-          wagon has only <strong>#4</strong>.
-        </p>
-        <img src={animation} alt="" />
+
+        <img src={CarFlipAnimation} alt="" />
         <div>
           <Grid stackable columns={2}>
             <Grid.Row>
@@ -77,19 +70,19 @@ const shapesArr = [
   {
     name: "car",
     src: FlipCar,
-    header: "FlipCar",
+    header: "Flip-Car",
     description: "UP • down • down UP"
   },
   {
     name: "truck",
     src: FlipTruck,
-    header: "FlipTruck",
+    header: "Flip-Truck",
     description: "UP • UP • down UP"
   },
   {
     name: "wagon",
     src: FlipWagon,
-    header: "FlipWagon",
+    header: "Flip-Wagon",
     description: "UP • UP • UP • down"
   }
 ];

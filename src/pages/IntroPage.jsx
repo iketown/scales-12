@@ -30,11 +30,10 @@ export default class IntroPage extends Component {
                 <Item.Header as="h4">This is where it all starts.</Item.Header>
                 <Item.Description>
                   <p>
-                    Major Scales are important to learn and understand. They are
+                    Major Scales are essential to learn and understand. They are
                     the <em>building blocks</em> upon which <em>most music</em>{" "}
                     is based.
                   </p>
-
                   <p>
                     The process of learning major scales in all 12 keys is a
                     sort of rite of passage for most musicians. The basics of
@@ -42,9 +41,11 @@ export default class IntroPage extends Component {
                     grows from there.
                   </p>
                   <p>
-                    Most piano teachers or music lessons will start with note
-                    names, sharps and flats, and make their way to key
-                    signatures and the Major Scale.
+                    As a beginning student, Major Scales can feel like a lot of
+                    information to memorize. The keyboard a very well designed
+                    system, but the learning curve of understanding{" "}
+                    <em>why things are the way they are</em> can be just steep
+                    enough to discourage many would-be pianists from continuing.
                   </p>
                   <br />
                 </Item.Description>
@@ -55,11 +56,17 @@ export default class IntroPage extends Component {
                   <p>
                     We're going to skip over note names and key signatures and{" "}
                     <strong>start</strong> with the scales. There will be time
-                    to dig into note names later, and by then you'll simply be
+                    to dig into theory later, and by then you'll simply be
                     putting a name to <em>something you already understand</em>.
                     The early advantage you get from knowing your scale-shapes
                     will make those lessons much easier, and more{" "}
                     <em>meaningful</em>.
+                  </p>
+                  <p>
+                    This isn't your usual beginner music lessons. It is a short
+                    cut. It's a hack. Your music teacher might not like it,
+                    because he/she had to practice a few days to learn these.
+                    You'll have all 12 memorized in less than an hour.
                   </p>
                   <p>
                     Let's start off with an easy scale-shape, so you can get the

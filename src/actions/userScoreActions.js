@@ -26,7 +26,6 @@ export const finishPage = ({ pageUrl, chapter, slug }) => async (
 ) => {
   const firestore = getFirestore();
   const firebase = getFirebase();
-  const userId = firebase.auth().currentUser.uid;
 
   const timestamp = firestore.Timestamp.now();
   const action = {
@@ -36,7 +35,8 @@ export const finishPage = ({ pageUrl, chapter, slug }) => async (
     timestamp,
     slug
   };
-  if (userId) {
+  if (firebase.auth().currentUser) {
+    const userId = firebase.auth().currentUser.uid;
     firestore
       .collection("users")
       .doc(userId)

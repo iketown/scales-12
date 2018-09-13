@@ -1,10 +1,12 @@
 import { closeModal } from "../components/uiElements/modals/modalActions.jsx";
 import { SubmissionError } from "redux-form";
+import firebase from "../utils/firebase";
+
 export const SIGN_IN_USER = "SIGN_IN_USER";
 export const SIGN_OUT_USER = "SIGN_OUT_USER";
-
 export const signInUser = creds => {
   return async (dispatch, getState, { getFirebase }) => {
+    console.log("signing in user");
     // dispatch({ type: LOGIN_USER, payload: { creds } });
     const firebase = getFirebase();
     try {
@@ -18,6 +20,21 @@ export const signInUser = creds => {
         _error: error.message
       });
     }
+  };
+};
+
+export const signInUserAnon = () => {
+  return async (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+    firebase.auth().onAuthStateChanged(user => console.log("user", user));
+    try {
+      console.log("signing in anon");
+      firebase.auth().signInAnonymously();
+      console.log("signing in happened?");
+    } catch (error) {
+      console.log("anon signin error", error);
+    }
+    dispatch({ type: "SALL GOOD" });
   };
 };
 
