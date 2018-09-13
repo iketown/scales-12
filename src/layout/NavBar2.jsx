@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { chapters } from "../utils/chapterIndex";
-import { Container, Dropdown, Image, Menu } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Container, Dropdown, Image, Menu, Icon } from "semantic-ui-react";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { withFirestore } from "react-redux-firebase";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 
 const ChapterTitle = props => {
-  const { displayText, lessons, profile } = props;
+  const { displayText, lessons, profile, currentUrl } = props;
   let chapterIsFinished = false;
+  let chapterIsCurrent = false;
   if (profile && profile.finishedLessons) {
     const theseFinishedLessons = lessons.filter(les =>
       profile.finishedLessons.find(
@@ -16,11 +17,20 @@ const ChapterTitle = props => {
       )
     );
     chapterIsFinished = theseFinishedLessons.length === lessons.length;
+    chapterIsCurrent = lessons.find(les => les.url === currentUrl);
   }
   return (
     <Dropdown.Item>
-      <i className="dropdown icon" />
-      <span style={chapterIsFinished ? { color: "#dadada" } : {}}>
+      <span style={!chapterIsCurrent ? { color: "#dadada" } : {}}>
+        <Icon
+          className={
+            chapterIsCurrent
+              ? "arrow right"
+              : chapterIsFinished
+                ? "check square outline"
+                : "square outline"
+          }
+        />
         {displayText}
       </span>
       {lessons && (
@@ -30,9 +40,19 @@ const ChapterTitle = props => {
               profile &&
               profile.finishedLessons &&
               profile.finishedLessons.find(les => les.slug === lesson.slug);
+            const current = currentUrl === lesson.url;
             return (
               <Dropdown.Item key={lesson.url} as={Link} to={lesson.url}>
-                <span style={finished ? { color: "#dadada" } : {}}>
+                <span
+                  style={
+                    current
+                      ? { color: "#6f3030", fontWeight: "bolder" }
+                      : finished
+                        ? { color: "#dadada" }
+                        : {}
+                  }
+                >
+                  {current && <Icon name="arrow right" />}
                   {lesson.title}
                 </span>
               </Dropdown.Item>
@@ -65,6 +85,7 @@ class NavBar extends Component {
   }
   render() {
     const { finishedPages, auth, profile } = this.props;
+    const currentUrl = this.props.match.path;
     const authenticated = auth.isLoaded && !auth.isEmpty;
 
     return (
@@ -94,6 +115,7 @@ class NavBar extends Component {
                     lessons={lessons}
                     finishedPages={finishedPages}
                     profile={profile}
+                    currentUrl={currentUrl}
                   />
                 );
               })}
@@ -133,9 +155,11 @@ const mapStateToProps = state => ({
   profile: state.firebase.profile
 });
 const actions = { openModal };
-export default withFirestore(
-  connect(
-    mapStateToProps,
-    actions
-  )(NavBar)
+export default withRouter(
+  withFirestore(
+    connect(
+      mapStateToProps,
+      actions
+    )(NavBar)
+  )
 );
