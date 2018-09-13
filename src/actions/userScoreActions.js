@@ -1,4 +1,5 @@
 import { db } from "../utils/firebase";
+
 export const COMPLETE_CHAPTER_QUIZ = "COMPLETE_CHAPTER_QUIZ";
 export const completeChapterQuiz = chapterId => ({
   type: COMPLETE_CHAPTER_QUIZ,
@@ -18,7 +19,7 @@ export const completeKeyboardChallenge = keyboardId => ({
 });
 
 export const FINISH_PAGE = "FINISH_PAGE";
-export const finishPage = ({ pageUrl, chapter }) => async (
+export const finishPage = ({ pageUrl, chapter, slug }) => async (
   dispatch,
   getStore,
   { getFirestore, getFirebase }
@@ -27,15 +28,29 @@ export const finishPage = ({ pageUrl, chapter }) => async (
   const firebase = getFirebase();
   const userId = firebase.auth().currentUser.uid;
 
-  const updatedUser = await firestore
-    .collection("users")
-    .doc(userId)
-    .update({ dummyField: "dummyvalue" });
-
-  console.log("updated user", updatedUser);
-  {
-    type: FINISH_PAGE, pageUrl, chapter;
+  const timestamp = firestore.Timestamp.now();
+  const action = {
+    type: FINISH_PAGE,
+    pageUrl,
+    chapter,
+    timestamp,
+    slug
+  };
+  if (userId) {
+    firestore
+      .collection("users")
+      .doc(userId)
+      .set(
+        {
+          finishedLessons: firestore.FieldValue.arrayUnion({ slug, timestamp })
+        },
+        { merge: true }
+      )
+      .then(res => console.log("response from fs", res))
+      .catch(err => console.log("update error", err));
   }
+
+  dispatch(action);
 };
 
 export const firebaseThunk = userId => dispatch => {

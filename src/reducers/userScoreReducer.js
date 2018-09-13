@@ -31,8 +31,7 @@ export const userScoreReducer = (state = initialState, action) => {
         }
       };
     case FINISH_PAGE:
-      const { pageUrl, chapter } = action;
-      const timestamp = Date();
+      const { pageUrl, chapter, timestamp } = action;
       const oldFinishedPage = state.finishedPages.find(
         page => page.pageUrl === pageUrl
       );
@@ -47,12 +46,13 @@ export const userScoreReducer = (state = initialState, action) => {
         // create a new finished page
         newFinishedPage = { pageUrl, timestamps: [timestamp], chapter };
       }
+      const finishedPagesUpdate = [
+        ...state.finishedPages.filter(p => p.pageUrl !== pageUrl),
+        newFinishedPage
+      ];
       return {
         ...state,
-        finishedPages: [
-          ...state.finishedPages.filter(p => p.pageUrl !== pageUrl),
-          newFinishedPage
-        ]
+        finishedPages: finishedPagesUpdate
       };
     case "COMPLETE_CHAPTER_QUIZ":
       return {

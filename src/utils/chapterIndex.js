@@ -1,3 +1,4 @@
+import slugify from "slugify";
 import IntroPage from "../pages/IntroPage.jsx";
 import ABetterWay from "../pages/ABetterWay.jsx";
 import TheShapes from "../pages/TheShapes";
@@ -11,28 +12,76 @@ import KeysCar from "../pages/KeysCar";
 
 export const chapters = {
   Introduction: [
-    { title: "Intro 1", url: "/", component: IntroPage },
-    { title: "A Better Way", url: "/a-better-way", component: ABetterWay }
+    { title: "Intro 1", url: "/", component: IntroPage, slug: "intro_1" },
+    {
+      title: "A Better Way",
+      url: "/a-better-way",
+      component: ABetterWay,
+      slug: "a_better_way"
+    }
   ],
   Shapes: [
-    { title: "The Shapes", url: "/the-shapes", component: TheShapes },
-    { title: "The Shapes 2", url: "/the-shapes-2", component: TheShapes2 },
-    { title: "Shapes Quiz 1", url: "/shapes-quiz-1", component: ShapesQuiz1 },
+    {
+      title: "The Shapes",
+      url: "/the-shapes",
+      component: TheShapes,
+      slug: "the_shapes"
+    },
+    {
+      title: "The Shapes 2",
+      url: "/the-shapes-2",
+      component: TheShapes2,
+      slug: "the_shapes_2"
+    },
+    {
+      title: "Shapes Quiz 1",
+      url: "/shapes-quiz-1",
+      component: ShapesQuiz1,
+      slug: "shapes_quiz_1"
+    },
     {
       title: "Flipped Shapes",
       url: "/flipped-shapes",
-      component: FlippedShapes
+      component: FlippedShapes,
+      slug: "flipped_shapes"
     },
-    { title: "Shapes Quiz 2", url: "/shapes-quiz-2", component: ShapesQuiz2 },
-    { title: "Spacing", url: "/spacing", component: Spacing }
+    {
+      title: "Shapes Quiz 2",
+      url: "/shapes-quiz-2",
+      component: ShapesQuiz2,
+      slug: "shapes_quiz_2"
+    },
+    { title: "Spacing", url: "/spacing", component: Spacing, slug: "spacing" }
   ],
   Keyboard: [
-    { title: "Keyboard 1", url: "/keys-line", component: KeysLine },
-    { title: "Keyboard 2", url: "/keys-car", component: KeysCar },
-    { title: "Keyboard 3", url: "/keys3", component: IntroPage },
-    { title: "Keyboard 4", url: "/keys4", component: IntroPage }
+    {
+      title: "Keyboard 1",
+      url: "/keys-line",
+      component: KeysLine,
+      slug: "keyboard_1"
+    },
+    {
+      title: "Keyboard 2",
+      url: "/keys-car",
+      component: KeysCar,
+      slug: "keyboard_2"
+    },
+    {
+      title: "Keyboard 3",
+      url: "/keys3",
+      component: IntroPage,
+      slug: "keyboard_3"
+    },
+    {
+      title: "Keyboard 4",
+      url: "/keys4",
+      component: IntroPage,
+      slug: "keyboard_4"
+    }
   ],
-  Scales: [{ title: "Scales 1", url: "/", component: IntroPage }]
+  Scales: [
+    { title: "Scales 1", url: "/", component: IntroPage, slug: "scales_1" }
+  ]
 };
 
 // TODO

@@ -90,6 +90,7 @@ export default class ABetterWay extends Component {
           scale into two halves. The first four notes make a shape, and the last
           four notes make a second shape. (E Major becomes "Car, Car")
         </p>
+        <p />
         <p>
           So in this class we'll first learn the shapes, then we'll learn which
           scales use which shapes. You'll be playing all 12 scales with ease in

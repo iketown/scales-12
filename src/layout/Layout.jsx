@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
-import NavBar from "./NavBar";
+import NavBar2 from "./NavBar2";
 class Layout extends Component {
   state = {
     isSignedIn: false,
@@ -29,10 +29,9 @@ class Layout extends Component {
 
   handleNextClicked = () => {
     const { myUrl, firebase } = this.props;
-    const { chapter } = getPreviousAndNextLessons(myUrl).thisLesson;
-    const finishedPageObject = { pageUrl: myUrl, chapter };
+    const { chapter, slug } = getPreviousAndNextLessons(myUrl).thisLesson;
+    const finishedPageObject = { pageUrl: myUrl, chapter, slug };
     this.props.dispatch(finishPage(finishedPageObject));
-    console.log("firebase", firebase);
   };
   handlePrevClicked = () => {};
 
@@ -72,7 +71,7 @@ class Layout extends Component {
     const { children, myUrl, hideNav } = this.props;
     return (
       <Fragment>
-        <NavBar />
+        <NavBar2 />
 
         <Container style={{ marginTop: "4rem" }}>
           {children}
