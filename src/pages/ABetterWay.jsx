@@ -45,16 +45,22 @@ export default class ABetterWay extends Component {
         </Header>
 
         <p>
-          The major difference between the conventional method and the 12scales
-          method can be illustrated like this:
+          For this class, we are going to sidestep music theory, key signatures,
+          note names, sharps and flats. We're just going to cut straight to how
+          these 12 Major Scales <em>look</em>.
         </p>
-        <p>Here are two different approaches to learning the E-major scale.</p>
+        <p>
+          Similar to how you can <em>"just know"</em> your way around your
+          neighborhood, even if you don't know all the street names, You can be
+          familiar, even <em>very familiar</em> with all your Major scales, even
+          without knowing what any of them are called.
+        </p>
         <Card.Group>
           <Card color="red">
             <Image src={EMajorConventional} />
             <Card.Content>
               <Card.Header>E Major Scale</Card.Header>
-              <Card.Meta>Conventional Method</Card.Meta>
+              <Card.Meta>The Hard Way</Card.Meta>
               <Card.Description>
                 Sharps (#s) get assigned in this order:{" "}
                 <strong>F#, C#, G#, D#, A#, E#, B#</strong>. E Major Scale has
@@ -78,8 +84,16 @@ export default class ABetterWay extends Component {
         </Card.Group>
         <p>
           <br />
-          Both methods will get you playing an E major scale, but which one is
-          easier to remember?
+          Both methods will lead you to a proper E major scale, but obviously
+          remembering 'Car, Car' is going to be easier than all that other
+          stuff.
+        </p>
+        <p>
+          Later, when you already know the shape of an E major scale, you wont
+          even have to think "Car Car." Youll just think "E Major." At that
+          point, learning which notes are sharp will be a simple task; Like
+          learning <em>the name</em> of a road that you already use all the
+          time.
         </p>
 
         <Header>
@@ -92,11 +106,9 @@ export default class ABetterWay extends Component {
         </p>
         <p />
         <p>
-          So in this class we'll first learn the shapes, then we'll learn which
-          scales use which shapes. You'll be playing all 12 scales with ease in
-          no time.
+          So in this class we'll first learn the shapes, then we'll learn where
+          they go, and finally how to put them together.
         </p>
-        {/* <NextButton center active to="/page3" /> */}
       </Layout>
     );
   }

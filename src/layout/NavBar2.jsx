@@ -21,7 +21,7 @@ const ChapterTitle = props => {
     chapterIsFinished = theseFinishedLessons.length === lessons.length;
     chapterIsCurrent = lessons.find(les => les.url === currentUrl);
   } else {
-    chapterIsCurrent = displayText === "Introduction";
+    // chapterIsCurrent = displayText === "Introduction";
   }
   return (
     <Dropdown.Item>
@@ -91,7 +91,7 @@ class NavBar extends Component {
   render() {
     const { finishedPages, auth, profile } = this.props;
     const currentUrl = this.props.match.path;
-    const authenticated = auth.isLoaded && !auth.isEmpty;
+    const authenticated = auth.isLoaded && !auth.isEmpty && !auth.isAnonymous;
 
     return (
       <Menu fixed="top" inverted>
@@ -124,7 +124,6 @@ class NavBar extends Component {
             </Dropdown.Menu>
           </Dropdown>
           <Menu.Menu position="right">
-            <Menu.Item onClick={this.handleSignInAnon}>anon</Menu.Item>
             {authenticated ? (
               <Fragment>
                 <Menu.Item>{auth.displayName || auth.email}</Menu.Item>

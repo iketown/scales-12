@@ -6,6 +6,7 @@ const TextInput = ({
   width,
   type,
   placeholder,
+  label,
   meta: { touched, error }
 }) => {
   return (

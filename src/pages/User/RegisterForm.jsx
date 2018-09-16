@@ -29,6 +29,7 @@ const RegisterForm = ({
             component={TextInput}
             placeholder="Known As"
           />
+
           <Field
             name="email"
             type="text"

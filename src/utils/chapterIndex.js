@@ -1,5 +1,6 @@
 import slugify from "slugify";
 import IntroPage from "../pages/IntroPage.jsx";
+import WhatsAScale from "../pages/WhatsAScale.jsx";
 import ABetterWay from "../pages/ABetterWay.jsx";
 import TheShapes from "../pages/TheShapes";
 import TheShapes2 from "../pages/TheShapes2";
@@ -12,10 +13,16 @@ import KeysCar from "../pages/KeysCar";
 
 export const chapters = {
   Introduction: [
-    { title: "Intro 1", url: "/", component: IntroPage, slug: "intro_1" },
+    { title: "Intro", url: "/", component: IntroPage, slug: "intro_1" },
+    {
+      title: "What's a scale?",
+      url: "/whats_a_scale",
+      component: WhatsAScale,
+      slug: "whats_a_scale"
+    },
     {
       title: "A Better Way",
-      url: "/a-better-way",
+      url: "/a_better_way",
       component: ABetterWay,
       slug: "a_better_way"
     }
@@ -23,31 +30,31 @@ export const chapters = {
   Shapes: [
     {
       title: "The Shapes",
-      url: "/the-shapes",
+      url: "/the_shapes",
       component: TheShapes,
       slug: "the_shapes"
     },
     {
       title: "The Shapes 2",
-      url: "/the-shapes-2",
+      url: "/the_shapes_2",
       component: TheShapes2,
       slug: "the_shapes_2"
     },
     {
       title: "Shapes Quiz 1",
-      url: "/shapes-quiz-1",
+      url: "/shapes_quiz_1",
       component: ShapesQuiz1,
       slug: "shapes_quiz_1"
     },
     {
       title: "Flipped Shapes",
-      url: "/flipped-shapes",
+      url: "/flipped_shapes",
       component: FlippedShapes,
       slug: "flipped_shapes"
     },
     {
       title: "Shapes Quiz 2",
-      url: "/shapes-quiz-2",
+      url: "/shapes_quiz_2",
       component: ShapesQuiz2,
       slug: "shapes_quiz_2"
     },
@@ -56,13 +63,13 @@ export const chapters = {
   Keyboard: [
     {
       title: "Keyboard 1",
-      url: "/keys-line",
+      url: "/keys_line",
       component: KeysLine,
       slug: "keyboard_1"
     },
     {
       title: "Keyboard 2",
-      url: "/keys-car",
+      url: "/keys_car",
       component: KeysCar,
       slug: "keyboard_2"
     },

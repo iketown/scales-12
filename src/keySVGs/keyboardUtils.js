@@ -120,3 +120,6 @@ export const iconNames = {
   purple: { color: "purple", text: "dot circle" },
   pink: { color: "pink", text: "dot circle" }
 };
+
+export const noteNumbers = ["①", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧"];
+export const noteNumbers2 = ["❶", "❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽"];

@@ -1,18 +1,18 @@
 import { closeModal } from "../components/uiElements/modals/modalActions.jsx";
 import { SubmissionError } from "redux-form";
+import {} from "react-router";
 import firebase from "../utils/firebase";
 
 export const SIGN_IN_USER = "SIGN_IN_USER";
 export const SIGN_OUT_USER = "SIGN_OUT_USER";
 export const signInUser = creds => {
   return async (dispatch, getState, { getFirebase }) => {
-    console.log("signing in user");
-    // dispatch({ type: LOGIN_USER, payload: { creds } });
     const firebase = getFirebase();
     try {
       await firebase
         .auth()
         .signInWithEmailAndPassword(creds.email, creds.password);
+      firebase.auth();
       dispatch(closeModal());
     } catch (error) {
       console.log("login error", error);
@@ -28,13 +28,10 @@ export const signInUserAnon = () => {
     const firebase = getFirebase();
     firebase.auth().onAuthStateChanged(user => console.log("user", user));
     try {
-      console.log("signing in anon");
-      firebase.auth().signInAnonymously();
-      console.log("signing in happened?");
+      await firebase.auth().signInAnonymously();
     } catch (error) {
       console.log("anon signin error", error);
     }
-    dispatch({ type: "SALL GOOD" });
   };
 };
 
@@ -45,24 +42,28 @@ export const registerUser = user => async (
 ) => {
   const firebase = getFirebase();
   const firestore = getFirestore();
+  const state = getState();
   const { email, password, displayName } = user;
   try {
     // create user in auth
     let createdUser = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);
-    console.log("created user", createdUser);
     // update the fireBASE auth profile
     const currentUser = firebase.auth().currentUser;
-    console.log("current user", currentUser);
     await currentUser.updateProfile({
       displayName
     });
     // create a new profile in fireSTORE
+    let finishedLessons = [];
+    if (state.firebase.profile) {
+      finishedLessons = state.firebase.profile.finishedLessons;
+    }
     let newUser = {
       displayName,
       email,
-      createdAt: firestore.FieldValue.serverTimestamp()
+      createdAt: firestore.FieldValue.serverTimestamp(),
+      finishedLessons
     };
     await firestore.set(`users/${currentUser.uid}`, { ...newUser });
     dispatch(closeModal());
@@ -100,4 +101,17 @@ export const socialLogin = selectedProvider => async (
   } catch (error) {
     console.log("social login error", error);
   }
+};
+
+export const goToLatestLesson = () => (dispatch, getState) => {
+  console.log("trying to get latest lesson");
+  const state = getState();
+  if (state.firebase.profile) {
+    const latestLesson = state.firebase.profile.finishedLessons.sort(
+      (a, b) => b.timestamp.seconds - a.timestamp.seconds
+    )[0];
+    console.log("latest lesson", latestLesson);
+  }
+
+  dispatch({ type: "NEVERMIND" });
 };

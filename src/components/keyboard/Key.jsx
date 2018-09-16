@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { paths, blackKeyOffsets } from "../../keySVGs/keyboardUtils";
+import {
+  paths,
+  blackKeyOffsets,
+  noteNumbers
+} from "../../keySVGs/keyboardUtils";
 import { delayBetweenQuestions } from "../../utils/generalConfig";
 import styled, { keyframes } from "styled-components";
 import posed from "react-pose";
@@ -29,7 +33,13 @@ const Keydiv = styled.div`
 `;
 const Svg = styled.svg`
   :hover path {
-    fill: lightgrey;
+    ${p => (!p.highlight ? "fill: lightgrey;" : "")};
+  }
+  & path {
+    ${p =>
+      p.highlight
+        ? "fill: lightgoldenrodyellow;"
+        : ""} transition: .1s all cubic-bezier(0.1, 0.79, 1, 1);
   }
 `;
 const CircleDiv = styled.div`
@@ -40,6 +50,25 @@ const CircleDiv = styled.div`
   color: ${({ black }) => (black ? "white" : "black")};
 
   transition: all 0.5s;
+  :hover {
+    transform: scale(1.3);
+  }
+`;
+const NumberDiv = styled.div`
+  position: absolute;
+  cursor: pointer;
+  bottom: ${({ keyboardScale }) => 5 * keyboardScale}rem;
+  width: 100%;
+  text-align: center;
+  color: #57a5ff;
+  font-size: 2.2rem;
+  transition: all 0.5s;
+  & span {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: initial;
+  }
   :hover {
     transform: scale(1.3);
   }
@@ -64,10 +93,12 @@ class Key extends Component {
       noteName,
       clickHandler,
       circleType,
+      number,
       showLabel,
       showCircles,
       showShapeBackground,
-      keyboardScale
+      keyboardScale,
+      highlight
     } = this.props;
     const keyIsBlack = noteShape === "flat";
 
@@ -85,6 +116,7 @@ class Key extends Component {
           height={keyIsBlack ? 338 * keyboardScale : 502 * keyboardScale}
           viewBox={keyIsBlack ? "0 0 46 338" : "0 0 77 502"}
           xmlns="http://www.w3.org/2000/svg"
+          highlight={highlight}
         >
           <path
             d={paths[noteShape]}
@@ -107,6 +139,15 @@ class Key extends Component {
               />
             </CircleDiv>
           </AnimatedCircle>
+        )}
+        {number && (
+          <NumberDiv
+            onClick={clickHandler}
+            black={keyIsBlack}
+            keyboardScale={keyboardScale}
+          >
+            <span>{noteNumbers[number]}</span>
+          </NumberDiv>
         )}
         {showLabel && (
           <LabelDiv keyIsBlack={keyIsBlack} keyboardScale={keyboardScale}>

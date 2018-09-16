@@ -41,11 +41,12 @@ export default class IntroPage extends Component {
                     grows from there.
                   </p>
                   <p>
-                    As a beginning student, Major Scales can feel like a lot of
-                    information to memorize. The keyboard a very well designed
-                    system, but the learning curve of understanding{" "}
-                    <em>why things are the way they are</em> can be just steep
-                    enough to discourage many would-be pianists from continuing.
+                    As a beginning student, Major Scales can be a little
+                    daunting. It feels like a lot of information to memorize.
+                    The keyboard a very well designed system, but the learning
+                    curve of understanding{" "}
+                    <em>why things are the way they are</em> can be steep enough
+                    to discourage many would-be players from continuing.
                   </p>
                   <br />
                 </Item.Description>
@@ -56,22 +57,24 @@ export default class IntroPage extends Component {
                   <p>
                     We're going to skip over note names and key signatures and{" "}
                     <strong>start</strong> with the scales. There will be time
-                    to dig into theory later, and by then you'll simply be
-                    putting a name to <em>something you already understand</em>.
-                    The early advantage you get from knowing your scale-shapes
-                    will make those lessons much easier, and more{" "}
-                    <em>meaningful</em>.
+                    to dig into theory later, and by then you'll be attaching
+                    names and concepts to things{" "}
+                    <em>you already know how to play</em>. The early advantage
+                    you get from knowing your scale-shapes will make those
+                    lessons easier, and far more <em>meaningful</em>.
                   </p>
                   <p>
                     This isn't your usual beginner music lessons. It is a short
-                    cut. It's a hack. Your music teacher might not like it,
-                    because he/she had to practice a few days to learn these.
-                    You'll have all 12 memorized in less than an hour.
+                    cut. It's a hack.{" "}
+                    <strong>Your music teacher might not like it, </strong>
+                    because they had to practice <em>for days</em> to learn
+                    their scales. It's not fair. The 12scales system didn't
+                    exist back then. You'll have all 12 memorized in less than
+                    an hour.
                   </p>
-                  <p>
-                    Let's start off with an easy scale-shape, so you can get the
-                    feel for it.
-                  </p>
+                  <p>Anyway, lets get to it.</p>
+
+
                 </Item.Description>
               </Item.Content>
             </Item>
