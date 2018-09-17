@@ -7,6 +7,7 @@ import { withFirestore } from "react-redux-firebase";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { signInUserAnon } from "../actions/authActions.jsx";
 import firebase from "../utils/firebase";
+import { twelveScales } from "../images";
 
 const ChapterTitle = props => {
   const { displayText, lessons, profile, currentUrl } = props;
@@ -98,11 +99,10 @@ class NavBar extends Component {
         <Container>
           <Menu.Item as={Link} to="/" header>
             <Image
-              size="mini"
-              src="/logo.png"
-              style={{ marginRight: "1.5em" }}
+              size="tiny"
+              src={twelveScales}
+              style={{ margin: "-9px 1.5em" }}
             />
-            12scales
           </Menu.Item>
           <Dropdown item simple text="Chapters">
             <Dropdown.Menu>

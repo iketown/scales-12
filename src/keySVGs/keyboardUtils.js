@@ -1,3 +1,6 @@
+import React from "react";
+import styled from "styled-components";
+
 export const paths = {
   C:
     "M1,1 L42.3175303,1 L42.3175303,341.199627 L76,341.199627 L76,491 C76,496.522847 71.5228475,501 66,501 L11,501 C5.4771525,501 1,496.522847 1,491 L1,1 Z",
@@ -123,3 +126,10 @@ export const iconNames = {
 
 export const noteNumbers = ["①", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧"];
 export const noteNumbers2 = ["❶", "❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽"];
+
+const NNspan = styled.span`
+  color: #57a5ff;
+  font-size: 1.5rem;
+  font-family: initial;
+`;
+export const NN = ({ num }) => <NNspan>{noteNumbers[num]}</NNspan>;

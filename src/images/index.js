@@ -1,3 +1,4 @@
+import twelveScales from "./twelvescales.png";
 import CMajorScale from "./CmajorScale.svg";
 import Line from "./Line.svg";
 import Car from "./Car.svg";
@@ -36,6 +37,8 @@ import CarKeyboardAni from "./CarKeyboardAni.gif";
 import TruckKeyboardAni from "./TruckKeyboardAni.gif";
 import WagonKeyboardAni from "./WagonKeyboardAni.gif";
 import CarFlipAnimation from "./CarFlipAnimation.gif";
+import CarSkips from "./CarSkips.svg";
+import CarSkips2 from "./CarSkips2.svg";
 export {
   CMajorScale,
   Line,
@@ -74,5 +77,8 @@ export {
   EMajorConventional,
   EMajor12Scales,
   KeystoDots,
-  CarFlipAnimation
+  CarFlipAnimation,
+  twelveScales,
+  CarSkips,
+  CarSkips2
 };

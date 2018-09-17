@@ -4,9 +4,9 @@ import { Header } from "semantic-ui-react";
 
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
-const Page7 = () => {
+const KeysLine = props => {
   return (
-    <Layout myUrl={this.props.match.path}>
+    <Layout myUrl={props.match.path}>
       <Header as="h2">
         <Header.Content>On The Piano</Header.Content>
       </Header>
@@ -56,4 +56,4 @@ const lineAnswers = [
   }
 ];
 
-export default Page7;
+export default KeysLine;

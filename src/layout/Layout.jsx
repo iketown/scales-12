@@ -2,20 +2,22 @@ import React, { Component, Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { withFirebase, isLoaded } from "react-redux-firebase";
-import firebase from "firebase/app";
-import { Container, Button, Icon } from "semantic-ui-react";
+import { Container, Button, Icon, Image } from "semantic-ui-react";
 import styled from "styled-components";
+import Waypoint from "react-waypoint";
 
 import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
 import { goToLatestLesson, signInUserAnon } from "../actions/authActions.jsx";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
+import { twelveScales } from "../images";
 import NavBar2 from "./NavBar2";
 import SignUpInterrupt from "../components/uiElements/modals/SignUpInterrupt.jsx";
 class Layout extends Component {
   state = {
     isSignedIn: false,
-    user: {}
+    user: {},
+    nextUrl: ""
   };
   componentDidMount() {
     const { myUrl, auth } = this.props;
@@ -25,9 +27,9 @@ class Layout extends Component {
     if (showInterrupt) this.props.openModal("SignUpInterrupt");
   }
   componentDidUpdate(prevProps) {
-    if (this.props.profileIsReady !== prevProps.profileIsReady) {
-      this.getLatestUrl();
-    }
+    // if (this.props.profileIsReady !== prevProps.profileIsReady) {
+    //   this.getLatestUrl();
+    // }
   }
   getLatestUrl = () => {
     if (this.props.profileIsReady) {
@@ -38,12 +40,13 @@ class Layout extends Component {
         )[0].slug;
       const nextUrl = getPreviousAndNextLessons(`/${latestSlug}`).nextLesson
         .url;
-      this.props.history.push(nextUrl);
+      this.setState({ nextUrl });
     }
   };
   handleSignInAnon = () => {
     this.props.signInUserAnon();
   };
+  handleWaypointEnter = () => {};
   handleNextClicked = () => {
     const { myUrl, firebase } = this.props;
     const { chapter, slug } = getPreviousAndNextLessons(myUrl).thisLesson;
@@ -59,6 +62,7 @@ class Layout extends Component {
 
   BottomNavButtons = ({ myUrl }) => {
     const indexes = getPreviousAndNextLessons(myUrl);
+    const { nextButtonDisabled } = this.props;
     return (
       <NavDiv>
         {indexes.prevLesson && (
@@ -80,6 +84,7 @@ class Layout extends Component {
             labelPosition="right"
             primary
             onClick={this.handleNextClicked}
+            disabled={nextButtonDisabled}
           >
             <Icon name="arrow right" />
             {indexes.nextLesson.title}
@@ -90,23 +95,20 @@ class Layout extends Component {
   };
 
   render() {
-    const {
-      children,
-      myUrl,
-      hideNav,
-      auth,
-      profile,
-      profileIsReady
-    } = this.props;
+    const { children, myUrl, hideNav } = this.props;
     return (
       <Fragment>
         <NavBar2 />
         <Container style={{ marginTop: "4rem" }}>
-          <Button onClick={this.props.goToLatestLesson}>go 2 latest</Button>
-          <p>profile is loaded: {profileIsReady ? "yep" : "nope"}</p>
+          {/* <Button onClick={this.props.goToLatestLesson}>go 2 latest</Button>
+          <p>profile is loaded: {profileIsReady ? "yep" : "nope"}</p> */}
           {children}
           <br />
           {!hideNav && <this.BottomNavButtons myUrl={myUrl} />}
+          <Waypoint onEnter={this.handleWaypointEnter} />
+          <br />
+          <br />
+          <Image src={twelveScales} centered size="small" />
           <br />
           <br />
         </Container>
@@ -126,7 +128,8 @@ const mapStateToProps = state => ({
   auth: state.firebase.auth,
   profile: state.firebase.profile,
   profileIsReady:
-    state.firebase.profile.isLoaded && !state.firebase.profile.isEmpty
+    state.firebase.profile.isLoaded && !state.firebase.profile.isEmpty,
+  myReduxUrl: state.router.location.pathname
 });
 const actions = { openModal, goToLatestLesson, signInUserAnon };
 

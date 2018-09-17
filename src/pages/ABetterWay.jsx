@@ -53,8 +53,9 @@ export default class ABetterWay extends Component {
           Similar to how you can <em>"just know"</em> your way around your
           neighborhood, even if you don't know all the street names, You can be
           familiar, even <em>very familiar</em> with all your Major scales, even
-          without knowing what any of them are called.
+          without knowing any of the note names.
         </p>
+
         <Card.Group>
           <Card color="red">
             <Image src={EMajorConventional} />

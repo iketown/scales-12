@@ -11,7 +11,7 @@ import AmajorScale from "../images/AmajorScale.svg";
 import DbMajorScale from "../images/DbMajorScale.svg";
 import BbMajorScale from "../images/BbmajorScale.svg";
 import { fullScales } from "../components/keyboard/keyboardShapes";
-import { noteNumbers } from "../keySVGs/keyboardUtils";
+import { NN } from "../keySVGs/keyboardUtils";
 import { CMajorScale } from "../images";
 import { StarterIcon } from "../components/uiElements/index";
 import { getPreviousAndNextLessons } from "../utils/chapterIndex";
@@ -105,8 +105,7 @@ class WhatsAScale extends Component {
             <ScaleCard src={BbMajorScale} title={"Bb Major"} />
           </Card.Group>
           <p>
-            Each scale follows an exact pattern of <strong>half-steps</strong>{" "}
-            and <strong>whole-steps</strong>. That pattern makes each scale{" "}
+            Each scale follows an exact pattern which makes them
             <em>sound</em> correct, but they still all <em>look</em> completely
             different.
           </p>
@@ -125,12 +124,12 @@ class WhatsAScale extends Component {
     );
   }
 }
-const NNspan = styled.span`
-  color: #57a5ff;
-  font-size: 1.5rem;
-  font-family: initial;
-`;
-const NN = ({ num }) => <NNspan>{noteNumbers[num]}</NNspan>;
+// const NNspan = styled.span`
+//   color: #57a5ff;
+//   font-size: 1.5rem;
+//   font-family: initial;
+// `;
+//  const NN = ({ num }) => <NNspan>{noteNumbers[num]}</NNspan>;
 
 const actions = { finishPage };
 export default connect(

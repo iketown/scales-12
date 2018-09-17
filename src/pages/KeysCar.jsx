@@ -1,62 +1,75 @@
-import React from "react";
+import React, { Component } from "react";
 import Layout from "../layout/Layout";
-import { Header } from "semantic-ui-react";
-
+import { Header, Card, Image } from "semantic-ui-react";
+import { CarSkips, CarSkips2 } from "../images/";
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
+import { NN } from "../keySVGs/keyboardUtils";
+import { ScaleCard } from "../components/uiElements/customDisplays";
+
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
-const Page7 = () => {
-  return (
-    <Layout myUrl={this.props.match.path}>
-      <Header as="h2">
-        <Header.Content>On The Piano</Header.Content>
-      </Header>
-      <h1>The Cars</h1>
-      <p>
-        Now we'll start putting <strong>CARS</strong> on the keyboard.
-      </p>
-      {/* <p>
-        There are FOUR keys that make car shapes, so let's look at those quickly
-        before we start.
-      </p>
-      <p>
-        If you split the keyboard into 2-black-key sections and 3-black-key
-        sections, we will find yet another repeating pattern to make our job
-        easier.
-      </p>
-      <Image src={splitKeyboardAnimation} size="large" />
-      <p>Lets picture each one of those sections as a highway.</p>
-      <p>
-        The <em>right two lanes</em> of that highway (the slow lanes?) are CARS.
-      </p>
-      <p>
-        Of course, the cars starting on the black keys will actually be{" "}
-        <strong>FlipCars</strong>, but since ALL black keys are 'flip-whatevers'
-        we'll just call them cars.{" "}
-      </p>
-      <Image src={carsOnKeyboard} size="medium" /> */}
-      <p />
-      <KeyboardInline
-        keyboardId="kb002CarShapes"
-        keyboardScale={0.5}
-        showAllCircles={false}
-        messageInstructions={{
-          icon: "question circle",
-          header: "Car Shapes",
-          content: (
-            <p>
-              Make CAR shapes on the keyboard, starting at the <StarterIcon />
-            </p>
-          )
-        }}
-        whenToShowShape={"afterCorrect"}
-        answers={carAnswers}
-        continueLink="/page8"
-        continueText="Well done!  Next we'll check out the TRUCKS."
-      />
-    </Layout>
-  );
-};
+class KeysCar extends Component {
+  render() {
+    return (
+      <Layout myUrl={this.props.match.path} nextButtonDisabled>
+        <Header as="h2">
+          <Header.Content>The Cars</Header.Content>
+        </Header>
+        <p>
+          Now we'll start putting <strong>CARS</strong> on the keyboard.
+        </p>
+        <p>
+          Usually it will be obvious which keys make the shape. But in a couple
+          situations you have those two white keys in a row, so you have to know
+          which one to use. You'll get it right after a couple tries anyways,
+          but if you get stuck, you can think{" "}
+          <em>'ONE skip TWO skip THREE FOUR.'</em>
+        </p>
+        <p>Or just remember that you 'skip' a key between 1 - 2, and 2 - 3.</p>
+        <p>
+          <NN num={1} /> (skip) <NN num={2} />
+          (skip) <NN num={3} /> <NN num={4} />.
+        </p>
+        <Card.Group centered>
+          <Card>
+            <Image size="medium" src={CarSkips} />
+            <Card.Description>
+              <p>SKIP between 1 & 2</p>
+            </Card.Description>
+          </Card>
+          <Card>
+            <Image size="medium" src={CarSkips2} />
+            <Card.Description>
+              <p>NO skip between 3 & 4</p>
+            </Card.Description>
+          </Card>
+        </Card.Group>
+        <br />
+        <p>
+          Don't worry if that doesn't make total sense yet. You'll get it after
+          you do it once or twice.
+        </p>
+        <KeyboardInline
+          keyboardId="kb002CarShapes"
+          keyboardScale={0.5}
+          showAllCircles={false}
+          messageInstructions={{
+            icon: "question circle",
+            header: "Car Shapes",
+            content: (
+              <p>
+                Make CAR shapes on the keyboard, starting at the <StarterIcon />
+              </p>
+            )
+          }}
+          whenToShowShape={"afterCorrect"}
+          answers={carAnswers}
+          continueText="Well done!  Next we'll check out the TRUCKS."
+        />
+      </Layout>
+    );
+  }
+}
 
 const carAnswers = [
   {
@@ -81,4 +94,4 @@ const carAnswers = [
   }
 ];
 
-export default Page7;
+export default KeysCar;

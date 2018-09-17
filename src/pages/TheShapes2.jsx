@@ -72,7 +72,8 @@ const shapesArr = [
       <p>
         Both the CAR and the TRUCK (motorized vehicles) have the 'front and back
         tires' down on the ground. The CAR has <strong>#2</strong> and{" "}
-        <strong>#3</strong> raised, so people can sit in the back seat.
+        <strong>#3</strong> raised. Imagine dots 2 and 3 are people sitting in
+        the front and back seats of the car.
       </p>
     )
   },
@@ -83,7 +84,9 @@ const shapesArr = [
     description: (
       <p>
         Both the CAR and the TRUCK (motorized vehicles) have the 'front and back
-        tires' on the ground. The TRUCK has only <strong>#3</strong> raised
+        tires' on the ground. The TRUCK has only <strong>#3</strong> raised.
+        Imagine someone sitting in the front (cab) of the truck, but the back is
+        a flat bed.
       </p>
     )
   }

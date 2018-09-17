@@ -22,6 +22,10 @@ export default class Page6 extends Component {
           few wrong notes in the future.
         </p>
         <p>
+          There are a few scenarios where there will be more than one white key
+          which would work to make a shape.
+        </p>
+        <p>
           Sometimes it helps to look up at the top of the keys, where all the
           black and white keys are present, and have the same width, so you can
           easily see which keys you're using / skipping. See the green box at

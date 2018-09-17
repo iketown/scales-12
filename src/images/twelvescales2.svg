@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="601px" height="248px" viewBox="0 0 601 248" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>twelvescales</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <text id="text-1" font-family="BowlbyOne-Regular, Bowlby One" font-size="135" font-weight="normal" line-spacing="112" letter-spacing="-0.100000001" fill="#FFFFFF">
+            <tspan x="10" y="165">TWELVE</tspan>
+            <tspan x="10" y="278">SCALES</tspan>
+        </text>
+        <filter x="-1.0%" y="-2.7%" width="102.6%" height="106.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="twelvescales" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="1">
+        <g id="TWELVE-SCALES" fill="#FFFFFF">
+            <use filter="url(#filter-2)" xlink:href="#text-1"></use>
+            <use xlink:href="#text-1"></use>
+        </g>
+    </g>
+</svg>

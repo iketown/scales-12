@@ -1,6 +1,6 @@
 import { closeModal } from "../components/uiElements/modals/modalActions.jsx";
 import { SubmissionError } from "redux-form";
-import {} from "react-router";
+import { push } from "connected-react-router";
 import firebase from "../utils/firebase";
 
 export const SIGN_IN_USER = "SIGN_IN_USER";
@@ -12,7 +12,7 @@ export const signInUser = creds => {
       await firebase
         .auth()
         .signInWithEmailAndPassword(creds.email, creds.password);
-      firebase.auth();
+      dispatch(push("/dashboard"));
       dispatch(closeModal());
     } catch (error) {
       console.log("login error", error);
