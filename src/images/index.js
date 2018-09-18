@@ -39,6 +39,7 @@ import WagonKeyboardAni from "./WagonKeyboardAni.gif";
 import CarFlipAnimation from "./CarFlipAnimation.gif";
 import CarSkips from "./CarSkips.svg";
 import CarSkips2 from "./CarSkips2.svg";
+import CarTruckLineWagonAnimation from "./CarTruckLineWagonAnimation.gif";
 export {
   CMajorScale,
   Line,
@@ -80,5 +81,6 @@ export {
   CarFlipAnimation,
   twelveScales,
   CarSkips,
-  CarSkips2
+  CarSkips2,
+  CarTruckLineWagonAnimation
 };

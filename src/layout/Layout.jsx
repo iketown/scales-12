@@ -26,23 +26,7 @@ class Layout extends Component {
     const showInterrupt = !signedIn && urlsToTriggerInterrupt.includes(myUrl);
     if (showInterrupt) this.props.openModal("SignUpInterrupt");
   }
-  componentDidUpdate(prevProps) {
-    // if (this.props.profileIsReady !== prevProps.profileIsReady) {
-    //   this.getLatestUrl();
-    // }
-  }
-  getLatestUrl = () => {
-    if (this.props.profileIsReady) {
-      const latestSlug =
-        this.props.profile.finishedLessons &&
-        this.props.profile.finishedLessons.sort(
-          (a, b) => b.timestamp.seconds - a.timestamp.seconds
-        )[0].slug;
-      const nextUrl = getPreviousAndNextLessons(`/${latestSlug}`).nextLesson
-        .url;
-      this.setState({ nextUrl });
-    }
-  };
+
   handleSignInAnon = () => {
     this.props.signInUserAnon();
   };
@@ -82,7 +66,8 @@ class Layout extends Component {
             to={indexes.nextLesson.url}
             icon
             labelPosition="right"
-            primary
+            primary={nextButtonDisabled === false}
+            basic={nextButtonDisabled}
             onClick={this.handleNextClicked}
             disabled={nextButtonDisabled}
           >

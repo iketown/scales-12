@@ -12,19 +12,6 @@ import MyInfo from "./MyInfo";
 class UserDashboard extends Component {
   render() {
     const { auth, finishedLessons } = this.props;
-    const visitedLessons =
-      finishedLessons &&
-      finishedLessons.reduce((obj, les) => {
-        if (obj[les.slug]) {
-          // see if this one is later
-          if (obj[les.slug] < les.timestamp.seconds) {
-            obj[les.slug] = les.timestamp.seconds;
-          }
-          return obj;
-        } else {
-          return { ...obj, [les.slug]: les.timestamp.seconds };
-        }
-      }, {});
 
     return (
       <Layout hideNav>

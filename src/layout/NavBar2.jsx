@@ -126,7 +126,9 @@ class NavBar extends Component {
           <Menu.Menu position="right">
             {authenticated ? (
               <Fragment>
-                <Menu.Item>{auth.displayName || auth.email}</Menu.Item>
+                <Menu.Item as={Link} to="/dashboard">
+                  {auth.displayName || auth.email}
+                </Menu.Item>
                 <Menu.Item onClick={this.handleSignOut}>Sign Out</Menu.Item>
               </Fragment>
             ) : (

@@ -8,7 +8,8 @@ export const ding = () => {
 };
 
 export const pop = () => {
-  new Audio(Popmp3).play();
+  const popAudio = new Audio(Popmp3);
+  popAudio.play();
 };
 
 export const plink = () => {

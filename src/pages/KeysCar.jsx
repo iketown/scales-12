@@ -9,9 +9,15 @@ import { ScaleCard } from "../components/uiElements/customDisplays";
 
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 class KeysCar extends Component {
+  state = {
+    testFinished: false
+  };
   render() {
     return (
-      <Layout myUrl={this.props.match.path} nextButtonDisabled>
+      <Layout
+        myUrl={this.props.match.path}
+        nextButtonDisabled={!this.state.testFinished}
+      >
         <Header as="h2">
           <Header.Content>The Cars</Header.Content>
         </Header>
@@ -19,16 +25,16 @@ class KeysCar extends Component {
           Now we'll start putting <strong>CARS</strong> on the keyboard.
         </p>
         <p>
-          Usually it will be obvious which keys make the shape. But in a couple
-          situations you have those two white keys in a row, so you have to know
-          which one to use. You'll get it right after a couple tries anyways,
-          but if you get stuck, you can think{" "}
-          <em>'ONE skip TWO skip THREE FOUR.'</em>
+          Usually it will be obvious which keys make the shape, but in a couple
+          situations you have two white keys in a row, and you'll have to know
+          which white key to use. If you get stuck, just remember that{" "}
+          <NN num={3} /> and <NN num={4} /> are squished together, while
+          <NN num={1} />, <NN num={2} /> and <NN num={3} /> are spread apart.
         </p>
-        <p>Or just remember that you 'skip' a key between 1 - 2, and 2 - 3.</p>
+        <p>That is, you 'skip' a key between 1 - 2, and 2 - 3.</p>
         <p>
-          <NN num={1} /> (skip) <NN num={2} />
-          (skip) <NN num={3} /> <NN num={4} />.
+          <NN num={1} /> (skip) <NN num={2} /> (skip) <NN num={3} />{" "}
+          <NN num={4} />.
         </p>
         <Card.Group centered>
           <Card>
@@ -47,7 +53,7 @@ class KeysCar extends Component {
         <br />
         <p>
           Don't worry if that doesn't make total sense yet. You'll get it after
-          you do it once or twice.
+          you do it a couple times. Ready to play some CAR shapes?
         </p>
         <KeyboardInline
           keyboardId="kb002CarShapes"
@@ -65,6 +71,7 @@ class KeysCar extends Component {
           whenToShowShape={"afterCorrect"}
           answers={carAnswers}
           continueText="Well done!  Next we'll check out the TRUCKS."
+          callbackWhenFinished={() => this.setState({ testFinished: true })}
         />
       </Layout>
     );

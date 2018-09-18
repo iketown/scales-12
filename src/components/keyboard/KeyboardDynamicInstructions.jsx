@@ -14,6 +14,7 @@ import {
 } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
+import { StarterIcon } from "../uiElements/index";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -71,7 +72,8 @@ class Keyboard extends Component {
     finished: false,
     keysIn: false,
     root1: "",
-    showShapeBackground: false
+    showShapeBackground: false,
+    shapeWord: ""
   };
 
   componentDidMount() {
@@ -80,7 +82,8 @@ class Keyboard extends Component {
       keyGroups: keyList(answers[0].bottomKey, answers[0].topKey),
       starters: answers[0].starters,
       correctAnswer: answers[0].correctAnswer,
-      root1: answers[0].correctAnswer[0]
+      root1: answers[0].correctAnswer[0],
+      shapeWord: answers[0].shapeWord
     });
     setTimeout(() => this.setState({ keysIn: true }), 0);
   }
@@ -155,7 +158,8 @@ class Keyboard extends Component {
           correctAnswer: answers[nextIndex].correctAnswer,
           starters: answers[nextIndex].starters,
           root1: answers[nextIndex].correctAnswer[0],
-          showShapeBackground: false
+          showShapeBackground: false,
+          shapeWord: answers[nextIndex].shapeWord
         },
         this.resetKeyboard
       );
@@ -218,9 +222,19 @@ class Keyboard extends Component {
     const thisTest = this.props.keyboardChallenges[keyboardId];
     const doneWithThisTest =
       thisTest && this.props.keyboardChallenges[keyboardId].completed;
+    const instructions = (
+      <p>
+        play a <strong>{this.state.shapeWord}</strong> shape, starting at the{" "}
+        <StarterIcon />
+      </p>
+    );
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
-        <Message {...messageInstructions} />
+        <Message
+          icon="question circle"
+          header={this.state.shapeWord}
+          content={instructions}
+        />
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {

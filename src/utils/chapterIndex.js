@@ -10,7 +10,12 @@ import ShapesQuiz2 from "../pages/ShapesQuiz2.jsx";
 import Spacing from "../pages/Spacing";
 import KeysLine from "../pages/KeysLine";
 import KeysCar from "../pages/KeysCar";
-
+import KeysTrucks from "../pages/KeysTrucks.jsx";
+import KeysWagons from "../pages/KeysWagons.jsx";
+import KeysAll from "../pages/KeysAll.jsx";
+import Places1 from "../pages/Places1";
+import PlacesTest1 from "../pages/PlacesTest1";
+import PlacesTest2 from "../pages/PlacesTest2";
 export const chapters = {
   Introduction: [
     { title: "Intro", component: IntroPage, slug: "intro_1" },
@@ -66,14 +71,24 @@ export const chapters = {
     },
     {
       title: "The Trucks",
-      component: IntroPage,
+      component: KeysTrucks,
       slug: "keys_trucks"
     },
     {
       title: "The Wagons",
-      component: IntroPage,
+      component: KeysWagons,
       slug: "keys_wagons"
+    },
+    {
+      title: "All Shapes",
+      component: KeysAll,
+      slug: "all_shapes"
     }
+  ],
+  Places: [
+    { title: "Places 1", component: Places1, slug: "places_1" },
+    { title: "Places Test 1", component: PlacesTest1, slug: "places_test_1" },
+    { title: "Places Test 2", component: PlacesTest2, slug: "places_test_2" }
   ],
   Scales: [{ title: "Scales 1", component: IntroPage, slug: "scales_1" }]
 };

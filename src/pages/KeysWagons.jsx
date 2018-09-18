@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
 import { Header } from "semantic-ui-react";
-
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
-class KeysLine extends Component {
+
+import { keyboardShapes } from "../components/keyboard/keyboardShapes";
+class KeysWagons extends Component {
   state = {
     testFinished: false
   };
@@ -15,36 +16,32 @@ class KeysLine extends Component {
         nextButtonDisabled={!this.state.testFinished}
       >
         <Header as="h2">
-          <Header.Content>On The Piano</Header.Content>
+          <Header.Content>The Wagons</Header.Content>
         </Header>
-        <h1>The Line</h1>
         <p>
-          Now we'll finally put some shapes on the keyboard, starting with the
-          easiest and straightest shape of them all, <strong>the LINE</strong>.
+          Finally, we reach our fourth shape, <strong>THE WAGON</strong>.
         </p>
         <p>
-          There are only two keys that use a LINE shape, so this will be a
-          pretty quick test:
+          The Wagon only shows up in two places on the keyboard, so this will be
+          another quick test. Then we can start mixing them up.
         </p>
         <KeyboardInline
-          keyboardId="kb001LineShapes"
-          bottomKey="C1"
-          topKey="C2"
+          keyboardId="kb002CarShapes"
+          keyboardScale={0.5}
           showAllCircles={false}
-          keyboardScale={0.54}
           messageInstructions={{
             icon: "question circle",
-            header: "Line Shapes",
+            header: "Wagon Shapes",
             content: (
               <p>
-                Make a line shape on the keyboard, starting at the{" "}
+                Make WAGON shapes on the keyboard, starting at the{" "}
                 <StarterIcon />
               </p>
             )
           }}
           whenToShowShape={"afterCorrect"}
-          answers={lineAnswers}
-          continueText="Nice!  next we'll check out the CARS."
+          answers={wagonAnswers}
+          continueText="Well done!  That's all the shapes."
           callbackWhenFinished={() => this.setState({ testFinished: true })}
         />
       </Layout>
@@ -52,17 +49,17 @@ class KeysLine extends Component {
   }
 }
 
-const lineAnswers = [
+const wagonAnswers = [
   {
     bottomKey: "C1",
-    topKey: "D2",
-    correctAnswer: ["C1", "D1", "E1", "F1"]
+    topKey: "C2",
+    correctAnswer: keyboardShapes.F
   },
   {
-    bottomKey: "F1",
-    topKey: "F2",
-    correctAnswer: ["G1", "A1", "B1", "C2"]
+    bottomKey: "C1",
+    topKey: "C2",
+    correctAnswer: keyboardShapes.Gb
   }
 ];
 
-export default KeysLine;
+export default KeysWagons;

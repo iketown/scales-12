@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed, { PoseGroup } from "react-pose";
 import Dimensions from "react-dimensions";
-import { Button, Message } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
-import { ding, plink, keyClick } from "./sounds/soundFX";
+import { ding, plink, pop } from "./sounds/soundFX";
 import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
-import {
-  delayBetweenQuestions,
-  showCheaterButton
-} from "../../utils/generalConfig";
+import { showCheaterButton } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
 const piano = Synth.createInstrument("piano");
@@ -25,6 +22,9 @@ const KeyboardDiv = styled.div`
     keysWide * 79 * keyboardScale + 30}px;
   z-index: 10;
   position: relative;
+`;
+const ButtonDiv = styled.div`
+  margin-top: 2rem;
 `;
 
 const staggerDuration = 50;
@@ -63,24 +63,25 @@ class Keyboard extends Component {
     questionIndex: 0,
     keyGroups: [],
     userGuess: [],
-    correctCircles: [],
-    wrongCircles: [],
-    correctAnswer: [],
-    showCircles: true,
+    correctAnswer: "",
+    wronglyClickedButtons: [],
+    correctNotes: [],
+    notesToShow: [],
+    noteQuestion: "",
     correct: false,
     finished: false,
-    keysIn: false,
-    root1: "",
-    showShapeBackground: false
+    showShapeBackground: false,
+    showCircles: true
   };
 
   componentDidMount() {
-    const { answers } = this.props;
+    const { answers, bottomKey, topKey } = this.props;
+
     this.setState({
-      keyGroups: keyList(answers[0].bottomKey, answers[0].topKey),
-      starters: answers[0].starters,
-      correctAnswer: answers[0].correctAnswer,
-      root1: answers[0].correctAnswer[0]
+      keyGroups: keyList(bottomKey, topKey),
+      correctAnswer: answers[0].shape,
+      noteQuestion: answers[0].noteName,
+      correctNotes: answers[0].notes
     });
     setTimeout(() => this.setState({ keysIn: true }), 0);
   }
@@ -88,74 +89,71 @@ class Keyboard extends Component {
     this.setState({ questionNumber: this.state.questionNumber + 1 });
   };
   clickHandler = noteName => () => {
-    this.state.userGuess.includes(noteName)
-      ? this.removeNoteFromGuess(noteName)
-      : this.addNoteToGuess(noteName);
-  };
-  addNoteToGuess = noteName => {
     playNote(noteName);
-    this.setState(
-      { userGuess: [...this.state.userGuess, noteName] },
-      this.checkGuess
-    );
   };
-  removeNoteFromGuess = noteName => {
-    keyClick();
-    this.setState({
-      userGuess: this.state.userGuess.filter(note => note !== noteName)
-    });
-  };
-  checkGuess() {
-    const { userGuess } = this.state;
+  buttonClick = shape => () => {
     const { correctAnswer } = this.state;
-    const correctCircles = userGuess.filter(guess =>
-      correctAnswer.includes(guess)
-    );
-    const wrongCircles = userGuess.filter(
-      guess => !correctAnswer.includes(guess)
-    );
-    this.setState({ correctCircles, wrongCircles });
-    if (correctAnswer.length === userGuess.length) {
-      if (
-        // if there are no un-clicked correct notes (so answer is correct)
-        correctAnswer.filter(note => !userGuess.includes(note)).length === 0
-      ) {
-        this.handleCorrectAnswer();
-      } else {
-        this.handleWrongAnswer();
-      }
-    } else {
-      return;
-    }
-  }
-  handleCorrectAnswer = () => {
+    if (shape === correctAnswer) this.handleCorrectAnswer();
+    else this.handleWrongAnswer(shape);
+  };
+
+  handleCorrectAnswer = async () => {
     ding();
     const { whenToShowShape } = this.props;
-
     this.setState({
-      showCircles: false,
       showShapeBackground: whenToShowShape === "afterCorrect"
     });
+    await this.animateNotes();
     setTimeout(this.goToNextQuestion, 1000);
   };
-  handleWrongAnswer = () => {
+  handleWrongAnswer = shape => {
     plink();
-    this.setState({ correct: false, showCircles: false, finished: true });
-    setTimeout(this.resetKeyboard, delayBetweenQuestions);
+    this.setState({
+      wronglyClickedButtons: [...this.state.wronglyClickedButtons, shape]
+    });
+  };
+  animateNotes = () => {
+    return new Promise((resolve, reject) => {
+      const { correctNotes, notesToShow } = this.state;
+      let nowPlayingIndex = 0;
+      const addNoteToShowList = () => {
+        if (nowPlayingIndex >= correctNotes.length) {
+          resolve();
+          return clearInterval(playNotes);
+        }
+        pop();
+        console.log("adding:", correctNotes[nowPlayingIndex]);
+
+        this.setState(
+          {
+            notesToShow: [
+              ...this.state.notesToShow,
+              correctNotes[nowPlayingIndex]
+            ]
+          },
+          () => nowPlayingIndex++
+        );
+      };
+
+      const playNotes = setInterval(addNoteToShowList, 200);
+    });
   };
   goToNextQuestion = () => {
     const { answers } = this.props;
     const nextIndex = this.state.questionIndex + 1;
     if (nextIndex >= answers.length) {
       this.finishThisTest();
+      this.setState({ questionIndex: nextIndex });
     } else {
       this.setState(
         {
+          showCircles: false,
           questionIndex: nextIndex,
-          correctAnswer: answers[nextIndex].correctAnswer,
-          starters: answers[nextIndex].starters,
-          root1: answers[nextIndex].correctAnswer[0],
-          showShapeBackground: false
+          correctAnswer: answers[nextIndex].shape,
+          correctNotes: answers[nextIndex].notes,
+          noteQuestion: answers[nextIndex].noteName,
+          showShapeBackground: false,
+          notesToShow: []
         },
         this.resetKeyboard
       );
@@ -165,36 +163,22 @@ class Keyboard extends Component {
     const { keyboardId, callbackWhenFinished } = this.props;
     if (callbackWhenFinished) callbackWhenFinished();
     this.props.dispatch(completeKeyboardChallenge(keyboardId));
+    this.setState({ finished: true });
   };
   resetKeyboard = () => {
     const index = this.state.questionIndex;
     const { answers } = this.props;
     this.setState({
-      userGuess: [],
       showCircles: true,
-      correctCircles: [],
-      wrongCircles: [],
-      keyGroups: keyList(answers[index].bottomKey, answers[index].topKey),
-      finished: false
+      finished: false,
+      wronglyClickedButtons: []
     });
   };
   getCircleShape = noteName => {
-    const {
-      userGuess,
-      finished,
-      correctCircles,
-      wrongCircles,
-      starters,
-      correctAnswer
-    } = this.state;
-    const { showAllCircles } = this.props;
-    // first check if deemed 'right' or 'wrong'.  otherwise, its just 'selected'
-    if (finished && correctCircles.includes(noteName)) return "correct";
-    if (finished && wrongCircles.includes(noteName)) return "wrong";
-    if (userGuess.includes(noteName)) return "selected";
-    if (correctAnswer[0] === noteName) return "starter";
-    if (starters && starters.includes(noteName)) return "starter";
-    if (showAllCircles && correctAnswer.includes(noteName)) return "outline";
+    const { noteQuestion, notesToShow } = this.state;
+    if (notesToShow.includes(noteName)) return "selected";
+    if (noteQuestion === noteName) return "starter";
+
     return null;
   };
   doOver = () => {
@@ -205,27 +189,52 @@ class Keyboard extends Component {
     });
   };
   render() {
-    const {
-      bottomKey,
-      keysToLabel,
-      keyboardId,
-      messageInstructions,
-      continueLink,
-      continueText
-    } = this.props;
+    const { bottomKey, answers } = this.props;
     let { keyboardScale } = this.props;
-    const { showCircles, root1, showShapeBackground } = this.state;
-    const thisTest = this.props.keyboardChallenges[keyboardId];
-    const doneWithThisTest =
-      thisTest && this.props.keyboardChallenges[keyboardId].completed;
+    const {
+      showCircles,
+      noteQuestion,
+      showShapeBackground,
+      wronglyClickedButtons,
+      correctAnswer
+    } = this.state;
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
-        <Message {...messageInstructions} />
+        <ButtonDiv>
+          <div style={{marginBottom: '1rem'}}>
+            {answers.map((a, i) => {
+              const props =
+                i < this.state.questionIndex
+                  ? { name: " check square", color: "green" }
+                  : i === this.state.questionIndex
+                    ? {
+                        name: " outline square",
+                        color: "black",
+                        bordered: true
+                      }
+                    : { name: "outline square", color: "grey" };
+              return <Icon {...props} size="small" />;
+            })}
+          </div>
+          {["Wagon", "Line", "Truck", "Car"].map(shape => {
+            let style;
+            if (wronglyClickedButtons.includes(shape)) {
+              style = { color: "red", basic: true };
+            }
+            if (showShapeBackground && shape === correctAnswer) {
+              style = { primary: true };
+            }
+            return (
+              <Button onClick={this.buttonClick(shape)} {...style}>
+                {shape}
+              </Button>
+            );
+          })}
+        </ButtonDiv>
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {
               const sharedProps = {
-                keyboardId,
                 showCircles
               };
               return (
@@ -241,9 +250,8 @@ class Keyboard extends Component {
                     noteName={key[0]}
                     circleType={this.getCircleShape(key[0])}
                     clickHandler={this.clickHandler(key[0])}
-                    showLabel={keysToLabel && keysToLabel.includes(key[0])}
                     showShapeBackground={
-                      showShapeBackground && key[0] === root1
+                      showShapeBackground && key[0] === noteQuestion
                     }
                     keyboardScale={keyboardScale}
                   />
@@ -256,9 +264,8 @@ class Keyboard extends Component {
                       hide={key[0] === bottomKey}
                       circleType={this.getCircleShape(key[1])}
                       clickHandler={this.clickHandler(key[1])}
-                      showLabel={keysToLabel && keysToLabel.includes(key[1])}
                       showShapeBackground={
-                        showShapeBackground && key[1] === root1
+                        showShapeBackground && key[1] === noteQuestion
                       }
                       keyboardScale={keyboardScale}
                     />
@@ -267,13 +274,6 @@ class Keyboard extends Component {
               );
             })}
           </PoseGroup>
-          {doneWithThisTest && (
-            <FinishedOverlay
-              correct
-              continueLink={continueLink}
-              continueText={continueText}
-            />
-          )}
           {showCheaterButton && (
             <Button
               style={{ position: "absolute", top: 0, right: 0, zIndex: 100 }}
@@ -282,8 +282,8 @@ class Keyboard extends Component {
               cheat
             </Button>
           )}
+          {this.state.finished && <FinishedOverlay correct />}
         </KeyboardDiv>
-        {/* </StyledKeyboard> */}
       </div>
     );
   }

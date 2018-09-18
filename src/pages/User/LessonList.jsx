@@ -7,7 +7,7 @@ import { List, Icon } from "semantic-ui-react";
 import { chapters } from "../../utils/chapterIndex";
 class UserDashboard extends Component {
   render() {
-    const { auth, finishedLessons } = this.props;
+    const { auth, finishedLessons, profile } = this.props;
     const visitedLessons =
       finishedLessons &&
       finishedLessons.reduce((obj, les) => {
@@ -21,20 +21,22 @@ class UserDashboard extends Component {
           return { ...obj, [les.slug]: les.timestamp.seconds };
         }
       }, {});
-
+    if (!profile.isLoaded) {
+      return <h2>loading. . .</h2>;
+    }
     return (
       <List celled>
         {Object.keys(chapters).map(chapter => (
           <List.Item>
             {chapter}
-            <List.Item as="ol">
+            <List selection>
               {chapters[chapter].map(lesson => {
                 return (
-                  <List.Item>
+                  <List.Item selection>
                     <List.Content>
                       <List.Header as={Link} to={"/" + lesson.slug}>
                         <h4>
-                          {lesson.title}
+                          <span>{lesson.title}</span>
                           {visitedLessons &&
                             visitedLessons[lesson.slug] && (
                               <LastVisitedSpan>
@@ -51,7 +53,7 @@ class UserDashboard extends Component {
                   </List.Item>
                 );
               })}
-            </List.Item>
+            </List>
           </List.Item>
         ))}
       </List>
@@ -68,7 +70,8 @@ const LastVisitedSpan = styled.span`
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
-  finishedLessons: state.firebase.profile.finishedLessons
+  finishedLessons: state.firebase.profile.finishedLessons,
+  profile: state.firebase.profile
 });
 const actions = {};
 
