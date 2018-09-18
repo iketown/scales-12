@@ -16,6 +16,8 @@ import KeysAll from "../pages/KeysAll.jsx";
 import Places1 from "../pages/Places1";
 import PlacesTest1 from "../pages/PlacesTest1";
 import PlacesTest2 from "../pages/PlacesTest2";
+import Scales1 from "../pages/Scales1.jsx";
+import Scales2 from "../pages/Scales2.jsx";
 export const chapters = {
   Introduction: [
     { title: "Intro", component: IntroPage, slug: "intro_1" },
@@ -90,7 +92,10 @@ export const chapters = {
     { title: "Places Test 1", component: PlacesTest1, slug: "places_test_1" },
     { title: "Places Test 2", component: PlacesTest2, slug: "places_test_2" }
   ],
-  Scales: [{ title: "Scales 1", component: IntroPage, slug: "scales_1" }]
+  Scales: [
+    { title: "Scales 1", component: Scales1, slug: "scales_1" },
+    { title: "Scales 2", component: Scales2, slug: "scales_2" }
+  ]
 };
 
 export const lessonsArr = Object.keys(chapters).reduce((arr, key) => {

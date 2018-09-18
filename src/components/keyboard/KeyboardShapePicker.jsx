@@ -11,6 +11,7 @@ import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
 import { showCheaterButton } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
+import CheckBoxes from "./CheckBoxes.jsx";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -201,21 +202,10 @@ class Keyboard extends Component {
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
         <ButtonDiv>
-          <div style={{marginBottom: '1rem'}}>
-            {answers.map((a, i) => {
-              const props =
-                i < this.state.questionIndex
-                  ? { name: " check square", color: "green" }
-                  : i === this.state.questionIndex
-                    ? {
-                        name: " outline square",
-                        color: "black",
-                        bordered: true
-                      }
-                    : { name: "outline square", color: "grey" };
-              return <Icon {...props} size="small" />;
-            })}
-          </div>
+          <CheckBoxes
+            totalAnswersCount={answers.length}
+            currentIndex={this.state.questionIndex}
+          />
           {["Wagon", "Line", "Truck", "Car"].map(shape => {
             let style;
             if (wronglyClickedButtons.includes(shape)) {

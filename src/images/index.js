@@ -40,6 +40,8 @@ import CarFlipAnimation from "./CarFlipAnimation.gif";
 import CarSkips from "./CarSkips.svg";
 import CarSkips2 from "./CarSkips2.svg";
 import CarTruckLineWagonAnimation from "./CarTruckLineWagonAnimation.gif";
+import BuildAScale from "./BuildAScale.svg";
+import BuildBbScale from "./BuildBbScale.svg";
 export {
   CMajorScale,
   Line,
@@ -82,5 +84,7 @@ export {
   twelveScales,
   CarSkips,
   CarSkips2,
-  CarTruckLineWagonAnimation
+  CarTruckLineWagonAnimation,
+  BuildAScale,
+  BuildBbScale
 };

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed, { PoseGroup } from "react-pose";
 import Dimensions from "react-dimensions";
-import { Button, Message } from "semantic-ui-react";
+import { Button, Message, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
@@ -14,6 +14,7 @@ import {
 } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
+import CheckBoxes from "./CheckBoxes.jsx";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -130,6 +131,8 @@ class Keyboard extends Component {
   }
   handleCorrectAnswer = () => {
     ding();
+    const nextIndex = this.state.questionIndex + 1;
+    this.setState({ questionIndex: nextIndex });
     const { whenToShowShape } = this.props;
 
     this.setState({
@@ -145,16 +148,15 @@ class Keyboard extends Component {
   };
   goToNextQuestion = () => {
     const { answers } = this.props;
-    const nextIndex = this.state.questionIndex + 1;
-    if (nextIndex >= answers.length) {
+    const { questionIndex } = this.state;
+    if (questionIndex >= answers.length) {
       this.finishThisTest();
     } else {
       this.setState(
         {
-          questionIndex: nextIndex,
-          correctAnswer: answers[nextIndex].correctAnswer,
-          starters: answers[nextIndex].starters,
-          root1: answers[nextIndex].correctAnswer[0],
+          correctAnswer: answers[questionIndex].correctAnswer,
+          starters: answers[questionIndex].starters,
+          root1: answers[questionIndex].correctAnswer[0],
           showShapeBackground: false
         },
         this.resetKeyboard
@@ -211,16 +213,22 @@ class Keyboard extends Component {
       keyboardId,
       messageInstructions,
       continueLink,
-      continueText
+      continueText,
+      answers,
+      root1
     } = this.props;
     let { keyboardScale } = this.props;
-    const { showCircles, root1, showShapeBackground } = this.state;
+    const { showCircles, questionIndex, showShapeBackground } = this.state;
     const thisTest = this.props.keyboardChallenges[keyboardId];
     const doneWithThisTest =
       thisTest && this.props.keyboardChallenges[keyboardId].completed;
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
         <Message {...messageInstructions} />
+        <CheckBoxes
+          totalAnswersCount={answers.length}
+          currentIndex={questionIndex}
+        />
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {

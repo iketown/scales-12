@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
-import KeyboardShapePicker from "../components/keyboard/KeyboardShapePicker.jsx";
+import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
 import { StarterIcon } from "../components/uiElements/index";
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 export default class PlacesTest2 extends Component {
@@ -13,39 +13,111 @@ export default class PlacesTest2 extends Component {
         myUrl={this.props.match.url}
         nextButtonDisabled={this.state.nextButtonDisabled}
       >
-        <h1>Places Test</h1>
+        <h1>Places Test 2</h1>
 
-        <p>
-          Next we'll do a different kind of test. When you see the{" "}
-          <StarterIcon /> on the keyboard, click the button with the
-          corresponding SHAPE.{" "}
-          <KeyboardShapePicker
-            answers={shapePickerAnswers}
-            bottomKey={"C1"}
-            topKey={"E2"}
-            keyboardScale={0.5}
-            whenToShowShape="afterCorrect"
-            callbackWhenFinished={() =>
-              this.setState({ nextButtonDisabled: false })
-            }
-          />
-        </p>
+        <KeyboardInline
+          answers={shapePickerAnswers}
+          keyboardScale={0.5}
+          whenToShowShape="afterCorrect"
+          callbackWhenFinished={() =>
+            this.setState({ nextButtonDisabled: false })
+          }
+          messageInstructions={{
+            icon: "question circle",
+            header: "Shapes on Keyboard",
+            content: (
+              <p>
+                Starting with the <StarterIcon />, play the correct shape{" "}
+                <em>on the keyboard.</em>{" "}
+              </p>
+            )
+          }}
+          keyboardScale={0.6}
+        />
       </Layout>
     );
   }
 }
 
+const Cposition = {
+  bottomKey: "C1",
+  topKey: "C2"
+};
+const Fposition = {
+  bottomKey: "F1",
+  topKey: "F2"
+};
 const shapePickerAnswers = [
-  { noteName: "F1", shape: "Wagon", notes: keyboardShapes.F },
-  { noteName: "Bb1", shape: "Car", notes: keyboardShapes.Bb },
-  { noteName: "D1", shape: "Truck", notes: keyboardShapes.D },
-  { noteName: "C1", shape: "Line", notes: keyboardShapes.C },
-  { noteName: "Ab1", shape: "Truck", notes: keyboardShapes.Ab },
-  { noteName: "E1", shape: "Car", notes: keyboardShapes.E },
-  { noteName: "Gb1", shape: "Wagon", notes: keyboardShapes.Gb },
-  { noteName: "Db1", shape: "Truck", notes: keyboardShapes.Db },
-  { noteName: "B1", shape: "Car", notes: keyboardShapes.B },
-  { noteName: "G1", shape: "Line", notes: keyboardShapes.G },
-  { noteName: "Eb1", shape: "Car", notes: keyboardShapes.Eb },
-  { noteName: "A1", shape: "Truck", notes: keyboardShapes.A }
+  {
+    noteName: "F1",
+    shape: "Wagon",
+    correctAnswer: keyboardShapes.F,
+    ...Cposition
+  },
+  {
+    noteName: "Bb1",
+    shape: "Car",
+    correctAnswer: keyboardShapes.Bb,
+    ...Fposition
+  },
+  {
+    noteName: "D1",
+    shape: "Truck",
+    correctAnswer: keyboardShapes.D,
+    ...Cposition
+  },
+  {
+    noteName: "C1",
+    shape: "Line",
+    correctAnswer: keyboardShapes.C,
+    ...Cposition
+  },
+  {
+    noteName: "Ab1",
+    shape: "Truck",
+    correctAnswer: keyboardShapes.Ab,
+    ...Fposition
+  },
+  {
+    noteName: "E1",
+    shape: "Car",
+    correctAnswer: keyboardShapes.E,
+    ...Cposition
+  },
+  {
+    noteName: "Gb1",
+    shape: "Wagon",
+    correctAnswer: keyboardShapes.Gb,
+    ...Fposition
+  },
+  {
+    noteName: "Db1",
+    shape: "Truck",
+    correctAnswer: keyboardShapes.Db,
+    ...Cposition
+  },
+  {
+    noteName: "B1",
+    shape: "Car",
+    correctAnswer: keyboardShapes.B,
+    ...Fposition
+  },
+  {
+    noteName: "G1",
+    shape: "Line",
+    correctAnswer: keyboardShapes.G,
+    ...Cposition
+  },
+  {
+    noteName: "Eb1",
+    shape: "Car",
+    correctAnswer: keyboardShapes.Eb,
+    ...Cposition
+  },
+  {
+    noteName: "A1",
+    shape: "Truck",
+    correctAnswer: keyboardShapes.A,
+    ...Fposition
+  }
 ];
