@@ -18,6 +18,8 @@ import PlacesTest1 from "../pages/PlacesTest1";
 import PlacesTest2 from "../pages/PlacesTest2";
 import Scales1 from "../pages/Scales1.jsx";
 import Scales2 from "../pages/Scales2.jsx";
+import Scales3 from "../pages/Scales3.jsx";
+import Final from "../pages/Final.jsx";
 export const chapters = {
   Introduction: [
     { title: "Intro", component: IntroPage, slug: "intro_1" },
@@ -57,8 +59,8 @@ export const chapters = {
       title: "Shapes Quiz 2",
       component: ShapesQuiz2,
       slug: "shapes_quiz_2"
-    },
-    { title: "Spacing", component: Spacing, slug: "spacing" }
+    }
+    // { title: "Spacing", component: Spacing, slug: "spacing" }
   ],
   Keyboard: [
     {
@@ -94,7 +96,9 @@ export const chapters = {
   ],
   Scales: [
     { title: "Scales 1", component: Scales1, slug: "scales_1" },
-    { title: "Scales 2", component: Scales2, slug: "scales_2" }
+    { title: "Scales 2", component: Scales2, slug: "scales_2" },
+    { title: "Scales 3", component: Scales3, slug: "scales_3" },
+    { title: "The End", component: Final, slug: "the_end" }
   ]
 };
 

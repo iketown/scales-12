@@ -23,7 +23,7 @@
             <path d="M330.598973,-2.84217094e-14 L368.80668,-2.84217094e-14 L368.80668,340.199627 L394,340.199627 L394,490 C394,495.522847 389.522847,500 384,500 L329,500 C323.477153,500 319,495.522847 319,490 L319,340.199627 L330.598973,340.199627 L330.598973,-2.84217094e-14 Z" id="G"></path>
             <path d="M422.047334,-2.84217094e-14 L458.346981,-2.84217094e-14 L458.346981,340.199627 L474,340.199627 L474,490 C474,495.522847 469.522847,500 464,500 L409,500 C403.477153,500 399,495.522847 399,490 L399,340.199627 L422.047334,340.199627 L422.047334,-2.84217094e-14 Z" id="A"></path>
             <path d="M45.5,0.5 L45.5,328 C45.5,333.246705 49.7532949,337.5 55,337.5 L81,337.5 C86.2467051,337.5 90.5,333.246705 90.5,328 L90.5,0.5 L45.5,0.5 Z" id="Db" fill="#000000"></path>
-            <path d="M145.5,0.5 L145.5,328 C145.5,333.246705 149.753295,337.5 155,337.5 L181,337.5 C186.246705,337.5 190.5,333.246705 190.5,328 L190.5,0.5 L145.5,0.5 Z" id="Eb" fill="#000000"></path>
+            <path d="M145.5,0.5 L145.5,328 C145.5,333.246705 149.753295,337.5 155,337.5 L181,337.5 C186.246705,337.5 190.5,333.246705 190.5,328 L190.5,0.5 L145.5,0.5 Z" id="Eb" fill-opacity="0.217589447" fill="#F5A623"></path>
             <path d="M282.5,0.5 L282.5,328 C282.5,333.246705 286.753295,337.5 292,337.5 L318,337.5 C323.246705,337.5 327.5,333.246705 327.5,328 L327.5,0.5 L282.5,0.5 Z" id="Gb" fill="#000000"></path>
             <path d="M372.5,0.5 L372.5,328 C372.5,333.246705 376.753295,337.5 382,337.5 L408,337.5 C413.246705,337.5 417.5,333.246705 417.5,328 L417.5,0.5 L372.5,0.5 Z" id="Ab" fill="#000000"></path>
             <path d="M463.5,0.5 L463.5,328 C463.5,333.246705 467.753295,337.5 473,337.5 L499,337.5 C504.246705,337.5 508.5,333.246705 508.5,328 L508.5,0.5 L463.5,0.5 Z" id="Bb" fill="#000000"></path>
@@ -71,5 +71,104 @@
             <tspan x="469" y="302">skip</tspan>
         </text>
         <path id="arrow-before-skip" d="M477.665622,313.028228 L462.4083,327.808759 L480.335654,334.102404 L477.665622,313.028228 Z M445.915317,407.996867 L473.323858,329.924055 L473.820724,328.508738 L470.990089,327.515004 L470.493223,328.930322 L443.084683,407.003133 L442.587816,408.418451 L445.418451,409.412184 L445.915317,407.996867 Z" fill="#F5A623" fill-rule="nonzero"></path>
+        <g id="Group" transform="translate(11.000000, 12.000000)" font-family="HiraginoSans-W4, Hiragino Sans" font-size="20" font-weight="normal">
+            <g id="whiteKeyLabel" transform="translate(181.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="-5.46" y="47">truck</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="-20.08" y="47">wagon</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(91.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="13.46" y="47">line</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(273.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="15.4" y="47">car</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(319.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="13.46" y="47">line</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(420.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="-5.46" y="47">truck</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(511.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="15.4" y="47">car</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(558.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="-20.08" y="47">wagon</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(647.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="13.46" y="47">line</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(739.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="-5.46" y="47">truck</tspan>
+                </text>
+            </g>
+            <g id="whiteKeyLabel" transform="translate(832.000000, 0.000000)" fill="#9B9B9B">
+                <text id="truck" transform="translate(9.500000, 39.000000) rotate(-90.000000) translate(-9.500000, -39.000000) ">
+                    <tspan x="15.4" y="47">car</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(229.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="17.4" y="48">car</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(43.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="-18.08" y="48">wagon</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(135.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="-3.46" y="48">truck</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(366.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="-3.46" y="48">truck</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(465.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="17.4" y="48">car</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(603.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="-18.08" y="48">wagon</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(692.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="-3.46" y="48">truck</tspan>
+                </text>
+            </g>
+            <g id="blackKeyLabel" transform="translate(785.000000, 0.000000)" fill="#C0C0C0">
+                <text id="truck-copy" transform="translate(10.000000, 40.000000) rotate(-90.000000) translate(-10.000000, -40.000000) ">
+                    <tspan x="17.4" y="48">car</tspan>
+                </text>
+            </g>
+        </g>
+        <ellipse id="Oval-3" stroke="#7ED321" stroke-width="3" fill-rule="nonzero" cx="202.5" cy="43" rx="24.5" ry="43"></ellipse>
+        <ellipse id="Oval-3-Copy" stroke="#7ED321" stroke-width="3" fill-rule="nonzero" cx="532.5" cy="32" rx="24.5" ry="32"></ellipse>
     </g>
 </svg>

@@ -19,17 +19,21 @@ export default class PlacesTest1 extends Component {
           Next we'll do a different kind of test. When you see the{" "}
           <StarterIcon /> on the keyboard, click the button with the
           corresponding SHAPE.{" "}
-          <KeyboardShapePicker
-            answers={shapePickerAnswers}
-            bottomKey={"C1"}
-            topKey={"E2"}
-            keyboardScale={0.5}
-            whenToShowShape="afterCorrect"
-            callbackWhenFinished={() =>
-              this.setState({ nextButtonDisabled: false })
-            }
-          />
         </p>
+        <p>
+          Remember the freeway. CARS on the right, then TRUCKS, then one LINE.
+          And the extra lanes for WAGONS on the extra-wide freeway.
+        </p>
+        <KeyboardShapePicker
+          answers={shapePickerAnswers}
+          bottomKey={"C1"}
+          topKey={"E2"}
+          keyboardScale={0.5}
+          whenToShowShape="afterCorrect"
+          callbackWhenFinished={() =>
+            this.setState({ nextButtonDisabled: false })
+          }
+        />
       </Layout>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Header, Image, Step, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
 import { StarterIcon } from "../components/uiElements/index";
@@ -22,25 +23,39 @@ import {
   carPic,
   truckPic
 } from "../images";
-import KeyboardWithGuides from "../components/keyboard/KeyboardWithGuides";
+import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
 export default class Scales1 extends Component {
   render() {
     return (
       <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>The Scales</Header.Content>
-          <Header.Subheader>part deux</Header.Subheader>
+          <Header.Subheader>part trois</Header.Subheader>
         </Header>
 
+        <p>And now we reach the final test.</p>
+        <ul>
+          <li>
+            You know <Link to="/the_shapes_2">the shapes</Link>,
+          </li>
+          <li>
+            you know <Link to="/keys_line">how to play them</Link>,
+          </li>
+          <li>
+            and you know <Link to="/places_1">where they go.</Link>
+          </li>
+        </ul>
+        <p>You're ready to play all 12 scales!</p>
         <p>
-          now, we'll try it out with some help before we hit the final test:
+          Just remember:
+          <ol>
+            <li>play the FIRST shape,</li>
+            <li>skip a key,</li>
+            <li>play the SECOND shape.</li>
+          </ol>
+          You got this!
         </p>
-        <p>
-          After correctly playing the first shape, you'll see the skipped key
-          turn <Orange>orange</Orange>, then play the correct shape on the
-          following key.
-        </p>
-        <KeyboardWithGuides
+        <KeyboardInline
           answers={shapePickerAnswers}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"
@@ -52,8 +67,8 @@ export default class Scales1 extends Component {
             header: "Shapes on Keyboard",
             content: (
               <p>
-                Starting with the <StarterIcon />, play the correct shape on the
-                keyboard.
+                Starting with the <StarterIcon />, play the correct shape{" "}
+                <em>on the keyboard.</em>{" "}
               </p>
             )
           }}
@@ -165,9 +180,3 @@ const shapePickerAnswers = [
     keyToSkip: "Eb2"
   }
 ];
-
-const Orange = styled.span`
-  font-weight: bold;
-  color: #f5a623;
-  padding: 3px;
-`;

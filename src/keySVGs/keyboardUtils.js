@@ -111,17 +111,18 @@ export const noteConverter = {
 };
 
 export const iconNames = {
-  outline: { color: "", text: "circle outline" },
-  wrong: { color: "red", text: "close" },
-  correct: { color: "green", text: "circle" },
-  starter: { color: "pink", text: "arrow alternate circle right" },
-  selected: { color: "blue", text: "dot circle" },
-  yellow: { color: "orange", text: "dot circle" },
-  red: { color: "red", text: "dot circle" },
-  grey: { color: "grey", text: "dot circle" },
-  green: { color: "green", text: "dot circle" },
-  purple: { color: "purple", text: "dot circle" },
-  pink: { color: "pink", text: "dot circle" }
+  outline: { color: "", name: "circle outline" },
+  wrong: { color: "red", name: "close" },
+  correct: { color: "green", name: "circle" },
+  starter: { color: "pink", name: "arrow alternate circle right" },
+  selected: { color: "blue", name: "dot circle" },
+  yellow: { color: "orange", name: "dot circle" },
+  red: { color: "red", name: "dot circle" },
+  grey: { color: "grey", name: "dot circle" },
+  green: { color: "green", name: "dot circle" },
+  purple: { color: "purple", name: "dot circle" },
+  pink: { color: "pink", name: "dot circle" },
+  skip: { color: "orange", name: "times circle outline", loading: true }
 };
 
 export const noteNumbers = ["①", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧"];

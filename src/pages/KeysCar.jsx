@@ -22,14 +22,19 @@ class KeysCar extends Component {
           <Header.Content>The Cars</Header.Content>
         </Header>
         <p>
-          Now we'll start putting <strong>CARS</strong> on the keyboard.
+          Now we'll start putting <strong>CARS</strong> (and Flipped-CARS) on
+          the keyboard. But first . . .
         </p>
+        <h3>A note about spacing</h3>
         <p>
           Usually it will be obvious which keys make the shape, but in a couple
           situations you have two white keys in a row, and you'll have to know
-          which white key to use. If you get stuck, just remember that{" "}
-          <NN num={3} /> and <NN num={4} /> are squished together, while
-          <NN num={1} />, <NN num={2} /> and <NN num={3} /> are spread apart.
+          which white key to use.
+        </p>
+        <p>
+          If you get stuck, just remember that <NN num={1} />, <NN num={2} /> &{" "}
+          <NN num={3} /> are spread apart, while <NN num={3} /> & <NN num={4} />{" "}
+          are squished together.
         </p>
         <p>That is, you 'skip' a key between 1 - 2, and 2 - 3.</p>
         <p>
@@ -53,8 +58,9 @@ class KeysCar extends Component {
         <br />
         <p>
           Don't worry if that doesn't make total sense yet. You'll get it after
-          you do it a couple times. Ready to play some CAR shapes?
+          you do it a couple times.
         </p>
+
         <KeyboardInline
           keyboardId="kb002CarShapes"
           keyboardScale={0.5}

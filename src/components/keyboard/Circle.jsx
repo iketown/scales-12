@@ -9,9 +9,8 @@ class Circle extends Component {
     return (
       <div>
         <Icon
-          name={iconNames[circleType].text}
+          {...iconNames[circleType]}
           style={{ fontSize: `${3 * keyboardScale}rem`, zIndex: 25 }}
-          color={iconNames[circleType].color || "grey"}
         />
       </div>
     );

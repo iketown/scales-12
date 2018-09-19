@@ -98,7 +98,8 @@ class Key extends Component {
       showCircles,
       showShapeBackground,
       keyboardScale,
-      highlight
+      highlight,
+      fadeMe
     } = this.props;
     const keyIsBlack = noteShape === "flat";
 
@@ -120,9 +121,15 @@ class Key extends Component {
         >
           <path
             d={paths[noteShape]}
-            stroke="#000"
+            stroke={fadeMe ? "#f5a623" : "#000"}
             id={noteName}
-            fill={noteShape === "flat" ? "#000000CC" : "#FFFFFFCC"}
+            fill={
+              fadeMe
+                ? "#f5a62322"
+                : noteShape === "flat"
+                  ? "#000000CC"
+                  : "#FFFFFFCC"
+            }
           />
         </Svg>
         {circleType && (

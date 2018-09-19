@@ -10,7 +10,7 @@ import { FadeMe } from "./Fades";
 import { Icon } from "semantic-ui-react";
 import { iconNames } from "../../keySVGs/keyboardUtils";
 const StarterIcon = () => (
-  <Icon name={iconNames.starter.text} color={iconNames.starter.color} />
+  <Icon name={iconNames.starter.name} color={iconNames.starter.color} />
 );
 const CheckIcon = () => <Icon name="check circle" color="grey" />;
 

@@ -58,16 +58,76 @@ export const scaleShapes = {
 };
 
 export const scaleShapes2 = {
-  C: { bottom: "line", top: "line" },
-  G: { bottom: "line", top: "truck" },
-  D: { bottom: "truck", top: "truck" },
-  A: { bottom: "truck", top: "car" },
-  E: { bottom: "car", top: "car" },
-  B: { bottom: "car", top: "flipWagon" },
-  Gb: { bottom: "flipWagon", top: "flipTruck" },
-  Db: { bottom: "flipTruck", top: "flipTruck" },
-  Ab: { bottom: "flipTruck", top: "flipCar" },
-  Eb: { bottom: "flipCar", top: "flipCar" },
-  Bb: { bottom: "flipCar", top: "wagon" },
-  F: { bottom: "wagon", top: "line" }
+  C: {
+    bottom: "line",
+    top: "line",
+    bottomNotes: keyboardShapes.C,
+    topNotes: keyboardShapes.G
+  },
+  G: {
+    bottom: "line",
+    top: "truck",
+    bottomNotes: keyboardShapes.G,
+    topNotes: keyboardShapes.D
+  },
+  D: {
+    bottom: "truck",
+    top: "truck",
+    bottomNotes: keyboardShapes.D,
+    topNotes: keyboardShapes.A
+  },
+  A: {
+    bottom: "truck",
+    top: "car",
+    bottomNotes: keyboardShapes.A,
+    topNotes: keyboardShapes.E
+  },
+  E: {
+    bottom: "car",
+    top: "car",
+    bottomNotes: keyboardShapes.E,
+    topNotes: keyboardShapes.B
+  },
+  B: {
+    bottom: "car",
+    top: "flipWagon",
+    bottomNotes: keyboardShapes.B,
+    topNotes: keyboardShapes.Gb
+  },
+  Gb: {
+    bottom: "flipWagon",
+    top: "flipTruck",
+    bottomNotes: keyboardShapes.Gb,
+    topNotes: keyboardShapes.Db
+  },
+  Db: {
+    bottom: "flipTruck",
+    top: "flipTruck",
+    bottomNotes: keyboardShapes.Db,
+    topNotes: keyboardShapes.Ab
+  },
+  Ab: {
+    bottom: "flipTruck",
+    top: "flipCar",
+    bottomNotes: keyboardShapes.Ab,
+    topNotes: keyboardShapes.Eb
+  },
+  Eb: {
+    bottom: "flipCar",
+    top: "flipCar",
+    bottomNotes: keyboardShapes.Eb,
+    topNotes: keyboardShapes.Bb
+  },
+  Bb: {
+    bottom: "flipCar",
+    top: "wagon",
+    bottomNotes: keyboardShapes.C,
+    topNotes: keyboardShapes.D
+  },
+  F: {
+    bottom: "wagon",
+    top: "line",
+    bottomNotes: keyboardShapes.C,
+    topNotes: keyboardShapes.D
+  }
 };

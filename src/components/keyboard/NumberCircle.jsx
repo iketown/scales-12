@@ -1,19 +1,17 @@
 import React from "react";
 import { CircleButton } from "../uiElements/index";
+
 const NumberCircle = ({
-  number = 8,
   keyboardScale,
   numberOfScale,
-  theme,
-  noteName,
+  selected,
   labelType
 }) => {
+  const selectedStyle = { transform: `scale(2)` };
+  const unselectedStyle = {};
   return (
-    <div style={{ transform: `scale(${keyboardScale * 2})` }}>
+    <div style={selected ? selectedStyle : unselectedStyle}>
       {labelType === undefined ? numberObj[numberOfScale] : null}
-      {labelType === "letters" ? (
-        <CircleButton>{noteName.slice(0, -1)}</CircleButton>
-      ) : null}
     </div>
   );
 };

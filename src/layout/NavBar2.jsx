@@ -1,13 +1,18 @@
 import React, { Component, Fragment } from "react";
-import { chapters } from "../utils/chapterIndex";
 import { Container, Dropdown, Image, Menu, Icon } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { withFirestore } from "react-redux-firebase";
+import { chapters } from "../utils/chapterIndex";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { signInUserAnon } from "../actions/authActions.jsx";
 import firebase from "../utils/firebase";
 import { twelveScales } from "../images";
+
+const lessonFinishedStyle = { color: "#dadada" };
+const lessonFutureStyle = {};
+const lessonCurrentStyle = { color: "#6f3030", fontWeight: "bolder" };
 
 const ChapterTitle = props => {
   const { displayText, lessons, profile, currentUrl } = props;
@@ -26,7 +31,15 @@ const ChapterTitle = props => {
   }
   return (
     <Dropdown.Item>
-      <span style={!chapterIsCurrent ? { color: "#dadada" } : {}}>
+      <span
+        style={
+          chapterIsCurrent
+            ? lessonCurrentStyle
+            : chapterIsFinished
+              ? lessonFinishedStyle
+              : lessonFutureStyle
+        }
+      >
         <Icon
           className={
             chapterIsCurrent
@@ -51,13 +64,22 @@ const ChapterTitle = props => {
                 <span
                   style={
                     current
-                      ? { color: "#6f3030", fontWeight: "bolder" }
+                      ? lessonCurrentStyle
                       : finished
-                        ? { color: "#dadada" }
-                        : {}
+                        ? lessonFinishedStyle
+                        : lessonFutureStyle
                   }
                 >
-                  {current && <Icon name="arrow right" />}
+                  {/* {current && <Icon name="arrow right" />} */}
+                  <Icon
+                    className={
+                      current
+                        ? "arrow right"
+                        : finished
+                          ? "check square outline"
+                          : "square outline"
+                    }
+                  />
                   {lesson.title}
                 </span>
               </Dropdown.Item>

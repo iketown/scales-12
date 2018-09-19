@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Header, Image, Step, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
 import { NN } from "../keySVGs/keyboardUtils";
@@ -43,7 +44,11 @@ export default class Scales1 extends Component {
           <NN num={3} />
           <NN num={4} /> of the 1st shape, then <Orange>skip</Orange> a key,
           then start a new shape on the next key. You remember which shape goes
-          with which key, right?
+          with which key, right? If not, you can{" "}
+          <Link to="/places_1">
+            <strong>go back and review</strong>
+          </Link>{" "}
+          .
         </p>
         <p>
           In this next image, you would:
@@ -91,7 +96,10 @@ export default class Scales1 extends Component {
         <br />
         <br />
         <br />
-        <p>Here's another example, but this time we'll 'skip' a white key.</p>
+        <p>
+          Here's another example, but this time we'll need to 'skip' a white key
+          instead of a black key.
+        </p>
 
         <Step.Group size="mini">
           <Step>

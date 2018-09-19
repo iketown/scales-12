@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Header, Item } from "semantic-ui-react";
 import styled from "styled-components";
+import { Link, scroller, Element } from "react-scroll";
 import Layout from "../layout/Layout";
 import { CheckIcon } from "../components/uiElements";
 import { DotCardsGrid } from "./ABetterWay";
@@ -19,7 +20,15 @@ export default class Page3 extends Component {
   setShapeSelected = shapeSelected => {
     this.setState({ shapeSelected });
   };
-
+  scrollToDotBoard = () => {
+    console.log("scrollin");
+    scroller.scrollTo("dotboard", {
+      duration: 300,
+      delay: 0,
+      smooth: true,
+      offset: -50
+    });
+  };
   toggleSectionsCircled = (section1, section2) => {
     const adding = !this.state.sectionsCircled.includes(section1);
     const { sectionsCircled } = this.state;
@@ -44,6 +53,8 @@ export default class Page3 extends Component {
       newShapesSelected = [...shapesSelected.filter(s => s !== shape)];
     } else {
       // add it
+      this.scrollToDotBoard();
+
       newShapesSelected = [...shapesSelected, shape];
     }
     this.setState({ shapesSelected: newShapesSelected });
@@ -106,7 +117,7 @@ export default class Page3 extends Component {
           </Item.Description>
         </Item>
         <p />
-
+        <Element name="dotboard" />
         <DotCardsGrid>
           {Object.entries(scaleShapes2).map(scaleShape => (
             <Dotboard8
@@ -119,6 +130,11 @@ export default class Page3 extends Component {
             />
           ))}
         </DotCardsGrid>
+
+        <p>
+          Click on any scale name to play the whole scale, or click on any half
+          scale to hear each shape.
+        </p>
 
         <p>
           The amazing part of the 12scales system is after you split everything
@@ -162,7 +178,7 @@ export default class Page3 extends Component {
           </a>
           .
         </p>
-        <p>click on each to see where they fit in the above graph:</p>
+        <p>click on each shape to see where they fit in the above graph:</p>
         <ButtonRow>
           {shapesArr.map((shape, i) => (
             <Button
@@ -204,8 +220,8 @@ export default class Page3 extends Component {
         </p>
         <p>
           Look again at our scale chart below. see how the{" "}
-          <strong>2nd shape of the C scale</strong> (a 'LINE') is the same as
-          the
+          <strong>2nd shape of the C scale</strong> <em>looks and sounds</em>{" "}
+          the same as the
           <strong> first shape of the G scale</strong>?{" "}
           <Button
             size="mini"
@@ -220,8 +236,8 @@ export default class Page3 extends Component {
           </Button>
         </p>
         <p>
-          ...and the 2nd shape of the 'G' scale (a 'TRUCK') matches the 1st
-          shape of the 'D' scale?{" "}
+          ...and the 2nd shape of the 'G' scale matches the 1st shape of the 'D'
+          scale?{" "}
           <Button
             size="mini"
             compact

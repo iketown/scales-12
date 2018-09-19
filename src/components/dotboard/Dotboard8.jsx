@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 import NumberCircle from "../keyboard/NumberCircle.jsx";
@@ -57,7 +57,9 @@ const DotboardGridHalf = styled(GridHalfPose)`
   margin-left: ${p => (p.split ? "1.5rem" : "0")};
   border: ${p => (p.box ? "1px grey dotted" : "none")};
   transition: 0.5s all;
-
+  &:hover {
+    transform: scale(1.1);
+  }
   }
 `;
 const ScaleName = styled.div`
@@ -80,6 +82,10 @@ const ScaleName = styled.div`
   opacity: 1;
   z-index: 10;
   box-shadow: 1px 1px 4px #9e9e9e;
+  transition: 0.5s all;
+  &:hover {
+    transform: scale(1.3);
+  }
 `;
 const ListenButton = styled.div`
   text-align: center;
@@ -138,57 +144,108 @@ const colors = {
   line: "#D79922",
   faded: "#cccccc3d"
 };
+class Dotboard8 extends Component {
+  state = {
+    numSelected: 0
+  };
+  componentDidMount() {
+    this.myScale = fullScales[this.props.root];
+  }
+  playHalfScale = index => {
+    const bottomHalfBool = index === 0;
+    const firstNum = bottomHalfBool ? 1 : 5;
+    const lastNum = bottomHalfBool ? 4 : 8;
+    // state.numSelected is number of scale, not index. so -1 to get zero-based index
+    playNote(this.myScale[firstNum - 1]);
+    this.setState({ numSelected: bottomHalfBool ? 1 : 5 });
+    const play4 = setInterval(() => {
+      if (this.state.numSelected < lastNum) {
+        // numSelected - 1 + 1 play the note, then change state
+        playNote(this.myScale[this.state.numSelected]);
+        this.setState({ numSelected: this.state.numSelected + 1 });
+      } else {
+        clearInterval(play4);
+        this.setState({ numSelected: 0 });
+      }
+    }, 400);
+  };
+  playFullScale = () => {
+    const firstNum = 1;
+    const lastNum = 8;
+    playNote(this.myScale[firstNum - 1]);
+    this.setState({ numSelected: 1 });
 
-const Dotboard8 = ({
-  bottomShape,
-  topShape,
-  split,
-  shapesSelected,
-  root,
-  colorAll,
-  hide2ndShape,
-  circleTop,
-  circleBottom
-}) => {
-  const myScale = fullScales[root];
+    const play4 = setInterval(() => {
+      if (this.state.numSelected < lastNum) {
+        // numSelected - 1 + 1 play the note, then change state
+        playNote(this.myScale[this.state.numSelected]);
+        this.setState({ numSelected: this.state.numSelected + 1 });
+      } else {
+        clearInterval(play4);
+        this.setState({ numSelected: 0 });
+      }
+    }, 400);
+  };
+  render() {
+    const {
+      bottomShape,
+      topShape,
+      split,
+      shapesSelected,
+      root,
+      colorAll,
+      hide2ndShape,
+      circleTop,
+      circleBottom
+    } = this.props;
+    const playBottom = () => {
+      const bottomNotes = this.myScale.slice(0, 4);
+      console.log("play bottom", bottomNotes);
+    };
+    return (
+      <Box>
+        {[bottomShape, topShape].map((shape, index) => {
+          const topShapeBool = index === 1;
+          const bottomShapeBool = index === 0;
+          return (
+            <DotboardGridHalf
+              split={topShapeBool ? split : ""}
+              box={split}
+              key={index}
+              pose={hide2ndShape && topShapeBool ? "out" : "in"}
+              onClick={() => this.playHalfScale(index)}
+            >
+              {shapesObj[shape].map((letter, i) => {
+                const offset = bottomShapeBool ? 1 : 5;
+                return (
+                  <GridItem
+                    area={`${letter}${i + 1}`}
+                    color={
+                      shapesSelected.includes(shape) ||
+                      shapesSelected.includes(shape.slice(4).toLowerCase())
+                        ? colors[shape]
+                        : colorAll
+                          ? "#000"
+                          : colors.faded
+                    }
+                  >
+                    <NumberCircle
+                      numberOfScale={i + offset}
+                      selected={this.state.numSelected === i + offset}
+                    />
+                  </GridItem>
+                );
+              })}
+              {circleTop && topShapeBool && <CircleDiv />}
+              {circleBottom && bottomShapeBool && <CircleDiv />}
+            </DotboardGridHalf>
+          );
+        })}
 
-  return (
-    <Box>
-      {[bottomShape, topShape].map((shape, index) => {
-        return (
-          <DotboardGridHalf
-            split={index === 1 ? split : ""}
-            box={split}
-            key={index}
-            pose={hide2ndShape && index === 1 ? "out" : "in"}
-          >
-            {shapesObj[shape].map((letter, i) => {
-              const offset = index === 0 ? 1 : 5;
-              return (
-                <GridItem
-                  area={`${letter}${i + 1}`}
-                  color={
-                    shapesSelected.includes(shape) ||
-                    shapesSelected.includes(shape.slice(4).toLowerCase())
-                      ? colors[shape]
-                      : colorAll
-                        ? "#000"
-                        : colors.faded
-                  }
-                >
-                  <NumberCircle numberOfScale={i + offset} />
-                </GridItem>
-              );
-            })}
-            {circleTop && index === 1 && <CircleDiv />}
-            {circleBottom && index === 0 && <CircleDiv />}
-          </DotboardGridHalf>
-        );
-      })}
-
-      <ScaleName>{root}</ScaleName>
-    </Box>
-  );
-};
+        <ScaleName onClick={this.playFullScale}>{root}</ScaleName>
+      </Box>
+    );
+  }
+}
 
 export default Dotboard8;
