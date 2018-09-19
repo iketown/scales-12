@@ -22,7 +22,12 @@ class Layout extends Component {
   componentDidMount() {
     const { myUrl, auth } = this.props;
     const signedIn = auth.isLoaded && !auth.isEmpty && !auth.isAnonymous;
-    const urlsToTriggerInterrupt = ["/the_shapes"];
+    const urlsToTriggerInterrupt = [
+      "/the_shapes",
+      "/keys_line",
+      "/places_1",
+      "/scales_1"
+    ];
     const showInterrupt = !signedIn && urlsToTriggerInterrupt.includes(myUrl);
     if (showInterrupt) this.props.openModal("SignUpInterrupt");
   }

@@ -75,7 +75,7 @@ export default class Page3 extends Component {
         <Item>
           <Item.Image size="medium" src={KeystoDots} />
           <Item.Header as="h4">
-            Here is how we'll break down all 12 scales:
+            Here is how we'll LOOK at all the scales.
           </Item.Header>
           <Item.Description>
             <p>
@@ -100,6 +100,9 @@ export default class Page3 extends Component {
               <strong>UP</strong> dots are <strong>black</strong> keys, and
               <strong> DOWN</strong> dots are <strong>white</strong> keys.
             </p>
+            <Item.Header as="h4">
+              Here is how we'll break them down:
+            </Item.Header>
             <p>
               <CheckIcon />
               We'll{" "}
@@ -112,7 +115,7 @@ export default class Page3 extends Component {
               >
                 split
               </Button>{" "}
-              each scale in half, so two shapes make up each scale.
+              each scale in half, so each scale is made up of two "shapes."
             </p>
           </Item.Description>
         </Item>
@@ -131,10 +134,7 @@ export default class Page3 extends Component {
           ))}
         </DotCardsGrid>
 
-        <p>
-          Click on any scale name to play the whole scale, or click on any half
-          scale to hear each shape.
-        </p>
+        <p>(Click on any of those shapes to hear them played.)</p>
 
         <p>
           The amazing part of the 12scales system is after you split everything
@@ -148,7 +148,7 @@ export default class Page3 extends Component {
           remember.
         </p>
         <p>
-          Our shapes will be called The{" "}
+          We'll call our shapes The{" "}
           <a
             style={{ cursor: "pointer" }}
             onClick={() => this.toggleShapeSelected("line")}
@@ -276,8 +276,8 @@ export default class Page3 extends Component {
         </DotCardsGrid>
         <p>
           we'll talk about how these scales connect later, but when we start
-          playing them, you'll find you don't even have to remember the 2nd
-          shape.
+          playing them, you'll find{" "}
+          <em>you don't even have to remember the 2nd shape.</em>
         </p>
         <p>
           you really only have to remember the{" "}
@@ -291,7 +291,7 @@ export default class Page3 extends Component {
         </p>
         <p>
           ...and it gets even easier than that, but before we get ahead of
-          ourselves, let's dig into those four shapes.
+          ourselves, let's dig in and learn those four shapes.
         </p>
         {/* <NextButton active to="/Page4" /> */}
       </Layout>

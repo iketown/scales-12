@@ -99,7 +99,21 @@ const lessonText = {
     body: (
       <div>
         <p>This time we'll mix up regular and 'flipped' shapes.</p>
-        <p>You got this.</p>
+        <p>Concentrate. You got this.</p>
+        <ul>
+          <li>
+            <strong>Car</strong>: front and back seat
+          </li>
+          <li>
+            <strong>Truck</strong>: there IS no back seat!
+          </li>
+          <li>
+            <strong>Wagon</strong>: flat bed and a handle
+          </li>
+          <li>
+            <strong>Line</strong>: ummmmm. it's a line.
+          </li>
+        </ul>
       </div>
     )
   },

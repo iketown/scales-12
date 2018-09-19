@@ -28,7 +28,14 @@ class WhatsAScale extends Component {
           <p>
             The Major Scale is a collection of notes which are related to
             eachother in a way that gives your ear an idea of <em>where</em> the
-            song is. It is probably easier to show than to describe.
+            song is.
+          </p>
+          <p>
+            Have you ever sang <em>'Happy Birthday To You...'</em> in a group of
+            people, and even if each individual person sounds ok, all together
+            it sounds terrible? Usually, that's because people are singing in
+            different keys. That is, they're using different{" "}
+            <strong>Major Scales</strong>.
           </p>
           <p>
             There are 8 notes in the Major Scale. We'll number them 1 through 8.
@@ -94,9 +101,10 @@ class WhatsAScale extends Component {
 
           <p>
             It's the same song, it's still definitely "Jingle Bells", but it
-            looks completely different when you use the Eb scale. The mix of
-            black and white keys give the 8-step scale a different 'shape'. Here
-            are a few other scale 'shapes'.
+            <em>looks</em> completely different when you use the Eb scale. The
+            mix of black and white keys give the 8-step scale a different
+            'shape'. Here are a few other scale 'shapes'. (You don't have to
+            learn these, just notice how each one is different)
           </p>
 
           <Card.Group centered>
@@ -104,9 +112,11 @@ class WhatsAScale extends Component {
             <ScaleCard src={DbMajorScale} title={"Db Major"} />
             <ScaleCard src={BbMajorScale} title={"Bb Major"} />
           </Card.Group>
+          <br />
+          <br />
           <p>
             Each scale follows an exact pattern which makes them
-            <em>sound</em> correct, but they still all <em>look</em> completely
+            <em> sound</em> correct, but they still all <em>look</em> completely
             different.
           </p>
           <p>
@@ -115,9 +125,12 @@ class WhatsAScale extends Component {
             just random combinations of white and black keys to be memorized.
           </p>
           <p>
-            This is where we depart from the well-trodden path of students
-            painstakingly working their way through 12 seemingly unrelated scale
-            patterns. There's a faster, easier, better way.
+            This is where most students go to the practice room and start
+            memorizing.
+          </p>
+          <p>
+            We're sneaking out the other door though. There's a much better way
+            to do it.
           </p>
         </Container>
       </Layout>

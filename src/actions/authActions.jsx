@@ -56,8 +56,9 @@ export const registerUser = user => async (
     });
     // create a new profile in fireSTORE
     let finishedLessons = [];
+
     if (state.firebase.profile) {
-      finishedLessons = state.firebase.profile.finishedLessons;
+      finishedLessons = [...state.firebase.profile.finishedLessons];
     }
     let newUser = {
       displayName,

@@ -21,6 +21,10 @@ export default class Page4 extends Component {
           These four shapes are the basic building blocks of the entire 12scales
           system. Each shape is a code for a series of black and white keys.
         </p>
+        <p>
+          Take a few moments to read each description, and notice the
+          similarities and differences.
+        </p>
         <p>Once you have these four memorized, continue to the quiz. :)</p>
         <div>
           <Grid stackable columns={2}>
@@ -70,10 +74,10 @@ const shapesArr = [
     header: "Car",
     description: (
       <p>
-        Both the CAR and the TRUCK (motorized vehicles) have the 'front and back
-        tires' down on the ground. The CAR has <strong>#2</strong> and{" "}
-        <strong>#3</strong> raised. Imagine dots 2 and 3 are people sitting in
-        the front and back seats of the car.
+        The CAR has both 'wheels' on the ground. (<strong>#1</strong> and{" "}
+        <strong>#4</strong>) In the middle of the car, dots <strong>#2</strong>{" "}
+        and <strong>#3</strong> are raised. Imagine <strong>#2</strong> in the
+        back seat and <strong>#3</strong> in the front seat.
       </p>
     )
   },
@@ -83,10 +87,8 @@ const shapesArr = [
     header: "Truck",
     description: (
       <p>
-        Both the CAR and the TRUCK (motorized vehicles) have the 'front and back
-        tires' on the ground. The TRUCK has only <strong>#3</strong> raised.
-        Imagine someone sitting in the front (cab) of the truck, but the back is
-        a flat bed.
+        Just like the car, except there's noone in the back seat. There IS no
+        back seat!
       </p>
     )
   }

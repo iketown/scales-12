@@ -37,21 +37,21 @@ export default class IntroPage extends Component {
                   <p>
                     The process of learning major scales in all 12 keys is a
                     sort of rite of passage for most musicians. The basics of
-                    theory and harmony get involved, and your music knowlege
-                    grows from there.
+                    theory and harmony are all involved with the process, and
+                    your music knowlege grows from there.
                   </p>
                   <p>
-                    As a beginning student, Major Scales can be a little
-                    daunting. It feels like a lot of information to memorize.
-                    The keyboard a very well designed system, but the learning
-                    curve of understanding{" "}
+                    However, as a beginning student, Major Scales can seem
+                    daunting. It's a lot of information to memorize. The
+                    keyboard is a well designed system, but the{" "}
+                    <em>learning curve</em> of understanding{" "}
                     <em>why things are the way they are</em> can be steep enough
                     to discourage many would-be players from continuing.
                   </p>
                   <br />
                 </Item.Description>
                 <Header as="h3">
-                  The <em>12scales</em> system is different.
+                  The <em>TWELVESCALES</em> system is different.
                 </Header>
                 <Item.Description>
                   <p>
@@ -68,13 +68,14 @@ export default class IntroPage extends Component {
                     cut. It's a hack.{" "}
                     <strong>Your music teacher might not like it, </strong>
                     because they had to practice <em>for days</em> to learn
-                    their scales. It's not fair. The 12scales system didn't
-                    exist back then. You'll have all 12 memorized in less than
-                    an hour.
+                    their scales. It's not fair. The TWELVESCALES system didn't
+                    exist back then.
                   </p>
                   <p>Anyway, lets get to it.</p>
-
-
+                  <p>
+                    First, lets play a scale on the piano so we're all on the
+                    same page.
+                  </p>
                 </Item.Description>
               </Item.Content>
             </Item>
@@ -114,34 +115,11 @@ export default class IntroPage extends Component {
             Major Scales?
           </p>
           <p>
-            Each (starting) key has its own Major Scale, and therefore it's own
-            Major Scale <em>shape</em>. Here are a few examples.
+            With a few days of practice, it's possible to memorize all 12 Major
+            Scales. It's a lot of information, but no more difficult than, say,
+            learning your multiplication tables.
           </p>
-          <Card.Group centered>
-            <ScaleCard src={AmajorScale} title={"A Major"} />
-            <ScaleCard src={DbMajorScale} title={"Db Major"} />
-            <ScaleCard src={BbMajorScale} title={"Bb Major"} />
-          </Card.Group>
-          <p>
-            Each scale follows an exact pattern of <strong>half-steps</strong>{" "}
-            (goes straight to the next key) and <strong>whole-steps</strong>{" "}
-            (skips over a key). That pattern makes each scale{" "}
-            <strong>sound</strong> correct, but they still all <em>look</em>{" "}
-            completely different.
-          </p>
-          <p>
-            With a few days of practice, it's possible to memorize the shape of
-            all 12 Major Scales. It's a lot of information, but no more
-            difficult than, say, learning your multiplication tables.
-          </p>
-          <p>
-            What most people don't realize is{" "}
-            <strong>there are patterns in the way the scales look</strong>, too.
-            It takes a little decoding (you've come to the right place), but
-            once you see the patterns, the task of learning these 12 Major
-            Scales becomes far easier.
-          </p>
-          <p>Stay tuned. </p>
+          <p>But we're going to do it the EASY way.</p>
         </Container>
       </Layout>
     );

@@ -60,8 +60,8 @@ export default class ABetterWay extends Component {
           <Card color="red">
             <Image src={EMajorConventional} />
             <Card.Content>
-              <Card.Header>E Major Scale</Card.Header>
-              <Card.Meta>The Hard Way</Card.Meta>
+              <Card.Header>The Hard Way</Card.Header>
+              <Card.Meta>E Major Scale</Card.Meta>
               <Card.Description>
                 Sharps (#s) get assigned in this order:{" "}
                 <strong>F#, C#, G#, D#, A#, E#, B#</strong>. E Major Scale has
@@ -77,8 +77,8 @@ export default class ABetterWay extends Component {
           <Card color="green">
             <Image src={EMajor12Scales} />
             <Card.Content>
-              <Card.Header>E Major Scale</Card.Header>
-              <Card.Meta>12Scales Method</Card.Meta>
+              <Card.Header>The 12Scales Method</Card.Header>
+              <Card.Meta>E Major Scale</Card.Meta>
               <Card.Description>Car, Car.</Card.Description>
             </Card.Content>
           </Card>
