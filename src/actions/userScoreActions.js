@@ -36,6 +36,7 @@ export const finishPage = ({ pageUrl, chapter, slug }) => async (
     slug
   };
   if (firebase.auth().currentUser) {
+    console.log("firebase.auth.currentuser", firebase.auth().currentUser);
     const userId = firebase.auth().currentUser.uid;
     firestore
       .collection("users")

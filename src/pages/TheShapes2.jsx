@@ -87,7 +87,7 @@ const shapesArr = [
     header: "Truck",
     description: (
       <p>
-        Just like the car, except there's noone in the back seat. There IS no
+        Just like the car, except there's no one in the back seat. There IS no
         back seat!
       </p>
     )

@@ -17,7 +17,8 @@ class Layout extends Component {
   state = {
     isSignedIn: false,
     user: {},
-    nextUrl: ""
+    nextUrl: "",
+    notes: "hello"
   };
   componentDidMount() {
     const { myUrl, auth } = this.props;
@@ -119,7 +120,8 @@ const mapStateToProps = state => ({
   profile: state.firebase.profile,
   profileIsReady:
     state.firebase.profile.isLoaded && !state.firebase.profile.isEmpty,
-  myReduxUrl: state.router.location.pathname
+  myReduxUrl: state.router.location.pathname,
+  form: state.form
 });
 const actions = { openModal, goToLatestLesson, signInUserAnon };
 

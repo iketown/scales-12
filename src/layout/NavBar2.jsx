@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withFirestore } from "react-redux-firebase";
-import { chapters } from "../utils/chapterIndex";
+import { chapters, lessonsArr } from "../utils/chapterIndex";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { signInUserAnon } from "../actions/authActions.jsx";
 import firebase from "../utils/firebase";
@@ -110,6 +110,16 @@ class NavBar extends Component {
     firebase.auth().signOut();
     // this.setState({ isSignedIn: false, user: {} });
   };
+  handleNotes = () => {
+    const currentUrl = this.props.match.path;
+    const { title, slug } = lessonsArr.find(
+      lesson => `/${lesson.slug}` === currentUrl
+    );
+    this.props.openModal("Notes", {
+      title,
+      slug
+    });
+  };
 
   render() {
     const { finishedPages, auth, profile } = this.props;
@@ -148,6 +158,7 @@ class NavBar extends Component {
           <Menu.Menu position="right">
             {authenticated ? (
               <Fragment>
+                <Menu.Item onClick={this.handleNotes}>notes</Menu.Item>
                 <Menu.Item as={Link} to="/dashboard">
                   {auth.displayName || auth.email}
                 </Menu.Item>

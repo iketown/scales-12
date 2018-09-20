@@ -9,11 +9,13 @@ export const signInUser = creds => {
   return async (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     try {
-      await firebase
+      firebase
         .auth()
-        .signInWithEmailAndPassword(creds.email, creds.password);
-      dispatch(push("/dashboard"));
-      dispatch(closeModal());
+        .signInWithEmailAndPassword(creds.email, creds.password)
+        .then(response => {
+          dispatch(push("/dashboard"));
+          dispatch(closeModal());
+        });
     } catch (error) {
       console.log("login error", error);
       throw new SubmissionError({
@@ -50,6 +52,7 @@ export const registerUser = user => async (
       .auth()
       .createUserWithEmailAndPassword(email, password);
     // update the fireBASE auth profile
+    console.log("created user", createdUser);
     const currentUser = firebase.auth().currentUser;
     await currentUser.updateProfile({
       displayName
@@ -68,6 +71,7 @@ export const registerUser = user => async (
     };
     await firestore.set(`users/${currentUser.uid}`, { ...newUser });
     dispatch(closeModal());
+    console.log("newUser", newUser);
   } catch (error) {
     console.log("signup error", error);
     throw new SubmissionError({ _error: error.message });

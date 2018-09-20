@@ -9,7 +9,7 @@ import { scaleShapes2 } from "../components/keyboard/keyboardShapes";
 // import { NextButton } from "../components/uiElements/index";
 import Dotboard8 from "../components/dotboard/Dotboard8";
 import { Line, Car, Truck, Wagon, KeystoDots } from "../images";
-export default class Page3 extends Component {
+export default class TheShapes extends Component {
   state = {
     hide2ndShape: false,
     split: false,
@@ -21,7 +21,6 @@ export default class Page3 extends Component {
     this.setState({ shapeSelected });
   };
   scrollToDotBoard = () => {
-    console.log("scrollin");
     scroller.scrollTo("dotboard", {
       duration: 300,
       delay: 0,
@@ -62,6 +61,14 @@ export default class Page3 extends Component {
   toggleSplit = () => {
     this.setState({ split: !this.state.split });
   };
+  ShapeLink = ({ shapeName }) => (
+    <a
+      style={{ cursor: "pointer" }}
+      onClick={() => this.toggleShapeSelected(shapeName.toLowerCase())}
+    >
+      <strong>{shapeName}</strong>
+    </a>
+  );
   render() {
     const { split } = this.state;
 
@@ -100,12 +107,9 @@ export default class Page3 extends Component {
               <strong>UP</strong> dots are <strong>black</strong> keys, and
               <strong> DOWN</strong> dots are <strong>white</strong> keys.
             </p>
-            <Item.Header as="h4">
-              Here is how we'll break them down:
-            </Item.Header>
             <p>
               <CheckIcon />
-              We'll{" "}
+              First,{" "}
               <Button
                 onClick={() => {
                   this.toggleSplit();
@@ -113,9 +117,10 @@ export default class Page3 extends Component {
                 primary={!this.state.split}
                 basic={this.state.split}
               >
-                split
+                Click Here
               </Button>{" "}
-              each scale in half, so each scale is made up of two "shapes."
+              to split each scale in half, so each scale is made up of two
+              "shapes."
             </p>
           </Item.Description>
         </Item>
@@ -137,46 +142,21 @@ export default class Page3 extends Component {
         <p>(Click on any of those shapes to hear them played.)</p>
 
         <p>
-          The amazing part of the 12scales system is after you split everything
+          The amazing part of the 12scales system is after you split the scales
           up like this, there are only
           <strong> FOUR</strong> shapes to learn.{" "}
         </p>
         <p>
-          We'll give each shape a name. Similar to a constellation of stars (
-          <em>i.e. The Big Dipper</em>
-          ), giving each shape a name will make them easier to recognize and
+          We'll give each of our four shapes a name. Similar to a constellation
+          of stars (<em>i.e. The Big Dipper</em>
+          ), giving a name to each shape will make them easier to recognize and
           remember.
         </p>
         <p>
-          We'll call our shapes The{" "}
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleShapeSelected("line")}
-          >
-            <strong>Line</strong>
-          </a>
-          , The{" "}
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleShapeSelected("car")}
-          >
-            <strong>Car</strong>
-          </a>
-          , The{" "}
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleShapeSelected("truck")}
-          >
-            <strong>Truck</strong>
-          </a>
-          , and The{" "}
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleShapeSelected("wagon")}
-          >
-            <strong>Wagon</strong>
-          </a>
-          .
+          We'll call our shapes The <this.ShapeLink shapeName="Line" />, The{" "}
+          <this.ShapeLink shapeName="Car" />, The{" "}
+          <this.ShapeLink shapeName="Truck" />, and The{" "}
+          <this.ShapeLink shapeName="Wagon" />.
         </p>
         <p>click on each shape to see where they fit in the above graph:</p>
         <ButtonRow>
@@ -205,11 +185,13 @@ export default class Page3 extends Component {
           <Header.Content>It gets easier</Header.Content>
           <Header.Subheader>the farther you go</Header.Subheader>
         </Header>
+        <br />
+        <br />
         <p>
-          <br />
           We've already cut the complexity down by a lot. Instead of remembering
-          <strong> eight individual notes</strong>, we'll just need to remember
-          which two shapes (of the four possibilities) make up each scale.
+          <strong> eight individual notes</strong> for each of the 12 scales,
+          we'll just need to remember which two shapes (of the four
+          possibilities) make up each scale.
         </p>
         <p>
           Instead of <strong>Bb, C, D, Eb, F, G, A, Bb</strong>, we'll think '
@@ -219,7 +201,7 @@ export default class Page3 extends Component {
           <em>but it gets easier than that.</em>
         </p>
         <p>
-          Look again at our scale chart below. see how the{" "}
+          Look again at our scale chart below. Notice how the{" "}
           <strong>2nd shape of the C scale</strong> <em>looks and sounds</em>{" "}
           the same as the
           <strong> first shape of the G scale</strong>?{" "}
@@ -260,7 +242,7 @@ export default class Page3 extends Component {
             <Dotboard8
               bottomShape={scaleShape[1].bottom}
               topShape={scaleShape[1].top}
-              shapesSelected={["car", "truck", "wagon", "line"]}
+              shapesSelected={["Car", "Truck", "Wagon", "Line"]}
               root={scaleShape[0]}
               split={!this.state.hide2ndShape && true}
               colorAll={true}

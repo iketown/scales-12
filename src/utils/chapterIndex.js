@@ -7,7 +7,7 @@ import TheShapes2 from "../pages/TheShapes2";
 import FlippedShapes from "../pages/FlippedShapes";
 import ShapesQuiz1 from "../pages/ShapesQuiz1";
 import ShapesQuiz2 from "../pages/ShapesQuiz2.jsx";
-import Spacing from "../pages/Spacing";
+// import Spacing from "../pages/Spacing";
 import KeysLine from "../pages/KeysLine";
 import KeysCar from "../pages/KeysCar";
 import KeysTrucks from "../pages/KeysTrucks.jsx";

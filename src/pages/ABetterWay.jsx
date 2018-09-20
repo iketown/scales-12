@@ -50,10 +50,10 @@ export default class ABetterWay extends Component {
           these 12 Major Scales <em>look</em>.
         </p>
         <p>
-          Similar to how you can <em>"just know"</em> your way around your
-          neighborhood, even if you don't know all the street names, You can be
-          familiar, even <em>very familiar</em> with all your Major scales, even
-          without knowing any of the note names.
+          Think of the how you <em>"just know"</em> your way around your
+          neighborhood, even if you don't know every street name. In the same
+          way, you can <em>"just know"</em> all your Major scales, even without
+          knowing any of the note names.
         </p>
 
         <Card.Group>
@@ -65,10 +65,10 @@ export default class ABetterWay extends Component {
               <Card.Description>
                 Sharps (#s) get assigned in this order:{" "}
                 <strong>F#, C#, G#, D#, A#, E#, B#</strong>. E Major Scale has
-                four sharps, so we use the first four:
+                four sharps, so we use the first four from that list:
                 <strong> F#, C#, G# </strong>
-                and <strong>D#</strong>. When we get to any of those keys, we
-                substitute the 'sharped' version in for the natural key. (
+                and <strong>D#</strong>. So when we get to any of those keys, we
+                substitute the 'sharped' key in for the natural key. (
                 <strong>F </strong>
                 becomes <strong>F#</strong>, etc)
               </Card.Description>
@@ -92,7 +92,7 @@ export default class ABetterWay extends Component {
         <p>
           Later, when you already know the shape of an E major scale, you wont
           even have to think "Car Car." Youll just think "E Major." At that
-          point, learning which notes are sharp will be a simple task; Like
+          point, learning which notes are sharp will be a simple task; like
           learning <em>the name</em> of a road that you already use all the
           time.
         </p>

@@ -26,8 +26,8 @@ class WhatsAScale extends Component {
         </Header>
         <Container>
           <p>
-            The Major Scale is a collection of notes which are related to
-            eachother in a way that gives your ear an idea of <em>where</em> the
+            The Major Scale is a collection of notes which are related to each
+            other in a way that gives your ear an idea of <em>where</em> the
             song is.
           </p>
           <p>
@@ -101,7 +101,7 @@ class WhatsAScale extends Component {
 
           <p>
             It's the same song, it's still definitely "Jingle Bells", but it
-            <em>looks</em> completely different when you use the Eb scale. The
+            <em> looks</em> completely different when you use the Eb scale. The
             mix of black and white keys give the 8-step scale a different
             'shape'. Here are a few other scale 'shapes'. (You don't have to
             learn these, just notice how each one is different)

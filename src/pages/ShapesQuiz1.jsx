@@ -79,17 +79,17 @@ const lessonText = {
     body: (
       <div>
         <p>
-          and now, a quick pop quiz to make sure everyone was paying attention.
+          And now, a quick pop quiz to make sure everyone was paying attention.
         </p>
         <p>
-          don't worry. <strong>It's easy!</strong>
+          Don't worry. <strong>It's easy!</strong>
         </p>
       </div>
     )
   },
   outtro: {
     head: <h1>Shapes Quiz</h1>,
-    body: <p>see? that wasn't so bad. onward!</p>
+    body: <p>See? That wasn't so bad. Onward!</p>
   }
 };
 

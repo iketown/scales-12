@@ -36,9 +36,7 @@ export default class IntroPage extends Component {
                   </p>
                   <p>
                     The process of learning major scales in all 12 keys is a
-                    sort of rite of passage for most musicians. The basics of
-                    theory and harmony are all involved with the process, and
-                    your music knowlege grows from there.
+                    rite of passage for most musicians.
                   </p>
                   <p>
                     However, as a beginning student, Major Scales can seem
@@ -51,7 +49,7 @@ export default class IntroPage extends Component {
                   <br />
                 </Item.Description>
                 <Header as="h3">
-                  The <em>TWELVESCALES</em> system is different.
+                  The <em>12Scales</em> system is different.
                 </Header>
                 <Item.Description>
                   <p>
@@ -64,16 +62,16 @@ export default class IntroPage extends Component {
                     lessons easier, and far more <em>meaningful</em>.
                   </p>
                   <p>
-                    This isn't your usual beginner music lessons. It is a short
-                    cut. It's a hack.{" "}
-                    <strong>Your music teacher might not like it, </strong>
-                    because they had to practice <em>for days</em> to learn
-                    their scales. It's not fair. The TWELVESCALES system didn't
-                    exist back then.
+                    These aren't your usual beginner music lessons. They are a
+                    short cut. They're a hack.{" "}
+                    {/* <strong>Your music teacher might not like it, </strong>
+                    because he/she had to practice <em>for days</em> to learn
+                    their scales. It's not fair. The 12Scales system didn't
+                    exist back then. */}
                   </p>
-                  <p>Anyway, lets get to it.</p>
+                  <p>Anyway, let's get to it.</p>
                   <p>
-                    First, lets play a scale on the piano so we're all on the
+                    First, let's play a scale on the piano so we're all on the
                     same page.
                   </p>
                 </Item.Description>

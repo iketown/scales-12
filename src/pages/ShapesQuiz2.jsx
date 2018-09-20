@@ -118,8 +118,8 @@ const lessonText = {
     )
   },
   outtro: {
-    head: <h1>Shapes Quiz</h1>,
-    body: <p>see? that wasn't so bad. onward!</p>
+    head: <h1>Shapes Quiz 2</h1>,
+    body: <p>You've got it. Onward!</p>
   }
 };
 
