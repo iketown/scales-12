@@ -25,7 +25,7 @@ const ShapeCard = props => {
         pose={correct ? "correct" : wrong ? "wrong" : "regular"}
         style={{ position: "relative" }}
       >
-        <Card fluid>
+        <Card>
           <Card.Content>
             <Image src={correct ? fullPic : hintPic} onClick={onClick} fluid />
             {/* <ImageDiv

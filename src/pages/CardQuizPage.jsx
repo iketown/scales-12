@@ -21,7 +21,8 @@ const CardsGrid = styled.ul`
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-content: center;
+  justify-items: center;
+  align-items: center;
   grid-gap: 1.5rem;
   background: #f9f9f9;
   padding: 1rem;

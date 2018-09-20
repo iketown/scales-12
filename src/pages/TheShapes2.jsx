@@ -10,7 +10,21 @@ import {
   TruckKeyboardAni,
   WagonKeyboardAni
 } from "../images";
-export default class Page4 extends Component {
+
+const DownUp = styled.p`
+  display: flex;
+  justify-content: center;
+`;
+const ShapeName = styled.span`
+  font-weight: bold;
+  background: #9e9e9e12;
+  padding: 3px;
+  border-radius: 3px;
+`;
+const Down = () => <span style={{ margin: "5px" }}>DOWN</span>;
+const Up = () => <span style={{ margin: "5px", fontWeight: "bold" }}>UP</span>;
+
+export default class TheShapes2 extends Component {
   render() {
     return (
       <Layout myUrl={this.props.match.path}>
@@ -37,12 +51,7 @@ export default class Page4 extends Component {
               <Grid.Column width={8}>{shapeCards[3]}</Grid.Column>
             </Grid.Row>
           </Grid>
-          {/* {shapesArr.map(shape => (
-            <ShapeCard {...shape} />
-          ))} */}
         </div>
-
-        {/* <NextButton active={true} to="/shapesquiz1" center /> */}
       </Layout>
     );
   }
@@ -53,7 +62,21 @@ const shapesArr = [
     name: "line",
     src: LineKeyboardAni,
     header: "Line",
-    description: "yep. its just a straight line. You can do this."
+    description: (
+      <div>
+        <p>
+          Yep. its just a straight line. You can do this. The{" "}
+          <ShapeName>LINE</ShapeName> is ALL white keys.
+        </p>
+        <hr />
+        <DownUp>
+          <Down />
+          <Down />
+          <Down />
+          <Down />
+        </DownUp>
+      </div>
+    )
   },
   {
     name: "wagon",
@@ -62,9 +85,18 @@ const shapesArr = [
     description: (
       <div>
         <p>
-          same as the LINE, except <strong>dot #4</strong> is raised. Think of
-          <strong> dot #4</strong> as the 'handle' to pull the wagon.
+          Same as the <ShapeName>LINE</ShapeName>, except{" "}
+          <strong>dot #4</strong> is raised. Think of
+          <strong> dot #4</strong> as the 'handle' to pull the{" "}
+          <ShapeName>WAGON</ShapeName>.
         </p>
+        <hr />
+        <DownUp>
+          <Down />
+          <Down />
+          <Down />
+          <Up />
+        </DownUp>
       </div>
     )
   },
@@ -73,12 +105,25 @@ const shapesArr = [
     src: CarKeyboardAni,
     header: "Car",
     description: (
-      <p>
-        The CAR has both 'wheels' on the ground. (<strong>#1</strong> and{" "}
-        <strong>#4</strong>) In the middle of the car, dots <strong>#2</strong>{" "}
-        and <strong>#3</strong> are raised. Imagine <strong>#2</strong> in the
-        back seat and <strong>#3</strong> in the front seat.
-      </p>
+      <div>
+        <p>
+          The <ShapeName>CAR</ShapeName> has both 'wheels' on the ground. (
+          <strong>#1</strong> and <strong>#4</strong>)
+        </p>
+        <p>
+          In the middle of the <ShapeName>CAR</ShapeName>, dots{" "}
+          <strong>#2</strong> and <strong>#3</strong> are raised. Imagine{" "}
+          <strong>#2</strong> in the back seat and <strong>#3</strong> in the
+          front seat.
+        </p>
+        <hr />
+        <DownUp>
+          <Down />
+          <Up />
+          <Up />
+          <Down />
+        </DownUp>
+      </div>
     )
   },
   {
@@ -86,10 +131,19 @@ const shapesArr = [
     src: TruckKeyboardAni,
     header: "Truck",
     description: (
-      <p>
-        Just like the car, except there's no one in the back seat. There IS no
-        back seat!
-      </p>
+      <div>
+        <p>
+          Just like the <ShapeName>CAR</ShapeName>, except there's no one in the
+          back seat. The <ShapeName>TRUCK</ShapeName> is only raised on #3.
+        </p>
+        <hr />
+        <DownUp>
+          <Down />
+          <Down />
+          <Up />
+          <Down />
+        </DownUp>
+      </div>
     )
   }
 ];
@@ -106,7 +160,7 @@ const ShapeCard = ({
   <CardFader pose={active ? "active" : disabled ? "disabled" : "done"}>
     <Card>
       <Card.Content>
-        <Image src={src} />
+        <Image src={src} style={{ marginBottom: "10px" }} />
         <Card.Header>{header}</Card.Header>
         <Card.Description>{description}</Card.Description>
       </Card.Content>
@@ -120,6 +174,7 @@ const CardFader = posed.div({
   disabled: { opacity: 0.05, y: "10%" },
   done: { opacity: 0.7, y: "3%" }
 });
+
 export const DotCardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 21rem);
