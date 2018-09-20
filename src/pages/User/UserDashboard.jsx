@@ -14,7 +14,7 @@ class UserDashboard extends Component {
     const { auth, finishedLessons } = this.props;
 
     return (
-      <Layout hideNav>
+      <Layout hideNav myUrl={this.props.match.path}>
         <Protected>
           <h1>Dashboard</h1>
           <Grid stackable columns={2}>

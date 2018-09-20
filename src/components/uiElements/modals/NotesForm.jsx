@@ -11,7 +11,7 @@ class Notes extends Component {
     const { fsNotes, slug, users } = this.props;
     console.log("fsNotes", fsNotes);
     console.log("slug", slug);
-    const myNotes = fsNotes[slug] || "";
+    const myNotes = (fsNotes && fsNotes[slug]) || "";
     console.log("myNotes", myNotes);
     this.props.initialize({ notes: myNotes });
   }

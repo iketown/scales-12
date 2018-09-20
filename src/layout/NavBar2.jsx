@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withFirestore } from "react-redux-firebase";
-import { chapters, lessonsArr } from "../utils/chapterIndex";
+import { chapters, allPagesArr } from "../utils/chapterIndex";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { signInUserAnon } from "../actions/authActions.jsx";
 import firebase from "../utils/firebase";
@@ -112,9 +112,10 @@ class NavBar extends Component {
   };
   handleNotes = () => {
     const currentUrl = this.props.match.path;
-    const { title, slug } = lessonsArr.find(
+    let { title, slug } = allPagesArr.find(
       lesson => `/${lesson.slug}` === currentUrl
     );
+    if (!slug) slug = currentUrl.slice(1);
     this.props.openModal("Notes", {
       title,
       slug

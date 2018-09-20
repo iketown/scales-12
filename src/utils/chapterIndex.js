@@ -112,6 +112,9 @@ export const lessonsArr = Object.keys(chapters).reduce((arr, key) => {
   return [...arr, ...newArr];
 }, []);
 
+const dashboard = { title: "Dashboard", slug: "dashboard" };
+export const allPagesArr = [...lessonsArr, dashboard];
+
 export const getPreviousAndNextLessons = url => {
   const myIndex = lessonsArr.findIndex(lesson => lesson.url === url);
   const thisLesson = lessonsArr[myIndex];
