@@ -93,7 +93,7 @@ class WhatsAScale extends Component {
             Here's another Major Scale, this time starting on{" "}
             <strong>Eb</strong>.
           </p>
-          <p>try playing the same number sequence on this keyboard.</p>
+          <p>Try playing the same number sequence(s) on this keyboard.</p>
           <KeyboardNumbered
             keyboardId="kb000Cmajor"
             showAllCircles={true}
@@ -110,11 +110,10 @@ class WhatsAScale extends Component {
           />
           <p>
             It's the same song, it's still definitely "Jingle Bells", but it
-            <em> looks</em> completely different when you use the Eb scale. It{" "}
-            <em>sounds</em> right, but the mix of black and white keys give the
-            Eb scale a different 'shape'. Here are a few other scale 'shapes'.
-            (You don't have to learn these, just notice how each one is
-            different)
+            <em> looks</em> completely different when you use the Eb scale. The
+            mix of black and white keys give the Eb scale a different 'shape'.
+            Here are a few other scale 'shapes'. (You don't have to learn these,
+            just notice how each one is different)
           </p>
           <Card.Group centered>
             <ScaleCard src={AmajorScale} title={"A Major"} />
@@ -134,7 +133,7 @@ class WhatsAScale extends Component {
             memorizing.
           </p>
           <p>
-            We're sneaking out the other door though. There's a better way to do
+            We're sneaking out the side door though. There's a better way to do
             it.
           </p>
         </Container>

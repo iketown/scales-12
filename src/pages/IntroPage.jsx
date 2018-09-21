@@ -56,8 +56,8 @@ export default class IntroPage extends Component {
                     We're going to skip over note names and key signatures and{" "}
                     <em>start</em> with. . . you guessed it,{" "}
                     <strong>The Scales</strong>. Later, if/when you want to
-                    learn more about theory and harmony, by that point you'll
-                    simply be attaching names and concepts to things{" "}
+                    learn more about theory and harmony, you'll simply be
+                    attaching names and concepts to things{" "}
                     <em>you already know how to play</em>. The early advantage
                     you'll get from knowing these 12 scales will make those
                     later lessons easier, and far more <em>meaningful</em>.
@@ -66,13 +66,14 @@ export default class IntroPage extends Component {
                     Remember learning how to tie your shoes? Did you learn about
                     the <em>doubly slipped reef knot</em>, followed by basic{" "}
                     <em>half hitch</em> theory and use cases? Nope. It was all
-                    <em>bunny ears</em>, or the{" "}
+                    <em> bunny ears</em>, then the{" "}
                     <em>bunny goes around the tree and back in the hole</em>.
-                    Whatever it takes to make the knot happen.
+                    You learn the <em>how</em> before you learn the <em>why</em>
+                    .
                   </p>
                   <p>
                     These lesson are more of the{" "}
-                    <em>bunny goes around the tree</em>
+                    <em>bunny goes around the tree </em>
                     variety. They're not your usual beginner music lessons.
                     They're a short cut. A hack.
                   </p>
@@ -133,6 +134,7 @@ export default class IntroPage extends Component {
             learning your multiplication tables.
           </p>
           <p>But we're going to do it the EASY way.</p>
+          <p>So what is a scale anyways?</p>
         </Container>
       </Layout>
     );

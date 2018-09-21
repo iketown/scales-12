@@ -33,10 +33,12 @@ class SignUpInterrupt extends Component {
                 <StyledBox>
                   <div>
                     <p>There is plenty of good stuff ahead in this course</p>
-                    <p>
-                      Please, take a second and make an account so you can keep
-                      track of your progress.
-                    </p>
+                    <p>Please, take a second and sign up.</p>
+                    <ul>
+                      <li>It's free</li>
+                      <li>Its awesome.</li>
+                      <li>You can track your progress and take notes.</li>
+                    </ul>
                   </div>
                   <p>
                     already have an account?{" "}

@@ -47,7 +47,11 @@ export default class ABetterWay extends Component {
         <p>
           For this class, we are going to sidestep music theory, key signatures,
           note names, sharps and flats. We're just going to cut straight to how
-          these 12 Major Scales <em>look</em>.
+          these 12 Major Scales{" "}
+          <em>
+            <strong>look</strong>
+          </em>
+          .
         </p>
         <p>
           Think of the how you <em>"just know"</em> your way around your
@@ -88,9 +92,8 @@ export default class ABetterWay extends Component {
         </Card.Group>
         <p>
           <br />
-          Both methods will lead you to a proper E major scale, but obviously
-          remembering 'Car, Car' is going to be easier than all that other
-          stuff.
+          Both methods will lead you to a proper E major scale, but remembering
+          'Car, Car' is going to be easier than all that other stuff.
         </p>
         <p>
           Later, when you already know the shape of an E major scale, you wont
@@ -110,8 +113,8 @@ export default class ABetterWay extends Component {
         </p>
         <p />
         <p>
-          So in this class we'll first learn the shapes, then we'll learn where
-          they go, and finally how to put them together.
+          In this class we'll first learn the shapes, then we'll learn where
+          they go, and finally how to put them together to form a scale.
         </p>
       </Layout>
     );
