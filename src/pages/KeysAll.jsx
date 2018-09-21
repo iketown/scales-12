@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
-import { Header, Card, Image } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import KeyboardDynamicInstructions from "../components/keyboard/KeyboardDynamicInstructions";
 import { StarterIcon } from "../components/uiElements";
 

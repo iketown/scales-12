@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Header, Image, Step, Icon } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { SocialIcon } from "react-social-icons";
 import styled from "styled-components";
 import Layout from "../layout/Layout";

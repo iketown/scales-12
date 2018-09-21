@@ -5,8 +5,6 @@ import { Image } from "semantic-ui-react";
 import Layout from "../layout/Layout";
 
 import { splitKeyboardAnimation, CarTruckLineWagonAnimation } from "../images";
-import { StarterIcon } from "../components/uiElements";
-import KeyboardShapePicker from "../components/keyboard/KeyboardShapePicker";
 class Places extends Component {
   render() {
     return (

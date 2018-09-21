@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { Container, Dropdown, Image, Menu, Icon } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { withFirestore } from "react-redux-firebase";
 import { chapters, allPagesArr } from "../utils/chapterIndex";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";

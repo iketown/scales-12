@@ -11,12 +11,12 @@ const CheckBoxes = ({ totalAnswersCount, currentIndex }) => {
             ? { name: " check square", color: "green" }
             : i === currentIndex
               ? {
-                  name: " outline square",
+                  name: "square outline",
                   color: "black",
                   loading: true
                 }
-              : { name: "outline square", color: "grey" };
-        return <Icon {...props} size="small" />;
+              : { name: "square outline", color: "grey" };
+        return <Icon key={`checkbox ${i}`} {...props} size="small" />;
       })}
     </div>
   );

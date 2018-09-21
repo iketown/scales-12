@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   paths,
   blackKeyOffsets,
-  noteNumbers,
   noteNumbers3
 } from "../../keySVGs/keyboardUtils";
 import { delayBetweenQuestions } from "../../utils/generalConfig";

@@ -1,16 +1,5 @@
 import React from "react";
-import { CircleButton } from "../uiElements/index";
-import { Image } from "semantic-ui-react";
-import {
-  num1,
-  num2,
-  num3,
-  num4,
-  num5,
-  num6,
-  num7,
-  num8
-} from "../../images/numberDots.jsx";
+
 const NumberCircle = ({
   keyboardScale,
   numberOfScale,
@@ -39,13 +28,13 @@ const numberObj = {
   8: "\u277D"
 };
 
-const numberObj2 = {
-  1: <Image size="tiny" src={num1} alt="" />,
-  2: <Image size="tiny" src={num2} alt="" />,
-  3: <Image size="tiny" src={num3} alt="" />,
-  4: <Image size="tiny" src={num4} alt="" />,
-  5: <Image size="tiny" src={num5} alt="" />,
-  6: <Image size="tiny" src={num6} alt="" />,
-  7: <Image size="tiny" src={num7} alt="" />,
-  8: <Image size="tiny" src={num8} alt="" />
-};
+// const numberObj2 = {
+//   1: <Image size="tiny" src={num1} alt="" />,
+//   2: <Image size="tiny" src={num2} alt="" />,
+//   3: <Image size="tiny" src={num3} alt="" />,
+//   4: <Image size="tiny" src={num4} alt="" />,
+//   5: <Image size="tiny" src={num5} alt="" />,
+//   6: <Image size="tiny" src={num6} alt="" />,
+//   7: <Image size="tiny" src={num7} alt="" />,
+//   8: <Image size="tiny" src={num8} alt="" />
+// };

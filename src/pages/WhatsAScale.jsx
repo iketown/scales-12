@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Header, Container, Card, Item, Grid, Button } from "semantic-ui-react";
+import { Header, Container, Card } from "semantic-ui-react";
 import { ScaleCard } from "../components/uiElements/customDisplays";
 import Layout from "../layout/Layout.jsx";
-import styled from "styled-components";
 import KeyboardNumbered from "../components/keyboard/KeyboardNumbered.jsx";
 import { finishPage } from "../actions/userScoreActions";
 import AmajorScale from "../images/AmajorScale.svg";
@@ -12,9 +10,6 @@ import DbMajorScale from "../images/DbMajorScale.svg";
 import BbMajorScale from "../images/BbmajorScale.svg";
 import { fullScales } from "../components/keyboard/keyboardShapes";
 import { NN } from "../keySVGs/keyboardUtils";
-import { CMajorScale } from "../images";
-import { StarterIcon } from "../components/uiElements/index";
-import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 
 class WhatsAScale extends Component {
   render() {

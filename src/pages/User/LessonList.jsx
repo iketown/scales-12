@@ -7,7 +7,7 @@ import { List, Icon } from "semantic-ui-react";
 import { chapters } from "../../utils/chapterIndex";
 class UserDashboard extends Component {
   render() {
-    const { auth, finishedLessons, profile } = this.props;
+    const { finishedLessons, profile } = this.props;
     const visitedLessons =
       finishedLessons &&
       finishedLessons.reduce((obj, les) => {
@@ -29,10 +29,10 @@ class UserDashboard extends Component {
         {Object.keys(chapters).map(chapter => (
           <List.Item>
             {chapter}
-            <List selection>
+            <List>
               {chapters[chapter].map(lesson => {
                 return (
-                  <List.Item selection>
+                  <List.Item key={lesson.slug}>
                     <List.Content>
                       <List.Header as={Link} to={"/" + lesson.slug}>
                         <h4>

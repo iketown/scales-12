@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { withFirebase, isLoaded } from "react-redux-firebase";
+import { withFirebase } from "react-redux-firebase";
 import { Container, Button, Icon, Image } from "semantic-ui-react";
 import styled from "styled-components";
 import Waypoint from "react-waypoint";
@@ -12,7 +12,6 @@ import { goToLatestLesson, signInUserAnon } from "../actions/authActions.jsx";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { twelveScales } from "../images";
 import NavBar2 from "./NavBar2";
-import SignUpInterrupt from "../components/uiElements/modals/SignUpInterrupt.jsx";
 class Layout extends Component {
   state = {
     isSignedIn: false,
@@ -38,7 +37,7 @@ class Layout extends Component {
   };
   handleWaypointEnter = () => {};
   handleNextClicked = () => {
-    const { myUrl, firebase } = this.props;
+    const { myUrl } = this.props;
     const { chapter, slug } = getPreviousAndNextLessons(myUrl).thisLesson;
     const finishedPageObject = { pageUrl: myUrl, chapter, slug };
     const untracked = this.props.auth.isEmpty && this.props.auth.isLoaded;

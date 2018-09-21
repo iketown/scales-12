@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button, Grid, Segment } from "semantic-ui-react";
+import { Modal, Button, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { closeModal, openModal } from "./modalActions.jsx";

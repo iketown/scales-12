@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
 import { openModal, closeModal } from "./uiElements/modals/modalActions.jsx";
 export const Protected = ({ children, auth, openModal }) => {

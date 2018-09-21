@@ -229,8 +229,7 @@ class Keyboard extends Component {
       wrongCircles,
       starters,
       correctAnswer,
-      showBottomShape,
-      keyToSkip
+      showBottomShape
     } = this.state;
     const { showAllCircles } = this.props;
     if (finished && correctCircles.includes(noteName)) return "correct";
@@ -424,6 +423,8 @@ const shapeImages = {
         fontSize: "2rem",
         marginRight: "8px"
       }}
+      role="img"
+      aria-label="i dont think thats quite right"
     >
       🤨
     </span>

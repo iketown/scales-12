@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Header, Item } from "semantic-ui-react";
 import styled from "styled-components";
-import { Link, scroller, Element } from "react-scroll";
+import { scroller, Element } from "react-scroll";
 import Layout from "../layout/Layout";
 import { CheckIcon } from "../components/uiElements";
 import { DotCardsGrid } from "./ABetterWay";

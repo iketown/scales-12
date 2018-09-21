@@ -32,7 +32,6 @@ export default class PlacesTest2 extends Component {
               </p>
             )
           }}
-          keyboardScale={0.6}
         />
       </Layout>
     );

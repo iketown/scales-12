@@ -43,7 +43,9 @@ export default class TheShapes2 extends Component {
         </p>
         <p>
           Once you have these four memorized, you'll be ready to ace the quiz.
-          😎
+          <span role="img" aria-label="sunglasses emoji">
+            😎
+          </span>
         </p>
         <div>
           <Grid stackable columns={2}>

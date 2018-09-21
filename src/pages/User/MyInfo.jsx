@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Moment from "react-moment";
-import { Card, Image, Icon } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 class MyInfo extends Component {
   render() {

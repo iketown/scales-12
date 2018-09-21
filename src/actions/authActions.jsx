@@ -1,7 +1,6 @@
 import { closeModal } from "../components/uiElements/modals/modalActions.jsx";
 import { SubmissionError } from "redux-form";
 import { push } from "connected-react-router";
-import firebase from "../utils/firebase";
 
 export const SIGN_IN_USER = "SIGN_IN_USER";
 export const SIGN_OUT_USER = "SIGN_OUT_USER";
@@ -59,7 +58,6 @@ export const registerUser = user => async (
     });
     // create a new profile in fireSTORE
     let finishedLessons = [];
-
     if (state.firebase.profile) {
       finishedLessons = [...state.firebase.profile.finishedLessons];
     }
@@ -71,9 +69,7 @@ export const registerUser = user => async (
     };
     await firestore.set(`users/${currentUser.uid}`, { ...newUser });
     dispatch(closeModal());
-    console.log("newUser", newUser);
   } catch (error) {
-    console.log("signup error", error);
     throw new SubmissionError({ _error: error.message });
   }
 };

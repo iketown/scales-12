@@ -1,19 +1,13 @@
 import React, { Component } from "react";
-import { Button, Header, Image, Step, Icon } from "semantic-ui-react";
+import { Header, Image, Step } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
 import { NN } from "../keySVGs/keyboardUtils";
 import {
-  Line,
-  Car,
-  Truck,
-  Wagon,
-  KeystoDots,
   BuildAScale,
   BuildBbScale,
   wagonPic,
-  FlipCar,
   carPic,
   truckPic
 } from "../images";
@@ -139,17 +133,4 @@ const Orange = styled.span`
   font-weight: bold;
   color: #f5a623;
   padding: 3px;
-`;
-const shapesArr = [
-  { name: "line", image: Line },
-  { name: "car", image: Car },
-  { name: "truck", image: Truck },
-  { name: "wagon", image: Wagon }
-];
-
-const ButtonRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-content: space-around;
-  align-items: center;
 `;

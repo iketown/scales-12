@@ -85,7 +85,11 @@ export default class ABetterWay extends Component {
               <Card.Meta>E Major Scale</Card.Meta>
               <Card.Description>
                 <strong>Car, Car.</strong>{" "}
-                <p style={{ fontSize: "2rem" }}>😎👍🏼</p>
+                <p style={{ fontSize: "2rem" }}>
+                  <span role="img" aria-label="smiles thumbs up">
+                    😎👍🏼
+                  </span>
+                </p>
               </Card.Description>
             </Card.Content>
           </Card>

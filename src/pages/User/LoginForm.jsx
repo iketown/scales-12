@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Segment,
-  Button,
-  Label,
-  Divider,
-  Input
-} from "semantic-ui-react";
+import { Form, Segment, Button, Label, Divider } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import TextInput from "../../components/uiElements/TextInput.jsx";

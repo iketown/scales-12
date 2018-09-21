@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed, { PoseGroup } from "react-pose";
 import Dimensions from "react-dimensions";
-import { Button, Message, Icon } from "semantic-ui-react";
+import { Button, Message } from "semantic-ui-react";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";

@@ -2,22 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed, { PoseGroup } from "react-pose";
 import Dimensions from "react-dimensions";
-import { Button, Message } from "semantic-ui-react";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
-import { ding, plink, keyClick } from "./sounds/soundFX";
-import {
-  keyObject,
-  keyList,
-  noteConverter,
-  noteNumbers3
-} from "../../keySVGs/keyboardUtils";
-import {
-  delayBetweenQuestions,
-  showCheaterButton
-} from "../../utils/generalConfig";
-import { completeKeyboardChallenge } from "../../actions/userScoreActions";
+import { keyObject, keyList, noteConverter } from "../../keySVGs/keyboardUtils";
+
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -142,21 +131,9 @@ class Keyboard extends Component {
     });
   };
   render() {
-    const {
-      bottomKey,
-      keysToLabel,
-      continueLink,
-      continueText,
-      answers
-    } = this.props;
+    const { bottomKey, keysToLabel } = this.props;
     let { keyboardScale } = this.props;
-    const {
-      showCircles,
-      root1,
-      showShapeBackground,
-      targetIndex,
-      correctAnswer
-    } = this.state;
+    const { showCircles, root1, showShapeBackground } = this.state;
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
         {/* <div>
@@ -226,14 +203,6 @@ class Keyboard extends Component {
     );
   }
 }
-const QNumberDiv = styled.span`
-  margin: 3px;
-  font-size: 25px;
-  color: #ddd;
-  transition: 0.5s all;
-  ${p => (p.done ? "color: #57a5ff;" : "")} ${p =>
-    p.nextUp ? "color: black; font-size: 35px;" : ""};
-`;
 
 const mapStateToProps = state => ({
   keyboardChallenges: state.userScore.keyboardChallenges

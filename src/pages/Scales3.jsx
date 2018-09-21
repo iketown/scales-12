@@ -1,28 +1,13 @@
 import React, { Component } from "react";
-import { Button, Header, Image, Step, Icon } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import Layout from "../layout/Layout";
 import { StarterIcon } from "../components/uiElements/index";
 import {
-  scaleShapes,
   fullScales,
   scaleShapes2
 } from "../components/keyboard/keyboardShapes";
-import { NN } from "../keySVGs/keyboardUtils";
-import {
-  Line,
-  Car,
-  Truck,
-  Wagon,
-  KeystoDots,
-  BuildAScale,
-  BuildBbScale,
-  wagonPic,
-  FlipCar,
-  carPic,
-  truckPic
-} from "../images";
+
 import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
 export default class Scales1 extends Component {
   render() {
@@ -72,7 +57,6 @@ export default class Scales1 extends Component {
               </p>
             )
           }}
-          keyboardScale={0.6}
         />
       </Layout>
     );

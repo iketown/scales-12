@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed, { PoseGroup } from "react-pose";
 import Dimensions from "react-dimensions";
-import { Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import styled from "styled-components";
 import Synth from "./sounds/audiosynth";
 import Key from "./Key.jsx";
@@ -115,7 +115,7 @@ class Keyboard extends Component {
   };
   animateNotes = () => {
     return new Promise((resolve, reject) => {
-      const { correctNotes, notesToShow } = this.state;
+      const { correctNotes } = this.state;
       let nowPlayingIndex = 0;
       const addNoteToShowList = () => {
         if (nowPlayingIndex >= correctNotes.length) {
@@ -167,8 +167,6 @@ class Keyboard extends Component {
     this.setState({ finished: true });
   };
   resetKeyboard = () => {
-    const index = this.state.questionIndex;
-    const { answers } = this.props;
     this.setState({
       showCircles: true,
       finished: false,

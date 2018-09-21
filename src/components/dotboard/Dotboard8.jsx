@@ -87,27 +87,7 @@ const ScaleName = styled.div`
     transform: scale(1.3);
   }
 `;
-const ListenButton = styled.div`
-  text-align: center;
-  color: rgb(43, 43, 43);
-  position: absolute;
-  top: -9px;
-  right: -13px;
-  border-radius: 50%;
-  background: white;
-  width: 1.5rem;
-  height: 1.5rem;
-  font-size: 10px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(-10deg);
-  opacity: 1;
-  z-index: 10;
-  box-shadow: 1px 1px 4px #9e9e9e;
-`;
+
 const CircleDiv = styled.div`
   border: 2px red dotted;
   position: absolute;
@@ -198,10 +178,7 @@ class Dotboard8 extends Component {
       circleTop,
       circleBottom
     } = this.props;
-    const playBottom = () => {
-      const bottomNotes = this.myScale.slice(0, 4);
-      console.log("play bottom", bottomNotes);
-    };
+
     return (
       <Box>
         {[bottomShape, topShape].map((shape, index) => {

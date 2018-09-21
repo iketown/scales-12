@@ -1,4 +1,3 @@
-import slugify from "slugify";
 import IntroPage from "../pages/IntroPage.jsx";
 import WhatsAScale from "../pages/WhatsAScale.jsx";
 import ABetterWay from "../pages/ABetterWay.jsx";

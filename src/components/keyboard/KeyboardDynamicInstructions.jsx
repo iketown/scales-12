@@ -213,7 +213,6 @@ class Keyboard extends Component {
       bottomKey,
       keysToLabel,
       keyboardId,
-      messageInstructions,
       continueLink,
       continueText
     } = this.props;

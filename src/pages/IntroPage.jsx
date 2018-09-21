@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { Header, Container, Image, Item, Popup } from "semantic-ui-react";
-import { ScaleCard } from "../components/uiElements/customDisplays";
 import Layout from "../layout/Layout.jsx";
 
 import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
 
-import AmajorScale from "../images/AmajorScale.svg";
-import DbMajorScale from "../images/DbMajorScale.svg";
-import BbMajorScale from "../images/BbmajorScale.svg";
 import { fullScales } from "../components/keyboard/keyboardShapes";
 import { CMajorScale, ScalesChart } from "../images";
 import { StarterIcon } from "../components/uiElements/index";

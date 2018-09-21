@@ -5,7 +5,6 @@ import { CarSkips, CarSkips2 } from "../images/";
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
 import { NN } from "../keySVGs/keyboardUtils";
-import { ScaleCard } from "../components/uiElements/customDisplays";
 
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 class KeysCar extends Component {

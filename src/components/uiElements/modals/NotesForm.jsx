@@ -1,21 +1,13 @@
 import React, { Component } from "react";
 import { compose } from "redux";
-import { firebaseConnect, firestoreConnect } from "react-redux-firebase";
-import {
-  Modal,
-  Button,
-  Grid,
-  Segment,
-  Form,
-  Checkbox
-} from "semantic-ui-react";
+import { Button, Segment, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { closeModal, openModal } from "./modalActions";
 import { Field, reduxForm } from "redux-form";
 import { takeNotes } from "../../../actions/notesActions";
 class Notes extends Component {
   componentDidMount() {
-    const { fsNotes, slug, users } = this.props;
+    const { fsNotes, slug } = this.props;
     console.log("fsNotes", fsNotes);
     console.log("slug", slug);
     const myNotes = (fsNotes && fsNotes[slug]) || "";
