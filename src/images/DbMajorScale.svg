@@ -32,51 +32,51 @@
             </g>
         </g>
         <g id="numberCircle" transform="translate(28.000000, 129.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">1</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="14.3984375" y="30">1</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(91.000000, 130.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">2</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="12.4921875" y="30">2</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(159.000000, 232.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">3</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="12.1015625" y="30">3</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(177.000000, 128.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">4</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="11.390625" y="30">4</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(234.000000, 130.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">5</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="12.2421875" y="30">5</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(290.000000, 130.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">6</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="10.8671875" y="30">6</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(361.000000, 232.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">7</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="12.3046875" y="30">7</tspan>
             </text>
         </g>
         <g id="numberCircle" transform="translate(381.000000, 128.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">8</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="10.9609375" y="30">8</tspan>
             </text>
         </g>
     </g>

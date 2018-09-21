@@ -1,8 +1,22 @@
 import React, { Component } from "react";
 import { Modal, Button, Grid, Segment } from "semantic-ui-react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { closeModal, openModal } from "./modalActions.jsx";
 import RegisterForm from "../../../pages/User/RegisterForm.jsx";
+
+const StyledBox = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+`;
+
 class SignUpInterrupt extends Component {
   handleSignIn = () => {
     this.props.openModal("LoginModal");
@@ -16,15 +30,19 @@ class SignUpInterrupt extends Component {
           <Modal.Description>
             <Grid stackable columns={2}>
               <Grid.Column>
-                <p>There is plenty of good stuff ahead in this course</p>
-                <p>
-                  Please, take a second and make an account so you can keep
-                  track of your progress.
-                </p>
-                <p>
-                  already have an account?{" "}
-                  <Button onClick={this.handleSignIn}>Sign In</Button>
-                </p>
+                <StyledBox>
+                  <div>
+                    <p>There is plenty of good stuff ahead in this course</p>
+                    <p>
+                      Please, take a second and make an account so you can keep
+                      track of your progress.
+                    </p>
+                  </div>
+                  <p>
+                    already have an account?{" "}
+                    <Button onClick={this.handleSignIn}>Sign In</Button>
+                  </p>
+                </StyledBox>
               </Grid.Column>
               <Grid.Column>
                 <RegisterForm />

@@ -6,9 +6,9 @@
     <defs></defs>
     <g id="num4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="numberCircle" transform="translate(3.000000, 2.000000)">
-            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
-            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
-                <tspan x="7" y="33">4</tspan>
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="3" fill="#1E5494" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="Basic-Regular, Basic" font-size="32" font-weight="normal" fill="#FFFFFF">
+                <tspan x="11.390625" y="30">4</tspan>
             </text>
         </g>
     </g>
