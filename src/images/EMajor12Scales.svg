@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="506px" height="300px" viewBox="0 0 506 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
     <title>EMajor12Scales</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
@@ -31,31 +31,7 @@
                 <path d="M91.3447653,0 L120.323105,0 L120.323105,192.124 C120.323105,197.646847 115.845952,202.124 110.323105,202.124 L101.344765,202.124 C95.8219178,202.124 91.3447653,197.646847 91.3447653,192.124 L91.3447653,0 Z" id="Eb" fill-opacity="0.9" fill="#000000"></path>
             </g>
         </g>
-        <text id="❶" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="114" y="254">❶</tspan>
-        </text>
-        <text id="❷" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="182" y="154">❷</tspan>
-        </text>
-        <text id="❸" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="239" y="154">❸</tspan>
-        </text>
-        <text id="❹" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="265" y="254">❹</tspan>
-        </text>
-        <text id="❺" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="315" y="254">❺</tspan>
-        </text>
-        <text id="❻" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="386" y="154">❻</tspan>
-        </text>
-        <text id="❼" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="449" y="154">❼</tspan>
-        </text>
-        <text id="❽" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="469" y="254">❽</tspan>
-        </text>
-        <g id="Group" transform="translate(124.000000, 158.000000)" opacity="0.526171875">
+        <g id="Group" transform="translate(123.000000, 164.000000)" opacity="0.526171875">
             <g id="CAR">
                 <path d="M158.993464,57.4483611 C158.993464,55.1218849 159.214059,50.5882389 155.779312,46.8507342 C151.292246,41.9706406 141.798489,32.5546066 120.018406,25.3273876 C101.983536,11.6943287 86.334361,0 67.4710344,0 C41.4506243,0 27.7524896,10.9647237 17.7489132,18.9674348 C16.3191306,20.1146125 14.9547094,21.2090199 13.6246031,22.2070645 C13.57885,22.2437741 13.5429012,22.29425 13.4987822,22.3286653 L12.0330507,22.3286653 C8.36136889,22.3286653 6.82047171,25.4489884 7.69794975,29.3057996 C4.24196084,34.2983166 2.17490365,41.4819429 2.02620626,49.0051338 L2.02130415,49.3194604 C0.519623863,50.5331744 0.0424849699,53.0477877 0,55.9501471 L0.0163403731,59.5683453 L13.886049,59.5683453 C17.0152305,53.3070498 22.1869585,49.2024483 28.0466163,49.2024483 C28.4371512,49.2024483 28.8162479,49.2529241 29.1986126,49.2827507 C28.4110066,46.5639398 27.9861569,43.4665602 27.9861569,40.0387934 L27.9861569,32.3091106 L22.5203021,24.8868714 C31.4911669,17.767487 42.7594882,9.7051227 62.7339602,8.59465476 L62.7437645,32.7243889 L32.6170187,32.7335663 L32.6170187,40.0387934 C32.6170187,44.3361208 33.4471096,50.0582428 37.3998458,52.9445417 L37.360629,53.0477877 C39.2642824,54.7593767 40.909758,56.9780182 42.2071836,59.5683453 L68.7129027,59.5683453 L68.7129027,34.5323408 L68.7651919,34.5323408 L68.7553877,8.50976362 C83.5891784,8.98469515 96.7823956,17.5609951 111.276306,28.3467591 L111.286111,28.3834688 C111.286111,30.0950578 111.459319,32.7083284 107.699399,32.7083284 L73.3470325,32.7198002 L73.3470325,59.5683453 L108.026206,59.5683453 C111.157022,53.3070498 116.327116,49.2024483 122.186774,49.2024483 C128.046431,49.2024483 133.216525,53.3070498 136.347341,59.5683453 L159,59.5683453 L158.993464,57.4483611" id="Fill-418" fill="#2BA046"></path>
                 <path d="M152.837209,48.5611511 C152.837209,48.5611511 150.715137,48.5611511 146.938622,48.5611511 C141.934981,48.5611511 140.382127,47.9022884 137.811774,45.8139902 C133.60633,42.3988475 132.396942,41.4641289 128.117321,37.5314713 C125.314766,34.9484561 125.987186,31.8091694 128.97518,32.4611926 C137.286094,34.2553964 150.192681,45.0798941 152.837209,48.5611511" id="Fill-419" fill="#414141"></path>
@@ -76,6 +52,54 @@
                 <path d="M121.101262,90 C114.13255,90 108.465116,82.0111579 108.465116,72.1953836 C108.465116,62.3750533 114.13255,54.3884892 121.101262,54.3884892 C128.066741,54.3884892 133.732558,62.3750533 133.732558,72.1953836 C133.732558,82.0111579 128.066741,90 121.101262,90 Z M121.101262,62.785088 C117.417269,62.785088 114.420286,67.0061671 114.420286,72.1953836 C114.420286,77.3823221 117.417269,81.6011232 121.101262,81.6011232 C124.782022,81.6011232 127.777389,77.3823221 127.777389,72.1953836 C127.777389,67.0061671 124.782022,62.785088 121.101262,62.785088 Z" id="Fill-424" fill="#414141"></path>
                 <path d="M9.6541533,31.7266187 L11.7093023,33.8297309 L7.51621391,47.9002877 L4.93023256,47.9136691 C5.05847645,41.5842603 6.84415096,35.6986684 9.6541533,31.7266187" id="Fill-425" fill="#414141"></path>
             </g>
+        </g>
+        <g id="numberCircle" transform="translate(109.000000, 230.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">1</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(176.000000, 133.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">2</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(233.000000, 133.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">3</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(260.000000, 230.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">4</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(310.000000, 230.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">5</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(383.000000, 133.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">6</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(444.000000, 133.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">7</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(462.000000, 230.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">8</tspan>
+            </text>
         </g>
     </g>
 </svg>

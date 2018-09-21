@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Container, Card, Item } from "semantic-ui-react";
+import { Header, Container, Image, Item, Popup } from "semantic-ui-react";
 import { ScaleCard } from "../components/uiElements/customDisplays";
 import Layout from "../layout/Layout.jsx";
 
@@ -9,7 +9,7 @@ import AmajorScale from "../images/AmajorScale.svg";
 import DbMajorScale from "../images/DbMajorScale.svg";
 import BbMajorScale from "../images/BbmajorScale.svg";
 import { fullScales } from "../components/keyboard/keyboardShapes";
-import { CMajorScale } from "../images";
+import { CMajorScale, ScalesChart } from "../images";
 import { StarterIcon } from "../components/uiElements/index";
 
 export default class IntroPage extends Component {
@@ -54,25 +54,32 @@ export default class IntroPage extends Component {
                 <Item.Description>
                   <p>
                     We're going to skip over note names and key signatures and{" "}
-                    <strong>start</strong> with the scales. There will be time
-                    to dig into theory later, and by then you'll be attaching
-                    names and concepts to things{" "}
+                    <em>start</em> with. . . you guessed it,{" "}
+                    <strong>The Scales</strong>. Later, if/when you want to
+                    learn more about theory and harmony, by that point you'll
+                    simply be attaching names and concepts to things{" "}
                     <em>you already know how to play</em>. The early advantage
-                    you get from knowing your scale-shapes will make those
-                    lessons easier, and far more <em>meaningful</em>.
+                    you'll get from knowing these 12 scales will make those
+                    later lessons easier, and far more <em>meaningful</em>.
                   </p>
                   <p>
-                    These aren't your usual beginner music lessons. They are a
-                    short cut. They're a hack.{" "}
-                    {/* <strong>Your music teacher might not like it, </strong>
-                    because he/she had to practice <em>for days</em> to learn
-                    their scales. It's not fair. The 12Scales system didn't
-                    exist back then. */}
+                    Remember learning how to tie your shoes? Did you learn about
+                    the <em>doubly slipped reef knot</em>, followed by basic{" "}
+                    <em>half hitch</em> theory and use cases? Nope. It was all
+                    <em>bunny ears</em>, or the{" "}
+                    <em>bunny goes around the tree and back in the hole</em>.
+                    Whatever it takes to make the knot happen.
+                  </p>
+                  <p>
+                    These lesson are more of the{" "}
+                    <em>bunny goes around the tree</em>
+                    variety. They're not your usual beginner music lessons.
+                    They're a short cut. A hack.
                   </p>
                   <p>Anyway, let's get to it.</p>
                   <p>
-                    First, let's play a scale on the piano so we're all on the
-                    same page.
+                    First, let's play a scale on the piano so we can see what
+                    we're aiming at.
                   </p>
                 </Item.Description>
               </Item.Content>
@@ -98,6 +105,7 @@ export default class IntroPage extends Component {
             }}
             instructions="Turn on your speakers and click on the dots in order,
             1 thru 8."
+            continueText="Brilliant!"
             answers={[
               {
                 bottomKey: "C1",
@@ -107,13 +115,20 @@ export default class IntroPage extends Component {
             ]}
           />
 
-          <h3>Easy!</h3>
+          <h3>Easy! right?</h3>
           <p>
             ...but "C" is just one of the 12 keys, so what about the other 11
             Major Scales?
           </p>
           <p>
-            With a few days of practice, it's possible to memorize all 12 Major
+            Well, you could get one of{" "}
+            <Popup
+              size="huge"
+              trigger={<strong>those graphs</strong>}
+              header="Scales Chart"
+              content={<Image size="huge" src={ScalesChart} />}
+            />
+            , and with a few days of practice, you could memorize all 12 Major
             Scales. It's a lot of information, but no more difficult than, say,
             learning your multiplication tables.
           </p>

@@ -11,7 +11,7 @@ import {
   keyObject,
   keyList,
   noteConverter,
-  noteNumbers
+  noteNumbers3
 } from "../../keySVGs/keyboardUtils";
 import {
   delayBetweenQuestions,
@@ -159,18 +159,19 @@ class Keyboard extends Component {
     } = this.state;
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
-        <div>
+        {/* <div>
           {correctAnswer &&
             correctAnswer.map((num, i) => (
               <QNumberDiv
+                style={{ display: "inline" }}
                 key={i}
                 nextUp={i === this.state.targetIndex}
                 done={i < this.state.targetIndex}
               >
-                {noteNumbers[num] || " "}
+                <span>{noteNumbers3[num] || " "}</span>
               </QNumberDiv>
             ))}
-        </div>
+        </div> */}
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {
@@ -230,7 +231,6 @@ const QNumberDiv = styled.span`
   font-size: 25px;
   color: #ddd;
   transition: 0.5s all;
-
   ${p => (p.done ? "color: #57a5ff;" : "")} ${p =>
     p.nextUp ? "color: black; font-size: 35px;" : ""};
 `;

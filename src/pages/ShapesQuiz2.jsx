@@ -102,16 +102,18 @@ const lessonText = {
         <p>Concentrate. You got this.</p>
         <ul>
           <li>
-            <strong>Car</strong>: front and back seat
+            <strong>Car</strong>: Think <em>front and back seat</em>.
           </li>
           <li>
-            <strong>Truck</strong>: there IS no back seat!
+            <strong>Truck</strong>: Think <em>front seat</em>, but no{" "}
+            <em>back seat</em>.
           </li>
           <li>
-            <strong>Wagon</strong>: flat bed and a handle
+            <strong>Wagon</strong>: Think <em>flat bed</em> with a{" "}
+            <em>handle</em>.
           </li>
           <li>
-            <strong>Line</strong>: ummmmm. it's a line.
+            <strong>Line</strong>: hmm. Its a line. 😉
           </li>
         </ul>
       </div>

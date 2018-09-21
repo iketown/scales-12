@@ -42,6 +42,8 @@ import CarSkips2 from "./CarSkips2.svg";
 import CarTruckLineWagonAnimation from "./CarTruckLineWagonAnimation.gif";
 import BuildAScale from "./BuildAScale.svg";
 import BuildBbScale from "./BuildBbScale.svg";
+import ScalesChart from "./12scalesChart.jpg";
+
 export {
   CMajorScale,
   Line,
@@ -86,5 +88,6 @@ export {
   CarSkips2,
   CarTruckLineWagonAnimation,
   BuildAScale,
-  BuildBbScale
+  BuildBbScale,
+  ScalesChart
 };

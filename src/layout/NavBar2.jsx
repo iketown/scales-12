@@ -156,10 +156,12 @@ class NavBar extends Component {
               })}
             </Dropdown.Menu>
           </Dropdown>
+          {authenticated && (
+            <Menu.Item onClick={this.handleNotes}>Feedback</Menu.Item>
+          )}
           <Menu.Menu position="right">
             {authenticated ? (
               <Fragment>
-                <Menu.Item onClick={this.handleNotes}>notes</Menu.Item>
                 <Menu.Item as={Link} to="/dashboard">
                   {auth.displayName || auth.email}
                 </Menu.Item>

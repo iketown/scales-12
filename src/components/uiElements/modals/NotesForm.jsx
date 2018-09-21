@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { compose } from "redux";
 import { firebaseConnect, firestoreConnect } from "react-redux-firebase";
-import { Modal, Button, Grid, Segment, Form } from "semantic-ui-react";
+import {
+  Modal,
+  Button,
+  Grid,
+  Segment,
+  Form,
+  Checkbox
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { closeModal, openModal } from "./modalActions";
 import { Field, reduxForm } from "redux-form";
@@ -13,12 +20,15 @@ class Notes extends Component {
     console.log("slug", slug);
     const myNotes = (fsNotes && fsNotes[slug]) || "";
     console.log("myNotes", myNotes);
-    this.props.initialize({ notes: myNotes });
+    this.props.initialize({
+      notes: myNotes.text,
+      sendToAdmin: myNotes.sendToAdmin
+    });
   }
   appendAndSubmit = values => {
     const { takeNotes, slug } = this.props;
-    const decoratedValues = { slug, ...values };
-    takeNotes(decoratedValues);
+    const valuesWithSlug = { slug, ...values };
+    takeNotes(valuesWithSlug);
   };
   render() {
     const { handleSubmit } = this.props;
@@ -30,6 +40,16 @@ class Notes extends Component {
       >
         <Segment>
           <Field name="notes" type="textarea" component="textarea" />
+          {/* <label style={{ margin: "10px" }}>
+            <Field
+              control={Checkbox}
+              name="sendToAdmin"
+              label="send note to admin"
+              type="checkbox"
+              component="input"
+            />
+            send to admin
+          </label> */}
           <Button fluid size="large" color="teal">
             Save
           </Button>

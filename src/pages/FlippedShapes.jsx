@@ -11,6 +11,7 @@ import {
   FlipCar,
   CarFlipAnimation
 } from "../images";
+import { Down, Up, DownUp } from "./TheShapes2.jsx";
 export default class Page5 extends Component {
   render() {
     return (
@@ -28,14 +29,17 @@ export default class Page5 extends Component {
         </p>
         <p>
           This will feel pretty obvious once we start using these on the
-          keyboard. If the shape <strong>starts</strong> on a{" "}
-          <strong>white key</strong>, then you would use the <em>regular</em>{" "}
-          (non-flipped) shape.
+          keyboard.
         </p>
-        <p>
-          When a shape starts on a <strong>black key</strong>, you use the
+        <li>
+          When the shape starts on a <strong>white key</strong>, you use the{" "}
+          <em>regular</em> (non-flipped) shape.
+        </li>
+        <li>
+          When the shape starts on a <strong>black key</strong>, you use the
           flipped shape.
-        </p>
+        </li>
+        <br />
 
         <img src={CarFlipAnimation} alt="" />
         <div>
@@ -65,25 +69,46 @@ const shapesArr = [
     name: "line",
     src: Line,
     header: "Line",
-    description: "there are no flipped lines.  lines are just white keys.  😬"
+    description: "There are no flipped lines.  Lines are always white keys.  😬"
   },
   {
     name: "car",
     src: FlipCar,
     header: "Flip-Car",
-    description: "UP • down • down UP"
+    description: (
+      <DownUp>
+        <Up />
+        <Down />
+        <Down />
+        <Up />
+      </DownUp>
+    )
   },
   {
     name: "truck",
     src: FlipTruck,
     header: "Flip-Truck",
-    description: "UP • UP • down UP"
+    description: (
+      <DownUp>
+        <Up />
+        <Up />
+        <Down />
+        <Up />
+      </DownUp>
+    )
   },
   {
     name: "wagon",
     src: FlipWagon,
     header: "Flip-Wagon",
-    description: "UP • UP • UP • down"
+    description: (
+      <DownUp>
+        <Up />
+        <Up />
+        <Up />
+        <Down />
+      </DownUp>
+    )
   }
 ];
 const ShapeCard = ({

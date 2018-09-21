@@ -109,7 +109,7 @@ const ListenButton = styled.div`
   box-shadow: 1px 1px 4px #9e9e9e;
 `;
 const CircleDiv = styled.div`
-  border: 2px #9c27b0 dotted;
+  border: 2px red dotted;
   position: absolute;
   left: -10%;
   top: -10%;

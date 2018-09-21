@@ -11,18 +11,20 @@ import {
   WagonKeyboardAni
 } from "../images";
 
-const DownUp = styled.p`
-  display: flex;
-  justify-content: center;
-`;
 const ShapeName = styled.span`
   font-weight: bold;
   background: #9e9e9e12;
   padding: 3px;
   border-radius: 3px;
 `;
-const Down = () => <span style={{ margin: "5px" }}>DOWN</span>;
-const Up = () => <span style={{ margin: "5px", fontWeight: "bold" }}>UP</span>;
+export const DownUp = styled.p`
+  display: flex;
+  justify-content: center;
+`;
+export const Down = () => <span style={{ margin: "5px" }}>DOWN</span>;
+export const Up = () => (
+  <span style={{ margin: "5px", fontWeight: "bold" }}>UP</span>
+);
 
 export default class TheShapes2 extends Component {
   render() {
@@ -39,7 +41,10 @@ export default class TheShapes2 extends Component {
           Take a few moments to read each description, and notice the
           similarities and differences.
         </p>
-        <p>Once you have these four memorized, continue to the quiz. :)</p>
+        <p>
+          Once you have these four memorized, you'll be ready to ace the quiz.
+          😎
+        </p>
         <div>
           <Grid stackable columns={2}>
             <Grid.Row>
@@ -133,8 +138,11 @@ const shapesArr = [
     description: (
       <div>
         <p>
-          Just like the <ShapeName>CAR</ShapeName>, except there's no one in the
-          back seat. The <ShapeName>TRUCK</ShapeName> is only raised on #3.
+          Just like the <ShapeName>CAR</ShapeName>, the{" "}
+          <ShapeName>TRUCK</ShapeName> has both wheels down. (
+          <strong>#1</strong> and <strong>#4</strong>) The only difference is
+          there's no "back seat." The <ShapeName>TRUCK</ShapeName> only has a
+          raised <strong>#3</strong>.
         </p>
         <hr />
         <DownUp>

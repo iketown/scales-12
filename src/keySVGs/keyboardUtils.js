@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-
+import {
+  num1,
+  num2,
+  num3,
+  num4,
+  num5,
+  num6,
+  num7,
+  num8
+} from "../images/numberDots.jsx";
+import { Image } from "semantic-ui-react";
 export const paths = {
   C:
     "M1,1 L42.3175303,1 L42.3175303,341.199627 L76,341.199627 L76,491 C76,496.522847 71.5228475,501 66,501 L11,501 C5.4771525,501 1,496.522847 1,491 L1,1 Z",
@@ -127,10 +137,25 @@ export const iconNames = {
 
 export const noteNumbers = ["①", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧"];
 export const noteNumbers2 = ["❶", "❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽"];
-
+export const noteNumbers3 = [
+  <Image src={num1} />,
+  <Image src={num1} />,
+  <Image src={num2} />,
+  <Image src={num3} />,
+  <Image src={num4} />,
+  <Image src={num5} />,
+  <Image src={num6} />,
+  <Image src={num7} />,
+  <Image src={num8} />
+];
 const NNspan = styled.span`
   color: #57a5ff;
   font-size: 1.5rem;
   font-family: initial;
+  display: inline-block;
+  width: 25px;
+  ${p => (p.scale ? `transform: scale(${p.scale});` : "")};
 `;
-export const NN = ({ num }) => <NNspan>{noteNumbers[num]}</NNspan>;
+export const NN = ({ num, scale }) => (
+  <NNspan scale={scale}>{noteNumbers3[num]}</NNspan>
+);

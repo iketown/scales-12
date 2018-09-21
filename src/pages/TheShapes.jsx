@@ -76,7 +76,6 @@ export default class TheShapes extends Component {
       <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>All The Shapes</Header.Content>
-          <Header.Subheader>and where they go</Header.Subheader>
         </Header>
 
         <Item>
@@ -94,7 +93,7 @@ export default class TheShapes extends Component {
             <p>
               <CheckIcon />
               We'll visualize each scale as a series of{" "}
-              <strong>eight dots</strong>, with its own unique pattern of{" "}
+              <strong>eight dots</strong>, each with its own unique pattern of{" "}
               <strong>UP</strong> and <strong>DOWN</strong> dots.
             </p>
 
@@ -142,8 +141,8 @@ export default class TheShapes extends Component {
         <p>(Click on any of those shapes to hear them played.)</p>
 
         <p>
-          The amazing part of the 12scales system is after you split the scales
-          up like this, there are only
+          The best part of the 12scales system is after you split the scales up
+          like this, there are only
           <strong> FOUR</strong> shapes to learn.{" "}
         </p>
         <p>
@@ -158,7 +157,9 @@ export default class TheShapes extends Component {
           <this.ShapeLink shapeName="Truck" />, and The{" "}
           <this.ShapeLink shapeName="Wagon" />.
         </p>
-        <p>click on each shape to see where they fit in the above graph:</p>
+        <p>
+          Click on each shape to see where they are used in the above graph:
+        </p>
         <ButtonRow>
           {shapesArr.map((shape, i) => (
             <Button
@@ -180,13 +181,16 @@ export default class TheShapes extends Component {
             </Button>
           ))}
         </ButtonRow>
+        <br />
+        <p>
+          You may have noticed that sometimes they're upside-down. Fear not.
+          We'll get into that.
+        </p>
         <hr />
         <Header as="h2">
           <Header.Content>It gets easier</Header.Content>
           <Header.Subheader>the farther you go</Header.Subheader>
         </Header>
-        <br />
-        <br />
         <p>
           We've already cut the complexity down by a lot. Instead of remembering
           <strong> eight individual notes</strong> for each of the 12 scales,
@@ -198,7 +202,7 @@ export default class TheShapes extends Component {
           <strong>CAR - WAGON</strong>'
         </p>
         <p>
-          <em>but it gets easier than that.</em>
+          <em>but it gets even easier than that.</em>
         </p>
         <p>
           Look again at our scale chart below. Notice how the{" "}
@@ -257,12 +261,12 @@ export default class TheShapes extends Component {
           ))}
         </DotCardsGrid>
         <p>
-          we'll talk about how these scales connect later, but when we start
+          We'll talk about how these scales connect later, but when we start
           playing them, you'll find{" "}
-          <em>you don't even have to remember the 2nd shape.</em>
+          <em>you don't even have to memorize the 2nd shape.</em>
         </p>
         <p>
-          you really only have to remember the{" "}
+          You really only have to remember the{" "}
           <Button
             primary={!this.state.hide2ndShape}
             basic={this.state.hide2ndShape}
@@ -272,10 +276,9 @@ export default class TheShapes extends Component {
           </Button>
         </p>
         <p>
-          ...and it gets even easier than that, but before we get ahead of
-          ourselves, let's dig in and learn those four shapes.
+          It gets even easier than that, but before we get ahead of ourselves,
+          let's dig in and learn those four shapes.
         </p>
-        {/* <NextButton active to="/Page4" /> */}
       </Layout>
     );
   }

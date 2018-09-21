@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import {
   paths,
   blackKeyOffsets,
-  noteNumbers
+  noteNumbers,
+  noteNumbers3
 } from "../../keySVGs/keyboardUtils";
 import { delayBetweenQuestions } from "../../utils/generalConfig";
 import styled, { keyframes } from "styled-components";
@@ -153,7 +154,7 @@ class Key extends Component {
             black={keyIsBlack}
             keyboardScale={keyboardScale}
           >
-            <span>{noteNumbers[number]}</span>
+            <span style={{ width: "1.5rem" }}>{noteNumbers3[number]}</span>
           </NumberDiv>
         )}
         {showLabel && (

@@ -79,7 +79,10 @@ export default class ABetterWay extends Component {
             <Card.Content>
               <Card.Header>The 12Scales Method</Card.Header>
               <Card.Meta>E Major Scale</Card.Meta>
-              <Card.Description>Car, Car.</Card.Description>
+              <Card.Description>
+                <strong>Car, Car.</strong>{" "}
+                <p style={{ fontSize: "2rem" }}>😎👍🏼</p>
+              </Card.Description>
             </Card.Content>
           </Card>
         </Card.Group>

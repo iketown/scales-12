@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="536px" height="300px" viewBox="0 0 536 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
     <title>BbmajorScale</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
@@ -30,29 +30,53 @@
                 <path d="M291.673285,0 L320.651625,0 L320.651625,192.124 C320.651625,197.646847 316.174472,202.124 310.651625,202.124 L301.673285,202.124 C296.150438,202.124 291.673285,197.646847 291.673285,192.124 L291.673285,0 Z" id="Bb" fill-opacity="0.9" fill="#000000"></path>
             </g>
         </g>
-        <text id="❶" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="120" y="154">❶</tspan>
-        </text>
-        <text id="❷" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="193" y="254">❷</tspan>
-        </text>
-        <text id="❸" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="242" y="254">❸</tspan>
-        </text>
-        <text id="❹" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="273" y="154">❹</tspan>
-        </text>
-        <text id="❺" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="342" y="254">❺</tspan>
-        </text>
-        <text id="❻" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="392" y="254">❻</tspan>
-        </text>
-        <text id="❼" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="442" y="254">❼</tspan>
-        </text>
-        <text id="❽" font-family="Lato-BlackItalic, Lato" font-size="24" font-style="italic" font-weight="700" fill="#57A5FF">
-            <tspan x="474" y="154">❽</tspan>
-        </text>
+        <g id="numberCircle" transform="translate(114.000000, 131.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">1</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(185.000000, 234.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">2</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(236.000000, 234.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">3</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(268.000000, 130.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">4</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(336.000000, 234.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">5</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(386.000000, 234.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">6</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(436.000000, 234.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">7</tspan>
+            </text>
+        </g>
+        <g id="numberCircle" transform="translate(467.000000, 130.000000)">
+            <circle id="Oval" stroke="#F5A623" stroke-width="3" fill="#F8E71C" fill-rule="nonzero" cx="19.5" cy="20.5" r="21"></circle>
+            <text id="1" font-family="ArchivoBlack-Regular, Archivo Black" font-size="37" font-weight="700" fill="#000000">
+                <tspan x="7" y="33">8</tspan>
+            </text>
+        </g>
     </g>
 </svg>
