@@ -28,7 +28,7 @@ class WhatsAScale extends Component {
           <p>
             Have you ever sang <em>'Happy Birthday To You...'</em> in a group of
             people, and even if each individual person sounds ok‍, all together
-            it sounds terrible? Usually, that's because people are singing in
+            it sounds terrible? Usually, that's because different people are singing in
             different <em>keys</em>. That is, they're using different{" "}
             <strong>Major Scales</strong>.
           </p>
@@ -88,7 +88,7 @@ class WhatsAScale extends Component {
             Here's another Major Scale, this time starting on{" "}
             <strong>Eb</strong>.
           </p>
-          <p>Try playing the same number sequence(s) on this keyboard.</p>
+          <p>Try playing the same number sequences on this keyboard.</p>
           <KeyboardNumbered
             keyboardId="kb000Cmajor"
             showAllCircles={true}
@@ -104,8 +104,8 @@ class WhatsAScale extends Component {
             ]}
           />
           <p>
-            It's the same song, it's still definitely "Jingle Bells", but it
-            <em> looks</em> completely different when you use the Eb scale. The
+            The songs <em>sound</em> the same, but they
+            <em> look</em> completely different when you use the Eb scale. The
             mix of black and white keys give the Eb scale a different 'shape'.
             Here are a few other scale 'shapes'. (You don't have to learn these,
             just notice how each one is different)

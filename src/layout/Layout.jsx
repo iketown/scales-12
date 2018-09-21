@@ -12,6 +12,8 @@ import { goToLatestLesson, signInUserAnon } from "../actions/authActions.jsx";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { twelveScales } from "../images";
 import NavBar2 from "./NavBar2";
+import PaperBG from '../images/paperBG.jpg'
+
 class Layout extends Component {
   state = {
     isSignedIn: false,
@@ -87,7 +89,8 @@ class Layout extends Component {
   render() {
     const { children, myUrl, hideNav } = this.props;
     return (
-      <Fragment>
+      <div>
+        <div style={{ backgroundImage: `radial-gradient(white, #ffffffc7, #ffffffc7, #ffffff00), url(${PaperBG})`, height: "100vh", position: 'fixed', top: '0', width: '100vw', zIndex: '-1000' }} />
         <NavBar2 />
         <Container style={{ marginTop: "4rem" }}>
           {/* <Button onClick={this.props.goToLatestLesson}>go 2 latest</Button>
@@ -102,7 +105,7 @@ class Layout extends Component {
           <br />
           <br />
         </Container>
-      </Fragment>
+      </div>
     );
   }
 }
