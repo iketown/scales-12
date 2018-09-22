@@ -25,7 +25,7 @@ class KeysWagons extends Component {
         <p>Don't worry, you'll still get a hint of which shape to play.</p>
 
         <KeyboardDynamicInstructions
-          keyboardId="kb002CarShapes"
+          keyboardId="AllShapes"
           keyboardScale={0.5}
           showAllCircles={false}
           messageInstructions={{

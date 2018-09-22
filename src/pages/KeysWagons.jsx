@@ -26,7 +26,7 @@ class KeysWagons extends Component {
           another quick test. Then we can start mixing them up.
         </p>
         <KeyboardInline
-          keyboardId="kb002CarShapes"
+          keyboardId="WagonShapes"
           keyboardScale={0.5}
           showAllCircles={false}
           messageInstructions={{

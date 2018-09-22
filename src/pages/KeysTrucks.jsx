@@ -25,7 +25,7 @@ class KeysTrucks extends Component {
           same drill, only this time there's <em>nobody in the back seat.</em>
         </p>
         <KeyboardInline
-          keyboardId="kb002CarShapes"
+          keyboardId="TruckShapes"
           keyboardScale={0.5}
           showAllCircles={false}
           messageInstructions={{

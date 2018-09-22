@@ -4,8 +4,8 @@
 
 It's a lot easier than it sounds.
 
-created by Brian Eichenberger in React using create-react-app.
+created by Brian Eichenberger in React using [Create React App](https://github.com/facebookincubator/create-react-app).
 
-[live version](http://www.12scales.com)
+[**link to live version**](http://www.12scales.com)
 
 [@brianeichen](https://twitter.com/brianeichen) on twitter
