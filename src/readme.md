@@ -4,7 +4,7 @@
 
 It's a lot easier than it sounds.
 
-create by Brian Eichenberger in React using create-react-app.
+created by Brian Eichenberger in React using create-react-app.
 
 [live version](http://www.12scales.com)
 
