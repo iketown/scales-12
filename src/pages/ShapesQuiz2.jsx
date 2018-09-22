@@ -113,7 +113,7 @@ const lessonText = {
             <em>handle</em>.
           </li>
           <li>
-            <strong>Line</strong>: hmm. Its a line. 😉
+            <strong>Line</strong>: Don't think too hard.
           </li>
         </ul>
       </div>

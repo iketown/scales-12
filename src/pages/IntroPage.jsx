@@ -26,21 +26,17 @@ export default class IntroPage extends Component {
                 <Item.Header as="h4">This is where it all starts.</Item.Header>
                 <Item.Description>
                   <p>
-                    Major Scales are essential to learn and understand. They are
-                    the <em>building blocks</em> upon which <em>most music</em>{" "}
-                    is based.
+                    Learning Major Scales is essential to making music on the
+                    piano. Scales are the <em>building blocks</em> upon which{" "}
+                    <em>most music</em> is based.
                   </p>
                   <p>
-                    The process of learning major scales in all 12 keys is a
-                    rite of passage for most musicians.
-                  </p>
-                  <p>
-                    However, as a beginning student, Major Scales can seem
-                    daunting. It's a lot of information to memorize. The
-                    keyboard is a well designed system, but the{" "}
-                    <em>learning curve</em> of understanding{" "}
-                    <em>why things are the way they are</em> can be steep enough
-                    to discourage many would-be players from continuing.
+                    As a beginning student, Major Scales can seem daunting. It's
+                    a lot of information to memorize. The keyboard is a well
+                    designed system, but the <em>learning curve</em> of
+                    understanding <em>why things are the way they are</em> can
+                    be steep enough to discourage many would-be players from
+                    continuing.
                   </p>
                   <br />
                 </Item.Description>
@@ -49,26 +45,25 @@ export default class IntroPage extends Component {
                 </Header>
                 <Item.Description>
                   <p>
-                    We're going to skip over note names and key signatures and{" "}
-                    <em>start</em> with. . . you guessed it,{" "}
-                    <strong>The Scales</strong>. Later, if/when you want to
+                    In this short class, we're going to skip over note names and
+                    key signatures and just dive straight into
+                    <strong> The Scales</strong>. This way, when you want to
                     learn more about theory and harmony, you'll simply be
                     attaching names and concepts to things{" "}
-                    <em>you already know how to play</em>. The early advantage
-                    you'll get from knowing these 12 scales will make those
-                    later lessons easier, and far more <em>meaningful</em>.
+                    <em>you already know how to play</em>. Those later lessons
+                    will be easier, and far more <em>meaningful</em>.
                   </p>
                   <p>
-                    Remember learning how to tie your shoes? Did you learn about
-                    the <em>doubly slipped reef knot</em>, followed by basic{" "}
-                    <em>half hitch</em> theory and use cases? Nope. It was all
+                    Remember learning how to tie your shoes? Did you open a big
+                    book of sailing knots, then start with the{" "}
+                    <em>doubly slipped reef knot</em>, followed by basic{" "}
+                    <em>half hitch</em> theory and use cases? Nope! It was
+                    probably
                     <em> bunny ears</em>, then the{" "}
                     <em>bunny goes around the tree and back in the hole</em>.
-                    You learn the <em>how</em> before you learn the <em>why</em>
-                    .
                   </p>
                   <p>
-                    These lesson are more of the{" "}
+                    These lessons are more of the{" "}
                     <em>bunny goes around the tree </em>
                     variety. They're not your usual beginner music lessons.
                     They're a short cut. A hack.

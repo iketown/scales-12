@@ -92,19 +92,19 @@ export default class TheShapes extends Component {
             </p>
             <p>
               <CheckIcon />
-              We'll visualize each scale as a series of{" "}
-              <strong>eight dots</strong>, each with its own unique pattern of{" "}
-              <strong>UP</strong> and <strong>DOWN</strong> dots.
-            </p>
-
-            <p>
-              <CheckIcon />
-              Each dot represents a note in the scale.
+              We'll convert those <strong>BLACK</strong> and{" "}
+              <strong>WHITE</strong> keys into <strong>UP</strong> and{" "}
+              <strong>DOWN</strong> dots.
             </p>
             <p>
               <CheckIcon />
               <strong>UP</strong> dots are <strong>black</strong> keys, and
               <strong> DOWN</strong> dots are <strong>white</strong> keys.
+            </p>
+            <p>
+              <CheckIcon />
+              Four dots make a <em>shape</em>, and two <em>shapes</em> make a
+              scale.
             </p>
             <p>
               <CheckIcon />
@@ -118,8 +118,7 @@ export default class TheShapes extends Component {
               >
                 Click Here
               </Button>{" "}
-              to split each scale in half, so each scale is made up of two
-              "shapes."
+              to see how each scale splits into two <em>shapes</em>.
             </p>
           </Item.Description>
         </Item>

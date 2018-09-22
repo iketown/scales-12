@@ -27,11 +27,13 @@ class WhatsAScale extends Component {
           </p>
           <p>
             Have you ever sang <em>'Happy Birthday To You...'</em> in a group of
-            people, and even if each individual person sounds ok‍, all together
-            it sounds terrible? Usually, that's because different people are singing in
-            different <em>keys</em>. That is, they're using different{" "}
-            <strong>Major Scales</strong>.
+            people, and it just sounded terrible? Even if each individual person
+            sounds pretty ok‍, when everyone sounds terrible together, it's
+            probably because they're all singing in different keys. That is,
+            they're using different <strong>Major Scales</strong>. (One person
+            is singing in C, while another is singing in F, etc)
           </p>
+          <p>Let's see what that means.</p>
           <p>
             There are 8 notes in the Major Scale. We'll number them 1 through 8.
             Here is a <strong>'C Major Scale'</strong>. (all white keys)
@@ -46,7 +48,6 @@ class WhatsAScale extends Component {
                 bottomKey: "C1",
                 topKey: "E2",
                 scaleNumbers: fullScales.C
-                // correctAnswer: "333|333|35123"
               }
             ]}
           />
@@ -105,10 +106,10 @@ class WhatsAScale extends Component {
           />
           <p>
             The songs <em>sound</em> the same, but they
-            <em> look</em> completely different when you use the Eb scale. The
-            mix of black and white keys give the Eb scale a different 'shape'.
-            Here are a few other scale 'shapes'. (You don't have to learn these,
-            just notice how each one is different)
+            <em> look</em> completely different when you use a different scale.
+            The mix of black and white keys give the Eb scale a different
+            'shape'. Here are a few other scale 'shapes'. (You don't have to
+            learn these, just notice how each one is different)
           </p>
           <Card.Group centered>
             <ScaleCard src={AmajorScale} title={"A Major"} />
@@ -119,17 +120,19 @@ class WhatsAScale extends Component {
           <br />
 
           <p>
-            Most people don't realize that there are also{" "}
-            <strong>patterns in the way the scales look</strong>. They are not
-            just random combinations of white and black keys.
+            Most people don't realize that there are also patterns in the way
+            the scales <strong>look</strong>. They may look like random patterns
+            of black and white keys, but if you dig a little deeper, there is an
+            underlying structure.
           </p>
           <p>
-            This is where most students go to the practice room and start
-            memorizing.
+            Most students don't even know there is a structure. The patterns
+            aren't obvious (until you see them, that is.) Most students just go
+            to the practice room and start memorizing.
           </p>
           <p>
-            We're sneaking out the side door though. There's a better way to do
-            it.
+            This is where we depart from the path of 'most students.' There is a
+            hidden short cut to our common destination. There is a better way.
           </p>
         </Container>
       </Layout>

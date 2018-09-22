@@ -72,8 +72,8 @@ const shapesArr = [
     description: (
       <div>
         <p>
-          Yep. its just a straight line. You can do this. The{" "}
-          <ShapeName>LINE</ShapeName> is ALL white keys.
+          Yep. its just a straight line. The <ShapeName>LINE</ShapeName> is ALL
+          white keys. Not super exciting.
         </p>
         <hr />
         <DownUp>

@@ -60,19 +60,26 @@ export default class ABetterWay extends Component {
           knowing any of the note names.
         </p>
 
-        <Card.Group>
+        <Card.Group centered>
           <Card color="red">
             <Image src={EMajorConventional} />
             <Card.Content>
               <Card.Header>The Hard Way</Card.Header>
               <Card.Meta>E Major Scale</Card.Meta>
               <Card.Description>
-                Sharps (#s) get assigned in this order:{" "}
-                <strong>F#, C#, G#, D#, A#, E#, B#</strong>. E Major Scale has
-                four sharps, so we use the first four from that list:
-                <strong> F#, C#, G# </strong>
-                and <strong>D#</strong>. So when we get to any of those keys, we
-                substitute the 'sharped' key in for the natural key. (
+                <p>
+                  Sharps (#s) get assigned in this order:{" "}
+                  <strong>F#, C#, G#, D#, A#, E#, B#</strong>.
+                </p>{" "}
+                <p>
+                  The E Major Scale has four sharps, so we use the first four
+                  from that list:
+                  <strong> F#, C#, G# </strong>
+                  and <strong>D#</strong>.
+                </p>{" "}
+                So when we get to any of those keys (<strong>F</strong>,{" "}
+                <strong>C</strong>, <strong>G</strong> & <strong>D</strong>
+                ), we substitute the 'sharped' key in for the natural key. (
                 <strong>F </strong>
                 becomes <strong>F#</strong>, etc)
               </Card.Description>
@@ -117,8 +124,15 @@ export default class ABetterWay extends Component {
         </p>
         <p />
         <p>
-          In this class we'll first learn the shapes, then we'll learn where
-          they go, and finally how to put them together to form a scale.
+          So we're just going to cover three concepts:
+          <ul>
+            <li>
+              What <strong>The Shapes</strong> are
+            </li>
+            <li>Where they go</li>
+            <li>How to put them together</li>
+          </ul>
+          First up, The Shapes.
         </p>
       </Layout>
     );

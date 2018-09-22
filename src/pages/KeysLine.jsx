@@ -20,7 +20,7 @@ class KeysLine extends Component {
         <h1>The Line</h1>
         <p>
           Now we'll finally put some shapes on the keyboard, starting with the
-          easiest and straightest shape of them all, <strong>the LINE</strong>.
+          easiest and boringest shape of them all, <strong>the LINE</strong>.
         </p>
         <p>
           There are only two keys that use a LINE shape, so this will be a

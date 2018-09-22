@@ -33,7 +33,7 @@ export default class TheEnd extends Component {
           about the course, so I can continue to improve it.
         </p>
         <SocialDiv>
-          <SocialIcon url="http://twitter.com/ike_burger" />
+          <SocialIcon url="http://twitter.com/brianeichen" />
           <SocialIcon url="https://www.instagram.com/brianeichenberger/" />
           <SocialIcon url="https://www.facebook.com/brian.eichenberger" />
           <SocialIcon url="mailto:ike76@me.com" />
