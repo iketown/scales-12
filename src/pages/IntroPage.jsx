@@ -125,7 +125,7 @@ export default class IntroPage extends Component {
             learning your multiplication tables.
           </p>
           <p>But we're going to do it the EASY way.</p>
-          <p>So what is a scale anyways?</p>
+          <p>So what is a scale?</p>
         </Container>
       </Layout>
     );

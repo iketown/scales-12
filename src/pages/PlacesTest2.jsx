@@ -16,6 +16,7 @@ export default class PlacesTest2 extends Component {
         <h1>Places Test 2</h1>
 
         <KeyboardInline
+          keyboardId="places2"
           answers={shapePickerAnswers}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"

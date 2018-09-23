@@ -12,7 +12,7 @@ import { goToLatestLesson, signInUserAnon } from "../actions/authActions.jsx";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { twelveScales } from "../images";
 import NavBar2 from "./NavBar2";
-import PaperBG from '../images/paperBG.jpg'
+import PaperBG from "../images/paperBG.jpg";
 
 class Layout extends Component {
   state = {
@@ -73,7 +73,7 @@ class Layout extends Component {
             to={indexes.nextLesson.url}
             icon
             labelPosition="right"
-            primary={nextButtonDisabled === false}
+            primary={!nextButtonDisabled}
             basic={nextButtonDisabled}
             onClick={this.handleNextClicked}
             disabled={nextButtonDisabled}
@@ -90,7 +90,16 @@ class Layout extends Component {
     const { children, myUrl, hideNav } = this.props;
     return (
       <div>
-        <div style={{ backgroundImage: `radial-gradient(white, #ffffffc7, #ffffffc7, #ffffff00), url(${PaperBG})`, height: "100vh", position: 'fixed', top: '0', width: '100vw', zIndex: '-1000' }} />
+        <div
+          style={{
+            backgroundImage: `radial-gradient(white, #ffffffc7, #ffffffc7, #ffffff00), url(${PaperBG})`,
+            height: "100vh",
+            position: "fixed",
+            top: "0",
+            width: "100vw",
+            zIndex: "-1000"
+          }}
+        />
         <NavBar2 />
         <Container style={{ marginTop: "4rem" }}>
           {/* <Button onClick={this.props.goToLatestLesson}>go 2 latest</Button>

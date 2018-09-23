@@ -25,7 +25,7 @@ const KeyboardDiv = styled.div`
   position: relative;
 `;
 const ButtonDiv = styled.div`
-  margin-top: 2rem;
+  // margin-top: 2rem;
 `;
 
 const staggerDuration = 50;
@@ -123,8 +123,6 @@ class Keyboard extends Component {
           return clearInterval(playNotes);
         }
         pop();
-        console.log("adding:", correctNotes[nowPlayingIndex]);
-
         this.setState(
           {
             notesToShow: [
@@ -199,26 +197,10 @@ class Keyboard extends Component {
     } = this.state;
     return (
       <div style={{ position: "relative", textAlign: "center" }}>
-        <ButtonDiv>
-          <CheckBoxes
-            totalAnswersCount={answers.length}
-            currentIndex={this.state.questionIndex}
-          />
-          {["Wagon", "Line", "Truck", "Car"].map(shape => {
-            let style;
-            if (wronglyClickedButtons.includes(shape)) {
-              style = { color: "red", basic: true };
-            }
-            if (showShapeBackground && shape === correctAnswer) {
-              style = { primary: true };
-            }
-            return (
-              <Button onClick={this.buttonClick(shape)} {...style}>
-                {shape}
-              </Button>
-            );
-          })}
-        </ButtonDiv>
+        <CheckBoxes
+          totalAnswersCount={answers.length}
+          currentIndex={this.state.questionIndex}
+        />
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {
@@ -272,6 +254,25 @@ class Keyboard extends Component {
           )}
           {this.state.finished && <FinishedOverlay correct />}
         </KeyboardDiv>
+        <ButtonDiv>
+          {["Wagon", "Line", "Truck", "Car"].map(shape => {
+            let style = { primary: true };
+            if (wronglyClickedButtons.includes(shape)) {
+              style = { color: "red", basic: true };
+            }
+            if (showShapeBackground && shape === correctAnswer) {
+              style = { color: "green" };
+            }
+            if (showShapeBackground && shape !== correctAnswer) {
+              style = { basic: true, color: "grey", disabled: true };
+            }
+            return (
+              <Button onClick={this.buttonClick(shape)} {...style}>
+                {shape}
+              </Button>
+            );
+          })}
+        </ButtonDiv>
       </div>
     );
   }

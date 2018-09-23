@@ -64,7 +64,7 @@ export default class ABetterWay extends Component {
           <Card color="red">
             <Image src={EMajorConventional} />
             <Card.Content>
-              <Card.Header>The Hard Way</Card.Header>
+              <Card.Header>The Conventional Way</Card.Header>
               <Card.Meta>E Major Scale</Card.Meta>
               <Card.Description>
                 <p>
@@ -108,7 +108,7 @@ export default class ABetterWay extends Component {
         </p>
         <p>
           Later, when you already know the shape of an E major scale, you wont
-          even have to think "Car Car." Youll just think "E Major." At that
+          even have to think "Car Car," you'll just think "E Major." At that
           point, learning which notes are sharp will be a simple task; like
           learning <em>the name</em> of a road that you already use all the
           time.
@@ -124,10 +124,10 @@ export default class ABetterWay extends Component {
         </p>
         <p />
         <p>
-          So we're just going to cover three concepts:
+          So we're going to cover three concepts:
           <ul>
             <li>
-              What <strong>The Shapes</strong> are
+              <strong>The Shapes</strong>
             </li>
             <li>Where they go</li>
             <li>How to put them together</li>

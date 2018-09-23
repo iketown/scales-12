@@ -35,13 +35,13 @@ class SignUpInterrupt extends Component {
                     <p>There is plenty of good stuff ahead in this course</p>
                     <p>Please, take a second and sign up.</p>
                     <ul>
-                      <li>It's free</li>
-                      <li>Its awesome.</li>
+                      <li>It's free.</li>
+                      <li>It's awesome.</li>
                       <li>You can track your progress and take notes.</li>
                     </ul>
                   </div>
                   <p>
-                    already have an account?{" "}
+                    Already have an account?{" "}
                     <Button onClick={this.handleSignIn}>Sign In</Button>
                   </p>
                 </StyledBox>

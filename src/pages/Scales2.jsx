@@ -19,7 +19,7 @@ export default class Scales1 extends Component {
         </Header>
 
         <p>
-          now, we'll try it out with some help before we hit the final test:
+          Now, we'll try it out with some help before we hit the final test:
         </p>
         <p>
           After correctly playing the first shape, you'll see the skipped key
@@ -130,7 +130,7 @@ const shapePickerAnswers = [
     shape: "Line",
     correctAnswer: fullScales.G,
     scaleShapes: scaleShapes2.G,
-    ...Cposition,
+    ...FpositionExtended,
     keyToSkip: "Eb2"
   },
   {

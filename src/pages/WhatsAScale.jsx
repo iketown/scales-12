@@ -22,8 +22,8 @@ class WhatsAScale extends Component {
         <Container>
           <p>
             The Major Scale is a collection of notes which are related to each
-            other in a way that gives your ear an idea of <em>where</em> the
-            song is.
+            other in a way that gives your ear an idea of <em>where</em> a song
+            is.
           </p>
           <p>
             Have you ever sang <em>'Happy Birthday To You...'</em> in a group of
@@ -105,7 +105,7 @@ class WhatsAScale extends Component {
             ]}
           />
           <p>
-            The songs <em>sound</em> the same, but they
+            The songs <em>sound</em> right, but they
             <em> look</em> completely different when you use a different scale.
             The mix of black and white keys give the Eb scale a different
             'shape'. Here are a few other scale 'shapes'. (You don't have to

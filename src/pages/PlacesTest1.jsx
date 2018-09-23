@@ -14,15 +14,10 @@ export default class PlacesTest1 extends Component {
         nextButtonDisabled={this.state.nextButtonDisabled}
       >
         <h1>Places Test</h1>
-
         <p>
-          Next we'll do a different kind of test. When you see the{" "}
-          <StarterIcon /> on the keyboard, click the button with the
-          corresponding SHAPE.{" "}
-        </p>
-        <p>
-          Remember the freeway. CARS on the right, then TRUCKS, then one LINE.
-          And the extra lanes for WAGONS on the extra-wide freeway.
+          Next we'll do a different kind of test. Instead of playing keys, when
+          you see the <StarterIcon /> on the keyboard, click the button below
+          the keyboard with the corresponding SHAPE.
         </p>
         <KeyboardShapePicker
           answers={shapePickerAnswers}

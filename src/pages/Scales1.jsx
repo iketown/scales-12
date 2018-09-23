@@ -17,49 +17,56 @@ export default class Scales1 extends Component {
       <Layout myUrl={this.props.match.path}>
         <Header as="h2">
           <Header.Content>The Scales</Header.Content>
-          <Header.Subheader>finally</Header.Subheader>
+          <Header.Subheader>You're almost there!</Header.Subheader>
         </Header>
 
-        <p>You're almost there! </p>
-        <h3>so far, we've learned:</h3>
+        <h3>So far, we've learned:</h3>
         <ul>
           <li>Four different shapes (Line, Car, Truck, Wagon)</li>
           <li>How to play each shape on the keyboard</li>
-          <li>Which shape "belongs" to each key.</li>
+          <li>
+            Which shape <em>belongs</em> to each key.
+          </li>
         </ul>
-        <h3>where's the rest?</h3>
+        <h3>Where's the rest?</h3>
         <p>
           We're only playing four notes at a time, and a Major Scale is made up
           of <em>EIGHT</em> notes. 🤨
         </p>
         <p>
-          To build a full scale, you play <NN num={1} /> <NN num={2} />
-          {"  "}
-          <NN num={3} />
-          <NN num={4} /> of the 1st shape, then <Orange>skip</Orange> a key,
-          then start a new shape on the next key. You remember which shape goes
-          with which key, right? If not, you can{" "}
-          <Link to="/places_1">
-            <strong>go back and review</strong>
-          </Link>{" "}
-          .
+          Remember when we said you only have to remember the{" "}
+          <strong>FIRST</strong> shape?
         </p>
+        <p>
+          Here's how you figure out what the <strong>SECOND</strong> shape is,
+          so you can make a full scale.
+        </p>
+        <p>
+          <ul>
+            <li>
+              First, you play <NN num={1} /> <NN num={2} />
+              {"  "}
+              <NN num={3} />
+              <NN num={4} /> of the FIRST shape.
+            </li>
+            <li>
+              Then <Orange>skip</Orange> a key.
+            </li>
+            <li>
+              The very next key starts the <strong>SECOND</strong> shape. (you
+              remember which shape goes with which key, right?)
+            </li>
+          </ul>
+        </p>
+        <h3>Let's see how that looks.</h3>
         <p>
           In this next image, you would:
           <ul>
+            <li>play the 1st shape (truck)</li>
             <li>
-              play the 1st shape (truck) <NN num={1} /> <NN num={2} />
-              {"  "}
-              <NN num={3} />
-              <NN num={4} />
+              <Orange>skip</Orange> a key
             </li>
-            <li>skip a key</li>
-            <li>
-              play the 2nd shape (car) <NN num={5} /> <NN num={6} />
-              {"  "}
-              <NN num={7} />
-              <NN num={8} />
-            </li>
+            <li>play the 2nd shape (car)</li>
           </ul>
         </p>
         <Step.Group size="mini">
@@ -90,6 +97,7 @@ export default class Scales1 extends Component {
         <br />
         <br />
         <br />
+        <h3>Get it?</h3>
         <p>
           Here's another example, but this time we'll need to 'skip' a white key
           instead of a black key.

@@ -41,6 +41,7 @@ export default class Scales1 extends Component {
           You got this!
         </p>
         <KeyboardInline
+          keyboardId="Scales3"
           answers={shapePickerAnswers}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"
@@ -144,7 +145,7 @@ const shapePickerAnswers = [
     shape: "Line",
     correctAnswer: fullScales.G,
     scaleShapes: scaleShapes2.G,
-    ...Cposition,
+    ...FpositionExtended,
     keyToSkip: "Eb2"
   },
   {

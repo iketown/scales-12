@@ -15,8 +15,12 @@ class Places extends Component {
           which shape goes where.
         </p>
         <p>
-          First think of the keyboard in two sections: The{" "}
-          <strong>3-black-key</strong> section, and the{" "}
+          Each key starts its own shape. That is, if you start on a WAGON key,
+          you play a WAGON shape.
+        </p>
+        <p>
+          There is another pattern here. First think of the keyboard in two
+          sections: The <strong>3-black-key</strong> section, and the{" "}
           <strong>2-black-key</strong> section.{" "}
         </p>
         <p>
@@ -27,44 +31,46 @@ class Places extends Component {
         <Image size="medium" src={splitKeyboardAnimation} />
         <br />
         <p>
-          Starting from the right side of each of those sections, you have 2
-          Cars, 2 Trucks, and a Line.
+          As you can see in the following image, the{" "}
+          <strong>3-black-key</strong> section is the same as the{" "}
+          <strong>2-black-key</strong> section, except with two wagons attached
+          on the left side.
         </p>
         <p>
-          You can picture it like a huge freeway, you're looking down from a
-          birds-eye view.
+          You can picture it like a freeways, and you're looking down from a
+          birds-eye view. It's a sort of backwards freeway though, because the
+          fastest vehicles are on the right.
         </p>
-        <p>From right to left:</p>
+
         <ul>
           <li>
-            <strong>Cars</strong> in the right lanes, driving slowly.
+            <strong>Cars</strong> zooming in the right two lanes.
           </li>
           <li>
-            <strong>Trucks</strong> in the left lanes, passing the cars. (Super
-            fast trucks? 🤷🏼‍ )
+            Next come the big semi <strong>Trucks</strong>.
           </li>
           <li>
-            Then there's the <strong>Line</strong> on the pavement...
+            Then there's the <strong>Line</strong> painted on the pavement...
           </li>
-          <li>For the 2-black-key section, that's it!</li>
         </ul>
 
         <Image size="medium" src={CarTruckLineWagonAnimation} />
         <ul>
           <li>
-            on the larger (3-black-key) highway, there are two extra lanes, made
-            especially for people to pull their kids in red Radio Flyer wagons.
+            On the larger (3-black-key) highway, there are two extra slow lanes,
+            reserved for use only by kids in those red radio-flyer wagons. It's
+            not a super safe freeway.
           </li>
         </ul>
         <p>
           Take a minute to look that over. Remember where each shape goes? Close
           your eyes and think through each lane, from right to left:{" "}
-          <strong>Cars</strong>,<strong>Trucks</strong>, a <strong>Line</strong>
-          . and when it's a <em>really</em> big 'freeway', there are two extra
-          lanes for
+          <strong>Cars</strong>,<strong> Trucks</strong>, a{" "}
+          <strong>Line</strong>. Sometimes, there are two extra lanes for
           <strong> Wagons </strong>
           on the left.
         </p>
+        <p>Ready for the quiz?</p>
       </Layout>
     );
   }

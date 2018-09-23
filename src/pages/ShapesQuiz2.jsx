@@ -98,9 +98,9 @@ const lessonText = {
     head: <h1>Shapes Quiz 2</h1>,
     body: (
       <div>
-        <p>This time we'll mix up regular and 'flipped' shapes.</p>
+        <p>This time we'll mix up regular and flipped shapes.</p>
         <p>Concentrate. You got this.</p>
-        <ul>
+        {/* <ul>
           <li>
             <strong>Car</strong>: Think <em>front and back seat</em>.
           </li>
@@ -115,13 +115,13 @@ const lessonText = {
           <li>
             <strong>Line</strong>: Don't think too hard.
           </li>
-        </ul>
+        </ul> */}
       </div>
     )
   },
   outtro: {
     head: <h1>Shapes Quiz 2</h1>,
-    body: <p>You've got it. Onward!</p>
+    body: <p>Nice Work!</p>
   }
 };
 

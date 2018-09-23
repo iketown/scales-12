@@ -86,7 +86,7 @@ export default class TheShapes extends Component {
           <Item.Description>
             <p>
               <CheckIcon />
-              Each Major Scale is a series of <strong>eight keys</strong>, with
+              Each Major Scale is a series of <strong>eight keys</strong> with
               its own unique pattern of <strong>BLACK</strong> and{" "}
               <strong>WHITE</strong> keys.
             </p>
@@ -137,7 +137,7 @@ export default class TheShapes extends Component {
           ))}
         </DotCardsGrid>
 
-        <p>(Click on any of those shapes to hear them played.)</p>
+        <p>(Click on any of those shapes to hear them.)</p>
 
         <p>
           The best part of the 12scales system is after you split the scales up
@@ -188,12 +188,12 @@ export default class TheShapes extends Component {
         <hr />
         <Header as="h2">
           <Header.Content>It gets easier</Header.Content>
-          <Header.Subheader>the farther you go</Header.Subheader>
+          <Header.Subheader>the further you go</Header.Subheader>
         </Header>
         <p>
           We've already cut the complexity down by a lot. Instead of remembering
           <strong> eight individual notes</strong> for each of the 12 scales,
-          we'll just need to remember which two shapes (of the four
+          we'll only need to remember which two shapes (of the four
           possibilities) make up each scale.
         </p>
         <p>
@@ -203,6 +203,7 @@ export default class TheShapes extends Component {
         <p>
           <em>but it gets even easier than that.</em>
         </p>
+        <p />
         <p>
           Look again at our scale chart below. Notice how the{" "}
           <strong>2nd shape of the C scale</strong> <em>looks and sounds</em>{" "}
@@ -274,10 +275,7 @@ export default class TheShapes extends Component {
             FIRST SHAPE
           </Button>
         </p>
-        <p>
-          It gets even easier than that, but before we get ahead of ourselves,
-          let's dig in and learn those four shapes.
-        </p>
+        <p>Let's dig in and learn those four shapes.</p>
       </Layout>
     );
   }

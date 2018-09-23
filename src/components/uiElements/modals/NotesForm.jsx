@@ -13,8 +13,7 @@ class Notes extends Component {
     const myNotes = (fsNotes && fsNotes[slug]) || "";
     console.log("myNotes", myNotes);
     this.props.initialize({
-      notes: myNotes.text,
-      sendToAdmin: myNotes.sendToAdmin
+      notes: myNotes.text
     });
   }
   appendAndSubmit = values => {
@@ -23,7 +22,7 @@ class Notes extends Component {
     takeNotes(valuesWithSlug);
   };
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, pristine } = this.props;
     return (
       <Form
         size="large"
@@ -42,7 +41,7 @@ class Notes extends Component {
             />
             send to admin
           </label> */}
-          <Button fluid size="large" color="teal">
+          <Button fluid size="large" color="teal" disabled={pristine}>
             Save
           </Button>
         </Segment>

@@ -7,8 +7,7 @@ export const takeNotes = values => (dispatch, getState, { getFirebase }) => {
   const userProfile = db.collection("users").doc(uid);
   userProfile
     .update({
-      [`notes.${values.slug}.text`]: values.notes,
-      [`notes.${values.slug}.sendToAdmin`]: values.sendToAdmin || false
+      [`notes.${values.slug}.text`]: values.notes
     })
     .then(() => {
       dispatch(closeModal());

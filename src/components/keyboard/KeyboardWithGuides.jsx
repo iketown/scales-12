@@ -16,6 +16,7 @@ import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
 import CheckBoxes from "./CheckBoxes.jsx";
 import { carPic, truckPic, linePic, wagonPic } from "../../images/index";
+import FaceUnderlay from "./FaceUnderlay.jsx";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -323,6 +324,7 @@ class Keyboard extends Component {
           </Step.Group>
         </div>
         <KeyboardDiv>
+          <FaceUnderlay show={topIsWrong || bottomIsWrong} />
           <PoseGroup preEnterPose="before">
             {this.state.keyGroups.map((key, i) => {
               const sharedProps = {

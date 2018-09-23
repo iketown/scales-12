@@ -97,7 +97,7 @@ const QuestionCard = ({
             if (questionIndex === i) {
               return (
                 <QuestionSlider key={i}>
-                  <h1>{clue}</h1>
+                  <h1 style={{ color: "dodgerblue" }}>{clue}</h1>
                 </QuestionSlider>
               );
             } else {
