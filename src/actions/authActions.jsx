@@ -1,6 +1,7 @@
 import { closeModal } from "../components/uiElements/modals/modalActions.jsx";
 import { SubmissionError } from "redux-form";
 import { push } from "connected-react-router";
+import { finishPage, completeChapterQuiz } from "./userScoreActions";
 
 export const SIGN_IN_USER = "SIGN_IN_USER";
 export const SIGN_OUT_USER = "SIGN_OUT_USER";
@@ -24,12 +25,19 @@ export const signInUser = creds => {
   };
 };
 
-export const signInUserAnon = () => {
+export const signInUserAnon = finishedPageObject => {
+  console.log("finished page obj", finishedPageObject);
   return async (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     firebase.auth().onAuthStateChanged(user => console.log("user", user));
     try {
-      await firebase.auth().signInAnonymously();
+      await firebase
+        .auth()
+        .signInAnonymously()
+        .then(res => {
+          console.log("response from sign in anon", res);
+          dispatch(finishPage(finishedPageObject));
+        });
     } catch (error) {
       console.log("anon signin error", error);
     }
@@ -44,7 +52,7 @@ export const registerUser = user => async (
   const firebase = getFirebase();
   const firestore = getFirestore();
   const state = getState();
-  const { email, password, displayName, city } = user;
+  const { email, password, displayName, city, quizId } = user;
   let finishedLessons = [];
   if (state.firebase.profile && state.firebase.profile.finishedLessons) {
     finishedLessons = [...state.firebase.profile.finishedLessons];
@@ -71,6 +79,7 @@ export const registerUser = user => async (
     };
     await firestore.set(`users/${currentUser.uid}`, { ...newUser });
     dispatch(closeModal());
+    dispatch(completeChapterQuiz({ quizId, displayName, city }));
   } catch (error) {
     console.log("error registering", error);
     throw new SubmissionError({ _error: error.message });

@@ -45,7 +45,7 @@ class Layout extends Component {
     const finishedPageObject = { pageUrl: myUrl, chapter, slug };
     const untracked = this.props.auth.isEmpty && this.props.auth.isLoaded;
     if (untracked) {
-      this.props.dispatch(signInUserAnon());
+      this.props.dispatch(signInUserAnon(finishedPageObject));
     } else {
       this.props.dispatch(finishPage(finishedPageObject));
     }

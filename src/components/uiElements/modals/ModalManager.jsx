@@ -5,12 +5,14 @@ import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
 import NotesModal from "./NotesModal.jsx";
 import SignUpInterrupt from "./SignUpInterrupt.jsx";
+import HistoryInterrupt from "./HistoryInterrupt";
 
 const modalLookup = {
   LoginModal: LoginModal,
   RegisterModal: RegisterModal,
   SignUpInterrupt: SignUpInterrupt,
-  Notes: NotesModal
+  Notes: NotesModal,
+  HistoryInterrupt: HistoryInterrupt
 };
 
 const ModalManager = ({ currentModal, closeModal }) => {

@@ -35,8 +35,6 @@ export const userScoreReducer = (state = initialState, action) => {
       const oldFinishedPage = state.finishedPages.find(
         page => page.pageUrl === pageUrl
       );
-      console.log("action", action);
-      console.log("old finished page", oldFinishedPage);
       let newFinishedPage;
       if (oldFinishedPage) {
         // just add the new timestamp to 'timestamps' array

@@ -1,5 +1,6 @@
 import { db } from "../utils/firebase";
 import firebase from "../utils/firebase";
+import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 
 export const COMPLETE_CHAPTER_QUIZ = "COMPLETE_CHAPTER_QUIZ";
 export const completeChapterQuiz = ({ quizId, displayName, city }) => (
@@ -11,6 +12,9 @@ export const completeChapterQuiz = ({ quizId, displayName, city }) => (
   const firestore = getFirestore();
   const authenticated =
     firebase.auth().currentUser && !firebase.auth().currentUser.isAnonymous;
+  if (!authenticated) {
+    return dispatch(openModal("HistoryInterrupt", { quizId }));
+  }
   const uid = authenticated && firebase.auth().currentUser.uid;
   console.log("authenticated?", authenticated);
   if (authenticated) {
@@ -75,7 +79,6 @@ export const finishPage = ({ pageUrl, chapter, slug }) => async (
         },
         { merge: true }
       )
-      .then(res => console.log("response from fs", res))
       .catch(err => console.log("update error", err));
   }
 

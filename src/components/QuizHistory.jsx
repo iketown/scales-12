@@ -45,7 +45,6 @@ const QuizHistory = ({ quizId, completedQuizzes }) => {
     filteredQuizHistory = Object.values(filteredObj).sort(
       (a, b) => b.timestamp.seconds - a.timestamp.seconds
     );
-    console.log("filtered Quiz History", filteredQuizHistory);
   }
   const compList =
     !isLoaded(completedQuizzes) || !filteredQuizHistory ? (

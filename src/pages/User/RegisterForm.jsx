@@ -17,11 +17,17 @@ const RegisterForm = ({
   registerUser,
   error,
   invalid,
-  submitting
+  submitting,
+  quizId
 }) => {
+  const addQIandSubmit = values => {
+    const valuesWithQI = { ...values, quizId };
+    console.log("values qu", valuesWithQI);
+    registerUser(valuesWithQI);
+  };
   return (
     <div>
-      <Form size="large" onSubmit={handleSubmit(registerUser)}>
+      <Form size="large" onSubmit={handleSubmit(addQIandSubmit)}>
         <Segment>
           <Field
             name="displayName"
