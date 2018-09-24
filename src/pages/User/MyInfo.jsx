@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Moment from "react-moment";
-import { Card, Button, Form } from "semantic-ui-react";
+import { Card, Button, Form, Icon } from "semantic-ui-react";
 import MyInfoForm from "./MyInfoForm.jsx";
 
 class MyInfo extends Component {
@@ -16,6 +16,9 @@ class MyInfo extends Component {
   };
   render() {
     const { profile, handleSubmit } = this.props;
+    const nameBool =
+      profile.displayName && profile.displayName.trim().length > 0;
+    const cityBool = profile.city && profile.city.trim().length > 0;
     return (
       <div>
         <Card>
@@ -28,7 +31,12 @@ class MyInfo extends Component {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <span>
-                      {profile.displayName}{" "}
+                      {(nameBool && profile.displayName) || (
+                        <Icon
+                          name="question circle"
+                          onClick={this.toggleForm}
+                        />
+                      )}{" "}
                       <span
                         style={{
                           fontWeight: 200,
@@ -38,7 +46,12 @@ class MyInfo extends Component {
                       >
                         from
                       </span>{" "}
-                      {profile.city}
+                      {(cityBool && profile.city) || (
+                        <Icon
+                          name="question circle"
+                          onClick={this.toggleForm}
+                        />
+                      )}
                     </span>
                     <Button size="tiny" onClick={this.toggleForm}>
                       edit

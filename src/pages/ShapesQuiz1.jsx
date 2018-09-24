@@ -16,6 +16,7 @@ import {
   startChapterQuiz
 } from "../actions/userScoreActions";
 import Layout from "../layout/Layout";
+import QuizHistory from "../components/QuizHistory.jsx";
 
 const testQuestions = [
   {
@@ -116,6 +117,7 @@ export class ShapesQuiz1 extends Component {
           handleStartedQuiz={this.handleStartedQuiz}
           lessonText={lessonText}
         />
+        <QuizHistory />
       </Layout>
     );
   }
