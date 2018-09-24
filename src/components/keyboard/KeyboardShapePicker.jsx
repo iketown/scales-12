@@ -12,6 +12,7 @@ import { showCheaterButton } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
 import CheckBoxes from "./CheckBoxes.jsx";
+import CheaterButton from "../uiElements/CheaterButton";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -273,6 +274,7 @@ class Keyboard extends Component {
             );
           })}
         </ButtonDiv>
+        <CheaterButton onClick={this.finishThisTest} />
       </div>
     );
   }

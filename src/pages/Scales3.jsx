@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Header } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { completeChapterQuiz } from "../actions/userScoreActions";
+
 import { Link } from "react-router-dom";
 import Layout from "../layout/Layout";
 import { StarterIcon } from "../components/uiElements/index";
@@ -9,10 +12,28 @@ import {
 } from "../components/keyboard/keyboardShapes";
 
 import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
-export default class Scales1 extends Component {
+class Scales2 extends Component {
+  state = {
+    quizCompleted: false
+  };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Scales 2";
   render() {
     return (
-      <Layout myUrl={this.props.match.path}>
+      <Layout
+        myUrl={this.props.match.path}
+        quizId={this.quizId}
+        nextButtonDisabled={!this.state.quizCompleted}
+      >
         <Header as="h2">
           <Header.Content>The Scales</Header.Content>
           <Header.Subheader>part trois</Header.Subheader>
@@ -41,13 +62,11 @@ export default class Scales1 extends Component {
           You got this!
         </p>
         <KeyboardInline
-          keyboardId="Scales3"
+          keyboardId={this.quizId}
           answers={shapePickerAnswers}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"
-          callbackWhenFinished={() =>
-            this.setState({ nextButtonDisabled: false })
-          }
+          callbackWhenFinished={this.handleCompletedQuiz}
           messageInstructions={{
             // icon: "question circle",
             header: "Shapes on Keyboard",
@@ -165,3 +184,14 @@ const shapePickerAnswers = [
     keyToSkip: "Eb2"
   }
 ];
+
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(Scales2);

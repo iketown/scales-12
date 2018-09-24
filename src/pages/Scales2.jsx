@@ -2,17 +2,37 @@ import React, { Component } from "react";
 import { Header } from "semantic-ui-react";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
+import { connect } from "react-redux";
+import { completeChapterQuiz } from "../actions/userScoreActions";
 import { StarterIcon } from "../components/uiElements/index";
 import {
   fullScales,
   scaleShapes2
 } from "../components/keyboard/keyboardShapes";
-
 import KeyboardWithGuides from "../components/keyboard/KeyboardWithGuides";
-export default class Scales1 extends Component {
+
+class Scales1 extends Component {
+  state = {
+    quizCompleted: false
+  };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Scales 1";
   render() {
     return (
-      <Layout myUrl={this.props.match.path}>
+      <Layout
+        myUrl={this.props.match.path}
+        quizId={this.quizId}
+        nextButtonDisabled={!this.state.quizCompleted}
+      >
         <Header as="h2">
           <Header.Content>The Scales</Header.Content>
           <Header.Subheader>part deux</Header.Subheader>
@@ -30,9 +50,7 @@ export default class Scales1 extends Component {
           answers={shapePickerAnswers}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"
-          callbackWhenFinished={() =>
-            this.setState({ nextButtonDisabled: false })
-          }
+          callbackWhenFinished={this.handleCompletedQuiz}
           messageInstructions={{
             // icon: "question circle",
             header: "Shapes on Keyboard",
@@ -156,3 +174,14 @@ const Orange = styled.span`
   color: #f5a623;
   padding: 3px;
 `;
+
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(Scales1);

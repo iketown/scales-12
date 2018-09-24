@@ -115,7 +115,11 @@ export class ShapesQuiz1 extends Component {
   render() {
     const { quizCompleted } = this.state;
     return (
-      <Layout myUrl={this.props.match.path} hideNav={!quizCompleted}>
+      <Layout
+        myUrl={this.props.match.path}
+        hideNav={!quizCompleted}
+        quizId={this.quizId}
+      >
         <CardQuizPage
           testQuestions={testQuestions}
           cardsArr={cardsArr}
@@ -123,7 +127,6 @@ export class ShapesQuiz1 extends Component {
           lessonText={lessonText}
         />
         <CheaterButton onClick={this.handleCompletedQuiz} />
-        <QuizHistory quizId={this.quizId} />
       </Layout>
     );
   }

@@ -1,17 +1,32 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { completeChapterQuiz } from "../actions/userScoreActions";
 import Layout from "../layout/Layout";
 import KeyboardShapePicker from "../components/keyboard/KeyboardShapePicker.jsx";
 import { StarterIcon } from "../components/uiElements/index";
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
-export default class PlacesTest1 extends Component {
+
+class PlacesTest1 extends Component {
   state = {
-    nextButtonDisabled: true
+    quizCompleted: false
   };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Places 1";
   render() {
     return (
       <Layout
         myUrl={this.props.match.url}
-        nextButtonDisabled={this.state.nextButtonDisabled}
+        nextButtonDisabled={!this.state.quizCompleted}
+        quizId={this.quizId}
       >
         <h1>Places Test</h1>
         <p>
@@ -25,9 +40,7 @@ export default class PlacesTest1 extends Component {
           topKey={"E2"}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"
-          callbackWhenFinished={() =>
-            this.setState({ nextButtonDisabled: false })
-          }
+          callbackWhenFinished={this.handleCompletedQuiz}
         />
       </Layout>
     );
@@ -48,3 +61,14 @@ const shapePickerAnswers = [
   { noteName: "Eb1", shape: "Car", notes: keyboardShapes.Eb },
   { noteName: "A1", shape: "Truck", notes: keyboardShapes.A }
 ];
+
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(PlacesTest1);

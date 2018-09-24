@@ -8,7 +8,7 @@ const CheckBoxes = ({ totalAnswersCount, currentIndex }) => {
       {array.map((a, i) => {
         const props =
           i < currentIndex
-            ? { name: " check square", color: "green" }
+            ? { name: "check square", color: "green" }
             : i === currentIndex
               ? {
                   name: "square outline",

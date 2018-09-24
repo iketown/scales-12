@@ -13,6 +13,7 @@ import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { twelveScales } from "../images";
 import NavBar2 from "./NavBar2";
 import PaperBG from "../images/paperBG.jpg";
+import QuizHistory from "../components/QuizHistory";
 
 class Layout extends Component {
   state = {
@@ -87,7 +88,7 @@ class Layout extends Component {
   };
 
   render() {
-    const { children, myUrl, hideNav } = this.props;
+    const { children, myUrl, hideNav, quizId } = this.props;
     return (
       <div>
         <div
@@ -111,6 +112,7 @@ class Layout extends Component {
           <br />
           <br />
           <Image src={twelveScales} centered size="small" />
+          {quizId && <QuizHistory quizId={quizId} />}
           <br />
           <br />
         </Container>

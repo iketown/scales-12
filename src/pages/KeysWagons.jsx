@@ -3,17 +3,31 @@ import Layout from "../layout/Layout";
 import { Header } from "semantic-ui-react";
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
+import { connect } from "react-redux";
+import { completeChapterQuiz } from "../actions/userScoreActions";
 
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 class KeysWagons extends Component {
   state = {
-    testFinished: false
+    quizCompleted: false
   };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Wagons";
   render() {
     return (
       <Layout
         myUrl={this.props.match.path}
-        nextButtonDisabled={!this.state.testFinished}
+        nextButtonDisabled={!this.state.quizCompleted}
+        quizId={this.quizId}
       >
         <Header as="h2">
           <Header.Content>The Wagons</Header.Content>
@@ -42,7 +56,7 @@ class KeysWagons extends Component {
           whenToShowShape={"afterCorrect"}
           answers={wagonAnswers}
           continueText="Well done!  That's all the shapes."
-          callbackWhenFinished={() => this.setState({ testFinished: true })}
+          callbackWhenFinished={this.handleCompletedQuiz}
         />
       </Layout>
     );
@@ -62,4 +76,13 @@ const wagonAnswers = [
   }
 ];
 
-export default KeysWagons;
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(KeysWagons);

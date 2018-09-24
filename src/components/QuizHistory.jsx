@@ -30,7 +30,11 @@ const When = styled.span`
 
 const QuizHistory = ({ quizId, completedQuizzes }) => {
   let filteredQuizHistory = null;
-  if (isLoaded(completedQuizzes) && completedQuizzes[quizId]) {
+  if (
+    isLoaded(completedQuizzes) &&
+    completedQuizzes[quizId] &&
+    completedQuizzes[quizId].completions
+  ) {
     const filteredObj = completedQuizzes[quizId].completions.reduce(
       (obj, quiz) => {
         obj[quiz.uid] = quiz;
@@ -38,7 +42,10 @@ const QuizHistory = ({ quizId, completedQuizzes }) => {
       },
       {}
     );
-    filteredQuizHistory = Object.values(filteredObj);
+    filteredQuizHistory = Object.values(filteredObj).sort(
+      (a, b) => b.timestamp.seconds - a.timestamp.seconds
+    );
+    console.log("filtered Quiz History", filteredQuizHistory);
   }
   const compList =
     !isLoaded(completedQuizzes) || !filteredQuizHistory ? (

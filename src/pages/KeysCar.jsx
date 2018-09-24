@@ -1,21 +1,36 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
+import { connect } from "react-redux";
+
 import { Header, Card, Image } from "semantic-ui-react";
 import { CarSkips, CarSkips2 } from "../images/";
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
 import { NN } from "../keySVGs/keyboardUtils";
+import { completeChapterQuiz } from "../actions/userScoreActions";
 
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
 class KeysCar extends Component {
   state = {
-    testFinished: false
+    quizCompleted: false
   };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Cars";
   render() {
     return (
       <Layout
         myUrl={this.props.match.path}
-        nextButtonDisabled={!this.state.testFinished}
+        nextButtonDisabled={!this.state.quizCompleted}
+        quizId={this.quizId}
       >
         <Header as="h2">
           <Header.Content>The Cars</Header.Content>
@@ -61,7 +76,7 @@ class KeysCar extends Component {
         </p>
 
         <KeyboardInline
-          keyboardId="kb002CarShapes"
+          keyboardId={this.quizId}
           keyboardScale={0.5}
           showAllCircles={false}
           messageInstructions={{
@@ -76,7 +91,7 @@ class KeysCar extends Component {
           whenToShowShape={"afterCorrect"}
           answers={carAnswers}
           continueText="Well done!  Next we'll check out the TRUCKS."
-          callbackWhenFinished={() => this.setState({ testFinished: true })}
+          callbackWhenFinished={this.handleCompletedQuiz}
         />
       </Layout>
     );
@@ -105,5 +120,13 @@ const carAnswers = [
     correctAnswer: keyboardShapes.Bb
   }
 ];
-
-export default KeysCar;
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(KeysCar);

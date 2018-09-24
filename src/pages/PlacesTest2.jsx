@@ -1,17 +1,32 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
+import { connect } from "react-redux";
+import { completeChapterQuiz } from "../actions/userScoreActions";
+
 import KeyboardInline from "../components/keyboard/KeyboardInline.jsx";
 import { StarterIcon } from "../components/uiElements/index";
 import { keyboardShapes } from "../components/keyboard/keyboardShapes";
-export default class PlacesTest2 extends Component {
+class PlacesTest2 extends Component {
   state = {
-    nextButtonDisabled: true
+    quizCompleted: false
   };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Places 2";
   render() {
     return (
       <Layout
         myUrl={this.props.match.url}
-        nextButtonDisabled={this.state.nextButtonDisabled}
+        nextButtonDisabled={!this.state.quizCompleted}
+        quizId={this.quizId}
       >
         <h1>Places Test 2</h1>
 
@@ -20,9 +35,7 @@ export default class PlacesTest2 extends Component {
           answers={shapePickerAnswers}
           keyboardScale={0.5}
           whenToShowShape="afterCorrect"
-          callbackWhenFinished={() =>
-            this.setState({ nextButtonDisabled: false })
-          }
+          callbackWhenFinished={this.handleCompletedQuiz}
           messageInstructions={{
             icon: "question circle",
             header: "Shapes on Keyboard",
@@ -121,3 +134,14 @@ const shapePickerAnswers = [
     ...Fposition
   }
 ];
+
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(PlacesTest2);

@@ -14,7 +14,9 @@ import {
 } from "../../utils/generalConfig";
 import { completeKeyboardChallenge } from "../../actions/userScoreActions";
 import FinishedOverlay from "./FinishedOverlay.jsx";
+import CheckBoxes from "./CheckBoxes.jsx";
 import { StarterIcon } from "../uiElements/index";
+import CheaterButton from "../uiElements/CheaterButton";
 const piano = Synth.createInstrument("piano");
 
 const KeyboardDiv = styled.div`
@@ -214,8 +216,10 @@ class Keyboard extends Component {
       keysToLabel,
       keyboardId,
       continueLink,
-      continueText
+      continueText,
+      answers
     } = this.props;
+    const { questionIndex } = this.state;
     let { keyboardScale } = this.props;
     const { showCircles, root1, showShapeBackground } = this.state;
     const thisTest = this.props.keyboardChallenges[keyboardId];
@@ -233,6 +237,10 @@ class Keyboard extends Component {
           icon="question circle"
           header={this.state.shapeWord}
           content={instructions}
+        />
+        <CheckBoxes
+          totalAnswersCount={answers.length}
+          currentIndex={questionIndex}
         />
         <KeyboardDiv>
           <PoseGroup preEnterPose="before">
@@ -296,6 +304,7 @@ class Keyboard extends Component {
             </Button>
           )}
         </KeyboardDiv>
+        <CheaterButton onClick={this.finishThisTest} />
         {/* </StyledKeyboard> */}
       </div>
     );

@@ -1,18 +1,32 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
 import { Header } from "semantic-ui-react";
-
+import { connect } from "react-redux";
 import KeyboardInline from "../components/keyboard/KeyboardInline";
 import { StarterIcon } from "../components/uiElements";
+import { completeChapterQuiz } from "../actions/userScoreActions";
+
 class KeysLine extends Component {
   state = {
-    testFinished: false
+    quizCompleted: false
   };
+  handleCompletedQuiz = () => {
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
+    this.setState({ quizCompleted: true });
+  };
+  quizId = "Lines";
   render() {
     return (
       <Layout
         myUrl={this.props.match.path}
-        nextButtonDisabled={!this.state.testFinished}
+        nextButtonDisabled={!this.state.quizCompleted}
+        quizId={this.quizId}
       >
         <Header as="h2">
           <Header.Content>On The Piano</Header.Content>
@@ -27,7 +41,7 @@ class KeysLine extends Component {
           pretty quick test:
         </p>
         <KeyboardInline
-          keyboardId="kb001LineShapes"
+          keyboardId={this.quizId}
           bottomKey="C1"
           topKey="C2"
           showAllCircles={false}
@@ -45,7 +59,7 @@ class KeysLine extends Component {
           whenToShowShape={"afterCorrect"}
           answers={lineAnswers}
           continueText="Nice!  next we'll check out the CARS."
-          callbackWhenFinished={() => this.setState({ testFinished: true })}
+          callbackWhenFinished={this.handleCompletedQuiz}
         />
       </Layout>
     );
@@ -64,5 +78,13 @@ const lineAnswers = [
     correctAnswer: ["G1", "A1", "B1", "C2"]
   }
 ];
-
-export default KeysLine;
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = {
+  completeChapterQuiz
+};
+export default connect(
+  mapStateToProps,
+  actions
+)(KeysLine);
