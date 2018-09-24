@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Button } from "semantic-ui-react";
 import {
   Line,
   Car,
@@ -17,6 +18,7 @@ import {
 } from "../actions/userScoreActions";
 import Layout from "../layout/Layout";
 import QuizHistory from "../components/QuizHistory.jsx";
+import CheaterButton from "../components/uiElements/CheaterButton.jsx";
 
 const testQuestions = [
   {
@@ -98,12 +100,16 @@ export class ShapesQuiz1 extends Component {
   state = {
     quizCompleted: false
   };
+  quizId = "Shapes Quiz 1";
   handleCompletedQuiz = () => {
-    this.props.dispatch(completeChapterQuiz("shapes1"));
+    const { displayName, city } = this.props.profile;
+    const { completeChapterQuiz } = this.props;
+    completeChapterQuiz({
+      quizId: this.quizId,
+      displayName,
+      city
+    });
     this.setState({ quizCompleted: true });
-  };
-  handleStartedQuiz = () => {
-    this.props.dispatch(startChapterQuiz("shapes1"));
   };
 
   render() {
@@ -114,13 +120,19 @@ export class ShapesQuiz1 extends Component {
           testQuestions={testQuestions}
           cardsArr={cardsArr}
           handleCompletedQuiz={this.handleCompletedQuiz}
-          handleStartedQuiz={this.handleStartedQuiz}
           lessonText={lessonText}
         />
-        <QuizHistory />
+        <CheaterButton onClick={this.handleCompletedQuiz} />
+        <QuizHistory quizId={this.quizId} />
       </Layout>
     );
   }
 }
-
-export default connect()(ShapesQuiz1);
+const mapStateToProps = state => ({
+  profile: state.firebase.profile
+});
+const actions = { completeChapterQuiz };
+export default connect(
+  mapStateToProps,
+  actions
+)(ShapesQuiz1);

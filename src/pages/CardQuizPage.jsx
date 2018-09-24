@@ -77,14 +77,28 @@ const QuestionCard = ({
         {testQuestions.map((q, i) => {
           if (i === correctCheckboxIndex)
             return (
-              <div style={{ transform: "scale(1.5)" }}>
+              <div key={i + "square"} style={{ transform: "scale(1.5)" }}>
                 <Icon name="square check" color="green" />
               </div>
             );
           else if (i < questionIndex) {
-            return <Icon name="square check" color="green" className="fade" />;
+            return (
+              <Icon
+                key={i + "outline"}
+                name="square check"
+                color="green"
+                className="fade"
+              />
+            );
           } else {
-            return <Icon name="square outline" color="grey" className="fade" />;
+            return (
+              <Icon
+                key={i + "check"}
+                name="square outline"
+                color="grey"
+                className="fade"
+              />
+            );
           }
         })}
       </CheckboxDiv>
@@ -204,7 +218,6 @@ export default class CardQuiz1 extends Component {
     );
   };
   startQuiz = () => {
-    this.props.handleStartedQuiz();
     this.setState({ lessonIntroOuttro: null });
   };
   endQuiz = () => {
@@ -234,13 +247,13 @@ export default class CardQuiz1 extends Component {
         />
         <PoseGroup>
           {lessonIntroOuttro === "intro" ? (
-            <TextSection>
+            <TextSection key={lessonText.intro.body}>
               {lessonText.intro.body}
               <br />
               <Button onClick={this.startQuiz}>GO!</Button>
             </TextSection>
           ) : lessonIntroOuttro === "outtro" ? (
-            <TextSection>
+            <TextSection key={lessonText.outtro.body}>
               {lessonText.outtro.body}
               {/* <NextButton to={lessonText.linkToNextLesson} active /> */}
             </TextSection>

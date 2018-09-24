@@ -1,10 +1,38 @@
 import { db } from "../utils/firebase";
+import firebase from "../utils/firebase";
 
 export const COMPLETE_CHAPTER_QUIZ = "COMPLETE_CHAPTER_QUIZ";
-export const completeChapterQuiz = chapterId => ({
-  type: COMPLETE_CHAPTER_QUIZ,
-  chapterId
-});
+export const completeChapterQuiz = ({ quizId, displayName, city }) => (
+  dispatch,
+  getState,
+  { getFirestore, getFirebase }
+) => {
+  // const firebase = getFirebase();
+  const firestore = getFirestore();
+  const authenticated =
+    firebase.auth().currentUser && !firebase.auth().currentUser.isAnonymous;
+  const uid = authenticated && firebase.auth().currentUser.uid;
+  console.log("authenticated?", authenticated);
+  if (authenticated) {
+    const timestamp = firestore.Timestamp.now();
+    const updateObj = { displayName, city, timestamp, uid };
+    if (displayName && city) {
+      firestore
+        .collection("completedQuizzes")
+        .doc(quizId)
+        .update({
+          completions: firestore.FieldValue.arrayUnion(updateObj)
+        })
+        .then(res => console.log("response", res))
+        .catch(err => console.error("firebase err", err));
+    }
+  }
+
+  dispatch({
+    type: COMPLETE_CHAPTER_QUIZ,
+    quizId
+  });
+};
 
 export const START_CHAPTER_QUIZ = "START_CHAPTER_QUIZ";
 export const startChapterQuiz = chapterId => ({
