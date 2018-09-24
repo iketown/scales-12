@@ -8,10 +8,7 @@ import { takeNotes } from "../../../actions/notesActions";
 class Notes extends Component {
   componentDidMount() {
     const { fsNotes, slug } = this.props;
-    console.log("fsNotes", fsNotes);
-    console.log("slug", slug);
     const myNotes = (fsNotes && fsNotes[slug]) || "";
-    console.log("myNotes", myNotes);
     this.props.initialize({
       notes: myNotes.text
     });
@@ -31,16 +28,6 @@ class Notes extends Component {
       >
         <Segment>
           <Field name="notes" type="textarea" component="textarea" />
-          {/* <label style={{ margin: "10px" }}>
-            <Field
-              control={Checkbox}
-              name="sendToAdmin"
-              label="send note to admin"
-              type="checkbox"
-              component="input"
-            />
-            send to admin
-          </label> */}
           <Button fluid size="large" color="teal" disabled={pristine}>
             Save
           </Button>

@@ -8,7 +8,7 @@ import Waypoint from "react-waypoint";
 
 import { getPreviousAndNextLessons } from "../utils/chapterIndex";
 import { finishPage } from "../actions/userScoreActions";
-import { goToLatestLesson, signInUserAnon } from "../actions/authActions.jsx";
+import { signInUserAnon } from "../actions/authActions.jsx";
 import { openModal } from "../components/uiElements/modals/modalActions.jsx";
 import { twelveScales } from "../images";
 import NavBar2 from "./NavBar2";
@@ -102,7 +102,7 @@ class Layout extends Component {
         />
         <NavBar2 />
         <Container style={{ marginTop: "4rem" }}>
-          {/* <Button onClick={this.props.goToLatestLesson}>go 2 latest</Button>
+          {/* <Button onClick={this.props.>go 2 latest</Button>
           <p>profile is loaded: {profileIsReady ? "yep" : "nope"}</p> */}
           {children}
           <br />
@@ -134,7 +134,7 @@ const mapStateToProps = state => ({
   myReduxUrl: state.router.location.pathname,
   form: state.form
 });
-const actions = { openModal, goToLatestLesson, signInUserAnon };
+const actions = { openModal, signInUserAnon };
 
 export default withRouter(
   withFirebase(

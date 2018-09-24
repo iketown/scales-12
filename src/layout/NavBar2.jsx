@@ -162,7 +162,7 @@ class NavBar extends Component {
             {authenticated ? (
               <Fragment>
                 <Menu.Item as={Link} to="/dashboard">
-                  {auth.displayName || auth.email}
+                  {profile.displayName || auth.email}
                 </Menu.Item>
                 <Menu.Item onClick={this.handleSignOut}>Sign Out</Menu.Item>
               </Fragment>

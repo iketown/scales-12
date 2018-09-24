@@ -28,15 +28,17 @@ class WhatsAScale extends Component {
           <p>
             Have you ever sang <em>'Happy Birthday To You...'</em> in a group of
             people, and it just sounded terrible? Even if each individual person
-            sounds pretty ok‍, when everyone sounds terrible together, it's
-            probably because they're all singing in different keys. That is,
-            they're using different <strong>Major Scales</strong>. (One person
-            is singing in C, while another is singing in F, etc)
+            sounds pretty ok‍, if the group sounds like some kind of{" "}
+            <em>hell choir</em>, it's probably because they're all singing in
+            different keys. That is, they're using different{" "}
+            <strong>Major Scales</strong>. (One person is singing in C, while
+            another is singing in F, etc)
           </p>
           <p>Let's see what that means.</p>
           <p>
             There are 8 notes in the Major Scale. We'll number them 1 through 8.
-            Here is a <strong>'C Major Scale'</strong>. (all white keys)
+            Here's our old friend, the <strong>'C Major Scale'</strong>. (all
+            white keys)
           </p>
           <KeyboardNumbered
             keyboardId="kb000Cmajor"

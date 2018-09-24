@@ -5,12 +5,12 @@ import NumberCircle from "../keyboard/NumberCircle.jsx";
 import Synth from "../keyboard/sounds/audiosynth";
 import { fullScales } from "../keyboard/keyboardShapes";
 
+Synth.setSampleRate(10000);
 const piano = Synth.createInstrument("piano");
-
 const playNote = noteName => {
   let octave = Number(noteName.split("").pop());
   let note = noteConverter[noteName.slice(0, -1)];
-  piano.play(note, octave + 2, 2);
+  piano.play(note, octave + 2, 1);
 };
 export const noteConverter = {
   A: "A",

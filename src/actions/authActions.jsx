@@ -44,7 +44,12 @@ export const registerUser = user => async (
   const firebase = getFirebase();
   const firestore = getFirestore();
   const state = getState();
-  const { email, password, displayName } = user;
+  const { email, password, displayName, city } = user;
+  let finishedLessons = [];
+  if (state.firebase.profile && state.firebase.profile.finishedLessons) {
+    finishedLessons = [...state.firebase.profile.finishedLessons];
+  }
+  console.log("finished lessons", finishedLessons);
   try {
     // create user in auth
     let createdUser = await firebase
@@ -57,19 +62,17 @@ export const registerUser = user => async (
       displayName
     });
     // create a new profile in fireSTORE
-    let finishedLessons = [];
-    if (state.firebase.profile) {
-      finishedLessons = [...state.firebase.profile.finishedLessons];
-    }
     let newUser = {
       displayName,
       email,
+      city,
       createdAt: firestore.FieldValue.serverTimestamp(),
       finishedLessons
     };
     await firestore.set(`users/${currentUser.uid}`, { ...newUser });
     dispatch(closeModal());
   } catch (error) {
+    console.log("error registering", error);
     throw new SubmissionError({ _error: error.message });
   }
 };
@@ -104,15 +107,26 @@ export const socialLogin = selectedProvider => async (
   }
 };
 
-export const goToLatestLesson = () => (dispatch, getState) => {
-  console.log("trying to get latest lesson");
-  const state = getState();
-  if (state.firebase.profile) {
-    const latestLesson = state.firebase.profile.finishedLessons.sort(
-      (a, b) => b.timestamp.seconds - a.timestamp.seconds
-    )[0];
-    console.log("latest lesson", latestLesson);
-  }
-
-  dispatch({ type: "NEVERMIND" });
+export const changeUserInfo = values => (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  const firebase = getFirebase();
+  const firestore = getFirestore();
+  const { displayName } = values;
+  const uid = firebase.auth().currentUser.uid;
+  console.log("my uid", uid);
+  console.log("my values", values);
+  const updateObj = {};
+  Object.keys(values).forEach(key => {
+    if (values[key]) updateObj[key] = values[key];
+  });
+  console.log("update obj", updateObj);
+  firestore
+    .collection("users")
+    .doc(uid)
+    .update(updateObj)
+    .then(res => console.log("response", res))
+    .catch(err => console.log("error changing display name", err));
 };

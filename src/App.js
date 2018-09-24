@@ -14,6 +14,8 @@ import { lessonsArr } from "./utils/chapterIndex";
 import FireTest from "./pages/FireTest.jsx";
 import UserDashboard from "./pages/User/UserDashboard";
 import ModalManager from "./components/uiElements/modals/ModalManager.jsx";
+import ThankYou from "./pages/ThankYou.jsx";
+import PianoSounds from "./PianoSounds/PianoSounds";
 class App extends Component {
   componentDidMount() {}
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
           <ModalManager />
           <Switch>
             <Route exact path="/dashboard" component={UserDashboard} />
+            <Route exact path="/thanks" component={ThankYou} />
+            <Route exact path="/piano" component={PianoSounds} />
             {lessonsArr.map(lesson => (
               <Route
                 key={lesson.slug}

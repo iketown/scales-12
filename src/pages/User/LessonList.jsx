@@ -27,7 +27,7 @@ class UserDashboard extends Component {
     return (
       <List celled>
         {Object.keys(chapters).map(chapter => (
-          <List.Item>
+          <List.Item key={chapter}>
             {chapter}
             <List>
               {chapters[chapter].map(lesson => {

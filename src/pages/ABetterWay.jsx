@@ -27,7 +27,6 @@ export default class ABetterWay extends Component {
   };
   componentDidMount() {
     window.scrollTo(0, 0);
-    console.log("lessonsARr", lessonsArr);
   }
   increment = () => {
     this.setState({ slideIndex: this.state.slideIndex + 1 });
@@ -81,7 +80,12 @@ export default class ABetterWay extends Component {
                 <strong>C</strong>, <strong>G</strong> & <strong>D</strong>
                 ), we substitute the 'sharped' key in for the natural key. (
                 <strong>F </strong>
-                becomes <strong>F#</strong>, etc)
+                becomes <strong>F#</strong>, etc){" "}
+                <p style={{ fontSize: "2rem" }}>
+                  <span role="img" aria-label="confused face">
+                    🤔
+                  </span>
+                </p>
               </Card.Description>
             </Card.Content>
           </Card>
@@ -126,9 +130,7 @@ export default class ABetterWay extends Component {
         <p>
           So we're going to cover three concepts:
           <ul>
-            <li>
-              <strong>The Shapes</strong>
-            </li>
+            <li>The Shapes</li>
             <li>Where they go</li>
             <li>How to put them together</li>
           </ul>

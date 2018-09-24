@@ -31,12 +31,16 @@ export default class IntroPage extends Component {
                     <em>most music</em> is based.
                   </p>
                   <p>
-                    As a beginning student, Major Scales can seem daunting. It's
-                    a lot of information to memorize. The keyboard is a well
-                    designed system, but the <em>learning curve</em> of
-                    understanding <em>why things are the way they are</em> can
-                    be steep enough to discourage many would-be players from
-                    continuing.
+                    Even if you don't intend to be a great pianist some day,
+                    simply knowing how the scales look will give you the ability
+                    to <em>tinker better</em>.
+                  </p>
+                  <p>
+                    Major Scales can seem daunting. It's a lot of information to
+                    memorize. The keyboard is a well designed system, but the{" "}
+                    <em>learning curve</em> of understanding{" "}
+                    <em>why things are the way they are</em> can be steep enough
+                    to discourage many would-be players from continuing.
                   </p>
                   <br />
                 </Item.Description>
@@ -47,15 +51,16 @@ export default class IntroPage extends Component {
                   <p>
                     In this short class, we're going to skip over note names and
                     key signatures and just dive straight into
-                    <strong> The Scales</strong>. This way, when you want to
-                    learn more about theory and harmony, you'll simply be
-                    attaching names and concepts to things{" "}
+                    <strong> The Scales</strong>. This way, if you want to learn
+                    more about theory and harmony, you'll simply be attaching
+                    names and concepts to things{" "}
                     <em>you already know how to play</em>. Those later lessons
                     will be easier, and far more <em>meaningful</em>.
                   </p>
+                  <h3>Can you tie your shoes?</h3>
                   <p>
-                    Remember learning how to tie your shoes? Did you open a big
-                    book of sailing knots, then start with the{" "}
+                    Do you remember learning how? Did you open a big book of
+                    sailing knots, then start with the{" "}
                     <em>doubly slipped reef knot</em>, followed by basic{" "}
                     <em>half hitch</em> theory and use cases? Nope! It was
                     probably
@@ -121,8 +126,8 @@ export default class IntroPage extends Component {
               content={<Image size="huge" src={ScalesChart} />}
             />
             , and with a few days of practice, you could memorize all 12 Major
-            Scales. It's a lot of information, but no more difficult than, say,
-            learning your multiplication tables.
+            Scales. It's no more difficult than, say, learning your
+            multiplication tables.
           </p>
           <p>But we're going to do it the EASY way.</p>
           <p>So what is a scale?</p>
