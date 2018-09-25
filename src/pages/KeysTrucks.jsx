@@ -26,7 +26,7 @@ class KeysTrucks extends Component {
     return (
       <Layout
         myUrl={this.props.match.path}
-        nextButtonDisabled={!this.state.testFinished}
+        nextButtonDisabled={!this.state.quizCompleted}
         quizId={this.quizId}
       >
         <Header as="h2">
