@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { firestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
+import { firestoreConnect, isLoaded } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import Moment from "react-moment";

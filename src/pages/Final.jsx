@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Header } from "semantic-ui-react";
 import { SocialIcon } from "react-social-icons";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
@@ -10,7 +9,7 @@ const SocialDiv = styled.div`
   justify-content: space-around;
   padding-top: 3rem;
 `;
-const EmojiDiv = styled.div`
+const EmojiDiv = styled.span`
   font-size: 3rem;
   margin: 2rem;
   display: inline-block;
@@ -28,9 +27,17 @@ export default class TheEnd extends Component {
           }}
         >
           <h1>
-            <EmojiDiv>💃🏽</EmojiDiv>
-            You did it!
-            <EmojiDiv>🕺🏻</EmojiDiv>
+            <EmojiDiv>
+              <span role="img" aria-label="dancing person">
+                💃🏽
+              </span>
+            </EmojiDiv>
+            You DID it!
+            <EmojiDiv role="img" aria-label="dancing person">
+              <span role="img" aria-label="dancing person">
+                🕺🏻
+              </span>
+            </EmojiDiv>
           </h1>
         </header>
         <p>Learning all TWELVE MAJOR SCALES wasn't so bad, was it?</p>
@@ -44,10 +51,12 @@ export default class TheEnd extends Component {
         <p>
           Major Scales give you the pathway to play millions of melodies. Do you
           remember:
-          <ul>
-            <li>Jingle Bells? (333, 333, 35123)</li>
-            <li>Happy Birthday? (556587)</li>
-          </ul>
+        </p>
+        <ul>
+          <li>Jingle Bells? (333, 333, 35123)</li>
+          <li>Happy Birthday? (556587)</li>
+        </ul>
+        <p>
           Or find your own melody, and try to play it in all 12 keys! Its really
           not that hard, now that you know your Major scales.
         </p>

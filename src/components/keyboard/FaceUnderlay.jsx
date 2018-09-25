@@ -22,7 +22,11 @@ class FaceUnderlay extends Component {
     const show = this.props.show;
     return (
       <FadeIn pose={show ? "vis" : "invis"}>
-        <div style={style}>🤨</div>
+        <div style={style}>
+          <span role="img" aria-label="wrong face">
+            🤨
+          </span>
+        </div>
       </FadeIn>
     );
   }

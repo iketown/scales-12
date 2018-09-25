@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Header } from "semantic-ui-react";
 import { SocialIcon } from "react-social-icons";
 import styled from "styled-components";
 import Layout from "../layout/Layout";
@@ -27,9 +26,17 @@ export default class ThankYou extends Component {
           }}
         >
           <h1>
-            <EmojiDiv>💃🏽</EmojiDiv>
+            <EmojiDiv>
+              <span role="img" aria-label="dancing person">
+                💃🏽
+              </span>
+            </EmojiDiv>
             Thank You!
-            <EmojiDiv>🕺🏻</EmojiDiv>
+            <EmojiDiv role="img" aria-label="dancing person">
+              <span role="img" aria-label="dancing person">
+                🕺🏻
+              </span>
+            </EmojiDiv>
           </h1>
         </header>
 

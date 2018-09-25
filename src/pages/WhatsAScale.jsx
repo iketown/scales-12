@@ -28,9 +28,9 @@ class WhatsAScale extends Component {
           <p>
             Have you ever sang <em>'Happy Birthday To You...'</em> in a group of
             people, and it just sounded terrible? Even if each individual person
-            sounds pretty ok‍, if the group sounds like some kind of{" "}
-            <em>hell choir</em>, it's probably because they're all singing in
-            different keys. That is, they're using different{" "}
+            sounds pretty ok‍, if the group collectively sounds like some kind
+            of <em>tone-deaf hell chorus</em>, it's probably because they're all
+            singing in different keys. That is, they're using different{" "}
             <strong>Major Scales</strong>. (One person is singing in C, while
             another is singing in F, etc)
           </p>
@@ -125,12 +125,14 @@ class WhatsAScale extends Component {
             Most people don't realize that there are also patterns in the way
             the scales <strong>look</strong>. They may look like random patterns
             of black and white keys, but if you dig a little deeper, there is an
-            underlying structure.
+            underlying structure. There are <em>secret mysterious patterns</em>.{" "}
+            <span role="img" aria-label="amazed face">
+              😱
+            </span>
           </p>
           <p>
-            Most students don't even know there is a structure. The patterns
-            aren't obvious (until you see them, that is.) Most students just go
-            to the practice room and start memorizing.
+            These patterns aren't obvious (until you see them, that is.) Most
+            students just go to the practice room and start memorizing.
           </p>
           <p>
             This is where we depart from the path of 'most students.' There is a

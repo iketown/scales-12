@@ -3,7 +3,6 @@ import { Header, Image, Card } from "semantic-ui-react";
 import styled from "styled-components";
 
 import Layout from "../layout/Layout";
-import { lessonsArr } from "../utils/chapterIndex";
 // import { NextButton } from "../components/uiElements";
 import { EMajor12Scales, EMajorConventional } from "../images";
 export const DotCardsGrid = styled.div`

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button } from "semantic-ui-react";
 import {
   Line,
   Car,
@@ -12,12 +11,8 @@ import {
   LineDots
 } from "../images";
 import CardQuizPage from "./CardQuizPage";
-import {
-  completeChapterQuiz,
-  startChapterQuiz
-} from "../actions/userScoreActions";
+import { completeChapterQuiz } from "../actions/userScoreActions";
 import Layout from "../layout/Layout";
-import QuizHistory from "../components/QuizHistory.jsx";
 import CheaterButton from "../components/uiElements/CheaterButton.jsx";
 
 const testQuestions = [

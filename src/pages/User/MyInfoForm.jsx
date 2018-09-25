@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { changeUserInfo } from "../../actions/authActions.jsx";
 import { Field, reduxForm } from "redux-form";
 import { Form, Button } from "semantic-ui-react";
-import TextInput from "../../components/uiElements/TextInput.jsx";
 import { connect } from "react-redux";
-import { renderComponent } from "recompose";
 
 class MyInfoForm extends Component {
   submitForm = values => {
@@ -13,7 +11,7 @@ class MyInfoForm extends Component {
     closeForm();
   };
   render() {
-    const { handleSubmit, changeUserInfo, closeForm } = this.props;
+    const { handleSubmit, closeForm } = this.props;
     return (
       <Form onSubmit={handleSubmit(this.submitForm)}>
         <Form.Field>

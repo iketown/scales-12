@@ -4,24 +4,10 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import { compose } from "redux";
-import { firestoreConnect } from "react-redux-firebase";
-import styled from "styled-components";
 import { closeModal, openModal } from "./modalActions.jsx";
-import RegisterForm from "../../../pages/User/RegisterForm.jsx";
 import TextInput from "../TextInput";
 import { completeChapterQuiz } from "../../../actions/userScoreActions";
 import { changeUserInfo } from "../../../actions/authActions.jsx";
-const StyledBox = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  align-items: center;
-  justify-content: space-around;
-  height: 100%;
-`;
 
 class NameCityModal extends Component {
   componentDidMount() {
@@ -39,13 +25,7 @@ class NameCityModal extends Component {
   };
   render() {
     const trimMe = str => (str && str.trim().length ? str.trim() : null);
-    const {
-      closeModal,
-      quizId,
-      handleSubmit,
-      profile,
-      formFromRedux
-    } = this.props;
+    const { closeModal, handleSubmit, profile, formFromRedux } = this.props;
     const { displayName, city } = profile;
     const newFields = formFromRedux.NameCity && formFromRedux.NameCity.values;
     const newDisplayName = newFields && newFields.displayName;

@@ -123,7 +123,6 @@ export const changeUserInfo = values => (
 ) => {
   const firebase = getFirebase();
   const firestore = getFirestore();
-  const { displayName } = values;
   const uid = firebase.auth().currentUser.uid;
 
   const updateObj = {};
