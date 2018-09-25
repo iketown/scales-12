@@ -52,7 +52,7 @@ const QuizHistory = ({ quizId, completedQuizzes }) => {
     ) : (
       filteredQuizHistory.map(completion => {
         return (
-          <HistoryLine key={completion}>
+          <HistoryLine key={completion.displayName + completion.city}>
             <Name>{completion.displayName}</Name> from{" "}
             <City>{completion.city}</City> completed <em>{quizId}</em>
             {
