@@ -268,7 +268,7 @@ class Keyboard extends Component {
               style = { basic: true, color: "grey", disabled: true };
             }
             return (
-              <Button onClick={this.buttonClick(shape)} {...style}>
+              <Button key={shape} onClick={this.buttonClick(shape)} {...style}>
                 {shape}
               </Button>
             );

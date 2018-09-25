@@ -40,23 +40,21 @@ export default class Scales1 extends Component {
           Here's how you figure out what the <strong>SECOND</strong> shape is,
           so you can make a full scale.
         </p>
-        <p>
-          <ul>
-            <li>
-              First, you play <NN num={1} /> <NN num={2} />
-              {"  "}
-              <NN num={3} />
-              <NN num={4} /> of the FIRST shape.
-            </li>
-            <li>
-              Then <Orange>skip</Orange> a key.
-            </li>
-            <li>
-              The very next key starts the <strong>SECOND</strong> shape. (you
-              remember which shape goes with which key, right?)
-            </li>
-          </ul>
-        </p>
+        <ul>
+          <li>
+            First, you play <NN num={1} /> <NN num={2} />
+            {"  "}
+            <NN num={3} />
+            <NN num={4} /> of the FIRST shape.
+          </li>
+          <li>
+            Then <Orange>skip</Orange> a key.
+          </li>
+          <li>
+            The very next key starts the <strong>SECOND</strong> shape. (you
+            remember which shape goes with which key, right?)
+          </li>
+        </ul>
         <h3>Let's see how that looks.</h3>
         <p>
           In this next image, you would:
