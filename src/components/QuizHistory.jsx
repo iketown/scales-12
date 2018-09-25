@@ -30,7 +30,6 @@ const When = styled.span`
 
 const QuizHistory = ({ quizId, completedQuizzes }) => {
   let filteredQuizHistory = null;
-  console.log("completed q", completedQuizzes);
   if (
     isLoaded(completedQuizzes) &&
     completedQuizzes[quizId] &&

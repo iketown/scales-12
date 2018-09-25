@@ -1,6 +1,9 @@
 import { db } from "../utils/firebase";
 import firebase from "../utils/firebase";
-import { openModal } from "../components/uiElements/modals/modalActions.jsx";
+import {
+  openModal,
+  closeModal
+} from "../components/uiElements/modals/modalActions.jsx";
 
 export const COMPLETE_CHAPTER_QUIZ = "COMPLETE_CHAPTER_QUIZ";
 export const completeChapterQuiz = ({ quizId, displayName, city }) => (
@@ -16,19 +19,20 @@ export const completeChapterQuiz = ({ quizId, displayName, city }) => (
     return dispatch(openModal("HistoryInterrupt", { quizId }));
   }
   const uid = authenticated && firebase.auth().currentUser.uid;
-  console.log("authenticated?", authenticated);
   if (authenticated) {
-    const timestamp = firestore.Timestamp.now();
-    const updateObj = { displayName, city, timestamp, uid };
-    if (displayName && city) {
+    if (displayName.trim().length && city.trim().length) {
+      const timestamp = firestore.Timestamp.now();
+      const updateObj = { displayName, city, timestamp, uid };
       firestore
         .collection("completedQuizzes")
         .doc(quizId)
         .update({
           completions: firestore.FieldValue.arrayUnion(updateObj)
         })
-        .then(res => console.log("response", res))
+        .then(() => dispatch(closeModal()))
         .catch(err => console.error("firebase err", err));
+    } else {
+      return dispatch(openModal("NameCity", { quizId }));
     }
   }
 

@@ -125,17 +125,20 @@ export const changeUserInfo = values => (
   const firestore = getFirestore();
   const { displayName } = values;
   const uid = firebase.auth().currentUser.uid;
-  console.log("my uid", uid);
-  console.log("my values", values);
+
   const updateObj = {};
   Object.keys(values).forEach(key => {
     if (values[key]) updateObj[key] = values[key];
   });
   console.log("update obj", updateObj);
-  firestore
+  return firestore
     .collection("users")
     .doc(uid)
     .update(updateObj)
-    .then(res => console.log("response", res))
+    .then(res => {
+      console.log("response", res);
+      return;
+      // return new Promise((resolve, reject) => resolve("qwuzzup"));
+    })
     .catch(err => console.log("error changing display name", err));
 };
