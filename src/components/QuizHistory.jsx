@@ -10,7 +10,7 @@ const HistoryList = styled.div`
   margin-top: 4rem;
   text-align: center;
 `;
-const HistoryLine = styled.p`
+const HistoryLine = styled.div`
   color: grey;
   font-weight: 100;
   margin-bottom: 0;
@@ -52,7 +52,7 @@ const QuizHistory = ({ quizId, completedQuizzes }) => {
     ) : (
       filteredQuizHistory.map(completion => {
         return (
-          <HistoryLine>
+          <HistoryLine key={completion}>
             <Name>{completion.displayName}</Name> from{" "}
             <City>{completion.city}</City> completed <em>{quizId}</em>
             {
