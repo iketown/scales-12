@@ -30,6 +30,7 @@ const When = styled.span`
 
 const QuizHistory = ({ quizId, completedQuizzes }) => {
   let filteredQuizHistory = null;
+  console.log("completed q", completedQuizzes);
   if (
     isLoaded(completedQuizzes) &&
     completedQuizzes[quizId] &&
@@ -80,6 +81,8 @@ const mapStateToProps = state => ({
 });
 
 export default compose(
-  firestoreConnect(["completedQuizzes"]),
+  firestoreConnect(props => [
+    { collection: "completedQuizzes", doc: props.quizId }
+  ]),
   connect(mapStateToProps)
 )(QuizHistory);
