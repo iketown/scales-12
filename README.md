@@ -12,4 +12,6 @@ The basic concepts:
 
 !['keyboard with B Flat scale'](./src/images/BuildBbScale.jpg)
 
+The interactive keyboards utilized throughout the course are variations of my own keyboard component. I intend to decouple the keyboard from its custom actions (showing buttons, etc) and publish it as an npm package for general use.
+
 [Go to Live Site](http://www.12scales.com)
