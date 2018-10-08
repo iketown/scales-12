@@ -13,6 +13,3 @@ The basic concepts:
 !['keyboard with B Flat scale'](./src/images/BuildBbScale.jpg)
 
 [Go to Live Site](http://www.12scales.com)
-
-![@brianeichen](htts://twitter.com/brianeichen)
-created by Brian Eichenberger in React using [Create React App](https://github.com/facebookincubator/create-react-app).
