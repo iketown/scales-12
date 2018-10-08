@@ -165,7 +165,7 @@ const shapePickerAnswers = [
     correctAnswer: fullScales.G,
     scaleShapes: scaleShapes2.G,
     ...FpositionExtended,
-    keyToSkip: "Eb2"
+    keyToSkip: "Db2"
   },
   {
     noteName: "Eb1",
