@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "merge": ">=1.2.1",
     "connected-react-router": "^4.4.1",
     "firebase": "^5.4.2",
     "firebaseui": "^3.4.0",
